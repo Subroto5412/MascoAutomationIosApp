@@ -21,6 +21,8 @@
 		4DC4DF172748FD7200EF43ED /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4DF162748FD7200EF43ED /* SignupViewController.swift */; };
 		4DD772BD274DF2EA003261F6 /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD772BC274DF2EA003261F6 /* HomeHeader.swift */; };
 		4DD772BF274DF30D003261F6 /* HomeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DD772BE274DF30D003261F6 /* HomeHeader.xib */; };
+		4DD772C1274DF8EA003261F6 /* HeaderFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD772C0274DF8EA003261F6 /* HeaderFooter.swift */; };
+		4DD772C3274DF8FD003261F6 /* HeaderFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DD772C2274DF8FD003261F6 /* HeaderFooter.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		4DC4DF162748FD7200EF43ED /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		4DD772BC274DF2EA003261F6 /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
 		4DD772BE274DF30D003261F6 /* HomeHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeader.xib; sourceTree = "<group>"; };
+		4DD772C0274DF8EA003261F6 /* HeaderFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderFooter.swift; sourceTree = "<group>"; };
+		4DD772C2274DF8FD003261F6 /* HeaderFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderFooter.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,8 @@
 				4DA6512E274CC85E00488332 /* HomeScreenBody.swift */,
 				4DD772BC274DF2EA003261F6 /* HomeHeader.swift */,
 				4DD772BE274DF30D003261F6 /* HomeHeader.xib */,
+				4DD772C0274DF8EA003261F6 /* HeaderFooter.swift */,
+				4DD772C2274DF8FD003261F6 /* HeaderFooter.xib */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -189,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DA65128274CA30F00488332 /* HomeScreenBody.xib in Resources */,
+				4DD772C3274DF8FD003261F6 /* HeaderFooter.xib in Resources */,
 				4DD772BF274DF30D003261F6 /* HomeHeader.xib in Resources */,
 				4D7FB4D62744D45200B318DA /* LaunchScreen.storyboard in Resources */,
 				4D7FB4D32744D45200B318DA /* Assets.xcassets in Resources */,
@@ -210,6 +217,7 @@
 				4DA6512F274CC85E00488332 /* HomeScreenBody.swift in Sources */,
 				4DD772BD274DF2EA003261F6 /* HomeHeader.swift in Sources */,
 				4D7FB4CC2744D45100B318DA /* SceneDelegate.swift in Sources */,
+				4DD772C1274DF8EA003261F6 /* HeaderFooter.swift in Sources */,
 				4DA6512D274CA55A00488332 /* XibView.swift in Sources */,
 				4DBB3B64274B91C90009339B /* HomeViewController.swift in Sources */,
 			);
