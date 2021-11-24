@@ -10,9 +10,19 @@ import UIKit
 class HomeViewController: UIViewController {
     @IBOutlet weak var homeBody: HomeScreenBody!
     @IBOutlet weak var homeHeader: HomeHeader!
+    @IBOutlet weak var menuBackgroundView: UIView!
+    
+    @IBOutlet weak var sideMenuView: UIView!
+    @IBOutlet weak var leadingConstraintSideMenu: NSLayoutConstraint!
+    
+    private var isMenuShown:Bool = false
+    
     //    @IBOutlet weak var homeBodyView: HomeBody!
+    var sideMenuViewController : SideMenuViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.menuBackgroundView.isHidden = true
         
 //        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
 //        backgroundImage.image = UIImage(named: "home_bg")
@@ -38,6 +48,16 @@ class HomeViewController: UIViewController {
 //        let circlePath =  UIBezierPath(arcCenter: CGPoint(x: self.homeBody.iconView.bounds.size.width/2, y: 0), radius: self.homeBody.iconView.bounds.size.height, startAngle: 0, endAngle: .pi, clockwise: true)
         
 //        let circlePath =  UIBezierPath(arcCenter: CGPoint(x: self.homeBody.iconView.bounds.size.width/2, y: 0), radius: self.homeBody.iconView.bounds.size.height,startAngle: 2 * .pi, endAngle: .pi, clockwise: false)
+        
+        
+        self.homeHeader.menuHandler = {
+              [weak self] (isShow) in
+              guard let weakSelf = self else {
+              return
+           }
+           weakSelf.showSideMenuController()
+       }
+        
         
         let arcCenter = CGPoint(x: self.homeBody.iconView.bounds.size.width / 2, y: self.homeBody.iconView.bounds.size.height)
         let circleRadius = self.homeBody.iconView.bounds.size.width / 2
@@ -144,4 +164,46 @@ class HomeViewController: UIViewController {
     }
     */
 
+    @IBAction func Tap(_ sender: Any) {
+        
+        self.hideMenuView()
+        
+    }
+    
+    func showSideMenuController() {
+        UIView.animate(withDuration: 0.1) {
+            self.leadingConstraintSideMenu.constant = 10
+            self.view.layoutIfNeeded()
+        } completion: { (status) in
+            self.menuBackgroundView.alpha = 0.75
+            self.menuBackgroundView.isHidden = false
+            UIView.animate(withDuration: 0.1) {
+                self.leadingConstraintSideMenu.constant = 0
+                self.view.layoutIfNeeded()
+            } completion: { (status) in
+                self.isMenuShown = true
+            }
+
+        }
+        self.menuBackgroundView.isHidden = false
+    }
+    
+    
+    func hideMenuView()
+    {
+        UIView.animate(withDuration: 0.1) {
+            self.leadingConstraintSideMenu.constant = 10
+            self.view.layoutIfNeeded()
+        } completion: { (status) in
+            self.menuBackgroundView.alpha = 0.0
+            UIView.animate(withDuration: 0.1) {
+                self.leadingConstraintSideMenu.constant = -320
+                self.view.layoutIfNeeded()
+            } completion: { (status) in
+                self.menuBackgroundView.isHidden = true
+                self.isMenuShown = false
+            }
+        }
+    }
+    
 }

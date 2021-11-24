@@ -9,7 +9,10 @@ import UIKit
 
 class HomeHeader: XibView {
 
+    @IBOutlet weak var sideMenuView: UIButton!
     @IBOutlet weak var homeHeaderBg: UIView!
+    
+    var menuHandler : ((Bool?) -> Void)?
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -18,4 +21,9 @@ class HomeHeader: XibView {
     }
     */
 
+    @IBAction func menuBtn(_ sender: Any) {
+        
+        self.menuHandler?(true)
+        
+    }
 }
