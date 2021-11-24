@@ -35,7 +35,6 @@ class HomeScreenBody: XibView {
     
     @IBOutlet weak var ilmItemNameView: UIView!
     @IBOutlet weak var ilmIconView: UIView!
-    @IBOutlet weak var ilmIconViews: UIView!
     
     @IBOutlet weak var dmsItemNameview: UIView!
     @IBOutlet weak var dmsIconView: UIView!

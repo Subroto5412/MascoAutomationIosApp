@@ -106,13 +106,13 @@ class HomeViewController: UIViewController {
         self.homeBody.dsmIconView.layer.mask = circleShapeDSM
         self.homeBody.dsmItemNameView.layer.cornerRadius = 20
         
-        let arcCenterILM = CGPoint(x: self.homeBody.ilmIconViews.bounds.size.width / 2, y: self.homeBody.ilmIconViews.bounds.size.height)
-        let circleRadiusILM = self.homeBody.ilmIconViews.bounds.size.width / 2
+        let arcCenterILM = CGPoint(x: self.homeBody.ilmIconView.bounds.size.width / 2, y: self.homeBody.ilmIconView.bounds.size.height)
+        let circleRadiusILM = self.homeBody.ilmIconView.bounds.size.width / 2
         let circlePathILM = UIBezierPath(arcCenter: arcCenterILM, radius: circleRadiusILM, startAngle: CGFloat.pi, endAngle: CGFloat.pi * 2, clockwise: true)
           
         let circleShapeILM = CAShapeLayer()
         circleShapeILM.path = circlePathILM.cgPath
-        self.homeBody.ilmIconViews.layer.mask = circleShapeILM
+        self.homeBody.ilmIconView.layer.mask = circleShapeILM
         self.homeBody.ilmItemNameView.layer.cornerRadius = 20
         
         let arcCenterDMS = CGPoint(x: self.homeBody.dmsIconView.bounds.size.width / 2, y: self.homeBody.dmsIconView.bounds.size.height)
@@ -121,7 +121,7 @@ class HomeViewController: UIViewController {
           
         let circleShapeDMS = CAShapeLayer()
         circleShapeDMS.path = circlePathDMS.cgPath
-        self.homeBody.dmsIconView.layer.mask = circleShapeILM
+        self.homeBody.dmsIconView.layer.mask = circleShapeDMS
         self.homeBody.dmsItemNameview.layer.cornerRadius = 20
     }
     
