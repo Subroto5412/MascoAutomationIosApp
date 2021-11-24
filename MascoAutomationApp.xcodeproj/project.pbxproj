@@ -19,6 +19,8 @@
 		4DBB3B64274B91C90009339B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB3B63274B91C90009339B /* HomeViewController.swift */; };
 		4DC4DF152748B48F00EF43ED /* OTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4DF142748B48F00EF43ED /* OTPViewController.swift */; };
 		4DC4DF172748FD7200EF43ED /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4DF162748FD7200EF43ED /* SignupViewController.swift */; };
+		4DD772BD274DF2EA003261F6 /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD772BC274DF2EA003261F6 /* HomeHeader.swift */; };
+		4DD772BF274DF30D003261F6 /* HomeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DD772BE274DF30D003261F6 /* HomeHeader.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		4DBB3B63274B91C90009339B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4DC4DF142748B48F00EF43ED /* OTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewController.swift; sourceTree = "<group>"; };
 		4DC4DF162748FD7200EF43ED /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		4DD772BC274DF2EA003261F6 /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
+		4DD772BE274DF30D003261F6 /* HomeHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeader.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,13 +68,6 @@
 			path = font;
 			sourceTree = "<group>";
 		};
-		4D72D947274671C2005708F6 /* login */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = login;
-			sourceTree = "<group>";
-		};
 		4D72D948274671CD005708F6 /* signup */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +83,8 @@
 				4DBB3B63274B91C90009339B /* HomeViewController.swift */,
 				4DA65127274CA30F00488332 /* HomeScreenBody.xib */,
 				4DA6512E274CC85E00488332 /* HomeScreenBody.swift */,
+				4DD772BC274DF2EA003261F6 /* HomeHeader.swift */,
+				4DD772BE274DF30D003261F6 /* HomeHeader.xib */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -112,7 +111,6 @@
 				4DA6512B274CA52C00488332 /* Extension */,
 				4D72D949274671DC005708F6 /* home */,
 				4D72D948274671CD005708F6 /* signup */,
-				4D72D947274671C2005708F6 /* login */,
 				4D72D94227464E57005708F6 /* font */,
 				4D7FB4C92744D45100B318DA /* AppDelegate.swift */,
 				4D7FB4CB2744D45100B318DA /* SceneDelegate.swift */,
@@ -191,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DA65128274CA30F00488332 /* HomeScreenBody.xib in Resources */,
+				4DD772BF274DF30D003261F6 /* HomeHeader.xib in Resources */,
 				4D7FB4D62744D45200B318DA /* LaunchScreen.storyboard in Resources */,
 				4D7FB4D32744D45200B318DA /* Assets.xcassets in Resources */,
 				4D7FB4D12744D45100B318DA /* Main.storyboard in Resources */,
@@ -209,6 +208,7 @@
 				4DC4DF172748FD7200EF43ED /* SignupViewController.swift in Sources */,
 				4D7FB4CA2744D45100B318DA /* AppDelegate.swift in Sources */,
 				4DA6512F274CC85E00488332 /* HomeScreenBody.swift in Sources */,
+				4DD772BD274DF2EA003261F6 /* HomeHeader.swift in Sources */,
 				4D7FB4CC2744D45100B318DA /* SceneDelegate.swift in Sources */,
 				4DA6512D274CA55A00488332 /* XibView.swift in Sources */,
 				4DBB3B64274B91C90009339B /* HomeViewController.swift in Sources */,
