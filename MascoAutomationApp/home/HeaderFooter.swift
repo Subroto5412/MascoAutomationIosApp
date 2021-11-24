@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HeaderFooter: UIView {
+class HeaderFooter: XibView {
 
     /*
     // Only override draw() if you perform custom drawing.

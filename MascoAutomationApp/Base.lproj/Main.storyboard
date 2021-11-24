@@ -547,24 +547,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.34999999999999998" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="home_bg" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Sx-lF-JtM">
-                                <rect key="frame" x="0.0" y="39" width="390" height="766"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.25" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Sx-lF-JtM">
+                                <rect key="frame" x="-10" y="0.0" width="410" height="810"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.087394736710000004" green="0.25520369409999999" blue="0.57615613939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgE-Na-n7k">
                                 <rect key="frame" x="0.0" y="44" width="390" height="766"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ig4-a9-wrg">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ig4-a9-wrg" customClass="HomeHeader" customModule="MascoAutomationApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="90"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ndl-NU-Lv9" customClass="HomeScreenBody" customModule="MascoAutomationApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="90" width="390" height="590"/>
+                                        <rect key="frame" x="10" y="90" width="370" height="590"/>
                                         <color key="backgroundColor" systemColor="systemGray2Color"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FrC-6Y-rx0">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FrC-6Y-rx0" customClass="HeaderFooter" customModule="MascoAutomationApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="680" width="390" height="86"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
@@ -573,10 +572,10 @@
                                 <constraints>
                                     <constraint firstItem="ndl-NU-Lv9" firstAttribute="height" secondItem="hgE-Na-n7k" secondAttribute="height" multiplier="590:766" id="3fH-1f-oZA"/>
                                     <constraint firstItem="FrC-6Y-rx0" firstAttribute="leading" secondItem="hgE-Na-n7k" secondAttribute="leading" id="99m-CV-R5n"/>
-                                    <constraint firstItem="ndl-NU-Lv9" firstAttribute="leading" secondItem="hgE-Na-n7k" secondAttribute="leading" id="Dic-me-hRa"/>
+                                    <constraint firstItem="ndl-NU-Lv9" firstAttribute="leading" secondItem="hgE-Na-n7k" secondAttribute="leading" constant="10" id="Dic-me-hRa"/>
                                     <constraint firstItem="Ig4-a9-wrg" firstAttribute="height" secondItem="hgE-Na-n7k" secondAttribute="height" multiplier="90:766" id="EnO-98-D4T"/>
                                     <constraint firstAttribute="trailing" secondItem="Ig4-a9-wrg" secondAttribute="trailing" id="G7G-5q-5jZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="ndl-NU-Lv9" secondAttribute="trailing" id="GrY-GZ-4Ip"/>
+                                    <constraint firstAttribute="trailing" secondItem="ndl-NU-Lv9" secondAttribute="trailing" constant="10" id="GrY-GZ-4Ip"/>
                                     <constraint firstItem="ndl-NU-Lv9" firstAttribute="top" secondItem="Ig4-a9-wrg" secondAttribute="bottom" id="KLq-ud-lVQ"/>
                                     <constraint firstItem="Ig4-a9-wrg" firstAttribute="top" secondItem="hgE-Na-n7k" secondAttribute="top" id="LfS-yj-8Ge"/>
                                     <constraint firstItem="FrC-6Y-rx0" firstAttribute="top" secondItem="ndl-NU-Lv9" secondAttribute="bottom" id="YOr-jk-Vcr"/>
@@ -590,13 +589,18 @@
                         <color key="backgroundColor" red="0.0" green="0.16292965409999999" blue="0.48356693979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="L1Z-34-0D7" firstAttribute="trailing" secondItem="hgE-Na-n7k" secondAttribute="trailing" id="2cK-Hu-SEe"/>
+                            <constraint firstItem="6Sx-lF-JtM" firstAttribute="leading" secondItem="L1Z-34-0D7" secondAttribute="leading" constant="-10" id="8L7-dp-vJE"/>
+                            <constraint firstItem="6Sx-lF-JtM" firstAttribute="top" secondItem="QfO-3e-mfm" secondAttribute="top" id="Dx9-CK-mz6"/>
                             <constraint firstItem="hgE-Na-n7k" firstAttribute="leading" secondItem="L1Z-34-0D7" secondAttribute="leading" id="bWX-yt-BWr"/>
                             <constraint firstItem="hgE-Na-n7k" firstAttribute="top" secondItem="L1Z-34-0D7" secondAttribute="top" id="cHD-Bk-jM1"/>
+                            <constraint firstItem="6Sx-lF-JtM" firstAttribute="trailing" secondItem="L1Z-34-0D7" secondAttribute="trailing" constant="10" id="iaM-wk-lb3"/>
                             <constraint firstItem="L1Z-34-0D7" firstAttribute="bottom" secondItem="hgE-Na-n7k" secondAttribute="bottom" id="uEI-JV-e8j"/>
+                            <constraint firstItem="L1Z-34-0D7" firstAttribute="bottom" secondItem="6Sx-lF-JtM" secondAttribute="bottom" id="uyI-dw-wIB"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="homeBody" destination="ndl-NU-Lv9" id="fJZ-6y-43T"/>
+                        <outlet property="homeHeader" destination="Ig4-a9-wrg" id="aSc-MO-09x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2jB-bg-XJ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

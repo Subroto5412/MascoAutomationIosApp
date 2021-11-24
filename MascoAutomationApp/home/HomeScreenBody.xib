@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -45,7 +44,7 @@
             <rect key="frame" x="0.0" y="0.0" width="390" height="590"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NTN-Z4-N3D">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTN-Z4-N3D">
                     <rect key="frame" x="0.0" y="0.0" width="390" height="590"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sdh-Xa-mzu">
@@ -692,7 +691,7 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="TAM-Vd-ojk" firstAttribute="height" secondItem="Sdh-Xa-mzu" secondAttribute="height" multiplier="150:870" id="35x-98-Wk9"/>
                                 <constraint firstAttribute="trailing" secondItem="fDk-eo-bfM" secondAttribute="trailing" id="5N3-0h-wP6"/>
@@ -728,7 +727,7 @@
                 </scrollView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemTealColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="NTN-Z4-N3D" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="6aV-DW-tWP"/>
                 <constraint firstItem="NTN-Z4-N3D" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9K8-HF-uvN"/>
@@ -739,7 +738,7 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="131.8840579710145" y="123.09782608695653"/>
+            <point key="canvasLocation" x="183" y="60"/>
         </view>
     </objects>
     <resources>
@@ -753,11 +752,5 @@
         <image name="pms" width="81" height="44.666667938232422"/>
         <image name="scm" width="94.666664123535156" height="44.666667938232422"/>
         <image name="sem" width="84" height="39"/>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

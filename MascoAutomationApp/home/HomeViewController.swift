@@ -9,10 +9,16 @@ import UIKit
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var homeBody: HomeScreenBody!
-    
-//    @IBOutlet weak var homeBodyView: HomeBody!
+    @IBOutlet weak var homeHeader: HomeHeader!
+    //    @IBOutlet weak var homeBodyView: HomeBody!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+//        backgroundImage.image = UIImage(named: "home_bg")
+//        backgroundImage.contentMode = .scaleAspectFill
+//        view.insertSubview(backgroundImage, at: 0)
+        
 
      //   self.homeBody.hrisIconView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
      //   self.homeBodyView.hrisIconView.layer.borderWidth = homeBody
@@ -123,6 +129,8 @@ class HomeViewController: UIViewController {
         circleShapeDMS.path = circlePathDMS.cgPath
         self.homeBody.dmsIconView.layer.mask = circleShapeDMS
         self.homeBody.dmsItemNameview.layer.cornerRadius = 20
+        
+        self.homeHeader.homeHeaderBg.layer.cornerRadius = 10
     }
     
 
