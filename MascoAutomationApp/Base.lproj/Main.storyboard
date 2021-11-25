@@ -663,7 +663,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m9u-Wl-QPh">
                                 <rect key="frame" x="0.0" y="44" width="390" height="766"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xNU-9M-ZfG">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xNU-9M-ZfG" customClass="InnerHeader" customModule="MascoAutomationApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="90"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
@@ -671,7 +671,7 @@
                                         <rect key="frame" x="0.0" y="90" width="390" height="596"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAe-gE-wwd">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAe-gE-wwd" customClass="CommonFooter" customModule="MascoAutomationApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="686" width="390" height="80"/>
                                         <color key="backgroundColor" systemColor="systemGrayColor"/>
                                     </view>
@@ -708,6 +708,7 @@
                     </view>
                     <connections>
                         <outlet property="hrBodyView" destination="Yf7-RF-dSB" id="EVd-zL-ShQ"/>
+                        <outlet property="innerHeaderView" destination="xNU-9M-ZfG" id="EsU-Bc-7gC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iGl-8r-7tF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

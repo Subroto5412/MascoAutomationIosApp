@@ -27,6 +27,10 @@
 		4DE3854B274F533200707916 /* HRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE3854A274F533200707916 /* HRViewController.swift */; };
 		4DE3854D274F537300707916 /* HrBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE3854C274F537300707916 /* HrBodyView.swift */; };
 		4DE3854F274F538700707916 /* HrBodyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DE3854E274F538700707916 /* HrBodyView.xib */; };
+		4DE38551274F7B7800707916 /* InnerHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DE38550274F7B7800707916 /* InnerHeader.xib */; };
+		4DE38553274F7B8D00707916 /* InnerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE38552274F7B8D00707916 /* InnerHeader.swift */; };
+		4DE38555274F866C00707916 /* CommonFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE38554274F866C00707916 /* CommonFooter.swift */; };
+		4DE38557274F868100707916 /* CommonFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DE38556274F868100707916 /* CommonFooter.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +60,10 @@
 		4DE3854A274F533200707916 /* HRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRViewController.swift; sourceTree = "<group>"; };
 		4DE3854C274F537300707916 /* HrBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HrBodyView.swift; sourceTree = "<group>"; };
 		4DE3854E274F538700707916 /* HrBodyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HrBodyView.xib; sourceTree = "<group>"; };
+		4DE38550274F7B7800707916 /* InnerHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InnerHeader.xib; sourceTree = "<group>"; };
+		4DE38552274F7B8D00707916 /* InnerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerHeader.swift; sourceTree = "<group>"; };
+		4DE38554274F866C00707916 /* CommonFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFooter.swift; sourceTree = "<group>"; };
+		4DE38556274F868100707916 /* CommonFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonFooter.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +161,10 @@
 				4DE3854A274F533200707916 /* HRViewController.swift */,
 				4DE3854C274F537300707916 /* HrBodyView.swift */,
 				4DE3854E274F538700707916 /* HrBodyView.xib */,
+				4DE38550274F7B7800707916 /* InnerHeader.xib */,
+				4DE38552274F7B8D00707916 /* InnerHeader.swift */,
+				4DE38554274F866C00707916 /* CommonFooter.swift */,
+				4DE38556274F868100707916 /* CommonFooter.xib */,
 			);
 			path = HR;
 			sourceTree = "<group>";
@@ -216,9 +228,11 @@
 			files = (
 				4DA65128274CA30F00488332 /* HomeScreenBody.xib in Resources */,
 				4DD772C3274DF8FD003261F6 /* HeaderFooter.xib in Resources */,
+				4DE38557274F868100707916 /* CommonFooter.xib in Resources */,
 				4DE3854F274F538700707916 /* HrBodyView.xib in Resources */,
 				4DD772BF274DF30D003261F6 /* HomeHeader.xib in Resources */,
 				4D7FB4D62744D45200B318DA /* LaunchScreen.storyboard in Resources */,
+				4DE38551274F7B7800707916 /* InnerHeader.xib in Resources */,
 				4D7FB4D32744D45200B318DA /* Assets.xcassets in Resources */,
 				4D7FB4D12744D45100B318DA /* Main.storyboard in Resources */,
 			);
@@ -237,9 +251,11 @@
 				4DC4DF172748FD7200EF43ED /* SignupViewController.swift in Sources */,
 				4D7FB4CA2744D45100B318DA /* AppDelegate.swift in Sources */,
 				4DD772C7274E4AAC003261F6 /* SideMenuViewController.swift in Sources */,
+				4DE38555274F866C00707916 /* CommonFooter.swift in Sources */,
 				4DA6512F274CC85E00488332 /* HomeScreenBody.swift in Sources */,
 				4DD772BD274DF2EA003261F6 /* HomeHeader.swift in Sources */,
 				4D7FB4CC2744D45100B318DA /* SceneDelegate.swift in Sources */,
+				4DE38553274F7B8D00707916 /* InnerHeader.swift in Sources */,
 				4DD772C1274DF8EA003261F6 /* HeaderFooter.swift in Sources */,
 				4DA6512D274CA55A00488332 /* XibView.swift in Sources */,
 				4DE3854B274F533200707916 /* HRViewController.swift in Sources */,

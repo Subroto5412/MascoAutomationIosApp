@@ -9,6 +9,7 @@ import UIKit
 
 class HRViewController: UIViewController {
 
+    @IBOutlet weak var innerHeaderView: InnerHeader!
     @IBOutlet weak var hrBodyView: HrBodyView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,8 @@ class HRViewController: UIViewController {
         self.hrBodyView.taxBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.hrBodyView.taxBgView.layer.borderWidth = 0.5
         self.hrBodyView.taxBgView.layer.cornerRadius = 20
+        
+        self.innerHeaderView.searchBgView.layer.cornerRadius = 10
     }
     
 
