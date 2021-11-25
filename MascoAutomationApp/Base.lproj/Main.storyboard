@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Zhn-lP-v54">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WDf-Lv-EYx">
     <device id="retina6_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -650,6 +650,71 @@
             <point key="canvasLocation" x="90.769230769230759" y="822.51184834123217"/>
         </scene>
         <!--View Controller-->
+        <scene sceneID="w5r-lI-ghi">
+            <objects>
+                <viewController id="WDf-Lv-EYx" customClass="HRViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eHt-fy-V1O">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.25" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" translatesAutoresizingMaskIntoConstraints="NO" id="OaC-Fc-HCH">
+                                <rect key="frame" x="-10" y="0.0" width="410" height="810"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m9u-Wl-QPh">
+                                <rect key="frame" x="0.0" y="44" width="390" height="766"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xNU-9M-ZfG">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="90"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yf7-RF-dSB" customClass="HrBodyView" customModule="MascoAutomationApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="90" width="390" height="596"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAe-gE-wwd">
+                                        <rect key="frame" x="0.0" y="686" width="390" height="80"/>
+                                        <color key="backgroundColor" systemColor="systemGrayColor"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hAe-gE-wwd" secondAttribute="trailing" id="2fZ-Cr-7aQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Yf7-RF-dSB" secondAttribute="trailing" id="9KE-46-OEl"/>
+                                    <constraint firstItem="xNU-9M-ZfG" firstAttribute="leading" secondItem="m9u-Wl-QPh" secondAttribute="leading" id="B4u-Cx-nI5"/>
+                                    <constraint firstItem="xNU-9M-ZfG" firstAttribute="top" secondItem="m9u-Wl-QPh" secondAttribute="top" id="Bvw-Hs-ST6"/>
+                                    <constraint firstItem="Yf7-RF-dSB" firstAttribute="leading" secondItem="m9u-Wl-QPh" secondAttribute="leading" id="Dt7-hK-VW3"/>
+                                    <constraint firstItem="Yf7-RF-dSB" firstAttribute="height" secondItem="m9u-Wl-QPh" secondAttribute="height" multiplier="596:766" id="H1T-yh-Coo"/>
+                                    <constraint firstItem="hAe-gE-wwd" firstAttribute="leading" secondItem="m9u-Wl-QPh" secondAttribute="leading" id="Ios-Gs-pno"/>
+                                    <constraint firstItem="xNU-9M-ZfG" firstAttribute="height" secondItem="m9u-Wl-QPh" secondAttribute="height" multiplier="90:766" id="LaZ-Jr-WOc"/>
+                                    <constraint firstItem="Yf7-RF-dSB" firstAttribute="top" secondItem="xNU-9M-ZfG" secondAttribute="bottom" id="bV5-YC-URg"/>
+                                    <constraint firstItem="hAe-gE-wwd" firstAttribute="top" secondItem="Yf7-RF-dSB" secondAttribute="bottom" id="deW-vh-6Zd"/>
+                                    <constraint firstAttribute="trailing" secondItem="xNU-9M-ZfG" secondAttribute="trailing" id="u1v-hj-vta"/>
+                                    <constraint firstAttribute="bottom" secondItem="hAe-gE-wwd" secondAttribute="bottom" id="wE3-d0-Srd"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="30K-Nh-0Ab"/>
+                        <color key="backgroundColor" red="0.087394736710000004" green="0.25520369409999999" blue="0.57615613939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="m9u-Wl-QPh" firstAttribute="trailing" secondItem="30K-Nh-0Ab" secondAttribute="trailing" id="GQP-PL-jhz"/>
+                            <constraint firstItem="OaC-Fc-HCH" firstAttribute="bottom" secondItem="30K-Nh-0Ab" secondAttribute="bottom" id="GtF-Y1-oVO"/>
+                            <constraint firstItem="m9u-Wl-QPh" firstAttribute="leading" secondItem="30K-Nh-0Ab" secondAttribute="leading" id="Tfe-hr-ugj"/>
+                            <constraint firstItem="m9u-Wl-QPh" firstAttribute="top" secondItem="30K-Nh-0Ab" secondAttribute="top" id="WKq-GP-mTT"/>
+                            <constraint firstItem="OaC-Fc-HCH" firstAttribute="top" secondItem="eHt-fy-V1O" secondAttribute="top" id="Yro-7D-bgV"/>
+                            <constraint firstItem="m9u-Wl-QPh" firstAttribute="bottom" secondItem="30K-Nh-0Ab" secondAttribute="bottom" id="fix-oq-ccd"/>
+                            <constraint firstItem="OaC-Fc-HCH" firstAttribute="leading" secondItem="30K-Nh-0Ab" secondAttribute="leading" constant="-10" id="hZ5-Nd-Mtv"/>
+                            <constraint firstAttribute="trailing" secondItem="OaC-Fc-HCH" secondAttribute="trailing" constant="-10" id="qnJ-DF-Wcn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="hrBodyView" destination="Yf7-RF-dSB" id="EVd-zL-ShQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iGl-8r-7tF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="210.76923076923077" y="1546.9194312796208"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="iOQ-Vc-ivT">
             <objects>
                 <viewController id="M1P-8m-Kmk" customClass="OTPViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -790,6 +855,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="98Z-jb-9qh"/>
                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
                         <constraints>
                             <constraint firstItem="9kO-3m-IHQ" firstAttribute="centerY" secondItem="zAE-Nq-ayQ" secondAttribute="centerY" id="9Yt-57-8Ke"/>

@@ -24,6 +24,9 @@
 		4DD772C1274DF8EA003261F6 /* HeaderFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD772C0274DF8EA003261F6 /* HeaderFooter.swift */; };
 		4DD772C3274DF8FD003261F6 /* HeaderFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DD772C2274DF8FD003261F6 /* HeaderFooter.xib */; };
 		4DD772C7274E4AAC003261F6 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD772C6274E4AAC003261F6 /* SideMenuViewController.swift */; };
+		4DE3854B274F533200707916 /* HRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE3854A274F533200707916 /* HRViewController.swift */; };
+		4DE3854D274F537300707916 /* HrBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE3854C274F537300707916 /* HrBodyView.swift */; };
+		4DE3854F274F538700707916 /* HrBodyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DE3854E274F538700707916 /* HrBodyView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		4DD772C0274DF8EA003261F6 /* HeaderFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderFooter.swift; sourceTree = "<group>"; };
 		4DD772C2274DF8FD003261F6 /* HeaderFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderFooter.xib; sourceTree = "<group>"; };
 		4DD772C6274E4AAC003261F6 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		4DE3854A274F533200707916 /* HRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRViewController.swift; sourceTree = "<group>"; };
+		4DE3854C274F537300707916 /* HrBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HrBodyView.swift; sourceTree = "<group>"; };
+		4DE3854E274F538700707916 /* HrBodyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HrBodyView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,7 @@
 		4D7FB4C82744D45100B318DA /* MascoAutomationApp */ = {
 			isa = PBXGroup;
 			children = (
+				4DE38549274F528F00707916 /* HR */,
 				4DA6512B274CA52C00488332 /* Extension */,
 				4D72D949274671DC005708F6 /* home */,
 				4D72D948274671CD005708F6 /* signup */,
@@ -138,6 +145,16 @@
 				4DA6512C274CA55A00488332 /* XibView.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		4DE38549274F528F00707916 /* HR */ = {
+			isa = PBXGroup;
+			children = (
+				4DE3854A274F533200707916 /* HRViewController.swift */,
+				4DE3854C274F537300707916 /* HrBodyView.swift */,
+				4DE3854E274F538700707916 /* HrBodyView.xib */,
+			);
+			path = HR;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +216,7 @@
 			files = (
 				4DA65128274CA30F00488332 /* HomeScreenBody.xib in Resources */,
 				4DD772C3274DF8FD003261F6 /* HeaderFooter.xib in Resources */,
+				4DE3854F274F538700707916 /* HrBodyView.xib in Resources */,
 				4DD772BF274DF30D003261F6 /* HomeHeader.xib in Resources */,
 				4D7FB4D62744D45200B318DA /* LaunchScreen.storyboard in Resources */,
 				4D7FB4D32744D45200B318DA /* Assets.xcassets in Resources */,
@@ -214,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DC4DF152748B48F00EF43ED /* OTPViewController.swift in Sources */,
+				4DE3854D274F537300707916 /* HrBodyView.swift in Sources */,
 				4D7FB4CE2744D45100B318DA /* ViewController.swift in Sources */,
 				4DC4DF172748FD7200EF43ED /* SignupViewController.swift in Sources */,
 				4D7FB4CA2744D45100B318DA /* AppDelegate.swift in Sources */,
@@ -223,6 +242,7 @@
 				4D7FB4CC2744D45100B318DA /* SceneDelegate.swift in Sources */,
 				4DD772C1274DF8EA003261F6 /* HeaderFooter.swift in Sources */,
 				4DA6512D274CA55A00488332 /* XibView.swift in Sources */,
+				4DE3854B274F533200707916 /* HRViewController.swift in Sources */,
 				4DBB3B64274B91C90009339B /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
