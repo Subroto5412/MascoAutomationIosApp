@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WDf-Lv-EYx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W7u-zB-Nb6">
     <device id="retina6_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -715,6 +715,74 @@
             </objects>
             <point key="canvasLocation" x="210.76923076923077" y="1546.9194312796208"/>
         </scene>
+        <!--Daily Attendance View Controller-->
+        <scene sceneID="0EG-ac-MZk">
+            <objects>
+                <viewController id="W7u-zB-Nb6" customClass="DailyAttendanceViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="04O-tV-yt8">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.25" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" translatesAutoresizingMaskIntoConstraints="NO" id="dp3-u0-rs6">
+                                <rect key="frame" x="-10" y="44" width="410" height="766"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kKV-Bo-jcs">
+                                <rect key="frame" x="0.0" y="44" width="390" height="766"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bhp-bC-0hR" customClass="CommonHeaderView" customModule="MascoAutomationApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="90"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tvl-cJ-Pys" customClass="DailyAttendanceView" customModule="MascoAutomationApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="90" width="390" height="596"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gpg-AV-Snq" customClass="CommonFooter" customModule="MascoAutomationApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="686" width="390" height="80"/>
+                                        <color key="backgroundColor" systemColor="secondaryLabelColor"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Tvl-cJ-Pys" firstAttribute="height" secondItem="kKV-Bo-jcs" secondAttribute="height" multiplier="596:766" id="A6J-pU-ywj"/>
+                                    <constraint firstItem="Bhp-bC-0hR" firstAttribute="top" secondItem="kKV-Bo-jcs" secondAttribute="top" id="H8m-vi-ZXP"/>
+                                    <constraint firstItem="gpg-AV-Snq" firstAttribute="leading" secondItem="kKV-Bo-jcs" secondAttribute="leading" id="HF1-VL-WdE"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tvl-cJ-Pys" secondAttribute="trailing" id="HiP-9x-xej"/>
+                                    <constraint firstAttribute="trailing" secondItem="gpg-AV-Snq" secondAttribute="trailing" id="Uti-Xm-QDz"/>
+                                    <constraint firstItem="gpg-AV-Snq" firstAttribute="top" secondItem="Tvl-cJ-Pys" secondAttribute="bottom" id="Z0f-5E-UAf"/>
+                                    <constraint firstItem="Bhp-bC-0hR" firstAttribute="height" secondItem="kKV-Bo-jcs" secondAttribute="height" multiplier="90:766" id="frF-b5-Ipm"/>
+                                    <constraint firstItem="Bhp-bC-0hR" firstAttribute="leading" secondItem="kKV-Bo-jcs" secondAttribute="leading" id="lB8-fM-5WI"/>
+                                    <constraint firstItem="Tvl-cJ-Pys" firstAttribute="leading" secondItem="kKV-Bo-jcs" secondAttribute="leading" id="pRO-Ai-eqp"/>
+                                    <constraint firstAttribute="bottom" secondItem="gpg-AV-Snq" secondAttribute="bottom" id="sI7-rC-HY1"/>
+                                    <constraint firstItem="Tvl-cJ-Pys" firstAttribute="top" secondItem="Bhp-bC-0hR" secondAttribute="bottom" id="to8-FI-mBN"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bhp-bC-0hR" secondAttribute="trailing" id="vJO-ZZ-qaa"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="X3v-Qi-brE"/>
+                        <color key="backgroundColor" red="0.12895118559999999" green="0.2430969227" blue="0.5461905936" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="X3v-Qi-brE" firstAttribute="bottom" secondItem="dp3-u0-rs6" secondAttribute="bottom" id="Coh-5I-627"/>
+                            <constraint firstItem="dp3-u0-rs6" firstAttribute="leading" secondItem="X3v-Qi-brE" secondAttribute="leading" constant="-10" id="GS1-wv-gaz"/>
+                            <constraint firstItem="kKV-Bo-jcs" firstAttribute="top" secondItem="X3v-Qi-brE" secondAttribute="top" id="HyA-vH-apy"/>
+                            <constraint firstItem="X3v-Qi-brE" firstAttribute="trailing" secondItem="kKV-Bo-jcs" secondAttribute="trailing" id="UNZ-aj-ngd"/>
+                            <constraint firstItem="X3v-Qi-brE" firstAttribute="trailing" secondItem="dp3-u0-rs6" secondAttribute="trailing" constant="-10" id="eop-B1-FsF"/>
+                            <constraint firstItem="kKV-Bo-jcs" firstAttribute="leading" secondItem="X3v-Qi-brE" secondAttribute="leading" id="gpz-3l-NbJ"/>
+                            <constraint firstItem="dp3-u0-rs6" firstAttribute="top" secondItem="X3v-Qi-brE" secondAttribute="top" id="sSD-Ud-oKc"/>
+                            <constraint firstItem="X3v-Qi-brE" firstAttribute="bottom" secondItem="kKV-Bo-jcs" secondAttribute="bottom" id="xhb-Ep-Dq4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bodyView" destination="Tvl-cJ-Pys" id="rZ0-Xj-Lwo"/>
+                        <outlet property="footerView" destination="gpg-AV-Snq" id="Uev-bQ-Ihg"/>
+                        <outlet property="headerView" destination="Bhp-bC-0hR" id="aaV-Ab-D2m"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YCL-Fo-YQ4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="196.92307692307691" y="2248.5781990521327"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="iOQ-Vc-ivT">
             <objects>
@@ -876,6 +944,9 @@
         <image name="login_botton" width="390" height="367"/>
         <image name="masco_logo" width="139.66667175292969" height="139.66667175292969"/>
         <image name="not_checking" width="33" height="31"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
