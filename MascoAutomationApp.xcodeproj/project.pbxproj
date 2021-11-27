@@ -27,6 +27,9 @@
 		4DC8043E27520BA80006A3E1 /* LeaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8043D27520BA80006A3E1 /* LeaveViewController.swift */; };
 		4DC8044027520D8B0006A3E1 /* LeaveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC8043F27520D8B0006A3E1 /* LeaveView.xib */; };
 		4DC8044227520DA70006A3E1 /* LeaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8044127520DA70006A3E1 /* LeaveView.swift */; };
+		4DC80444275226550006A3E1 /* IncomeTaxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC80443275226550006A3E1 /* IncomeTaxViewController.swift */; };
+		4DC804462752266A0006A3E1 /* IncomeTaxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC804452752266A0006A3E1 /* IncomeTaxView.swift */; };
+		4DC80448275226760006A3E1 /* IncomeTaxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC80447275226760006A3E1 /* IncomeTaxView.xib */; };
 		4DD772BD274DF2EA003261F6 /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD772BC274DF2EA003261F6 /* HomeHeader.swift */; };
 		4DD772BF274DF30D003261F6 /* HomeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DD772BE274DF30D003261F6 /* HomeHeader.xib */; };
 		4DD772C1274DF8EA003261F6 /* HeaderFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD772C0274DF8EA003261F6 /* HeaderFooter.swift */; };
@@ -68,6 +71,9 @@
 		4DC8043D27520BA80006A3E1 /* LeaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveViewController.swift; sourceTree = "<group>"; };
 		4DC8043F27520D8B0006A3E1 /* LeaveView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaveView.xib; sourceTree = "<group>"; };
 		4DC8044127520DA70006A3E1 /* LeaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveView.swift; sourceTree = "<group>"; };
+		4DC80443275226550006A3E1 /* IncomeTaxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeTaxViewController.swift; sourceTree = "<group>"; };
+		4DC804452752266A0006A3E1 /* IncomeTaxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeTaxView.swift; sourceTree = "<group>"; };
+		4DC80447275226760006A3E1 /* IncomeTaxView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeTaxView.xib; sourceTree = "<group>"; };
 		4DD772BC274DF2EA003261F6 /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
 		4DD772BE274DF30D003261F6 /* HomeHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeader.xib; sourceTree = "<group>"; };
 		4DD772C0274DF8EA003261F6 /* HeaderFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderFooter.swift; sourceTree = "<group>"; };
@@ -195,6 +201,9 @@
 		4DC804312751F03B0006A3E1 /* Tax */ = {
 			isa = PBXGroup;
 			children = (
+				4DC80443275226550006A3E1 /* IncomeTaxViewController.swift */,
+				4DC804452752266A0006A3E1 /* IncomeTaxView.swift */,
+				4DC80447275226760006A3E1 /* IncomeTaxView.xib */,
 			);
 			path = Tax;
 			sourceTree = "<group>";
@@ -282,6 +291,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DC80448275226760006A3E1 /* IncomeTaxView.xib in Resources */,
 				4DA65128274CA30F00488332 /* HomeScreenBody.xib in Resources */,
 				4DD772C3274DF8FD003261F6 /* HeaderFooter.xib in Resources */,
 				4DC8044027520D8B0006A3E1 /* LeaveView.xib in Resources */,
@@ -315,9 +325,11 @@
 				4DA6512F274CC85E00488332 /* HomeScreenBody.swift in Sources */,
 				4DD772BD274DF2EA003261F6 /* HomeHeader.swift in Sources */,
 				4DC8044227520DA70006A3E1 /* LeaveView.swift in Sources */,
+				4DC80444275226550006A3E1 /* IncomeTaxViewController.swift in Sources */,
 				4D7FB4CC2744D45100B318DA /* SceneDelegate.swift in Sources */,
 				4DC804352751F3960006A3E1 /* DailyAttendanceView.swift in Sources */,
 				4DC8043E27520BA80006A3E1 /* LeaveViewController.swift in Sources */,
+				4DC804462752266A0006A3E1 /* IncomeTaxView.swift in Sources */,
 				4DE38553274F7B8D00707916 /* InnerHeader.swift in Sources */,
 				4DD772C1274DF8EA003261F6 /* HeaderFooter.swift in Sources */,
 				4DA6512D274CA55A00488332 /* XibView.swift in Sources */,
