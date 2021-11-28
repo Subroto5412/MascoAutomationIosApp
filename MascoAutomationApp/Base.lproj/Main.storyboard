@@ -572,7 +572,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.25" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Sx-lF-JtM">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Sx-lF-JtM">
                                 <rect key="frame" x="-10" y="0.0" width="410" height="810"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.087394736710000004" green="0.25520369409999999" blue="0.57615613939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -682,7 +682,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.25" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" translatesAutoresizingMaskIntoConstraints="NO" id="OaC-Fc-HCH">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" translatesAutoresizingMaskIntoConstraints="NO" id="OaC-Fc-HCH">
                                 <rect key="frame" x="-10" y="0.0" width="410" height="810"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m9u-Wl-QPh">
@@ -748,8 +748,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.25" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" translatesAutoresizingMaskIntoConstraints="NO" id="dp3-u0-rs6">
-                                <rect key="frame" x="-10" y="44" width="410" height="766"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" translatesAutoresizingMaskIntoConstraints="NO" id="dp3-u0-rs6">
+                                <rect key="frame" x="-10" y="-6" width="410" height="816"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kKV-Bo-jcs">
@@ -786,7 +786,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="X3v-Qi-brE"/>
-                        <color key="backgroundColor" red="0.12895118559999999" green="0.2430969227" blue="0.5461905936" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.034799609330000002" green="0.1083526388" blue="0.3913464546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="X3v-Qi-brE" firstAttribute="bottom" secondItem="dp3-u0-rs6" secondAttribute="bottom" id="Coh-5I-627"/>
                             <constraint firstItem="dp3-u0-rs6" firstAttribute="leading" secondItem="X3v-Qi-brE" secondAttribute="leading" constant="-10" id="GS1-wv-gaz"/>
@@ -794,7 +794,7 @@
                             <constraint firstItem="X3v-Qi-brE" firstAttribute="trailing" secondItem="kKV-Bo-jcs" secondAttribute="trailing" id="UNZ-aj-ngd"/>
                             <constraint firstItem="X3v-Qi-brE" firstAttribute="trailing" secondItem="dp3-u0-rs6" secondAttribute="trailing" constant="-10" id="eop-B1-FsF"/>
                             <constraint firstItem="kKV-Bo-jcs" firstAttribute="leading" secondItem="X3v-Qi-brE" secondAttribute="leading" id="gpz-3l-NbJ"/>
-                            <constraint firstItem="dp3-u0-rs6" firstAttribute="top" secondItem="X3v-Qi-brE" secondAttribute="top" id="sSD-Ud-oKc"/>
+                            <constraint firstItem="dp3-u0-rs6" firstAttribute="top" secondItem="X3v-Qi-brE" secondAttribute="top" constant="-50" id="sSD-Ud-oKc"/>
                             <constraint firstItem="X3v-Qi-brE" firstAttribute="bottom" secondItem="kKV-Bo-jcs" secondAttribute="bottom" id="xhb-Ep-Dq4"/>
                         </constraints>
                     </view>
@@ -816,8 +816,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.25" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Ve3-PX-slp">
-                                <rect key="frame" x="-10" y="44" width="410" height="766"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Ve3-PX-slp">
+                                <rect key="frame" x="-10" y="0.0" width="409" height="810"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a6y-8n-c5W">
                                 <rect key="frame" x="0.0" y="44" width="390" height="766"/>
@@ -855,13 +855,13 @@
                         <viewLayoutGuide key="safeArea" id="8qR-QZ-IcM"/>
                         <color key="backgroundColor" red="0.087394736710000004" green="0.25520369409999999" blue="0.57615613939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="8qR-QZ-IcM" firstAttribute="trailing" secondItem="Ve3-PX-slp" secondAttribute="trailing" constant="-10" id="6SW-Lz-cVz"/>
+                            <constraint firstItem="8qR-QZ-IcM" firstAttribute="trailing" secondItem="Ve3-PX-slp" secondAttribute="trailing" constant="-9" id="6SW-Lz-cVz"/>
                             <constraint firstItem="8qR-QZ-IcM" firstAttribute="trailing" secondItem="a6y-8n-c5W" secondAttribute="trailing" id="9Pu-on-1vk"/>
                             <constraint firstItem="8qR-QZ-IcM" firstAttribute="bottom" secondItem="a6y-8n-c5W" secondAttribute="bottom" id="J1Y-kR-Wqf"/>
                             <constraint firstItem="8qR-QZ-IcM" firstAttribute="bottom" secondItem="Ve3-PX-slp" secondAttribute="bottom" id="TCZ-od-VTx"/>
                             <constraint firstItem="Ve3-PX-slp" firstAttribute="leading" secondItem="8qR-QZ-IcM" secondAttribute="leading" constant="-10" id="cZC-6v-dtO"/>
                             <constraint firstItem="a6y-8n-c5W" firstAttribute="leading" secondItem="8qR-QZ-IcM" secondAttribute="leading" id="n9X-Yv-jUK"/>
-                            <constraint firstItem="Ve3-PX-slp" firstAttribute="top" secondItem="8qR-QZ-IcM" secondAttribute="top" id="rLO-ji-xvH"/>
+                            <constraint firstItem="Ve3-PX-slp" firstAttribute="top" secondItem="8qR-QZ-IcM" secondAttribute="top" constant="-44" id="rLO-ji-xvH"/>
                             <constraint firstItem="a6y-8n-c5W" firstAttribute="top" secondItem="8qR-QZ-IcM" secondAttribute="top" id="tQ9-mY-sA7"/>
                         </constraints>
                     </view>
@@ -873,7 +873,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aih-EC-qH9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1106" y="2249"/>
+            <point key="canvasLocation" x="1104.6153846153845" y="2248.5781990521327"/>
         </scene>
         <!--Income Tax View Controller-->
         <scene sceneID="FLn-ki-Zsq">
@@ -883,8 +883,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.25" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" translatesAutoresizingMaskIntoConstraints="NO" id="VXH-H5-eJ4">
-                                <rect key="frame" x="-10" y="44" width="410" height="766"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" translatesAutoresizingMaskIntoConstraints="NO" id="VXH-H5-eJ4">
+                                <rect key="frame" x="-10" y="0.0" width="410" height="810"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rRT-gj-Tsr">
                                 <rect key="frame" x="0.0" y="44" width="390" height="766"/>
@@ -922,7 +922,7 @@
                         <viewLayoutGuide key="safeArea" id="heD-Yw-lTS"/>
                         <color key="backgroundColor" red="0.087394736710000004" green="0.25520369409999999" blue="0.57615613939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="VXH-H5-eJ4" firstAttribute="top" secondItem="heD-Yw-lTS" secondAttribute="top" id="2nC-9V-lMT"/>
+                            <constraint firstItem="VXH-H5-eJ4" firstAttribute="top" secondItem="heD-Yw-lTS" secondAttribute="top" constant="-44" id="2nC-9V-lMT"/>
                             <constraint firstItem="heD-Yw-lTS" firstAttribute="trailing" secondItem="VXH-H5-eJ4" secondAttribute="trailing" constant="-10" id="8um-Jz-NgY"/>
                             <constraint firstItem="VXH-H5-eJ4" firstAttribute="leading" secondItem="heD-Yw-lTS" secondAttribute="leading" constant="-10" id="Ct1-JM-5rn"/>
                             <constraint firstItem="heD-Yw-lTS" firstAttribute="bottom" secondItem="VXH-H5-eJ4" secondAttribute="bottom" id="PbR-DD-r1t"/>
