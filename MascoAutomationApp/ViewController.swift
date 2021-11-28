@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var signInBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         empId.layer.borderColor = UIColor(red: 104, green: 156, blue: 255, alpha: 1.0).cgColor
         empId.layer.borderWidth = 0.5;
         empId.layer.cornerRadius = 5.0;
@@ -26,7 +26,19 @@ class ViewController: UIViewController {
         
         signInBtn.layer.cornerRadius = 20.0;
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            
+            print(UIDevice.current.modelName)
+            
+        }
+    
+    @IBAction func signInBtn(_ sender: Any) {
+        
+        let controller = HomeViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
+    
 
 }
-

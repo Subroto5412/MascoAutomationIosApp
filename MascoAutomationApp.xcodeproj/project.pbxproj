@@ -30,6 +30,7 @@
 		4DC80444275226550006A3E1 /* IncomeTaxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC80443275226550006A3E1 /* IncomeTaxViewController.swift */; };
 		4DC804462752266A0006A3E1 /* IncomeTaxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC804452752266A0006A3E1 /* IncomeTaxView.swift */; };
 		4DC80448275226760006A3E1 /* IncomeTaxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC80447275226760006A3E1 /* IncomeTaxView.xib */; };
+		4DC8044A27523DFA0006A3E1 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8044927523DFA0006A3E1 /* NSObject+Extension.swift */; };
 		4DD772BD274DF2EA003261F6 /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD772BC274DF2EA003261F6 /* HomeHeader.swift */; };
 		4DD772BF274DF30D003261F6 /* HomeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DD772BE274DF30D003261F6 /* HomeHeader.xib */; };
 		4DD772C1274DF8EA003261F6 /* HeaderFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD772C0274DF8EA003261F6 /* HeaderFooter.swift */; };
@@ -74,6 +75,7 @@
 		4DC80443275226550006A3E1 /* IncomeTaxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeTaxViewController.swift; sourceTree = "<group>"; };
 		4DC804452752266A0006A3E1 /* IncomeTaxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeTaxView.swift; sourceTree = "<group>"; };
 		4DC80447275226760006A3E1 /* IncomeTaxView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeTaxView.xib; sourceTree = "<group>"; };
+		4DC8044927523DFA0006A3E1 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		4DD772BC274DF2EA003261F6 /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
 		4DD772BE274DF30D003261F6 /* HomeHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeader.xib; sourceTree = "<group>"; };
 		4DD772C0274DF8EA003261F6 /* HeaderFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderFooter.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				4DA6512C274CA55A00488332 /* XibView.swift */,
+				4DC8044927523DFA0006A3E1 /* NSObject+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				4DC4DF152748B48F00EF43ED /* OTPViewController.swift in Sources */,
 				4DE3854D274F537300707916 /* HrBodyView.swift in Sources */,
 				4D7FB4CE2744D45100B318DA /* ViewController.swift in Sources */,
+				4DC8044A27523DFA0006A3E1 /* NSObject+Extension.swift in Sources */,
 				4DC4DF172748FD7200EF43ED /* SignupViewController.swift in Sources */,
 				4D7FB4CA2744D45100B318DA /* AppDelegate.swift in Sources */,
 				4DD772C7274E4AAC003261F6 /* SideMenuViewController.swift in Sources */,
@@ -483,6 +487,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 92D22YMD5G;
 				INFOPLIST_FILE = MascoAutomationApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -501,6 +506,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 92D22YMD5G;
 				INFOPLIST_FILE = MascoAutomationApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

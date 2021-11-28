@@ -19,6 +19,14 @@ class HomeViewController: UIViewController {
     
     //    @IBOutlet weak var homeBodyView: HomeBody!
     var sideMenuViewController : SideMenuViewController?
+    
+    class func initWithStoryboard() -> HomeViewController
+    {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: HomeViewController.className) as! HomeViewController
+        return controller
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,8 +67,8 @@ class HomeViewController: UIViewController {
        }
         
         
-        let arcCenter = CGPoint(x: self.homeBody.iconView.bounds.size.width / 2, y: self.homeBody.iconView.bounds.size.height)
-        let circleRadius = self.homeBody.iconView.bounds.size.width / 2
+        let arcCenter = CGPoint(x: self.homeBody.iconView.bounds.size.width / 2.2, y: self.homeBody.iconView.bounds.size.height)
+        let circleRadius = self.homeBody.iconView.bounds.size.width / 2.2
         let circlePath = UIBezierPath(arcCenter: arcCenter, radius: circleRadius, startAngle: CGFloat.pi, endAngle: CGFloat.pi * 2, clockwise: true)
           
         let circleShape = CAShapeLayer()
