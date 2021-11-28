@@ -40,5 +40,17 @@ class ViewController: UIViewController {
         self.present(controller, animated: true, completion: nil);
     }
     
+    @IBAction func forgotPasswordBtn(_ sender: Any) {
+        
+        let controller = OTPViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
+    
+    @IBAction func signipBtn(_ sender: Any) {
+        
+        let controller = OTPViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
+    
 
 }

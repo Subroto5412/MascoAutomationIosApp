@@ -12,6 +12,13 @@ class OTPViewController: UIViewController {
     @IBOutlet weak var empIdTxtfield: UITextField!
     @IBOutlet weak var optSendBtn: UIButton!
     
+    class func initWithStoryboard() -> OTPViewController
+    {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: OTPViewController.className) as! OTPViewController
+        return controller
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
