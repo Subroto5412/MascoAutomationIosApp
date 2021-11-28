@@ -16,5 +16,9 @@ class CommonHeaderView: XibView {
         // Drawing code
     }
     */
-
+    var backBtnHandler : ((Bool?) -> Void)?
+    
+    @IBAction func backBtn(_ sender: UIButton) {
+        self.backBtnHandler?(true)
+    }
 }

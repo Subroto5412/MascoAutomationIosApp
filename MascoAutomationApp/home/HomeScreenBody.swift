@@ -39,6 +39,12 @@ class HomeScreenBody: XibView {
     @IBOutlet weak var dmsItemNameview: UIView!
     @IBOutlet weak var dmsIconView: UIView!
     
+    
+    var HRISHandler : ((Bool?) -> Void)?
+    
+    @IBAction func HRISBtn(_ sender: UIButton) {
+        self.HRISHandler?(true)
+    }
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

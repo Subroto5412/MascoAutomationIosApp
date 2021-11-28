@@ -24,6 +24,12 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back_btn" translatesAutoresizingMaskIntoConstraints="NO" id="Aqb-LI-fVF">
                             <rect key="frame" x="10.000000000000002" y="30.333333333333336" width="28.666666666666671" height="23.333333333333336"/>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pmW-5c-tSf">
+                            <rect key="frame" x="10.000000000000002" y="30.333333333333336" width="28.666666666666671" height="23.333333333333336"/>
+                            <connections>
+                                <action selector="backBtn:" destination="-1" eventType="touchUpInside" id="Pdp-uu-Nbx"/>
+                            </connections>
+                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Attendance" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SdJ-hi-YA2">
                             <rect key="frame" x="61.666666666666657" y="28.666666666666671" width="193" height="27"/>
                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="22"/>
@@ -33,12 +39,16 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="pmW-5c-tSf" firstAttribute="centerY" secondItem="Aqb-LI-fVF" secondAttribute="centerY" id="8Zg-ia-mLZ"/>
                         <constraint firstItem="SdJ-hi-YA2" firstAttribute="leading" secondItem="Aqb-LI-fVF" secondAttribute="trailing" constant="23" id="H4K-xh-sOd"/>
                         <constraint firstItem="Aqb-LI-fVF" firstAttribute="leading" secondItem="KOk-dc-4HC" secondAttribute="leading" constant="10" id="Lx8-t8-33f"/>
                         <constraint firstItem="Aqb-LI-fVF" firstAttribute="width" secondItem="KOk-dc-4HC" secondAttribute="width" multiplier="30:390" id="OpU-YY-hg8"/>
+                        <constraint firstItem="pmW-5c-tSf" firstAttribute="centerX" secondItem="Aqb-LI-fVF" secondAttribute="centerX" id="WtH-LD-FbB"/>
                         <constraint firstItem="SdJ-hi-YA2" firstAttribute="centerY" secondItem="KOk-dc-4HC" secondAttribute="centerY" id="Ymo-7q-0k1"/>
+                        <constraint firstItem="pmW-5c-tSf" firstAttribute="height" secondItem="Aqb-LI-fVF" secondAttribute="height" id="gAj-7c-NlV"/>
                         <constraint firstItem="Aqb-LI-fVF" firstAttribute="height" secondItem="KOk-dc-4HC" secondAttribute="height" multiplier="25:90" id="jzg-wW-qK6"/>
                         <constraint firstItem="Aqb-LI-fVF" firstAttribute="centerY" secondItem="KOk-dc-4HC" secondAttribute="centerY" id="oRc-Aw-aad"/>
+                        <constraint firstItem="pmW-5c-tSf" firstAttribute="width" secondItem="Aqb-LI-fVF" secondAttribute="width" id="z2I-aA-3Kb"/>
                     </constraints>
                 </view>
             </subviews>

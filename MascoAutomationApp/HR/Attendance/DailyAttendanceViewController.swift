@@ -13,6 +13,12 @@ class DailyAttendanceViewController: UIViewController {
     @IBOutlet weak var bodyView: DailyAttendanceView!
     @IBOutlet weak var footerView: CommonFooter!
     
+    class func initWithStoryboard() -> DailyAttendanceViewController
+    {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: DailyAttendanceViewController.className) as! DailyAttendanceViewController
+        return controller
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,17 +30,17 @@ class DailyAttendanceViewController: UIViewController {
         self.bodyView.dailyAttendanceBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.dailyAttendanceBgView.layer.borderWidth = 0.5
         self.bodyView.dailyAttendanceBgView.layer.cornerRadius = 20
+        self.headerView.backBtnHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showBackController()
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+        func showBackController(){
+            let controller = HRViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
 }

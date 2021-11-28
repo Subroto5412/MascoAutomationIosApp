@@ -638,7 +638,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="L1Z-34-0D7"/>
-                        <color key="backgroundColor" red="0.0" green="0.16292965409999999" blue="0.48356693979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.034799609330000002" green="0.1083526388" blue="0.3913464546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="L1Z-34-0D7" firstAttribute="trailing" secondItem="hgE-Na-n7k" secondAttribute="trailing" id="2cK-Hu-SEe"/>
                             <constraint firstItem="L1Z-34-0D7" firstAttribute="bottom" secondItem="sit-5o-rhf" secondAttribute="bottom" id="6gC-Cf-DZ1"/>
@@ -677,7 +677,7 @@
         <!--View Controller-->
         <scene sceneID="w5r-lI-ghi">
             <objects>
-                <viewController id="WDf-Lv-EYx" customClass="HRViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HRViewController" modalPresentationStyle="fullScreen" id="WDf-Lv-EYx" customClass="HRViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eHt-fy-V1O">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -743,7 +743,7 @@
         <!--Daily Attendance View Controller-->
         <scene sceneID="0EG-ac-MZk">
             <objects>
-                <viewController id="W7u-zB-Nb6" customClass="DailyAttendanceViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DailyAttendanceViewController" modalPresentationStyle="fullScreen" id="W7u-zB-Nb6" customClass="DailyAttendanceViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="04O-tV-yt8">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -811,7 +811,7 @@
         <!--Leave View Controller-->
         <scene sceneID="qEH-Om-gGe">
             <objects>
-                <viewController id="OOd-Nr-65x" customClass="LeaveViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LeaveViewController" modalPresentationStyle="fullScreen" id="OOd-Nr-65x" customClass="LeaveViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pg6-11-PvQ">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -878,7 +878,7 @@
         <!--Income Tax View Controller-->
         <scene sceneID="FLn-ki-Zsq">
             <objects>
-                <viewController id="woi-sC-OoW" customClass="IncomeTaxViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IncomeTaxViewController" modalPresentationStyle="fullScreen" id="woi-sC-OoW" customClass="IncomeTaxViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="436-QT-Bqn">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

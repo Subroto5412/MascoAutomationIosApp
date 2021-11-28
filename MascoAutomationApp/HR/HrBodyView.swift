@@ -18,12 +18,19 @@ class HrBodyView: XibView {
     @IBOutlet weak var taxUnderBgView: UIView!
     @IBOutlet weak var taxBgView: UIView!
     
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    var attendanceHandler : ((Bool?) -> Void)?
+    var leaveHandler : ((Bool?) -> Void)?
+    var incomeTaxHandler : ((Bool?) -> Void)?
+  
+    @IBAction func attendanceBtn(_ sender: UIButton) {
+        self.attendanceHandler?(true)
     }
-    */
-
+    
+    @IBAction func leaveBtn(_ sender: UIButton) {
+        self.leaveHandler?(true)
+    }
+    
+    @IBAction func incomeTaxBtn(_ sender: UIButton) {
+        self.incomeTaxHandler?(true)
+    }
 }

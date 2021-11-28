@@ -47,17 +47,27 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back_btn" translatesAutoresizingMaskIntoConstraints="NO" id="KnX-cG-1Ns">
                             <rect key="frame" x="10" y="22.666666666666671" width="39" height="45"/>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nvg-rM-8XK">
+                            <rect key="frame" x="10" y="22.666666666666671" width="39" height="45"/>
+                            <connections>
+                                <action selector="backBtn:" destination="-1" eventType="touchUpInside" id="9DZ-ev-xdi"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="KnX-cG-1Ns" firstAttribute="width" secondItem="i2Q-ey-YQD" secondAttribute="width" multiplier="39:390" id="EBE-wE-Kk9"/>
                         <constraint firstItem="x90-0B-lo9" firstAttribute="height" secondItem="i2Q-ey-YQD" secondAttribute="height" multiplier="50:90" id="EWa-Om-pLa"/>
                         <constraint firstItem="KnX-cG-1Ns" firstAttribute="height" secondItem="i2Q-ey-YQD" secondAttribute="height" multiplier="25:50" id="FlS-ap-9wM"/>
+                        <constraint firstItem="nvg-rM-8XK" firstAttribute="centerY" secondItem="KnX-cG-1Ns" secondAttribute="centerY" id="KV8-D6-hLr"/>
+                        <constraint firstItem="nvg-rM-8XK" firstAttribute="height" secondItem="KnX-cG-1Ns" secondAttribute="height" id="PpT-f5-WFD"/>
+                        <constraint firstItem="nvg-rM-8XK" firstAttribute="width" secondItem="KnX-cG-1Ns" secondAttribute="width" id="Qbc-Hw-SV3"/>
                         <constraint firstItem="KnX-cG-1Ns" firstAttribute="centerY" secondItem="i2Q-ey-YQD" secondAttribute="centerY" id="Rcy-NP-jUy"/>
                         <constraint firstItem="x90-0B-lo9" firstAttribute="width" secondItem="i2Q-ey-YQD" secondAttribute="width" multiplier="290:390" id="Uh1-tg-XWK"/>
                         <constraint firstAttribute="trailing" secondItem="x90-0B-lo9" secondAttribute="trailing" constant="10" id="euo-9H-ZZ2"/>
                         <constraint firstItem="x90-0B-lo9" firstAttribute="centerY" secondItem="i2Q-ey-YQD" secondAttribute="centerY" id="sEf-dY-KaI"/>
                         <constraint firstItem="KnX-cG-1Ns" firstAttribute="leading" secondItem="i2Q-ey-YQD" secondAttribute="leading" constant="10" id="wsL-hf-Hvb"/>
+                        <constraint firstItem="nvg-rM-8XK" firstAttribute="centerX" secondItem="KnX-cG-1Ns" secondAttribute="centerX" id="yIF-pp-3I4"/>
                     </constraints>
                 </view>
             </subviews>

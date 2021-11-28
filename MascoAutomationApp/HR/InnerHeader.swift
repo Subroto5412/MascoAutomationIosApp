@@ -10,6 +10,7 @@ import UIKit
 class InnerHeader: XibView {
     @IBOutlet weak var searchBgView: UIView!
     
+    var backBtnHandler : ((Bool?) -> Void)?
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -18,4 +19,7 @@ class InnerHeader: XibView {
     }
     */
 
+    @IBAction func backBtn(_ sender: Any) {
+        self.backBtnHandler?(true)
+    }
 }

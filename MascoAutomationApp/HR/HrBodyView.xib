@@ -71,6 +71,12 @@
                                         <constraint firstItem="o1J-OI-uPh" firstAttribute="top" secondItem="Ysm-Fv-cBR" secondAttribute="top" constant="10" id="sVn-MO-0GV"/>
                                     </constraints>
                                 </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGs-Sq-kSI">
+                                    <rect key="frame" x="20" y="0.0" width="160" height="95"/>
+                                    <connections>
+                                        <action selector="attendanceBtn:" destination="-1" eventType="touchUpInside" id="gcx-wh-a3T"/>
+                                    </connections>
+                                </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oY0-91-9v2">
                                     <rect key="frame" x="210" y="0.0" width="160" height="95"/>
                                     <subviews>
@@ -109,17 +115,31 @@
                                         <constraint firstItem="TV8-62-B7F" firstAttribute="leading" secondItem="oY0-91-9v2" secondAttribute="leading" constant="10" id="vfT-sr-dBm"/>
                                     </constraints>
                                 </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G83-gG-fI9">
+                                    <rect key="frame" x="210" y="0.0" width="160" height="95"/>
+                                    <connections>
+                                        <action selector="leaveBtn:" destination="-1" eventType="touchUpInside" id="7HF-4d-wuf"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="oY0-91-9v2" firstAttribute="width" secondItem="JVl-wd-j6k" secondAttribute="width" multiplier="160:390" id="2rr-TN-ra9"/>
                                 <constraint firstItem="Ysm-Fv-cBR" firstAttribute="width" secondItem="JVl-wd-j6k" secondAttribute="width" multiplier="160:390" id="6If-Lt-zmc"/>
                                 <constraint firstItem="oY0-91-9v2" firstAttribute="top" secondItem="JVl-wd-j6k" secondAttribute="top" id="9ru-O6-GNJ"/>
+                                <constraint firstItem="G83-gG-fI9" firstAttribute="centerX" secondItem="oY0-91-9v2" secondAttribute="centerX" id="Bp5-5N-5p1"/>
                                 <constraint firstItem="Ysm-Fv-cBR" firstAttribute="leading" secondItem="JVl-wd-j6k" secondAttribute="leading" constant="20" id="Cqn-QR-kGZ"/>
                                 <constraint firstItem="Ysm-Fv-cBR" firstAttribute="top" secondItem="JVl-wd-j6k" secondAttribute="top" id="QtG-ay-GCu"/>
                                 <constraint firstAttribute="bottom" secondItem="Ysm-Fv-cBR" secondAttribute="bottom" id="Qwq-wd-gYf"/>
+                                <constraint firstItem="MGs-Sq-kSI" firstAttribute="height" secondItem="Ysm-Fv-cBR" secondAttribute="height" id="awp-E4-N68"/>
+                                <constraint firstItem="G83-gG-fI9" firstAttribute="width" secondItem="oY0-91-9v2" secondAttribute="width" id="fio-gI-scQ"/>
+                                <constraint firstItem="G83-gG-fI9" firstAttribute="height" secondItem="oY0-91-9v2" secondAttribute="height" id="hcE-4D-Lhl"/>
+                                <constraint firstItem="MGs-Sq-kSI" firstAttribute="width" secondItem="Ysm-Fv-cBR" secondAttribute="width" id="klr-ZT-54C"/>
                                 <constraint firstAttribute="bottom" secondItem="oY0-91-9v2" secondAttribute="bottom" id="o1M-bm-u9L"/>
+                                <constraint firstItem="G83-gG-fI9" firstAttribute="centerY" secondItem="oY0-91-9v2" secondAttribute="centerY" id="o3S-By-cQs"/>
+                                <constraint firstItem="MGs-Sq-kSI" firstAttribute="centerX" secondItem="Ysm-Fv-cBR" secondAttribute="centerX" id="p2T-Dj-Vuo"/>
                                 <constraint firstAttribute="trailing" secondItem="oY0-91-9v2" secondAttribute="trailing" constant="20" id="wKl-V2-ifZ"/>
+                                <constraint firstItem="MGs-Sq-kSI" firstAttribute="centerY" secondItem="Ysm-Fv-cBR" secondAttribute="centerY" id="xvO-SG-q2h"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vne-16-G0l">
@@ -164,12 +184,22 @@
                                         <constraint firstItem="Zug-Qa-nR7" firstAttribute="leading" secondItem="uVR-NF-7AK" secondAttribute="leading" constant="10" id="zjZ-bm-fNx"/>
                                     </constraints>
                                 </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYM-DP-6cz">
+                                    <rect key="frame" x="20" y="0.0" width="160" height="95"/>
+                                    <connections>
+                                        <action selector="incomeTaxBtn:" destination="-1" eventType="touchUpInside" id="JWO-Ty-HVc"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="uVR-NF-7AK" secondAttribute="bottom" id="3JS-WH-JQ8"/>
+                                <constraint firstItem="LYM-DP-6cz" firstAttribute="width" secondItem="uVR-NF-7AK" secondAttribute="width" id="8Hh-MQ-K9W"/>
                                 <constraint firstItem="uVR-NF-7AK" firstAttribute="width" secondItem="vne-16-G0l" secondAttribute="width" multiplier="160:390" id="GQL-tq-O3y"/>
+                                <constraint firstItem="LYM-DP-6cz" firstAttribute="centerY" secondItem="uVR-NF-7AK" secondAttribute="centerY" id="JOB-aP-sHJ"/>
+                                <constraint firstItem="LYM-DP-6cz" firstAttribute="height" secondItem="uVR-NF-7AK" secondAttribute="height" id="YbQ-sI-qR9"/>
                                 <constraint firstItem="uVR-NF-7AK" firstAttribute="top" secondItem="vne-16-G0l" secondAttribute="top" id="fPQ-q7-aM3"/>
+                                <constraint firstItem="LYM-DP-6cz" firstAttribute="centerX" secondItem="uVR-NF-7AK" secondAttribute="centerX" id="lWz-1G-Lzy"/>
                                 <constraint firstItem="uVR-NF-7AK" firstAttribute="leading" secondItem="vne-16-G0l" secondAttribute="leading" constant="20" id="tuN-eV-9Zo"/>
                             </constraints>
                         </view>

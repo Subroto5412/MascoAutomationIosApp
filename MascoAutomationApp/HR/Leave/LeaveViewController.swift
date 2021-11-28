@@ -13,6 +13,16 @@ class LeaveViewController: UIViewController {
     @IBOutlet weak var leaveBodyView: LeaveView!
     
     @IBOutlet weak var footerView: CommonFooter!
+    
+    
+    class func initWithStoryboard() -> LeaveViewController
+    {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: LeaveViewController.className) as! LeaveViewController
+        return controller
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,17 +45,16 @@ class LeaveViewController: UIViewController {
         self.leaveBodyView.leaveApplyBgView.layer.cornerRadius = 20
         
         
+        self.headerView.backBtnHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showBackController()
+        }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+        func showBackController(){
+            let controller = HRViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
 }
