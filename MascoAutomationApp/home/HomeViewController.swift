@@ -75,10 +75,14 @@ class HomeViewController: UIViewController {
         }
         
         
-        let arcCenter = CGPoint(x: self.homeBody.iconView.bounds.size.width / 2.2, y: self.homeBody.iconView.bounds.size.height)
-        let circleRadius = self.homeBody.iconView.bounds.size.width / 2.2
-        let circlePath = UIBezierPath(arcCenter: arcCenter, radius: circleRadius, startAngle: CGFloat.pi, endAngle: CGFloat.pi * 2, clockwise: true)
+//        let arcCenter = CGPoint(x: self.homeBody.iconView.bounds.size.width / 2.2, y: self.homeBody.iconView.bounds.size.height)
+//        let circleRadius = self.homeBody.iconView.bounds.size.width / 2.2
+//        let circlePath = UIBezierPath(arcCenter: arcCenter, radius: circleRadius, startAngle: CGFloat.pi, endAngle: CGFloat.pi * 2, clockwise: true)
           
+        let arcCenter = CGPoint(x: self.homeBody.iconView.bounds.size.width / 2, y: self.homeBody.iconView.bounds.size.height)
+        let circleRadius = self.homeBody.iconView.bounds.size.width / 2
+        let circlePath = UIBezierPath(arcCenter: arcCenter, radius: circleRadius, startAngle: CGFloat.pi, endAngle: CGFloat.pi * 2, clockwise: true)
+        
         let circleShape = CAShapeLayer()
         circleShape.path = circlePath.cgPath
         self.homeBody.iconView.layer.mask = circleShape
@@ -169,17 +173,6 @@ class HomeViewController: UIViewController {
         self.homeHeader.homeHeaderBg.layer.cornerRadius = 10
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     @IBAction func Tap(_ sender: Any) {
         
         self.hideMenuView()

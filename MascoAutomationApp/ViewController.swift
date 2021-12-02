@@ -36,8 +36,25 @@ class ViewController: UIViewController {
     
     @IBAction func signInBtn(_ sender: Any) {
         
-        let controller = HomeViewController.initWithStoryboard()
-        self.present(controller, animated: true, completion: nil);
+        if InternetConnectionManager.isConnectedToNetwork(){
+            print("Connected")
+        }else{
+            print("Not Connected")
+        }
+        
+
+            
+                    
+        
+        if let text = empId.text, text.isEmpty {
+            print("--Enter EmpId--")
+        } else if let text1 = password.text, text1.isEmpty {
+            print("--Enter password--")
+        }else{
+            let controller = HomeViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        
     }
     
     @IBAction func forgotPasswordBtn(_ sender: Any) {
