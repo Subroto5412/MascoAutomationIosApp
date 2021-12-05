@@ -32,6 +32,11 @@ class HomeViewController: UIViewController {
         
         self.menuBackgroundView.isHidden = true
         
+        let utils = Utils()
+        
+        print("--------\(utils.readStringData(key: "MY_KEY"))----")
+        
+        
 //        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
 //        backgroundImage.image = UIImage(named: "home_bg")
 //        backgroundImage.contentMode = .scaleAspectFill

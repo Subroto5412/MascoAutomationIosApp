@@ -8,6 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    
 
     @IBOutlet weak var empId: UITextField!
     
@@ -15,6 +17,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var signInBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let utils = Utils()
+        
+        utils.writeAnyData(key: "MY_KEY", value: "Subroto")
+        
         
         empId.layer.borderColor = UIColor(red: 104, green: 156, blue: 255, alpha: 1.0).cgColor
         empId.layer.borderWidth = 0.5;
