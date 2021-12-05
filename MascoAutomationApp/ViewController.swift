@@ -9,10 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    
-
     @IBOutlet weak var empId: UITextField!
-    
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var signInBtn: UIButton!
     
@@ -47,37 +44,21 @@ class ViewController: UIViewController {
     @IBAction func signInBtn(_ sender: Any) {
         
         if InternetConnectionManager.isConnectedToNetwork(){
-            print("Connected")
+            
+            if let text = empId.text, text.isEmpty {
+                print("--Enter EmpId--")
+            } else if let text1 = password.text, text1.isEmpty {
+                print("--Enter password--")
+            }else{
+                let _empId: String = empId.text!
+                let _password: String = password.text!
+                
+                self.userLogin(userId: _empId, password: _password)
+            }
+            
         }else{
             print("Not Connected")
         }
-        
-
-            
-                    
-     
-        if let text = empId.text, text.isEmpty {
-            print("--Enter EmpId--")
-        } else if let text1 = password.text, text1.isEmpty {
-            print("--Enter password--")
-        }else{
-            let _empId: String = empId.text!
-            let _password: String = password.text!
-            
-            let x = userLogin(userId: _empId, password: _password)
-            
-            print("--t--888888   \(x)-----")
-            
-            print("-------empCodeString--**********---: \(self.empCodeString)")
-            
-//
-//            if userLogin(userId: _empId, password: _password) != "" {
-//
-//            }
-           
-           // userLogin()
-        }
-        
     }
     
     @IBAction func forgotPasswordBtn(_ sender: Any) {
@@ -93,7 +74,7 @@ class ViewController: UIViewController {
     }
     
     
-    func userLogin(userId: String, password: String)->String{
+    func userLogin(userId: String, password: String){
         
        
         let url = URL(string: LOGIN_URL)
@@ -128,7 +109,6 @@ class ViewController: UIViewController {
 
                     do{
                         
-                        
                         let todoItemModel = try JSONDecoder().decode(LoginResponse.self, from: data)
                         print("Response data:\n \(todoItemModel)")
                         print("todoItemModel Title: \(todoItemModel.mobile)")
@@ -140,8 +120,6 @@ class ViewController: UIViewController {
                         
                         self.empCodeString = todoItemModel.empCode
                         
-                       
-                        
                         for permission in todoItemModel._permissionList {
                             
                             print("todoItemModel -----: \(permission.moduleName)")
@@ -150,33 +128,24 @@ class ViewController: UIViewController {
                             for subMenuList in permission._subMenuList {
                                 print("activityName -----: \(subMenuList.activityName)")
                             }
-                          
                         }
                         
-
-                        print("-------empCodeString--++++++---: \(self.empCodeString)")
-                        
-                                            if !self.empCodeString.isEmpty{
-                                                let controller = HomeViewController.initWithStoryboard()
-                                                self.present(controller, animated: true, completion: nil);
-                                                print("----error: \("Success")----")
-                                            }else{
-                                               // print("----error: \(todoItemModel.error)----")
-                                            }
-                        
+                        if !self.empCodeString.isEmpty{
+                            let controller = HomeViewController.initWithStoryboard()
+                            self.present(controller, animated: true, completion: nil);
+                            print("----error: \("Success")----")
+                        }else{
+                                print("----error: \(todoItemModel.error)----")
+                        }
                         
                     }catch let jsonErr{
                         print(jsonErr)
                    }
                    
                 }
-                
-                
         }
      
         task.resume()
-        
-        return empCodeString
     }
     
     func pageNavigation(){
@@ -184,7 +153,6 @@ class ViewController: UIViewController {
         let controller = HomeViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
-
 }
 
 extension ViewController{
@@ -194,9 +162,8 @@ extension ViewController{
         var password: String
         
         enum CodingKeys: String, CodingKey {
-                        case empId = "empId"
-                        case password = "password"
-            
+            case empId = "empId"
+            case password = "password"
         }
     }
     
