@@ -33,6 +33,7 @@
 		4DC80448275226760006A3E1 /* IncomeTaxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC80447275226760006A3E1 /* IncomeTaxView.xib */; };
 		4DC8044A27523DFA0006A3E1 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8044927523DFA0006A3E1 /* NSObject+Extension.swift */; };
 		4DD0DD5E275C6DE5005EE588 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DD5D275C6DE5005EE588 /* Utils.swift */; };
+		4DD0DD6A275C8126005EE588 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DD69275C8126005EE588 /* API.swift */; };
 		4DD772BD274DF2EA003261F6 /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD772BC274DF2EA003261F6 /* HomeHeader.swift */; };
 		4DD772BF274DF30D003261F6 /* HomeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DD772BE274DF30D003261F6 /* HomeHeader.xib */; };
 		4DD772C1274DF8EA003261F6 /* HeaderFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD772C0274DF8EA003261F6 /* HeaderFooter.swift */; };
@@ -80,6 +81,7 @@
 		4DC80447275226760006A3E1 /* IncomeTaxView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeTaxView.xib; sourceTree = "<group>"; };
 		4DC8044927523DFA0006A3E1 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		4DD0DD5D275C6DE5005EE588 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		4DD0DD69275C8126005EE588 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		4DD772BC274DF2EA003261F6 /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
 		4DD772BE274DF30D003261F6 /* HomeHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeader.xib; sourceTree = "<group>"; };
 		4DD772C0274DF8EA003261F6 /* HeaderFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderFooter.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				4DC8043B275201BB0006A3E1 /* CommonHeaderView.xib */,
 				4DC2D49327548861000EDCD8 /* InternetConnectionManager.swift */,
 				4DD0DD5D275C6DE5005EE588 /* Utils.swift */,
+				4DD0DD69275C8126005EE588 /* API.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				4DD0DD5E275C6DE5005EE588 /* Utils.swift in Sources */,
 				4D7FB4CA2744D45100B318DA /* AppDelegate.swift in Sources */,
 				4DC2D49427548861000EDCD8 /* InternetConnectionManager.swift in Sources */,
+				4DD0DD6A275C8126005EE588 /* API.swift in Sources */,
 				4DD772C7274E4AAC003261F6 /* SideMenuViewController.swift in Sources */,
 				4DE38555274F866C00707916 /* CommonFooter.swift in Sources */,
 				4DC8043A275201930006A3E1 /* CommonHeaderView.swift in Sources */,
