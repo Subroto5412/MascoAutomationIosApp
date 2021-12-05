@@ -34,7 +34,7 @@ class HomeViewController: UIViewController {
         
         let utils = Utils()
         
-        print("--------\(utils.readStringData(key: "MY_KEY"))----")
+        print("--------\(utils.readStringData(key: "empCode"))----")
         
         
 //        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)

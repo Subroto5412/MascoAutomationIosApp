@@ -11,7 +11,7 @@ class DailyAttendanceView: XibView {
 
     @IBOutlet weak var dailyAttendanceUnderBgView: UIView!
     @IBOutlet weak var dailyAttendanceBgView: UIView!
-    
+    var dailyAttendanceHandler : ((Bool?) -> Void)?
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -20,4 +20,9 @@ class DailyAttendanceView: XibView {
     }
     */
 
+    @IBAction func dailyAttendanceBtn(_ sender: UIButton) {
+//        self.dailyAttendanceBtn?(true)
+        self.dailyAttendanceHandler?(true)
+    }
+    
 }

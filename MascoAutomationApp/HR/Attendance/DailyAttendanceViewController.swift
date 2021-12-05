@@ -37,10 +37,26 @@ class DailyAttendanceViewController: UIViewController {
          }
          weakSelf.showBackController()
         }
+        
+        self.bodyView.dailyAttendanceHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showDailyAttendanceController()
+        }
     }
     
         func showBackController(){
             let controller = HRViewController.initWithStoryboard()
             self.present(controller, animated: true, completion: nil);
         }
+    
+    
+    func showDailyAttendanceController(){
+        let controller = DailyAttendanceViewControllerDetails.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
 }
+
+

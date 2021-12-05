@@ -34,6 +34,10 @@
 		4DC8044A27523DFA0006A3E1 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8044927523DFA0006A3E1 /* NSObject+Extension.swift */; };
 		4DD0DD5E275C6DE5005EE588 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DD5D275C6DE5005EE588 /* Utils.swift */; };
 		4DD0DD6A275C8126005EE588 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DD69275C8126005EE588 /* API.swift */; };
+		4DD0DD6D275CB7A4005EE588 /* DailyAttendance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DD0DD6C275CB7A4005EE588 /* DailyAttendance.storyboard */; };
+		4DD0DD6F275CB7C7005EE588 /* DailyAttendanceViewControllerDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DD6E275CB7C7005EE588 /* DailyAttendanceViewControllerDetails.swift */; };
+		4DD0DD71275CD5A7005EE588 /* DailyAttendanceBodyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DD0DD70275CD5A7005EE588 /* DailyAttendanceBodyView.xib */; };
+		4DD0DD73275CD880005EE588 /* DailyAttendanceBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DD72275CD880005EE588 /* DailyAttendanceBodyView.swift */; };
 		4DD772BD274DF2EA003261F6 /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD772BC274DF2EA003261F6 /* HomeHeader.swift */; };
 		4DD772BF274DF30D003261F6 /* HomeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DD772BE274DF30D003261F6 /* HomeHeader.xib */; };
 		4DD772C1274DF8EA003261F6 /* HeaderFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD772C0274DF8EA003261F6 /* HeaderFooter.swift */; };
@@ -82,6 +86,10 @@
 		4DC8044927523DFA0006A3E1 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		4DD0DD5D275C6DE5005EE588 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		4DD0DD69275C8126005EE588 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		4DD0DD6C275CB7A4005EE588 /* DailyAttendance.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DailyAttendance.storyboard; sourceTree = "<group>"; };
+		4DD0DD6E275CB7C7005EE588 /* DailyAttendanceViewControllerDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAttendanceViewControllerDetails.swift; sourceTree = "<group>"; };
+		4DD0DD70275CD5A7005EE588 /* DailyAttendanceBodyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyAttendanceBodyView.xib; sourceTree = "<group>"; };
+		4DD0DD72275CD880005EE588 /* DailyAttendanceBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAttendanceBodyView.swift; sourceTree = "<group>"; };
 		4DD772BC274DF2EA003261F6 /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
 		4DD772BE274DF30D003261F6 /* HomeHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeader.xib; sourceTree = "<group>"; };
 		4DD772C0274DF8EA003261F6 /* HeaderFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderFooter.swift; sourceTree = "<group>"; };
@@ -190,6 +198,7 @@
 		4DC8042F2751EFA30006A3E1 /* Attendance */ = {
 			isa = PBXGroup;
 			children = (
+				4DD0DD6B275CB37B005EE588 /* DailyAttendance */,
 				4DC804322751F3800006A3E1 /* DailyAttendanceView.xib */,
 				4DC804342751F3960006A3E1 /* DailyAttendanceView.swift */,
 				4DC804362752000D0006A3E1 /* DailyAttendanceViewController.swift */,
@@ -227,6 +236,17 @@
 				4DD0DD69275C8126005EE588 /* API.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		4DD0DD6B275CB37B005EE588 /* DailyAttendance */ = {
+			isa = PBXGroup;
+			children = (
+				4DD0DD6C275CB7A4005EE588 /* DailyAttendance.storyboard */,
+				4DD0DD6E275CB7C7005EE588 /* DailyAttendanceViewControllerDetails.swift */,
+				4DD0DD70275CD5A7005EE588 /* DailyAttendanceBodyView.xib */,
+				4DD0DD72275CD880005EE588 /* DailyAttendanceBodyView.swift */,
+			);
+			path = DailyAttendance;
 			sourceTree = "<group>";
 		};
 		4DE38549274F528F00707916 /* HR */ = {
@@ -306,9 +326,11 @@
 				4DC80448275226760006A3E1 /* IncomeTaxView.xib in Resources */,
 				4DA65128274CA30F00488332 /* HomeScreenBody.xib in Resources */,
 				4DD772C3274DF8FD003261F6 /* HeaderFooter.xib in Resources */,
+				4DD0DD6D275CB7A4005EE588 /* DailyAttendance.storyboard in Resources */,
 				4DC8044027520D8B0006A3E1 /* LeaveView.xib in Resources */,
 				4DE38557274F868100707916 /* CommonFooter.xib in Resources */,
 				4DE3854F274F538700707916 /* HrBodyView.xib in Resources */,
+				4DD0DD71275CD5A7005EE588 /* DailyAttendanceBodyView.xib in Resources */,
 				4DD772BF274DF30D003261F6 /* HomeHeader.xib in Resources */,
 				4D7FB4D62744D45200B318DA /* LaunchScreen.storyboard in Resources */,
 				4DC804332751F3800006A3E1 /* DailyAttendanceView.xib in Resources */,
@@ -336,6 +358,7 @@
 				4DC2D49427548861000EDCD8 /* InternetConnectionManager.swift in Sources */,
 				4DD0DD6A275C8126005EE588 /* API.swift in Sources */,
 				4DD772C7274E4AAC003261F6 /* SideMenuViewController.swift in Sources */,
+				4DD0DD6F275CB7C7005EE588 /* DailyAttendanceViewControllerDetails.swift in Sources */,
 				4DE38555274F866C00707916 /* CommonFooter.swift in Sources */,
 				4DC8043A275201930006A3E1 /* CommonHeaderView.swift in Sources */,
 				4DA6512F274CC85E00488332 /* HomeScreenBody.swift in Sources */,
@@ -352,6 +375,7 @@
 				4DE3854B274F533200707916 /* HRViewController.swift in Sources */,
 				4DC804372752000D0006A3E1 /* DailyAttendanceViewController.swift in Sources */,
 				4DBB3B64274B91C90009339B /* HomeViewController.swift in Sources */,
+				4DD0DD73275CD880005EE588 /* DailyAttendanceBodyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

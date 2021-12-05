@@ -18,11 +18,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let utils = Utils()
-        
-        utils.writeAnyData(key: "MY_KEY", value: "Subroto")
-        
-        
         empId.layer.borderColor = UIColor(red: 104, green: 156, blue: 255, alpha: 1.0).cgColor
         empId.layer.borderWidth = 0.5;
         empId.layer.cornerRadius = 5.0;
@@ -76,6 +71,7 @@ class ViewController: UIViewController {
     
     func userLogin(userId: String, password: String){
         
+        let utils = Utils()
        
         let url = URL(string: LOGIN_URL)
         guard let requestUrl = url else { fatalError() }
@@ -117,6 +113,8 @@ class ViewController: UIViewController {
                         print("todoItemModel token: \(todoItemModel.token)")
                         print("todoItemModel refresh_token: \(todoItemModel.refresh_token)")
                         print("todoItemModel error: \(todoItemModel.error)")
+                        
+                        utils.writeAnyData(key: "empCode", value: todoItemModel.empCode)
                         
                         self.empCodeString = todoItemModel.empCode
                         

@@ -42,13 +42,23 @@
                                             <color key="textColor" red="0.2099210322" green="0.20995694400000001" blue="0.20991316439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yES-m6-vZi">
+                                            <rect key="frame" x="0.0" y="0.0" width="289" height="70.666666666666671"/>
+                                            <connections>
+                                                <action selector="dailyAttendanceBtn:" destination="-1" eventType="touchUpInside" id="azE-aI-r6V"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" red="0.35380434989999998" green="0.92506664989999998" blue="0.50702255959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="1ze-bc-QD5" firstAttribute="centerX" secondItem="irr-6D-za9" secondAttribute="centerX" id="19y-bf-Xqc"/>
+                                        <constraint firstItem="yES-m6-vZi" firstAttribute="height" secondItem="irr-6D-za9" secondAttribute="height" id="6kQ-dL-V1c"/>
                                         <constraint firstItem="1ze-bc-QD5" firstAttribute="centerY" secondItem="irr-6D-za9" secondAttribute="centerY" id="YaT-lD-2wb"/>
+                                        <constraint firstItem="yES-m6-vZi" firstAttribute="centerY" secondItem="irr-6D-za9" secondAttribute="centerY" id="bl0-Qe-T44"/>
                                         <constraint firstItem="1ze-bc-QD5" firstAttribute="height" secondItem="irr-6D-za9" secondAttribute="height" id="foC-qP-Fod"/>
+                                        <constraint firstItem="yES-m6-vZi" firstAttribute="width" secondItem="irr-6D-za9" secondAttribute="width" id="uBa-vp-IQc"/>
                                         <constraint firstItem="1ze-bc-QD5" firstAttribute="width" secondItem="irr-6D-za9" secondAttribute="width" id="uzG-Lh-Geu"/>
+                                        <constraint firstItem="yES-m6-vZi" firstAttribute="centerX" secondItem="irr-6D-za9" secondAttribute="centerX" id="vFg-sK-qWf"/>
                                     </constraints>
                                 </view>
                             </subviews>
