@@ -114,6 +114,7 @@ class ViewController: UIViewController {
                         print("todoItemModel refresh_token: \(todoItemModel.refresh_token)")
                         print("todoItemModel error: \(todoItemModel.error)")
                         
+                        utils.writeAnyData(key: "token", value: todoItemModel.token)
                         utils.writeAnyData(key: "empCode", value: todoItemModel.empCode)
                         
                         self.empCodeString = todoItemModel.empCode

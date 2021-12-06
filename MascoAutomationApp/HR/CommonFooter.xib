@@ -22,12 +22,19 @@
                                 <constraint firstAttribute="width" secondItem="cc8-Be-O3R" secondAttribute="height" multiplier="57:55" id="SkD-cQ-d3H"/>
                             </constraints>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PN4-FF-S9y">
+                            <rect key="frame" x="157.66666666666666" y="34.333333333333329" width="57.666666666666657" height="55.333333333333329"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="cc8-Be-O3R" firstAttribute="width" secondItem="cp9-0F-7NV" secondAttribute="width" multiplier="60:390" id="8D4-IK-Z9C"/>
                         <constraint firstItem="cc8-Be-O3R" firstAttribute="centerY" secondItem="cp9-0F-7NV" secondAttribute="centerY" id="Kse-9c-5rA"/>
+                        <constraint firstItem="PN4-FF-S9y" firstAttribute="width" secondItem="cc8-Be-O3R" secondAttribute="width" id="OLP-9X-Ddt"/>
+                        <constraint firstItem="PN4-FF-S9y" firstAttribute="centerY" secondItem="cc8-Be-O3R" secondAttribute="centerY" id="Obn-14-DwB"/>
                         <constraint firstItem="cc8-Be-O3R" firstAttribute="centerX" secondItem="cp9-0F-7NV" secondAttribute="centerX" id="de8-oZ-ORr"/>
+                        <constraint firstItem="PN4-FF-S9y" firstAttribute="centerX" secondItem="cc8-Be-O3R" secondAttribute="centerX" id="egQ-up-YTv"/>
+                        <constraint firstItem="PN4-FF-S9y" firstAttribute="height" secondItem="cc8-Be-O3R" secondAttribute="height" id="so4-mm-hxH"/>
                     </constraints>
                 </view>
             </subviews>

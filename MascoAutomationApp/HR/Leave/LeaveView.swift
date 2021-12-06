@@ -15,6 +15,9 @@ class LeaveView: XibView {
     @IBOutlet weak var leaveApplyUnderBgView: UIView!
     @IBOutlet weak var leaveApplyBgView: UIView!
     
+    var leaveDetailsHandler : ((Bool?) -> Void)?
+    var leaveApplyHandler : ((Bool?) -> Void)?
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -22,5 +25,11 @@ class LeaveView: XibView {
         // Drawing code
     }
     */
-
+    @IBAction func LeaveDetailsBtn(_ sender: UIButton) {
+        self.leaveDetailsHandler?(true)
+    }
+    
+    @IBAction func LeaveApplyBtn(_ sender: UIButton) {
+        self.leaveApplyHandler?(true)
+    }
 }

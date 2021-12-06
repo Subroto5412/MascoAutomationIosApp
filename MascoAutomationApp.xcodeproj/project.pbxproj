@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D466E40275DD51C005F0E3C /* LeaveApply.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D466E3F275DD51C005F0E3C /* LeaveApply.storyboard */; };
+		4D466E42275DD53F005F0E3C /* LeaveDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D466E41275DD53F005F0E3C /* LeaveDetails.storyboard */; };
+		4D466E44275DD57C005F0E3C /* Tax.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D466E43275DD57C005F0E3C /* Tax.storyboard */; };
+		4D466E47275DDE45005F0E3C /* TaxDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D466E46275DDE45005F0E3C /* TaxDetailsViewController.swift */; };
+		4D466E49275DDE70005F0E3C /* LeaveDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D466E48275DDE70005F0E3C /* LeaveDetailsViewController.swift */; };
 		4D7FB4CA2744D45100B318DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7FB4C92744D45100B318DA /* AppDelegate.swift */; };
 		4D7FB4CC2744D45100B318DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7FB4CB2744D45100B318DA /* SceneDelegate.swift */; };
 		4D7FB4CE2744D45100B318DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7FB4CD2744D45100B318DA /* ViewController.swift */; };
@@ -53,6 +58,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D466E3F275DD51C005F0E3C /* LeaveApply.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeaveApply.storyboard; sourceTree = "<group>"; };
+		4D466E41275DD53F005F0E3C /* LeaveDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeaveDetails.storyboard; sourceTree = "<group>"; };
+		4D466E43275DD57C005F0E3C /* Tax.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tax.storyboard; sourceTree = "<group>"; };
+		4D466E46275DDE45005F0E3C /* TaxDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxDetailsViewController.swift; sourceTree = "<group>"; };
+		4D466E48275DDE70005F0E3C /* LeaveDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveDetailsViewController.swift; sourceTree = "<group>"; };
 		4D72D94327464EDF005708F6 /* montserrat_semi_bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = montserrat_semi_bold.otf; sourceTree = "<group>"; };
 		4D72D94427464EDF005708F6 /* montserrat_bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = montserrat_bold.otf; sourceTree = "<group>"; };
 		4D72D94527464EDF005708F6 /* montserrat_medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = montserrat_medium.otf; sourceTree = "<group>"; };
@@ -115,6 +125,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D466E3D275DD43D005F0E3C /* LeaveDetails */ = {
+			isa = PBXGroup;
+			children = (
+				4D466E41275DD53F005F0E3C /* LeaveDetails.storyboard */,
+				4D466E48275DDE70005F0E3C /* LeaveDetailsViewController.swift */,
+			);
+			path = LeaveDetails;
+			sourceTree = "<group>";
+		};
+		4D466E3E275DD479005F0E3C /* LeaveApply */ = {
+			isa = PBXGroup;
+			children = (
+				4D466E3F275DD51C005F0E3C /* LeaveApply.storyboard */,
+			);
+			path = LeaveApply;
+			sourceTree = "<group>";
+		};
+		4D466E45275DD58B005F0E3C /* TaxDetails */ = {
+			isa = PBXGroup;
+			children = (
+				4D466E43275DD57C005F0E3C /* Tax.storyboard */,
+				4D466E46275DDE45005F0E3C /* TaxDetailsViewController.swift */,
+			);
+			path = TaxDetails;
+			sourceTree = "<group>";
+		};
 		4D72D94227464E57005708F6 /* font */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +245,8 @@
 		4DC804302751EFCD0006A3E1 /* Leave */ = {
 			isa = PBXGroup;
 			children = (
+				4D466E3E275DD479005F0E3C /* LeaveApply */,
+				4D466E3D275DD43D005F0E3C /* LeaveDetails */,
 				4DC8043D27520BA80006A3E1 /* LeaveViewController.swift */,
 				4DC8043F27520D8B0006A3E1 /* LeaveView.xib */,
 				4DC8044127520DA70006A3E1 /* LeaveView.swift */,
@@ -219,6 +257,7 @@
 		4DC804312751F03B0006A3E1 /* Tax */ = {
 			isa = PBXGroup;
 			children = (
+				4D466E45275DD58B005F0E3C /* TaxDetails */,
 				4DC80443275226550006A3E1 /* IncomeTaxViewController.swift */,
 				4DC804452752266A0006A3E1 /* IncomeTaxView.swift */,
 				4DC80447275226760006A3E1 /* IncomeTaxView.xib */,
@@ -338,6 +377,9 @@
 				4D7FB4D32744D45200B318DA /* Assets.xcassets in Resources */,
 				4DC8043C275201BB0006A3E1 /* CommonHeaderView.xib in Resources */,
 				4D7FB4D12744D45100B318DA /* Main.storyboard in Resources */,
+				4D466E40275DD51C005F0E3C /* LeaveApply.storyboard in Resources */,
+				4D466E44275DD57C005F0E3C /* Tax.storyboard in Resources */,
+				4D466E42275DD53F005F0E3C /* LeaveDetails.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,8 +398,10 @@
 				4DD0DD5E275C6DE5005EE588 /* Utils.swift in Sources */,
 				4D7FB4CA2744D45100B318DA /* AppDelegate.swift in Sources */,
 				4DC2D49427548861000EDCD8 /* InternetConnectionManager.swift in Sources */,
+				4D466E49275DDE70005F0E3C /* LeaveDetailsViewController.swift in Sources */,
 				4DD0DD6A275C8126005EE588 /* API.swift in Sources */,
 				4DD772C7274E4AAC003261F6 /* SideMenuViewController.swift in Sources */,
+				4D466E47275DDE45005F0E3C /* TaxDetailsViewController.swift in Sources */,
 				4DD0DD6F275CB7C7005EE588 /* DailyAttendanceViewControllerDetails.swift in Sources */,
 				4DE38555274F866C00707916 /* CommonFooter.swift in Sources */,
 				4DC8043A275201930006A3E1 /* CommonHeaderView.swift in Sources */,

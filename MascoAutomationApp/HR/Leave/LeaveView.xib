@@ -66,6 +66,12 @@
                                 <constraint firstAttribute="trailing" secondItem="FY1-GN-pmX" secondAttribute="trailing" constant="28" id="zYW-Ck-fm8"/>
                             </constraints>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4el-9r-rq8">
+                            <rect key="frame" x="0.0" y="20.000000000000004" width="385" height="52.333333333333343"/>
+                            <connections>
+                                <action selector="LeaveDetailsBtn:" destination="-1" eventType="touchUpInside" id="8Al-El-Tuk"/>
+                            </connections>
+                        </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jmb-jr-kF7">
                             <rect key="frame" x="0.0" y="82.333333333333329" width="385" height="52.666666666666671"/>
                             <subviews>
@@ -104,6 +110,12 @@
                                 <constraint firstAttribute="trailing" secondItem="m2G-zS-srU" secondAttribute="trailing" constant="38" id="r88-ji-l9R"/>
                             </constraints>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bud-O8-c5z">
+                            <rect key="frame" x="0.0" y="82.333333333333329" width="385" height="52.666666666666671"/>
+                            <connections>
+                                <action selector="LeaveApplyBtn:" destination="-1" eventType="touchUpInside" id="D3A-bU-jVq"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -112,9 +124,17 @@
                         <constraint firstItem="Jmb-jr-kF7" firstAttribute="height" secondItem="ErC-Yg-ebr" secondAttribute="height" multiplier="75:596" id="DuZ-d9-CFc"/>
                         <constraint firstItem="Jmb-jr-kF7" firstAttribute="top" secondItem="Xsu-Ex-r3b" secondAttribute="bottom" constant="10" id="ETd-cR-tW9"/>
                         <constraint firstItem="Xsu-Ex-r3b" firstAttribute="height" secondItem="ErC-Yg-ebr" secondAttribute="height" multiplier="75:596" id="HJG-9C-x0O"/>
+                        <constraint firstItem="bud-O8-c5z" firstAttribute="width" secondItem="Jmb-jr-kF7" secondAttribute="width" id="TXP-pl-i5u"/>
+                        <constraint firstItem="bud-O8-c5z" firstAttribute="centerX" secondItem="Jmb-jr-kF7" secondAttribute="centerX" id="YLU-pd-GKW"/>
+                        <constraint firstItem="4el-9r-rq8" firstAttribute="centerY" secondItem="Xsu-Ex-r3b" secondAttribute="centerY" id="bUE-kc-fo3"/>
+                        <constraint firstItem="4el-9r-rq8" firstAttribute="centerX" secondItem="Xsu-Ex-r3b" secondAttribute="centerX" id="e3Z-Yn-rOo"/>
+                        <constraint firstItem="bud-O8-c5z" firstAttribute="centerY" secondItem="Jmb-jr-kF7" secondAttribute="centerY" id="ea7-m3-SfY"/>
                         <constraint firstItem="Jmb-jr-kF7" firstAttribute="leading" secondItem="ErC-Yg-ebr" secondAttribute="leading" id="gZ7-2L-ROU"/>
+                        <constraint firstItem="bud-O8-c5z" firstAttribute="height" secondItem="Jmb-jr-kF7" secondAttribute="height" id="iHp-hq-eak"/>
                         <constraint firstAttribute="trailing" secondItem="Xsu-Ex-r3b" secondAttribute="trailing" id="mMs-u4-mSu"/>
                         <constraint firstAttribute="trailing" secondItem="Jmb-jr-kF7" secondAttribute="trailing" id="ntl-yv-VHG"/>
+                        <constraint firstItem="4el-9r-rq8" firstAttribute="width" secondItem="Xsu-Ex-r3b" secondAttribute="width" id="s5o-q7-az3"/>
+                        <constraint firstItem="4el-9r-rq8" firstAttribute="height" secondItem="Xsu-Ex-r3b" secondAttribute="height" id="y12-2M-z94"/>
                     </constraints>
                 </view>
             </subviews>
