@@ -9,6 +9,7 @@ import UIKit
 
 class DailyAttendanceViewControllerDetails: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
     
     class func initWithStoryboard() -> DailyAttendanceViewControllerDetails
     {
@@ -19,19 +20,42 @@ class DailyAttendanceViewControllerDetails: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.register(UINib(nibName: "DailyAttendanceTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
 
-        // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+
+}
+
+extension DailyAttendanceViewControllerDetails : UITableViewDelegate{
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("---you tapped me!----")
     }
     
+   
+    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension DailyAttendanceViewControllerDetails : UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DailyAttendanceTableViewCell
+        cell.punchInLbl.text = "09 : 10 : 23 AM"
+        cell.punchOutLbl.text = "08 : 20 : 25 PM"
+        cell.statusLbl.text = "P"
+        cell.otLbl.text = "02 : 10 : 23"
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 110
+    }
+    
 }

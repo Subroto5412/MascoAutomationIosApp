@@ -12,6 +12,8 @@
 		4D466E44275DD57C005F0E3C /* Tax.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D466E43275DD57C005F0E3C /* Tax.storyboard */; };
 		4D466E47275DDE45005F0E3C /* TaxDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D466E46275DDE45005F0E3C /* TaxDetailsViewController.swift */; };
 		4D466E49275DDE70005F0E3C /* LeaveDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D466E48275DDE70005F0E3C /* LeaveDetailsViewController.swift */; };
+		4D7665BB275F5A5900358097 /* DailyAttendanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7665B9275F5A5900358097 /* DailyAttendanceTableViewCell.swift */; };
+		4D7665BC275F5A5900358097 /* DailyAttendanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D7665BA275F5A5900358097 /* DailyAttendanceTableViewCell.xib */; };
 		4D7FB4CA2744D45100B318DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7FB4C92744D45100B318DA /* AppDelegate.swift */; };
 		4D7FB4CC2744D45100B318DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7FB4CB2744D45100B318DA /* SceneDelegate.swift */; };
 		4D7FB4CE2744D45100B318DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7FB4CD2744D45100B318DA /* ViewController.swift */; };
@@ -67,6 +69,8 @@
 		4D72D94427464EDF005708F6 /* montserrat_bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = montserrat_bold.otf; sourceTree = "<group>"; };
 		4D72D94527464EDF005708F6 /* montserrat_medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = montserrat_medium.otf; sourceTree = "<group>"; };
 		4D72D94627464EDF005708F6 /* montserrat_regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = montserrat_regular.otf; sourceTree = "<group>"; };
+		4D7665B9275F5A5900358097 /* DailyAttendanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAttendanceTableViewCell.swift; sourceTree = "<group>"; };
+		4D7665BA275F5A5900358097 /* DailyAttendanceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyAttendanceTableViewCell.xib; sourceTree = "<group>"; };
 		4D7FB4C62744D45100B318DA /* MascoAutomationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MascoAutomationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D7FB4C92744D45100B318DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D7FB4CB2744D45100B318DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -284,6 +288,8 @@
 				4DD0DD6E275CB7C7005EE588 /* DailyAttendanceViewControllerDetails.swift */,
 				4DD0DD70275CD5A7005EE588 /* DailyAttendanceBodyView.xib */,
 				4DD0DD72275CD880005EE588 /* DailyAttendanceBodyView.swift */,
+				4D7665B9275F5A5900358097 /* DailyAttendanceTableViewCell.swift */,
+				4D7665BA275F5A5900358097 /* DailyAttendanceTableViewCell.xib */,
 			);
 			path = DailyAttendance;
 			sourceTree = "<group>";
@@ -365,6 +371,7 @@
 				4DC80448275226760006A3E1 /* IncomeTaxView.xib in Resources */,
 				4DA65128274CA30F00488332 /* HomeScreenBody.xib in Resources */,
 				4DD772C3274DF8FD003261F6 /* HeaderFooter.xib in Resources */,
+				4D7665BC275F5A5900358097 /* DailyAttendanceTableViewCell.xib in Resources */,
 				4DD0DD6D275CB7A4005EE588 /* DailyAttendance.storyboard in Resources */,
 				4DC8044027520D8B0006A3E1 /* LeaveView.xib in Resources */,
 				4DE38557274F868100707916 /* CommonFooter.xib in Resources */,
@@ -414,6 +421,7 @@
 				4DC8043E27520BA80006A3E1 /* LeaveViewController.swift in Sources */,
 				4DC804462752266A0006A3E1 /* IncomeTaxView.swift in Sources */,
 				4DE38553274F7B8D00707916 /* InnerHeader.swift in Sources */,
+				4D7665BB275F5A5900358097 /* DailyAttendanceTableViewCell.swift in Sources */,
 				4DD772C1274DF8EA003261F6 /* HeaderFooter.swift in Sources */,
 				4DA6512D274CA55A00488332 /* XibView.swift in Sources */,
 				4DE3854B274F533200707916 /* HRViewController.swift in Sources */,

@@ -169,10 +169,10 @@
                                                 <subviews>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="56z-pb-SWb">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="390"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="56z-pb-SWb" firstAttribute="leading" secondItem="t7r-rW-YEU" secondAttribute="leading" id="3lt-Ln-isT"/>
                                                     <constraint firstAttribute="trailing" secondItem="56z-pb-SWb" secondAttribute="trailing" id="SjO-8U-3uL"/>
@@ -236,6 +236,9 @@
                             <constraint firstItem="Yaw-Ww-Zby" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="-10" id="ou7-33-oNJ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="56z-pb-SWb" id="Ldd-iB-Au0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -249,9 +252,6 @@
         <image name="previous" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
