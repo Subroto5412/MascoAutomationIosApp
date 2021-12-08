@@ -64,3 +64,33 @@ extension DailyAttendanceViewControllerDetails : UITableViewDataSource{
     }
     
 }
+
+extension DailyAttendanceViewControllerDetails : UICollectionViewDelegate {
+    
+}
+
+
+extension DailyAttendanceViewControllerDetails : UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collection_cell", for: indexPath) as! LeaveStatusCollectionViewCell
+        cell.statusNameLbl.text = "Present"
+        cell.starusValueLbl.text = "20"
+        return cell
+    }
+    
+    
+
+}
+
+extension DailyAttendanceViewControllerDetails : UICollectionViewDelegateFlowLayout{
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 120, height: 58)
+    }
+}
