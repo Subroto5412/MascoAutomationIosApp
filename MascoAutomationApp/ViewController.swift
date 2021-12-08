@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var empId: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var signInBtn: UIButton!
-    
+
     var empCodeString = ""
     
     override func viewDidLoad() {
@@ -47,7 +47,7 @@ class ViewController: UIViewController {
             }else{
                 let _empId: String = empId.text!
                 let _password: String = password.text!
-                
+               
                 self.userLogin(userId: _empId, password: _password)
             }
             
@@ -92,10 +92,12 @@ class ViewController: UIViewController {
 
         print("jsonData jsonData  data:\n \(jsonData!)")
         
+        self.showLoading(finished: {
+            
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 
                 DispatchQueue.main.async {
-                
+                    self.hideLoading(finished: {
                     
                     if let error = error {
                         print("Error took place \(error)")
@@ -130,23 +132,31 @@ class ViewController: UIViewController {
                         }
                         
                         if !self.empCodeString.isEmpty{
+                            
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                      
+                        if !self.empCodeString.isEmpty{
+                            
                             let controller = HomeViewController.initWithStoryboard()
                             self.present(controller, animated: true, completion: nil);
+                           
                             print("----error: \("Success")----")
                         }else{
                                 print("----error: \(todoItemModel.error)----")
                         }
-                        
+                      
                     }catch let jsonErr{
                         print(jsonErr)
                    }
-                   
+                    })
                 }
         }
-     
         task.resume()
+            
+        })
     }
-    
+        
     func pageNavigation(){
         
         let controller = HomeViewController.initWithStoryboard()
@@ -272,3 +282,25 @@ extension ViewController{
         
     }
 }
+
+extension ViewController {
+    func showLoading(finished: @escaping () -> Void) {
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+
+        alert.view.addSubview(loadingIndicator)
+
+        present(alert, animated: false, completion: finished)
+    }
+
+    func hideLoading(finished: @escaping () -> Void) {
+        if ( presentedViewController != nil && !presentedViewController!.isBeingPresented ) {
+            dismiss(animated: false, completion: finished)
+        }
+    }
+ }
+
