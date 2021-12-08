@@ -122,7 +122,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstItem="UFq-vd-2it" firstAttribute="width" secondItem="59k-xU-MLc" secondAttribute="width" id="82t-EO-2jR"/>
                                                                     <constraint firstItem="UFq-vd-2it" firstAttribute="centerY" secondItem="59k-xU-MLc" secondAttribute="centerY" id="KuS-Ah-uFR"/>
@@ -237,6 +237,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="monthBgView" destination="59k-xU-MLc" id="UDV-kc-Pye"/>
                         <outlet property="tableView" destination="56z-pb-SWb" id="Ldd-iB-Au0"/>
                     </connections>
                 </viewController>

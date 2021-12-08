@@ -10,6 +10,7 @@ import UIKit
 class DailyAttendanceViewControllerDetails: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var monthBgView: UIView!
     
     class func initWithStoryboard() -> DailyAttendanceViewControllerDetails
     {
@@ -25,6 +26,10 @@ class DailyAttendanceViewControllerDetails: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        self.monthBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
+        self.monthBgView.layer.borderWidth = 0.5
+        self.monthBgView.layer.cornerRadius = 15
     }
 
 }
