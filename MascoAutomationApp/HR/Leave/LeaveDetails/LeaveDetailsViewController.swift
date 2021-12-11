@@ -11,11 +11,24 @@ class LeaveDetailsViewController: UIViewController {
 
     @IBOutlet weak var headerView: CommonHeaderView!
     @IBOutlet weak var footerView: CommonFooter!
-    @IBOutlet weak var indicator: UIActivityIndicatorView!
+//    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var leaveSummaryCollectionView: UICollectionView!
+    
+    @IBOutlet weak var financialBgView: UIView!
+    @IBOutlet weak var leaveSummaryBgView: UIView!
+    @IBOutlet weak var availSummaryBgView: UILabel!
+    
+    @IBOutlet weak var slBgView: UIView!
+    @IBOutlet weak var leaveTypeBgView: UIView!
+    @IBOutlet weak var availDayBgView: UIView!
+    @IBOutlet weak var fromDateBgView: UIView!
+    @IBOutlet weak var toDateBgView: UIView!
+    @IBOutlet weak var applicationDateBgView: UIView!
     
     class func initWithStoryboard() -> LeaveDetailsViewController
     {
-        let storyboard = UIStoryboard(name: "LeaveDetails", bundle: nil)
+        let storyboard = UIStoryboard(name: "LeaveDetailsView", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: LeaveDetailsViewController.className) as! LeaveDetailsViewController
         return controller
     }
@@ -23,8 +36,8 @@ class LeaveDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        indicator.style = .large
-        indicator.color = .red
+      //  indicator.style = .large
+       // indicator.color = .red
         
         getLeaveDetails()
 
@@ -35,6 +48,66 @@ class LeaveDetailsViewController: UIViewController {
          }
          weakSelf.showBackController()
         }
+        
+        self.tableView.register(UINib(nibName: "LeaveDetailsControllerCell", bundle: nil), forCellReuseIdentifier: "cell")
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        self.leaveSummaryCollectionView.register(UINib(nibName: "LeaveSummaryCollectionCell", bundle: nil), forCellWithReuseIdentifier: "leave_summary_cell")
+        
+        self.financialBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
+        self.financialBgView.layer.borderWidth = 0.5
+        self.financialBgView.layer.cornerRadius = 15
+        
+        self.leaveSummaryBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
+        self.leaveSummaryBgView.layer.borderWidth = 0.5
+        self.leaveSummaryBgView.layer.cornerRadius = 12
+        
+        self.availSummaryBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
+        self.availSummaryBgView.layer.borderWidth = 0.5
+        self.availSummaryBgView.layer.cornerRadius = 12
+        
+        
+        self.slBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
+        self.slBgView.layer.borderWidth = 0.5
+        self.slBgView.layer.cornerRadius = 15
+        
+        self.leaveTypeBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
+        self.leaveTypeBgView.layer.borderWidth = 0.5
+        self.leaveTypeBgView.layer.cornerRadius = 15
+        
+        
+        self.availDayBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
+        self.availDayBgView.layer.borderWidth = 0.5
+        self.availDayBgView.layer.cornerRadius = 15
+        
+        self.fromDateBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
+        self.fromDateBgView.layer.borderWidth = 0.5
+        self.fromDateBgView.layer.cornerRadius = 15
+        
+        self.toDateBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
+        self.toDateBgView.layer.borderWidth = 0.5
+        self.toDateBgView.layer.cornerRadius = 15
+        
+        self.applicationDateBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
+        self.applicationDateBgView.layer.borderWidth = 0.5
+        self.applicationDateBgView.layer.cornerRadius = 15
+        
+//        self.slBgView.roundedView()
+//        self.slBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
+//        self.slBgView.layer.borderWidth = 1
+       
+//        self.slBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
+//        self.slBgView.layer.borderWidth = 0.5
+//        self.slBgView.layer.cornerRadius = 15
+        
+//        self.leaveTypeBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
+//        self.leaveTypeBgView.layer.borderWidth = 0.5
+//        self.leaveTypeBgView.layer.cornerRadius = 15
+//
+//        self.availDayBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
+//        self.availDayBgView.layer.borderWidth = 0.5
+//        self.availDayBgView.layer.cornerRadius = 15
     }
     
     func showBackController(){
@@ -66,7 +139,7 @@ class LeaveDetailsViewController: UIViewController {
         request.httpBody = jsonData
 
         print("jsonData jsonData  data:\n \(jsonData!)")
-        indicator.startAnimating()
+       // indicator.startAnimating()
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 
                 DispatchQueue.main.async {
@@ -106,8 +179,8 @@ class LeaveDetailsViewController: UIViewController {
                     }catch let jsonErr{
                         print(jsonErr)
                    }
-                    self.indicator.stopAnimating()
-                    self.indicator.isHidden = true
+                //    self.indicator.stopAnimating()
+                  //  self.indicator.isHidden = true
                     self.getYearList()
                 }
                
@@ -130,8 +203,8 @@ func getYearList(){
     request.setValue("application/json", forHTTPHeaderField: "Accept")
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     
-    self.indicator.isHidden = false
-    indicator.startAnimating()
+   // self.indicator.isHidden = false
+    //indicator.startAnimating()
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             DispatchQueue.main.async {
@@ -171,8 +244,8 @@ func getYearList(){
                 }catch let jsonErr{
                     print(jsonErr)
                }
-                self.indicator.isHidden = true
-                self.indicator.stopAnimating()
+            //    self.indicator.isHidden = true
+            //    self.indicator.stopAnimating()
             }
     }
  
@@ -302,5 +375,78 @@ extension LeaveDetailsViewController{
                try container.encode(finalYearName, forKey: .finalYearName)
                try container.encode(yearName, forKey: .yearName)
            }
+    }
+}
+extension LeaveDetailsViewController : UITableViewDelegate{
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("---you tapped me!----")
+    }
+}
+
+extension LeaveDetailsViewController : UITableViewDataSource{
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeaveDetailsControllerCell
+        cell.slLbl.text = "1"
+        cell.leaveTypeLbl.text = "CL"
+        cell.avilDayLbl.text = "1"
+        cell.fromDateLbl.text = "12-06-2021"
+        cell.toDateLbl.text = "12-06-2021"
+        cell.applicationDateLbl.text = "15-06-2021"
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40
+    }
+
+}
+
+
+extension LeaveDetailsViewController : UICollectionViewDelegate {
+    
+}
+
+
+extension LeaveDetailsViewController : UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "leave_summary_cell", for: indexPath) as! LeaveSummaryCollectionCell
+        cell.clLbl.text = "10"
+        cell.slLbl.text = "14"
+        cell.elLbl.text = "17"
+        return cell
+    }
+    
+    
+
+}
+
+extension LeaveDetailsViewController : UICollectionViewDelegateFlowLayout{
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 120, height: 139)
+    }
+}
+
+extension UIView{
+    func roundedView(){
+        let maskPath1 = UIBezierPath(roundedRect: bounds,
+            byRoundingCorners: [.topLeft , .topRight],
+            cornerRadii: CGSize(width: 8, height: 8))
+        let maskLayer1 = CAShapeLayer()
+        maskLayer1.frame = bounds
+        maskLayer1.path = maskPath1.cgPath
+        layer.mask = maskLayer1
     }
 }
