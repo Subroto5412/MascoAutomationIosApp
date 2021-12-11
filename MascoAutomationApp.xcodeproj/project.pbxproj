@@ -13,7 +13,6 @@
 		4D116BFB276491070065C07D /* LeaveSummaryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D116BF9276491070065C07D /* LeaveSummaryCollectionCell.swift */; };
 		4D116BFC276491070065C07D /* LeaveSummaryCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D116BFA276491070065C07D /* LeaveSummaryCollectionCell.xib */; };
 		4D466E40275DD51C005F0E3C /* LeaveApply.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D466E3F275DD51C005F0E3C /* LeaveApply.storyboard */; };
-		4D466E42275DD53F005F0E3C /* LeaveDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D466E41275DD53F005F0E3C /* LeaveDetails.storyboard */; };
 		4D466E44275DD57C005F0E3C /* Tax.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D466E43275DD57C005F0E3C /* Tax.storyboard */; };
 		4D466E47275DDE45005F0E3C /* TaxDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D466E46275DDE45005F0E3C /* TaxDetailsViewController.swift */; };
 		4D466E49275DDE70005F0E3C /* LeaveDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D466E48275DDE70005F0E3C /* LeaveDetailsViewController.swift */; };
@@ -72,7 +71,6 @@
 		4D116BF9276491070065C07D /* LeaveSummaryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveSummaryCollectionCell.swift; sourceTree = "<group>"; };
 		4D116BFA276491070065C07D /* LeaveSummaryCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaveSummaryCollectionCell.xib; sourceTree = "<group>"; };
 		4D466E3F275DD51C005F0E3C /* LeaveApply.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeaveApply.storyboard; sourceTree = "<group>"; };
-		4D466E41275DD53F005F0E3C /* LeaveDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeaveDetails.storyboard; sourceTree = "<group>"; };
 		4D466E43275DD57C005F0E3C /* Tax.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tax.storyboard; sourceTree = "<group>"; };
 		4D466E46275DDE45005F0E3C /* TaxDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxDetailsViewController.swift; sourceTree = "<group>"; };
 		4D466E48275DDE70005F0E3C /* LeaveDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveDetailsViewController.swift; sourceTree = "<group>"; };
@@ -144,7 +142,6 @@
 		4D466E3D275DD43D005F0E3C /* LeaveDetails */ = {
 			isa = PBXGroup;
 			children = (
-				4D466E41275DD53F005F0E3C /* LeaveDetails.storyboard */,
 				4D466E48275DDE70005F0E3C /* LeaveDetailsViewController.swift */,
 				4D116BF1276453590065C07D /* LeaveDetailsView.storyboard */,
 				4D116BF32764791A0065C07D /* LeaveDetailsControllerCell.swift */,
@@ -407,7 +404,6 @@
 				4D7FB4D12744D45100B318DA /* Main.storyboard in Resources */,
 				4D466E40275DD51C005F0E3C /* LeaveApply.storyboard in Resources */,
 				4D466E44275DD57C005F0E3C /* Tax.storyboard in Resources */,
-				4D466E42275DD53F005F0E3C /* LeaveDetails.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
