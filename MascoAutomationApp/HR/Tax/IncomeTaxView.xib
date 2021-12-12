@@ -64,13 +64,23 @@
                                 <constraint firstAttribute="trailing" secondItem="eJ4-oS-2xb" secondAttribute="trailing" constant="28" id="zmz-oi-Ckn"/>
                             </constraints>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sY-No-Pur">
+                            <rect key="frame" x="0.0" y="20" width="381" height="68"/>
+                            <connections>
+                                <action selector="taxDetailsBtn:" destination="-1" eventType="touchUpInside" id="neH-NK-nSW"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="acR-Iu-eaN" firstAttribute="leading" secondItem="Gog-gw-xU6" secondAttribute="leading" id="3ef-iL-wSL"/>
                         <constraint firstItem="acR-Iu-eaN" firstAttribute="top" secondItem="Gog-gw-xU6" secondAttribute="top" constant="20" id="KUh-10-yui"/>
+                        <constraint firstItem="7sY-No-Pur" firstAttribute="width" secondItem="acR-Iu-eaN" secondAttribute="width" id="MMh-Hi-znu"/>
+                        <constraint firstItem="7sY-No-Pur" firstAttribute="height" secondItem="acR-Iu-eaN" secondAttribute="height" id="XmG-ab-cOV"/>
                         <constraint firstAttribute="trailing" secondItem="acR-Iu-eaN" secondAttribute="trailing" id="jde-Yv-LSa"/>
+                        <constraint firstItem="7sY-No-Pur" firstAttribute="centerY" secondItem="acR-Iu-eaN" secondAttribute="centerY" id="rfZ-dA-kKl"/>
                         <constraint firstItem="acR-Iu-eaN" firstAttribute="height" secondItem="Gog-gw-xU6" secondAttribute="height" multiplier="75:596" id="wim-C6-E1c"/>
+                        <constraint firstItem="7sY-No-Pur" firstAttribute="centerX" secondItem="acR-Iu-eaN" secondAttribute="centerX" id="xdY-vO-fCa"/>
                     </constraints>
                 </view>
             </subviews>

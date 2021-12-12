@@ -39,6 +39,13 @@ class IncomeTaxViewController: UIViewController {
          weakSelf.showBackController()
         }
 
+        self.bodyView.taxDetailsHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showTaxDetailsController()
+        }
         
     }
     
@@ -46,6 +53,12 @@ class IncomeTaxViewController: UIViewController {
     func showBackController(){
         
         let controller = HRViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
+    
+    func showTaxDetailsController(){
+        
+        let controller = TaxDetailsViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
 }
