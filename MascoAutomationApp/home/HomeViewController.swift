@@ -79,6 +79,14 @@ class HomeViewController: UIViewController {
          weakSelf.showHrController()
         }
         
+        self.homeBody.PMSHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showPMSController()
+        }
+        
         
 //        let arcCenter = CGPoint(x: self.homeBody.iconView.bounds.size.width / 2.2, y: self.homeBody.iconView.bounds.size.height)
 //        let circleRadius = self.homeBody.iconView.bounds.size.width / 2.2
@@ -202,10 +210,15 @@ class HomeViewController: UIViewController {
         self.menuBackgroundView.isHidden = false
     }
     
-    
     func showHrController(){
         
         let controller = HRViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
+    
+    func showPMSController(){
+        
+        let controller = PMSViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
     

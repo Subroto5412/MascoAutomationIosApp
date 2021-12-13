@@ -32,6 +32,10 @@
 		4DB0E0DD2766FB0800B188E6 /* LeaveApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB0E0DC2766FB0800B188E6 /* LeaveApplyViewController.swift */; };
 		4DB0E0DF2766FFD900B188E6 /* ApplyFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB0E0DE2766FFD900B188E6 /* ApplyFormView.swift */; };
 		4DB0E0E12766FFE700B188E6 /* ApplyFormView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB0E0E02766FFE700B188E6 /* ApplyFormView.xib */; };
+		4DB0E0E427674A8200B188E6 /* PMS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DB0E0E327674A8200B188E6 /* PMS.storyboard */; };
+		4DB0E0E627674ABC00B188E6 /* PMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB0E0E527674ABC00B188E6 /* PMSViewController.swift */; };
+		4DB0E0E827675AAE00B188E6 /* PMSBodyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB0E0E727675AAE00B188E6 /* PMSBodyView.xib */; };
+		4DB0E0EA27675AC500B188E6 /* PMSBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB0E0E927675AC500B188E6 /* PMSBodyView.swift */; };
 		4DBB3B64274B91C90009339B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB3B63274B91C90009339B /* HomeViewController.swift */; };
 		4DBDEAE72760A65A002AD6FF /* LeaveStatusCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDEAE62760A65A002AD6FF /* LeaveStatusCollectionViewCell.swift */; };
 		4DC2D49427548861000EDCD8 /* InternetConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC2D49327548861000EDCD8 /* InternetConnectionManager.swift */; };
@@ -101,6 +105,10 @@
 		4DB0E0DC2766FB0800B188E6 /* LeaveApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveApplyViewController.swift; sourceTree = "<group>"; };
 		4DB0E0DE2766FFD900B188E6 /* ApplyFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyFormView.swift; sourceTree = "<group>"; };
 		4DB0E0E02766FFE700B188E6 /* ApplyFormView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplyFormView.xib; sourceTree = "<group>"; };
+		4DB0E0E327674A8200B188E6 /* PMS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PMS.storyboard; sourceTree = "<group>"; };
+		4DB0E0E527674ABC00B188E6 /* PMSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMSViewController.swift; sourceTree = "<group>"; };
+		4DB0E0E727675AAE00B188E6 /* PMSBodyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PMSBodyView.xib; sourceTree = "<group>"; };
+		4DB0E0E927675AC500B188E6 /* PMSBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMSBodyView.swift; sourceTree = "<group>"; };
 		4DBB3B63274B91C90009339B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4DBDEAE62760A65A002AD6FF /* LeaveStatusCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveStatusCollectionViewCell.swift; sourceTree = "<group>"; };
 		4DC2D49327548861000EDCD8 /* InternetConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionManager.swift; sourceTree = "<group>"; };
@@ -238,6 +246,7 @@
 		4D7FB4C82744D45100B318DA /* MascoAutomationApp */ = {
 			isa = PBXGroup;
 			children = (
+				4DB0E0E2276749F900B188E6 /* PMS */,
 				4DC804382752015D0006A3E1 /* Util */,
 				4DE38549274F528F00707916 /* HR */,
 				4DA6512B274CA52C00488332 /* Extension */,
@@ -262,6 +271,17 @@
 				4DC8044927523DFA0006A3E1 /* NSObject+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		4DB0E0E2276749F900B188E6 /* PMS */ = {
+			isa = PBXGroup;
+			children = (
+				4DB0E0E327674A8200B188E6 /* PMS.storyboard */,
+				4DB0E0E527674ABC00B188E6 /* PMSViewController.swift */,
+				4DB0E0E727675AAE00B188E6 /* PMSBodyView.xib */,
+				4DB0E0E927675AC500B188E6 /* PMSBodyView.swift */,
+			);
+			path = PMS;
 			sourceTree = "<group>";
 		};
 		4DC8042F2751EFA30006A3E1 /* Attendance */ = {
@@ -411,6 +431,8 @@
 				4DD0DD71275CD5A7005EE588 /* DailyAttendanceBodyView.xib in Resources */,
 				4DD772BF274DF30D003261F6 /* HomeHeader.xib in Resources */,
 				4D7FB4D62744D45200B318DA /* LaunchScreen.storyboard in Resources */,
+				4DB0E0E427674A8200B188E6 /* PMS.storyboard in Resources */,
+				4DB0E0E827675AAE00B188E6 /* PMSBodyView.xib in Resources */,
 				4DC804332751F3800006A3E1 /* DailyAttendanceView.xib in Resources */,
 				4D116BFC276491070065C07D /* LeaveSummaryCollectionCell.xib in Resources */,
 				4D116BF2276453590065C07D /* LeaveDetailsView.storyboard in Resources */,
@@ -448,6 +470,7 @@
 				4DD772C7274E4AAC003261F6 /* SideMenuViewController.swift in Sources */,
 				4D466E47275DDE45005F0E3C /* TaxDetailsViewController.swift in Sources */,
 				4DD0DD6F275CB7C7005EE588 /* DailyAttendanceViewControllerDetails.swift in Sources */,
+				4DB0E0EA27675AC500B188E6 /* PMSBodyView.swift in Sources */,
 				4DE38555274F866C00707916 /* CommonFooter.swift in Sources */,
 				4DC8043A275201930006A3E1 /* CommonHeaderView.swift in Sources */,
 				4DA6512F274CC85E00488332 /* HomeScreenBody.swift in Sources */,
@@ -466,6 +489,7 @@
 				4DA6512D274CA55A00488332 /* XibView.swift in Sources */,
 				4DE3854B274F533200707916 /* HRViewController.swift in Sources */,
 				4DC804372752000D0006A3E1 /* DailyAttendanceViewController.swift in Sources */,
+				4DB0E0E627674ABC00B188E6 /* PMSViewController.swift in Sources */,
 				4DBB3B64274B91C90009339B /* HomeViewController.swift in Sources */,
 				4DD0DD73275CD880005EE588 /* DailyAttendanceBodyView.swift in Sources */,
 			);

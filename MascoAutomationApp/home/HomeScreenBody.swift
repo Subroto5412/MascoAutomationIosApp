@@ -41,16 +41,14 @@ class HomeScreenBody: XibView {
     
     
     var HRISHandler : ((Bool?) -> Void)?
+    var PMSHandler : ((Bool?) -> Void)?
     
     @IBAction func HRISBtn(_ sender: UIButton) {
         self.HRISHandler?(true)
     }
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    @IBAction func PMSBtn(_ sender: Any) {
+        self.PMSHandler?(true)
     }
-    */
-
+    
 }

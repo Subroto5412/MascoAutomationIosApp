@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="PMSViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="PMSViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" translatesAutoresizingMaskIntoConstraints="NO" id="MSY-c5-XVU">
+                                <rect key="frame" x="-10" y="0.0" width="434" height="862"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1BZ-8T-cYI">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rp3-RJ-yl4" customClass="InnerHeader" customModule="MascoAutomationApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qh3-zW-t1c" customClass="PMSBodyView" customModule="MascoAutomationApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="96" width="414" height="636.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z8R-VH-d8j" customClass="CommonFooter" customModule="MascoAutomationApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="732.5" width="414" height="85.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Rp3-RJ-yl4" firstAttribute="height" secondItem="1BZ-8T-cYI" secondAttribute="height" multiplier="90:766" id="0MQ-FL-x4M"/>
+                                    <constraint firstItem="Qh3-zW-t1c" firstAttribute="top" secondItem="Rp3-RJ-yl4" secondAttribute="bottom" id="5kx-9I-ImB"/>
+                                    <constraint firstAttribute="bottom" secondItem="z8R-VH-d8j" secondAttribute="bottom" id="6Ck-oQ-cH4"/>
+                                    <constraint firstItem="Rp3-RJ-yl4" firstAttribute="leading" secondItem="1BZ-8T-cYI" secondAttribute="leading" id="6na-gU-tb8"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rp3-RJ-yl4" secondAttribute="trailing" id="ARR-TS-1PM"/>
+                                    <constraint firstItem="Qh3-zW-t1c" firstAttribute="leading" secondItem="1BZ-8T-cYI" secondAttribute="leading" id="Aud-nS-AwG"/>
+                                    <constraint firstItem="z8R-VH-d8j" firstAttribute="top" secondItem="Qh3-zW-t1c" secondAttribute="bottom" id="Csk-c5-Ne9"/>
+                                    <constraint firstItem="z8R-VH-d8j" firstAttribute="leading" secondItem="1BZ-8T-cYI" secondAttribute="leading" id="Tjw-aV-VRC"/>
+                                    <constraint firstItem="Rp3-RJ-yl4" firstAttribute="top" secondItem="1BZ-8T-cYI" secondAttribute="top" id="a3W-pm-By7"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qh3-zW-t1c" secondAttribute="trailing" id="eap-1S-t8I"/>
+                                    <constraint firstAttribute="trailing" secondItem="z8R-VH-d8j" secondAttribute="trailing" id="mO6-ZH-HBT"/>
+                                    <constraint firstItem="Qh3-zW-t1c" firstAttribute="height" secondItem="1BZ-8T-cYI" secondAttribute="height" multiplier="596:766" id="taU-dH-3Zk"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" red="0.034799609330000002" green="0.1083526388" blue="0.3913464546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="1BZ-8T-cYI" secondAttribute="bottom" id="0w8-SE-b39"/>
+                            <constraint firstItem="1BZ-8T-cYI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="LYg-3u-Ukg"/>
+                            <constraint firstItem="1BZ-8T-cYI" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="bT7-xb-z8u"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="1BZ-8T-cYI" secondAttribute="trailing" id="bh5-fl-d0c"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="MSY-c5-XVU" secondAttribute="bottom" id="gRH-vJ-ob9"/>
+                            <constraint firstItem="MSY-c5-XVU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="-10" id="hnu-tu-cpI"/>
+                            <constraint firstItem="MSY-c5-XVU" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="jmR-Qd-7ob"/>
+                            <constraint firstAttribute="trailing" secondItem="MSY-c5-XVU" secondAttribute="trailing" constant="-10" id="nbV-G7-Dgn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bodyView" destination="Qh3-zW-t1c" id="tgb-wy-gmp"/>
+                        <outlet property="footerView" destination="z8R-VH-d8j" id="Im6-3T-jyi"/>
+                        <outlet property="headerView" destination="Rp3-RJ-yl4" id="a6p-Em-MVy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="66.666666666666671" y="85.714285714285708"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="home_bg" width="408" height="862"/>
+    </resources>
+</document>
