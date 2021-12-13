@@ -11,6 +11,7 @@ class DailyAttendanceViewControllerDetails: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var monthBgView: UIView!
+    @IBOutlet weak var headerView: CommonHeaderView!
     
     class func initWithStoryboard() -> DailyAttendanceViewControllerDetails
     {
@@ -30,6 +31,19 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         self.monthBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.monthBgView.layer.borderWidth = 0.5
         self.monthBgView.layer.cornerRadius = 15
+        
+        self.headerView.backBtnHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showBackController()
+        }
+    }
+
+    func showBackController(){
+        let controller = DailyAttendanceViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
     }
 
 }

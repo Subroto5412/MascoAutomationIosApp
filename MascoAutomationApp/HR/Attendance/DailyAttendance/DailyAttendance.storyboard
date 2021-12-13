@@ -359,6 +359,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="headerView" destination="Jtk-iL-CmP" id="gUE-RH-gtc"/>
                         <outlet property="monthBgView" destination="59k-xU-MLc" id="UDV-kc-Pye"/>
                         <outlet property="tableView" destination="56z-pb-SWb" id="Ldd-iB-Au0"/>
                     </connections>

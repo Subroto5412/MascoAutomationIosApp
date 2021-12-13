@@ -61,16 +61,27 @@ class LeaveViewController: UIViewController {
          weakSelf.showLeaveDetails()
         }
         
+        self.leaveBodyView.leaveApplyHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showLeaveApplyForm()
+        }
         
     }
-        func showBackController(){
-            let controller = HRViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-        }
+    func showBackController(){
+        let controller = HRViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
     
     func showLeaveDetails(){
-        
         let controller = LeaveDetailsViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
+    
+    func showLeaveApplyForm(){
+        let controller = LeaveApplyViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
 }
