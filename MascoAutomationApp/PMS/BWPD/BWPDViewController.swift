@@ -9,21 +9,32 @@ import UIKit
 
 class BWPDViewController: UIViewController {
 
+    @IBOutlet weak var headerView: CommonHeaderView!
+    
+    class func initWithStoryboard() -> BWPDViewController
+    {
+        let storyboard = UIStoryboard(name: "PMS", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: BWPDViewController.className) as! BWPDViewController
+        return controller
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.headerView.backBtnHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showBackController()
+        }
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func showBackController(){
+        let controller = PMSViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
     }
-    */
 
 }

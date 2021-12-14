@@ -32,6 +32,37 @@ class GPMSViewController: UIViewController {
          weakSelf.showBackController()
         }
         
+        self.bodyView.LWPHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showLWPController()
+        }
+        
+        self.bodyView.HPDsHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showHPDController()
+        }
+        
+        self.bodyView.BWPDHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showBWPDController()
+        }
+        
+        self.bodyView.HPDHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showHPDController()
+        }
         self.bodyView.lwpUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.lwpUnderBgView.layer.borderWidth = 0.5
         self.bodyView.lwpUnderBgView.layer.cornerRadius = 20
@@ -70,4 +101,23 @@ class GPMSViewController: UIViewController {
         self.present(controller, animated: true, completion: nil);
     }
 
+    func showHPDsController(){
+        let controller = HPDsViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
+    
+    func showBWPDController(){
+        let controller = BWPDViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
+    
+    func showHPDController(){
+        let controller = HPDViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
+    
+    func showLWPController(){
+        let controller = LWPViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
 }
