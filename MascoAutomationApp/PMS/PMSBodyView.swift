@@ -25,4 +25,11 @@ class PMSBodyView: XibView {
     @IBOutlet weak var nameEPMSBgView: UIView!
     @IBOutlet weak var iconEPMSBgView: UIView!
     
+    var GPMSHandler : ((Bool?) -> Void)?
+    
+    @IBAction func GPMSBtn(_ sender: UIButton) {
+        
+        self.GPMSHandler?(true)
+    }
+    
 }

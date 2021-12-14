@@ -79,12 +79,26 @@ class PMSViewController: UIViewController {
          weakSelf.showHomeController()
         }
         
+        
+        self.bodyView.GPMSHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showGPMSController()
+        }
     }
     
     
     func showHomeController(){
         
         let controller = HomeViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
+    
+    func showGPMSController(){
+        
+        let controller = GPMSViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
 }
