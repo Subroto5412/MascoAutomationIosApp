@@ -20,6 +20,10 @@
 		4D27A686276DB30E00F0E4BA /* HPDTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D27A685276DB30E00F0E4BA /* HPDTitleView.swift */; };
 		4D27A689276DB4CE00F0E4BA /* HPDViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D27A687276DB4CE00F0E4BA /* HPDViewControllerCell.swift */; };
 		4D27A68A276DB4CE00F0E4BA /* HPDViewControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D27A688276DB4CE00F0E4BA /* HPDViewControllerCell.xib */; };
+		4D27A68C276DD97900F0E4BA /* BWPDTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D27A68B276DD97900F0E4BA /* BWPDTitleView.xib */; };
+		4D27A68E276DD9D000F0E4BA /* BWPDTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D27A68D276DD9D000F0E4BA /* BWPDTitleView.swift */; };
+		4D27A691276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D27A68F276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.swift */; };
+		4D27A692276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D27A690276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.xib */; };
 		4D466E40275DD51C005F0E3C /* LeaveApply.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D466E3F275DD51C005F0E3C /* LeaveApply.storyboard */; };
 		4D466E44275DD57C005F0E3C /* Tax.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D466E43275DD57C005F0E3C /* Tax.storyboard */; };
 		4D466E47275DDE45005F0E3C /* TaxDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D466E46275DDE45005F0E3C /* TaxDetailsViewController.swift */; };
@@ -102,6 +106,10 @@
 		4D27A685276DB30E00F0E4BA /* HPDTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPDTitleView.swift; sourceTree = "<group>"; };
 		4D27A687276DB4CE00F0E4BA /* HPDViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPDViewControllerCell.swift; sourceTree = "<group>"; };
 		4D27A688276DB4CE00F0E4BA /* HPDViewControllerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HPDViewControllerCell.xib; sourceTree = "<group>"; };
+		4D27A68B276DD97900F0E4BA /* BWPDTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWPDTitleView.xib; sourceTree = "<group>"; };
+		4D27A68D276DD9D000F0E4BA /* BWPDTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWPDTitleView.swift; sourceTree = "<group>"; };
+		4D27A68F276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWPDTitleViewControllerCell.swift; sourceTree = "<group>"; };
+		4D27A690276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWPDTitleViewControllerCell.xib; sourceTree = "<group>"; };
 		4D466E3F275DD51C005F0E3C /* LeaveApply.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeaveApply.storyboard; sourceTree = "<group>"; };
 		4D466E43275DD57C005F0E3C /* Tax.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tax.storyboard; sourceTree = "<group>"; };
 		4D466E46275DDE45005F0E3C /* TaxDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxDetailsViewController.swift; sourceTree = "<group>"; };
@@ -341,6 +349,10 @@
 			isa = PBXGroup;
 			children = (
 				4DAA63402768661D0073DBB0 /* BWPDViewController.swift */,
+				4D27A68B276DD97900F0E4BA /* BWPDTitleView.xib */,
+				4D27A68D276DD9D000F0E4BA /* BWPDTitleView.swift */,
+				4D27A68F276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.swift */,
+				4D27A690276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.xib */,
 			);
 			path = BWPD;
 			sourceTree = "<group>";
@@ -526,12 +538,14 @@
 				4D116BFC276491070065C07D /* LeaveSummaryCollectionCell.xib in Resources */,
 				4DAA634B276877F20073DBB0 /* GPMSBodyView.xib in Resources */,
 				4D116BF2276453590065C07D /* LeaveDetailsView.storyboard in Resources */,
+				4D27A68C276DD97900F0E4BA /* BWPDTitleView.xib in Resources */,
 				4DE38551274F7B7800707916 /* InnerHeader.xib in Resources */,
 				4D7FB4D32744D45200B318DA /* Assets.xcassets in Resources */,
 				4DC8043C275201BB0006A3E1 /* CommonHeaderView.xib in Resources */,
 				4D116BF62764791A0065C07D /* LeaveDetailsControllerCell.xib in Resources */,
 				4D7FB4D12744D45100B318DA /* Main.storyboard in Resources */,
 				4D466E40275DD51C005F0E3C /* LeaveApply.storyboard in Resources */,
+				4D27A692276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.xib in Resources */,
 				4D466E44275DD57C005F0E3C /* Tax.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -563,8 +577,10 @@
 				4DB0E0EA27675AC500B188E6 /* PMSBodyView.swift in Sources */,
 				4DE38555274F866C00707916 /* CommonFooter.swift in Sources */,
 				4DC8043A275201930006A3E1 /* CommonHeaderView.swift in Sources */,
+				4D27A68E276DD9D000F0E4BA /* BWPDTitleView.swift in Sources */,
 				4DA6512F274CC85E00488332 /* HomeScreenBody.swift in Sources */,
 				4DD772BD274DF2EA003261F6 /* HomeHeader.swift in Sources */,
+				4D27A691276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.swift in Sources */,
 				4D27A686276DB30E00F0E4BA /* HPDTitleView.swift in Sources */,
 				4D116BFB276491070065C07D /* LeaveSummaryCollectionCell.swift in Sources */,
 				4DC8044227520DA70006A3E1 /* LeaveView.swift in Sources */,
