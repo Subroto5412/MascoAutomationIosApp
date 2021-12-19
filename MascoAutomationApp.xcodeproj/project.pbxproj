@@ -58,6 +58,10 @@
 		4DBB3B64274B91C90009339B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB3B63274B91C90009339B /* HomeViewController.swift */; };
 		4DBDEAE72760A65A002AD6FF /* LeaveStatusCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDEAE62760A65A002AD6FF /* LeaveStatusCollectionViewCell.swift */; };
 		4DC2D49427548861000EDCD8 /* InternetConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC2D49327548861000EDCD8 /* InternetConnectionManager.swift */; };
+		4DC3F4B9276EE2AF005F2958 /* HPDsTotalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC3F4B8276EE2AF005F2958 /* HPDsTotalView.xib */; };
+		4DC3F4BB276EE2D1005F2958 /* HPDsTotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC3F4BA276EE2D1005F2958 /* HPDsTotalView.swift */; };
+		4DC3F4BE276EF262005F2958 /* HPDsViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC3F4BC276EF262005F2958 /* HPDsViewControllerCell.swift */; };
+		4DC3F4BF276EF262005F2958 /* HPDsViewControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC3F4BD276EF262005F2958 /* HPDsViewControllerCell.xib */; };
 		4DC4DF152748B48F00EF43ED /* OTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4DF142748B48F00EF43ED /* OTPViewController.swift */; };
 		4DC4DF172748FD7200EF43ED /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4DF162748FD7200EF43ED /* SignupViewController.swift */; };
 		4DC804332751F3800006A3E1 /* DailyAttendanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC804322751F3800006A3E1 /* DailyAttendanceView.xib */; };
@@ -150,6 +154,10 @@
 		4DBB3B63274B91C90009339B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4DBDEAE62760A65A002AD6FF /* LeaveStatusCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveStatusCollectionViewCell.swift; sourceTree = "<group>"; };
 		4DC2D49327548861000EDCD8 /* InternetConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionManager.swift; sourceTree = "<group>"; };
+		4DC3F4B8276EE2AF005F2958 /* HPDsTotalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HPDsTotalView.xib; sourceTree = "<group>"; };
+		4DC3F4BA276EE2D1005F2958 /* HPDsTotalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPDsTotalView.swift; sourceTree = "<group>"; };
+		4DC3F4BC276EF262005F2958 /* HPDsViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPDsViewControllerCell.swift; sourceTree = "<group>"; };
+		4DC3F4BD276EF262005F2958 /* HPDsViewControllerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HPDsViewControllerCell.xib; sourceTree = "<group>"; };
 		4DC4DF142748B48F00EF43ED /* OTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewController.swift; sourceTree = "<group>"; };
 		4DC4DF162748FD7200EF43ED /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		4DC804322751F3800006A3E1 /* DailyAttendanceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyAttendanceView.xib; sourceTree = "<group>"; };
@@ -361,6 +369,10 @@
 			isa = PBXGroup;
 			children = (
 				4DAA633E2768660B0073DBB0 /* HPDsViewController.swift */,
+				4DC3F4B8276EE2AF005F2958 /* HPDsTotalView.xib */,
+				4DC3F4BA276EE2D1005F2958 /* HPDsTotalView.swift */,
+				4DC3F4BC276EF262005F2958 /* HPDsViewControllerCell.swift */,
+				4DC3F4BD276EF262005F2958 /* HPDsViewControllerCell.xib */,
 			);
 			path = HPDs;
 			sourceTree = "<group>";
@@ -519,6 +531,7 @@
 				4DA65128274CA30F00488332 /* HomeScreenBody.xib in Resources */,
 				4DD772C3274DF8FD003261F6 /* HeaderFooter.xib in Resources */,
 				4D7665BC275F5A5900358097 /* DailyAttendanceTableViewCell.xib in Resources */,
+				4DC3F4B9276EE2AF005F2958 /* HPDsTotalView.xib in Resources */,
 				4D99D96E2765C8B3004E6259 /* TaxDetailsViewControllerCell.xib in Resources */,
 				4DB0E0E12766FFE700B188E6 /* ApplyFormView.xib in Resources */,
 				4DD0DD6D275CB7A4005EE588 /* DailyAttendance.storyboard in Resources */,
@@ -533,6 +546,7 @@
 				4D7FB4D62744D45200B318DA /* LaunchScreen.storyboard in Resources */,
 				4DB0E0E427674A8200B188E6 /* PMS.storyboard in Resources */,
 				4D27A68A276DB4CE00F0E4BA /* HPDViewControllerCell.xib in Resources */,
+				4DC3F4BF276EF262005F2958 /* HPDsViewControllerCell.xib in Resources */,
 				4DB0E0E827675AAE00B188E6 /* PMSBodyView.xib in Resources */,
 				4DC804332751F3800006A3E1 /* DailyAttendanceView.xib in Resources */,
 				4D116BFC276491070065C07D /* LeaveSummaryCollectionCell.xib in Resources */,
@@ -561,6 +575,7 @@
 				4DE3854D274F537300707916 /* HrBodyView.swift in Sources */,
 				4D7FB4CE2744D45100B318DA /* ViewController.swift in Sources */,
 				4DB0E0DD2766FB0800B188E6 /* LeaveApplyViewController.swift in Sources */,
+				4DC3F4BE276EF262005F2958 /* HPDsViewControllerCell.swift in Sources */,
 				4DC8044A27523DFA0006A3E1 /* NSObject+Extension.swift in Sources */,
 				4DC4DF172748FD7200EF43ED /* SignupViewController.swift in Sources */,
 				4DD0DD5E275C6DE5005EE588 /* Utils.swift in Sources */,
@@ -581,6 +596,7 @@
 				4DA6512F274CC85E00488332 /* HomeScreenBody.swift in Sources */,
 				4DD772BD274DF2EA003261F6 /* HomeHeader.swift in Sources */,
 				4D27A691276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.swift in Sources */,
+				4DC3F4BB276EE2D1005F2958 /* HPDsTotalView.swift in Sources */,
 				4D27A686276DB30E00F0E4BA /* HPDTitleView.swift in Sources */,
 				4D116BFB276491070065C07D /* LeaveSummaryCollectionCell.swift in Sources */,
 				4DC8044227520DA70006A3E1 /* LeaveView.swift in Sources */,

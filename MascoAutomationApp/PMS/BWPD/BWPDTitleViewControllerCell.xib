@@ -264,6 +264,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" red="0.034799609330000002" green="0.1083526388" blue="0.3913464546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
                 <outlet property="balanceLbl" destination="5o4-6I-gC2" id="G2F-2g-IcN"/>
                 <outlet property="buyerLbl" destination="fbA-sK-fcM" id="1PH-Qu-xgt"/>

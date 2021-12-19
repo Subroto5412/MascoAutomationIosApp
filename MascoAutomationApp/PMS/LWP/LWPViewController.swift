@@ -41,21 +41,21 @@ class LWPViewController: UIViewController {
         
         self.titleView.SLView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.titleView.SLView.layer.borderWidth = 0.5
-        self.titleView.SLView.layer.cornerRadius = 15
+        self.titleView.SLView.layer.cornerRadius = 10
         
         
         self.titleView.SLView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.titleView.SLView.layer.borderWidth = 0.5
-        self.titleView.SLView.layer.cornerRadius = 15
+        self.titleView.SLView.layer.cornerRadius = 10
         
         self.titleView.LineNoView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.titleView.LineNoView.layer.borderWidth = 0.5
-        self.titleView.LineNoView.layer.cornerRadius = 15
+        self.titleView.LineNoView.layer.cornerRadius = 10
         
         
         self.titleView.OutputLbl.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.titleView.OutputLbl.layer.borderWidth = 0.5
-        self.titleView.OutputLbl.layer.cornerRadius = 15
+        self.titleView.OutputLbl.layer.cornerRadius = 10
 
         self.headerView.backBtnHandler = {
             [weak self] (isShow) in
@@ -67,7 +67,7 @@ class LWPViewController: UIViewController {
     }
     
     func showBackController(){
-        let controller = PMSViewController.initWithStoryboard()
+        let controller = GPMSViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
 }

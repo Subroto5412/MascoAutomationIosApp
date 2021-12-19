@@ -41,31 +41,31 @@ class BWPDViewController: UIViewController {
         
         self.titleBgView.slBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.titleBgView.slBgView.layer.borderWidth = 0.5
-        self.titleBgView.slBgView.layer.cornerRadius = 15
+        self.titleBgView.slBgView.layer.cornerRadius = 10
         
         self.titleBgView.buyerBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.titleBgView.buyerBgView.layer.borderWidth = 0.5
-        self.titleBgView.buyerBgView.layer.cornerRadius = 15
+        self.titleBgView.buyerBgView.layer.cornerRadius = 10
         
         self.titleBgView.styleBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.titleBgView.styleBgView.layer.borderWidth = 0.5
-        self.titleBgView.styleBgView.layer.cornerRadius = 15
+        self.titleBgView.styleBgView.layer.cornerRadius = 10
         
         self.titleBgView.orderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.titleBgView.orderBgView.layer.borderWidth = 0.5
-        self.titleBgView.orderBgView.layer.cornerRadius = 15
+        self.titleBgView.orderBgView.layer.cornerRadius = 10
         
         self.titleBgView.orderQtsBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.titleBgView.orderQtsBgView.layer.borderWidth = 0.5
-        self.titleBgView.orderQtsBgView.layer.cornerRadius = 15
+        self.titleBgView.orderQtsBgView.layer.cornerRadius = 10
         
         self.titleBgView.sewQtsBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.titleBgView.sewQtsBgView.layer.borderWidth = 0.5
-        self.titleBgView.sewQtsBgView.layer.cornerRadius = 15
+        self.titleBgView.sewQtsBgView.layer.cornerRadius = 10
         
         self.titleBgView.balanceBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.titleBgView.balanceBgView.layer.borderWidth = 0.5
-        self.titleBgView.balanceBgView.layer.cornerRadius = 15
+        self.titleBgView.balanceBgView.layer.cornerRadius = 10
         
         self.headerView.backBtnHandler = {
             [weak self] (isShow) in
@@ -78,7 +78,7 @@ class BWPDViewController: UIViewController {
     
 
     func showBackController(){
-        let controller = PMSViewController.initWithStoryboard()
+        let controller = GPMSViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
 

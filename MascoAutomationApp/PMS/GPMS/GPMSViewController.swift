@@ -45,7 +45,7 @@ class GPMSViewController: UIViewController {
             guard let weakSelf = self else {
             return
          }
-         weakSelf.showHPDController()
+         weakSelf.showHPDsController()
         }
         
         self.bodyView.BWPDHandler = {

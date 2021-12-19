@@ -45,16 +45,16 @@ class HPDViewController: UIViewController {
         
         self.titleBgView.slBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.titleBgView.slBgView.layer.borderWidth = 0.5
-        self.titleBgView.slBgView.layer.cornerRadius = 15
+        self.titleBgView.slBgView.layer.cornerRadius = 10
         
         self.titleBgView.hourBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.titleBgView.hourBgView.layer.borderWidth = 0.5
-        self.titleBgView.hourBgView.layer.cornerRadius = 15
+        self.titleBgView.hourBgView.layer.cornerRadius = 10
         
         
         self.titleBgView.outputBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.titleBgView.outputBgView.layer.borderWidth = 0.5
-        self.titleBgView.outputBgView.layer.cornerRadius = 15
+        self.titleBgView.outputBgView.layer.cornerRadius = 10
 
         self.headerView.backBtnHandler = {
             [weak self] (isShow) in
@@ -67,7 +67,7 @@ class HPDViewController: UIViewController {
     
 
     func showBackController(){
-        let controller = PMSViewController.initWithStoryboard()
+        let controller = GPMSViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
 }
