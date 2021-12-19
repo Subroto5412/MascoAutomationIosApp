@@ -42,6 +42,8 @@ class HomeScreenBody: XibView {
     
     var HRISHandler : ((Bool?) -> Void)?
     var PMSHandler : ((Bool?) -> Void)?
+    var SEMHandler : ((Bool?) -> Void)?
+    var ATMHandler : ((Bool?) -> Void)?
     
     @IBAction func HRISBtn(_ sender: UIButton) {
         self.HRISHandler?(true)
@@ -51,4 +53,11 @@ class HomeScreenBody: XibView {
         self.PMSHandler?(true)
     }
     
+    @IBAction func SEMBtn(_ sender: Any) {
+        self.SEMHandler?(true)
+    }
+    
+    @IBAction func ATMBtn(_ sender: Any) {
+        self.ATMHandler?(true)
+    }
 }

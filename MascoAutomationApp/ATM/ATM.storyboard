@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="ATMViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="ATMViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" translatesAutoresizingMaskIntoConstraints="NO" id="f0A-mm-GRC">
+                                <rect key="frame" x="-10" y="0.0" width="434" height="862"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RXz-mG-43f">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lEz-y7-0si" customClass="InnerHeader" customModule="MascoAutomationApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i38-Sc-YFt" customClass="ATMBodyView" customModule="MascoAutomationApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="96" width="414" height="636.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5F7-7p-0eO" customClass="CommonFooter" customModule="MascoAutomationApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="732.5" width="414" height="85.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="5F7-7p-0eO" firstAttribute="top" secondItem="i38-Sc-YFt" secondAttribute="bottom" id="3qE-Nc-cTw"/>
+                                    <constraint firstAttribute="bottom" secondItem="5F7-7p-0eO" secondAttribute="bottom" id="92O-A6-4wK"/>
+                                    <constraint firstItem="i38-Sc-YFt" firstAttribute="leading" secondItem="RXz-mG-43f" secondAttribute="leading" id="CBe-gp-TgB"/>
+                                    <constraint firstAttribute="trailing" secondItem="5F7-7p-0eO" secondAttribute="trailing" id="GcU-OB-ULk"/>
+                                    <constraint firstItem="lEz-y7-0si" firstAttribute="top" secondItem="RXz-mG-43f" secondAttribute="top" id="Kig-ak-Y5Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="lEz-y7-0si" secondAttribute="trailing" id="NcZ-qf-USw"/>
+                                    <constraint firstItem="lEz-y7-0si" firstAttribute="height" secondItem="RXz-mG-43f" secondAttribute="height" multiplier="90:766" id="SDZ-1G-tTA"/>
+                                    <constraint firstItem="lEz-y7-0si" firstAttribute="leading" secondItem="RXz-mG-43f" secondAttribute="leading" id="VD9-hi-oiU"/>
+                                    <constraint firstItem="5F7-7p-0eO" firstAttribute="leading" secondItem="RXz-mG-43f" secondAttribute="leading" id="Z2F-mm-bPB"/>
+                                    <constraint firstAttribute="trailing" secondItem="i38-Sc-YFt" secondAttribute="trailing" id="cfQ-d7-EsP"/>
+                                    <constraint firstItem="i38-Sc-YFt" firstAttribute="top" secondItem="lEz-y7-0si" secondAttribute="bottom" id="lao-Fd-LNg"/>
+                                    <constraint firstItem="i38-Sc-YFt" firstAttribute="height" secondItem="RXz-mG-43f" secondAttribute="height" multiplier="596:766" id="zVg-9x-ldV"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" red="0.034799609330000002" green="0.1083526388" blue="0.3913464546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="f0A-mm-GRC" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="044-oW-nnd"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="RXz-mG-43f" secondAttribute="trailing" id="1y2-u5-06s"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="f0A-mm-GRC" secondAttribute="bottom" id="8y7-fK-UME"/>
+                            <constraint firstItem="RXz-mG-43f" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Gel-gQ-fgU"/>
+                            <constraint firstItem="RXz-mG-43f" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Mny-zI-wrq"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="RXz-mG-43f" secondAttribute="bottom" id="Pdk-Ny-utK"/>
+                            <constraint firstItem="f0A-mm-GRC" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="-10" id="S8U-IG-bDG"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="f0A-mm-GRC" secondAttribute="trailing" constant="-10" id="o5U-sw-cOY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bodyView" destination="i38-Sc-YFt" id="Fb3-Lb-8ad"/>
+                        <outlet property="headerView" destination="lEz-y7-0si" id="401-LB-imp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="118.84057971014494" y="57.589285714285708"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="home_bg" width="408" height="862"/>
+    </resources>
+</document>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="montserrat_medium.otf">
+            <string>Montserrat-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SEMBodyView" customModule="MascoAutomationApp" customModuleProvider="target">
+            <connections>
+                <outlet property="communicationPortalBgView" destination="IHT-BV-FTb" id="fRy-OG-c4T"/>
+                <outlet property="communicationPortalUnderBgView" destination="hrk-cp-eNU" id="Rjz-mz-7GL"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="596"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWn-jH-5Me">
+                    <rect key="frame" x="0.0" y="0.0" width="390" height="596"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbk-zW-fjl">
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="75"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hrk-cp-eNU">
+                                    <rect key="frame" x="38" y="10" width="314" height="65"/>
+                                    <color key="backgroundColor" red="0.53029435869999997" green="0.52264606950000003" blue="0.53412872550000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IHT-BV-FTb">
+                                    <rect key="frame" x="28" y="0.0" width="334" height="68"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Income Tax Deduction History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQV-kM-e5i">
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="68"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="18"/>
+                                            <color key="textColor" red="0.2099210322" green="0.20995694400000001" blue="0.20991316439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.99993270639999998" green="0.91818934679999997" blue="0.65473610159999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="QQV-kM-e5i" firstAttribute="width" secondItem="IHT-BV-FTb" secondAttribute="width" id="0Fo-wl-oS9"/>
+                                        <constraint firstItem="QQV-kM-e5i" firstAttribute="height" secondItem="IHT-BV-FTb" secondAttribute="height" id="8On-Vu-irj"/>
+                                        <constraint firstItem="QQV-kM-e5i" firstAttribute="centerY" secondItem="IHT-BV-FTb" secondAttribute="centerY" id="Szn-gf-HxL"/>
+                                        <constraint firstItem="QQV-kM-e5i" firstAttribute="centerX" secondItem="IHT-BV-FTb" secondAttribute="centerX" id="zoX-3c-mkj"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="IHT-BV-FTb" firstAttribute="leading" secondItem="wbk-zW-fjl" secondAttribute="leading" constant="28" id="40k-en-iS9"/>
+                                <constraint firstAttribute="trailing" secondItem="IHT-BV-FTb" secondAttribute="trailing" constant="28" id="6uy-tt-DGO"/>
+                                <constraint firstAttribute="bottom" secondItem="hrk-cp-eNU" secondAttribute="bottom" id="XDY-xW-uWs"/>
+                                <constraint firstAttribute="trailing" secondItem="hrk-cp-eNU" secondAttribute="trailing" constant="38" id="k9l-4b-qKw"/>
+                                <constraint firstItem="hrk-cp-eNU" firstAttribute="leading" secondItem="wbk-zW-fjl" secondAttribute="leading" constant="38" id="nvF-RH-v9v"/>
+                                <constraint firstItem="hrk-cp-eNU" firstAttribute="top" secondItem="wbk-zW-fjl" secondAttribute="top" constant="10" id="qgD-hP-ShS"/>
+                                <constraint firstItem="IHT-BV-FTb" firstAttribute="top" secondItem="wbk-zW-fjl" secondAttribute="top" id="rlh-4A-Tyu"/>
+                                <constraint firstAttribute="bottom" secondItem="IHT-BV-FTb" secondAttribute="bottom" constant="7" id="rwe-TV-QEV"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="wbk-zW-fjl" firstAttribute="leading" secondItem="bWn-jH-5Me" secondAttribute="leading" id="ZaK-5G-4R6"/>
+                        <constraint firstAttribute="trailing" secondItem="wbk-zW-fjl" secondAttribute="trailing" id="fiY-Iz-cI7"/>
+                        <constraint firstItem="wbk-zW-fjl" firstAttribute="height" secondItem="bWn-jH-5Me" secondAttribute="height" multiplier="75:596" id="mHq-Tb-upN"/>
+                        <constraint firstItem="wbk-zW-fjl" firstAttribute="top" secondItem="bWn-jH-5Me" secondAttribute="top" id="ufT-B4-PBI"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="bWn-jH-5Me" secondAttribute="bottom" id="iYD-79-N0O"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bWn-jH-5Me" secondAttribute="trailing" id="ngg-tU-XGU"/>
+                <constraint firstItem="bWn-jH-5Me" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="oVr-eq-if4"/>
+                <constraint firstItem="bWn-jH-5Me" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="zhQ-k1-Uuq"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="132" y="74"/>
+        </view>
+    </objects>
+</document>

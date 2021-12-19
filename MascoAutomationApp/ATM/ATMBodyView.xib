@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="montserrat_medium.otf">
+            <string>Montserrat-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ATMBodyView" customModule="MascoAutomationApp" customModuleProvider="target">
+            <connections>
+                <outlet property="assetBasicBgView" destination="Y4R-5S-38p" id="jZW-Iq-sMx"/>
+                <outlet property="assetBasicUnderBgView" destination="teP-5F-51E" id="htB-eL-el7"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="596"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hBa-nU-W4O">
+                    <rect key="frame" x="0.0" y="0.0" width="390" height="596"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZCn-p4-GgZ">
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="75"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="teP-5F-51E">
+                                    <rect key="frame" x="38" y="10" width="314" height="65"/>
+                                    <color key="backgroundColor" red="0.2550851703" green="0.42798966170000002" blue="0.70602983239999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y4R-5S-38p">
+                                    <rect key="frame" x="28" y="0.0" width="334" height="68"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Asset Basic Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6T-GY-Wnb">
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="68"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="18"/>
+                                            <color key="textColor" red="0.2099210322" green="0.20995694400000001" blue="0.20991316439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.4558233619" green="0.72430455680000005" blue="0.99987620119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="T6T-GY-Wnb" firstAttribute="width" secondItem="Y4R-5S-38p" secondAttribute="width" id="0lY-Sr-gK1"/>
+                                        <constraint firstItem="T6T-GY-Wnb" firstAttribute="height" secondItem="Y4R-5S-38p" secondAttribute="height" id="PJe-D3-qZH"/>
+                                        <constraint firstItem="T6T-GY-Wnb" firstAttribute="centerY" secondItem="Y4R-5S-38p" secondAttribute="centerY" id="VN4-T3-qZb"/>
+                                        <constraint firstItem="T6T-GY-Wnb" firstAttribute="centerX" secondItem="Y4R-5S-38p" secondAttribute="centerX" id="m4O-gF-BNc"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="teP-5F-51E" firstAttribute="top" secondItem="ZCn-p4-GgZ" secondAttribute="top" constant="10" id="1lt-1e-xkb"/>
+                                <constraint firstAttribute="bottom" secondItem="Y4R-5S-38p" secondAttribute="bottom" constant="7" id="B0v-ic-mff"/>
+                                <constraint firstAttribute="bottom" secondItem="teP-5F-51E" secondAttribute="bottom" id="BYw-1W-IgS"/>
+                                <constraint firstItem="teP-5F-51E" firstAttribute="leading" secondItem="ZCn-p4-GgZ" secondAttribute="leading" constant="38" id="Wt5-ZI-894"/>
+                                <constraint firstAttribute="trailing" secondItem="teP-5F-51E" secondAttribute="trailing" constant="38" id="atf-MY-UhO"/>
+                                <constraint firstItem="Y4R-5S-38p" firstAttribute="top" secondItem="ZCn-p4-GgZ" secondAttribute="top" id="jEb-u3-ydN"/>
+                                <constraint firstAttribute="trailing" secondItem="Y4R-5S-38p" secondAttribute="trailing" constant="28" id="qof-I1-gai"/>
+                                <constraint firstItem="Y4R-5S-38p" firstAttribute="leading" secondItem="ZCn-p4-GgZ" secondAttribute="leading" constant="28" id="wZY-ng-eYi"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="ZCn-p4-GgZ" firstAttribute="height" secondItem="hBa-nU-W4O" secondAttribute="height" multiplier="75:596" id="RtL-Pp-4W6"/>
+                        <constraint firstItem="ZCn-p4-GgZ" firstAttribute="leading" secondItem="hBa-nU-W4O" secondAttribute="leading" id="WJz-25-5Nz"/>
+                        <constraint firstAttribute="trailing" secondItem="ZCn-p4-GgZ" secondAttribute="trailing" id="ZKU-Y6-Y30"/>
+                        <constraint firstItem="ZCn-p4-GgZ" firstAttribute="top" secondItem="hBa-nU-W4O" secondAttribute="top" id="u4T-uH-QRz"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hBa-nU-W4O" secondAttribute="trailing" id="ibv-NC-wvC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="hBa-nU-W4O" secondAttribute="bottom" id="q1G-74-UW3"/>
+                <constraint firstItem="hBa-nU-W4O" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="reb-aD-c9a"/>
+                <constraint firstItem="hBa-nU-W4O" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="sfg-vU-jGx"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="132" y="74"/>
+        </view>
+    </objects>
+</document>

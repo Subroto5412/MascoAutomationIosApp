@@ -87,6 +87,22 @@ class HomeViewController: UIViewController {
          weakSelf.showPMSController()
         }
         
+        self.homeBody.SEMHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showSEMController()
+        }
+        
+        self.homeBody.ATMHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showATMController()
+        }
+        
         
 //        let arcCenter = CGPoint(x: self.homeBody.iconView.bounds.size.width / 2.2, y: self.homeBody.iconView.bounds.size.height)
 //        let circleRadius = self.homeBody.iconView.bounds.size.width / 2.2
@@ -219,6 +235,18 @@ class HomeViewController: UIViewController {
     func showPMSController(){
         
         let controller = PMSViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
+    
+    func showSEMController(){
+        
+        let controller = SEMViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
+    
+    func showATMController(){
+        
+        let controller = ATMViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
     

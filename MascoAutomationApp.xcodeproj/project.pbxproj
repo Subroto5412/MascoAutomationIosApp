@@ -62,6 +62,14 @@
 		4DC3F4BB276EE2D1005F2958 /* HPDsTotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC3F4BA276EE2D1005F2958 /* HPDsTotalView.swift */; };
 		4DC3F4BE276EF262005F2958 /* HPDsViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC3F4BC276EF262005F2958 /* HPDsViewControllerCell.swift */; };
 		4DC3F4BF276EF262005F2958 /* HPDsViewControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC3F4BD276EF262005F2958 /* HPDsViewControllerCell.xib */; };
+		4DC3F4C3276F1886005F2958 /* ATMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC3F4C2276F1886005F2958 /* ATMViewController.swift */; };
+		4DC3F4C5276F1898005F2958 /* SEMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC3F4C4276F1898005F2958 /* SEMViewController.swift */; };
+		4DC3F4C7276F18D4005F2958 /* SEM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC3F4C6276F18D4005F2958 /* SEM.storyboard */; };
+		4DC3F4C9276F2077005F2958 /* ATM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC3F4C8276F2077005F2958 /* ATM.storyboard */; };
+		4DC3F4CB276F2C6D005F2958 /* ATMBodyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC3F4CA276F2C6D005F2958 /* ATMBodyView.xib */; };
+		4DC3F4CD276F2C83005F2958 /* ATMBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC3F4CC276F2C83005F2958 /* ATMBodyView.swift */; };
+		4DC3F4CF276F2C9D005F2958 /* SEMBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC3F4CE276F2C9D005F2958 /* SEMBodyView.swift */; };
+		4DC3F4D1276F2CAC005F2958 /* SEMBodyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC3F4D0276F2CAC005F2958 /* SEMBodyView.xib */; };
 		4DC4DF152748B48F00EF43ED /* OTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4DF142748B48F00EF43ED /* OTPViewController.swift */; };
 		4DC4DF172748FD7200EF43ED /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4DF162748FD7200EF43ED /* SignupViewController.swift */; };
 		4DC804332751F3800006A3E1 /* DailyAttendanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC804322751F3800006A3E1 /* DailyAttendanceView.xib */; };
@@ -158,6 +166,14 @@
 		4DC3F4BA276EE2D1005F2958 /* HPDsTotalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPDsTotalView.swift; sourceTree = "<group>"; };
 		4DC3F4BC276EF262005F2958 /* HPDsViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPDsViewControllerCell.swift; sourceTree = "<group>"; };
 		4DC3F4BD276EF262005F2958 /* HPDsViewControllerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HPDsViewControllerCell.xib; sourceTree = "<group>"; };
+		4DC3F4C2276F1886005F2958 /* ATMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATMViewController.swift; sourceTree = "<group>"; };
+		4DC3F4C4276F1898005F2958 /* SEMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEMViewController.swift; sourceTree = "<group>"; };
+		4DC3F4C6276F18D4005F2958 /* SEM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SEM.storyboard; sourceTree = "<group>"; };
+		4DC3F4C8276F2077005F2958 /* ATM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ATM.storyboard; sourceTree = "<group>"; };
+		4DC3F4CA276F2C6D005F2958 /* ATMBodyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ATMBodyView.xib; sourceTree = "<group>"; };
+		4DC3F4CC276F2C83005F2958 /* ATMBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATMBodyView.swift; sourceTree = "<group>"; };
+		4DC3F4CE276F2C9D005F2958 /* SEMBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEMBodyView.swift; sourceTree = "<group>"; };
+		4DC3F4D0276F2CAC005F2958 /* SEMBodyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SEMBodyView.xib; sourceTree = "<group>"; };
 		4DC4DF142748B48F00EF43ED /* OTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewController.swift; sourceTree = "<group>"; };
 		4DC4DF162748FD7200EF43ED /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		4DC804322751F3800006A3E1 /* DailyAttendanceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyAttendanceView.xib; sourceTree = "<group>"; };
@@ -292,6 +308,8 @@
 		4D7FB4C82744D45100B318DA /* MascoAutomationApp */ = {
 			isa = PBXGroup;
 			children = (
+				4DC3F4C1276F181E005F2958 /* ATM */,
+				4DC3F4C0276F17ED005F2958 /* SEM */,
 				4DB0E0E2276749F900B188E6 /* PMS */,
 				4DC804382752015D0006A3E1 /* Util */,
 				4DE38549274F528F00707916 /* HR */,
@@ -391,6 +409,28 @@
 				4DB0E0E927675AC500B188E6 /* PMSBodyView.swift */,
 			);
 			path = PMS;
+			sourceTree = "<group>";
+		};
+		4DC3F4C0276F17ED005F2958 /* SEM */ = {
+			isa = PBXGroup;
+			children = (
+				4DC3F4C4276F1898005F2958 /* SEMViewController.swift */,
+				4DC3F4C6276F18D4005F2958 /* SEM.storyboard */,
+				4DC3F4CE276F2C9D005F2958 /* SEMBodyView.swift */,
+				4DC3F4D0276F2CAC005F2958 /* SEMBodyView.xib */,
+			);
+			path = SEM;
+			sourceTree = "<group>";
+		};
+		4DC3F4C1276F181E005F2958 /* ATM */ = {
+			isa = PBXGroup;
+			children = (
+				4DC3F4C2276F1886005F2958 /* ATMViewController.swift */,
+				4DC3F4C8276F2077005F2958 /* ATM.storyboard */,
+				4DC3F4CA276F2C6D005F2958 /* ATMBodyView.xib */,
+				4DC3F4CC276F2C83005F2958 /* ATMBodyView.swift */,
+			);
+			path = ATM;
 			sourceTree = "<group>";
 		};
 		4DC8042F2751EFA30006A3E1 /* Attendance */ = {
@@ -528,6 +568,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DC80448275226760006A3E1 /* IncomeTaxView.xib in Resources */,
+				4DC3F4CB276F2C6D005F2958 /* ATMBodyView.xib in Resources */,
 				4DA65128274CA30F00488332 /* HomeScreenBody.xib in Resources */,
 				4DD772C3274DF8FD003261F6 /* HeaderFooter.xib in Resources */,
 				4D7665BC275F5A5900358097 /* DailyAttendanceTableViewCell.xib in Resources */,
@@ -542,9 +583,11 @@
 				4DE3854F274F538700707916 /* HrBodyView.xib in Resources */,
 				4D27A67C276D8F7400F0E4BA /* LWPTitleView.xib in Resources */,
 				4DD0DD71275CD5A7005EE588 /* DailyAttendanceBodyView.xib in Resources */,
+				4DC3F4C9276F2077005F2958 /* ATM.storyboard in Resources */,
 				4DD772BF274DF30D003261F6 /* HomeHeader.xib in Resources */,
 				4D7FB4D62744D45200B318DA /* LaunchScreen.storyboard in Resources */,
 				4DB0E0E427674A8200B188E6 /* PMS.storyboard in Resources */,
+				4DC3F4C7276F18D4005F2958 /* SEM.storyboard in Resources */,
 				4D27A68A276DB4CE00F0E4BA /* HPDViewControllerCell.xib in Resources */,
 				4DC3F4BF276EF262005F2958 /* HPDsViewControllerCell.xib in Resources */,
 				4DB0E0E827675AAE00B188E6 /* PMSBodyView.xib in Resources */,
@@ -560,6 +603,7 @@
 				4D7FB4D12744D45100B318DA /* Main.storyboard in Resources */,
 				4D466E40275DD51C005F0E3C /* LeaveApply.storyboard in Resources */,
 				4D27A692276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.xib in Resources */,
+				4DC3F4D1276F2CAC005F2958 /* SEMBodyView.xib in Resources */,
 				4D466E44275DD57C005F0E3C /* Tax.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -577,9 +621,11 @@
 				4DB0E0DD2766FB0800B188E6 /* LeaveApplyViewController.swift in Sources */,
 				4DC3F4BE276EF262005F2958 /* HPDsViewControllerCell.swift in Sources */,
 				4DC8044A27523DFA0006A3E1 /* NSObject+Extension.swift in Sources */,
+				4DC3F4CF276F2C9D005F2958 /* SEMBodyView.swift in Sources */,
 				4DC4DF172748FD7200EF43ED /* SignupViewController.swift in Sources */,
 				4DD0DD5E275C6DE5005EE588 /* Utils.swift in Sources */,
 				4DB0E0DF2766FFD900B188E6 /* ApplyFormView.swift in Sources */,
+				4DC3F4C5276F1898005F2958 /* SEMViewController.swift in Sources */,
 				4DBDEAE72760A65A002AD6FF /* LeaveStatusCollectionViewCell.swift in Sources */,
 				4D7FB4CA2744D45100B318DA /* AppDelegate.swift in Sources */,
 				4DC2D49427548861000EDCD8 /* InternetConnectionManager.swift in Sources */,
@@ -596,10 +642,12 @@
 				4DA6512F274CC85E00488332 /* HomeScreenBody.swift in Sources */,
 				4DD772BD274DF2EA003261F6 /* HomeHeader.swift in Sources */,
 				4D27A691276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.swift in Sources */,
+				4DC3F4C3276F1886005F2958 /* ATMViewController.swift in Sources */,
 				4DC3F4BB276EE2D1005F2958 /* HPDsTotalView.swift in Sources */,
 				4D27A686276DB30E00F0E4BA /* HPDTitleView.swift in Sources */,
 				4D116BFB276491070065C07D /* LeaveSummaryCollectionCell.swift in Sources */,
 				4DC8044227520DA70006A3E1 /* LeaveView.swift in Sources */,
+				4DC3F4CD276F2C83005F2958 /* ATMBodyView.swift in Sources */,
 				4D27A689276DB4CE00F0E4BA /* HPDViewControllerCell.swift in Sources */,
 				4DC80444275226550006A3E1 /* IncomeTaxViewController.swift in Sources */,
 				4D7FB4CC2744D45100B318DA /* SceneDelegate.swift in Sources */,
