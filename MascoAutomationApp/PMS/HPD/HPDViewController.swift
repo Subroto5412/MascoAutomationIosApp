@@ -26,6 +26,8 @@ class HPDViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.showToast(message: "Updating...", seconds: 5000.0)
+        
         self.tableView.register(UINib(nibName: "HPDViewControllerCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
@@ -100,3 +102,18 @@ extension HPDViewController : UITableViewDataSource{
     }
 
 }
+
+
+extension HPDViewController{
+
+func showToast(message : String, seconds: Double){
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.view.backgroundColor = .black
+        alert.view.alpha = 0.5
+        alert.view.layer.cornerRadius = 15
+        self.present(alert, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
+            alert.dismiss(animated: true)
+        }
+    }
+ }
