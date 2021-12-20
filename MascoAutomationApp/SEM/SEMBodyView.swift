@@ -11,12 +11,10 @@ class SEMBodyView: XibView {
 
     @IBOutlet weak var communicationPortalUnderBgView: UIView!
     @IBOutlet weak var communicationPortalBgView: UIView!
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+    
+    var CPHandler : ((Bool?) -> Void)?
 
+    @IBAction func CPBtn(_ sender: Any) {
+        self.CPHandler?(true)
+    }
 }

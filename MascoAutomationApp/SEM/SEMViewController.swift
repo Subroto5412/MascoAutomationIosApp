@@ -40,11 +40,24 @@ class SEMViewController: UIViewController {
          }
          weakSelf.showHomeController()
         }
+        
+        self.bodyView.CPHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showCPController()
+        }
     }
     
 
     func showHomeController(){
         let controller = HomeViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
+    
+    func showCPController(){
+        let controller = CommunicationPortalViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
 

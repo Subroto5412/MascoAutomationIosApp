@@ -84,6 +84,7 @@
 		4DC804462752266A0006A3E1 /* IncomeTaxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC804452752266A0006A3E1 /* IncomeTaxView.swift */; };
 		4DC80448275226760006A3E1 /* IncomeTaxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC80447275226760006A3E1 /* IncomeTaxView.xib */; };
 		4DC8044A27523DFA0006A3E1 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8044927523DFA0006A3E1 /* NSObject+Extension.swift */; };
+		4DCDC12127703DD800D3896E /* CommunicationPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDC12027703DD800D3896E /* CommunicationPortalViewController.swift */; };
 		4DD0DD5E275C6DE5005EE588 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DD5D275C6DE5005EE588 /* Utils.swift */; };
 		4DD0DD6A275C8126005EE588 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DD69275C8126005EE588 /* API.swift */; };
 		4DD0DD6D275CB7A4005EE588 /* DailyAttendance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DD0DD6C275CB7A4005EE588 /* DailyAttendance.storyboard */; };
@@ -188,6 +189,7 @@
 		4DC804452752266A0006A3E1 /* IncomeTaxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeTaxView.swift; sourceTree = "<group>"; };
 		4DC80447275226760006A3E1 /* IncomeTaxView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeTaxView.xib; sourceTree = "<group>"; };
 		4DC8044927523DFA0006A3E1 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		4DCDC12027703DD800D3896E /* CommunicationPortalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationPortalViewController.swift; sourceTree = "<group>"; };
 		4DD0DD5D275C6DE5005EE588 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		4DD0DD69275C8126005EE588 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		4DD0DD6C275CB7A4005EE588 /* DailyAttendance.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DailyAttendance.storyboard; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 		4DC3F4C0276F17ED005F2958 /* SEM */ = {
 			isa = PBXGroup;
 			children = (
+				4DCDC11F27703D8E00D3896E /* CP */,
 				4DC3F4C4276F1898005F2958 /* SEMViewController.swift */,
 				4DC3F4C6276F18D4005F2958 /* SEM.storyboard */,
 				4DC3F4CE276F2C9D005F2958 /* SEMBodyView.swift */,
@@ -477,6 +480,14 @@
 				4DD0DD69275C8126005EE588 /* API.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		4DCDC11F27703D8E00D3896E /* CP */ = {
+			isa = PBXGroup;
+			children = (
+				4DCDC12027703DD800D3896E /* CommunicationPortalViewController.swift */,
+			);
+			path = CP;
 			sourceTree = "<group>";
 		};
 		4DD0DD6B275CB37B005EE588 /* DailyAttendance */ = {
@@ -666,6 +677,7 @@
 				4DA6512D274CA55A00488332 /* XibView.swift in Sources */,
 				4DE3854B274F533200707916 /* HRViewController.swift in Sources */,
 				4DAA63412768661D0073DBB0 /* BWPDViewController.swift in Sources */,
+				4DCDC12127703DD800D3896E /* CommunicationPortalViewController.swift in Sources */,
 				4DAA634D276878100073DBB0 /* GPMSBodyView.swift in Sources */,
 				4DC804372752000D0006A3E1 /* DailyAttendanceViewController.swift in Sources */,
 				4DAA6345276866420073DBB0 /* LWPViewController.swift in Sources */,

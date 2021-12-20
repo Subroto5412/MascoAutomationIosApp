@@ -64,12 +64,19 @@
                                 <constraint firstItem="Y4R-5S-38p" firstAttribute="leading" secondItem="ZCn-p4-GgZ" secondAttribute="leading" constant="28" id="wZY-ng-eYi"/>
                             </constraints>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z6z-Ox-TCr">
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="75"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="z6z-Ox-TCr" firstAttribute="centerX" secondItem="ZCn-p4-GgZ" secondAttribute="centerX" id="3IW-df-ELh"/>
                         <constraint firstItem="ZCn-p4-GgZ" firstAttribute="height" secondItem="hBa-nU-W4O" secondAttribute="height" multiplier="75:596" id="RtL-Pp-4W6"/>
+                        <constraint firstItem="z6z-Ox-TCr" firstAttribute="centerY" secondItem="ZCn-p4-GgZ" secondAttribute="centerY" id="WB4-Ih-182"/>
                         <constraint firstItem="ZCn-p4-GgZ" firstAttribute="leading" secondItem="hBa-nU-W4O" secondAttribute="leading" id="WJz-25-5Nz"/>
                         <constraint firstAttribute="trailing" secondItem="ZCn-p4-GgZ" secondAttribute="trailing" id="ZKU-Y6-Y30"/>
+                        <constraint firstItem="z6z-Ox-TCr" firstAttribute="width" secondItem="ZCn-p4-GgZ" secondAttribute="width" id="bBc-TA-OLZ"/>
+                        <constraint firstItem="z6z-Ox-TCr" firstAttribute="height" secondItem="ZCn-p4-GgZ" secondAttribute="height" id="fLp-0u-ibP"/>
                         <constraint firstItem="ZCn-p4-GgZ" firstAttribute="top" secondItem="hBa-nU-W4O" secondAttribute="top" id="u4T-uH-QRz"/>
                     </constraints>
                 </view>
