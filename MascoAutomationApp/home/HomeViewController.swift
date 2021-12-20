@@ -103,6 +103,14 @@ class HomeViewController: UIViewController {
          weakSelf.showATMController()
         }
         
+        self.homeBody.ILMHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showHRISController()
+        }
+        
         
 //        let arcCenter = CGPoint(x: self.homeBody.iconView.bounds.size.width / 2.2, y: self.homeBody.iconView.bounds.size.height)
 //        let circleRadius = self.homeBody.iconView.bounds.size.width / 2.2
@@ -249,6 +257,14 @@ class HomeViewController: UIViewController {
         let controller = ATMViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
+    
+    
+    func showHRISController(){
+        
+        let controller = HRISViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
+    
     
     func hideMenuView()
     {

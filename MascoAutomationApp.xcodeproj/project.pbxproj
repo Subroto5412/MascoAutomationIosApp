@@ -85,6 +85,13 @@
 		4DC80448275226760006A3E1 /* IncomeTaxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC80447275226760006A3E1 /* IncomeTaxView.xib */; };
 		4DC8044A27523DFA0006A3E1 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC8044927523DFA0006A3E1 /* NSObject+Extension.swift */; };
 		4DCDC12127703DD800D3896E /* CommunicationPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDC12027703DD800D3896E /* CommunicationPortalViewController.swift */; };
+		4DCDC124277067E700D3896E /* HRISViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDC123277067E700D3896E /* HRISViewController.swift */; };
+		4DCDC126277067F900D3896E /* HRIS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DCDC125277067F900D3896E /* HRIS.storyboard */; };
+		4DCDC1282770696E00D3896E /* HRISBodyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DCDC1272770696E00D3896E /* HRISBodyView.xib */; };
+		4DCDC12A277069BE00D3896E /* HRISBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDC129277069BE00D3896E /* HRISBodyView.swift */; };
+		4DCDC12C27708BF200D3896E /* LeaveApprovalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDC12B27708BF200D3896E /* LeaveApprovalViewController.swift */; };
+		4DCDC12E2770932A00D3896E /* LeaveApprovalBodyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DCDC12D2770932A00D3896E /* LeaveApprovalBodyView.xib */; };
+		4DCDC1302770933B00D3896E /* LeaveApprovalBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDC12F2770933B00D3896E /* LeaveApprovalBodyView.swift */; };
 		4DD0DD5E275C6DE5005EE588 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DD5D275C6DE5005EE588 /* Utils.swift */; };
 		4DD0DD6A275C8126005EE588 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DD69275C8126005EE588 /* API.swift */; };
 		4DD0DD6D275CB7A4005EE588 /* DailyAttendance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DD0DD6C275CB7A4005EE588 /* DailyAttendance.storyboard */; };
@@ -190,6 +197,13 @@
 		4DC80447275226760006A3E1 /* IncomeTaxView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeTaxView.xib; sourceTree = "<group>"; };
 		4DC8044927523DFA0006A3E1 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		4DCDC12027703DD800D3896E /* CommunicationPortalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationPortalViewController.swift; sourceTree = "<group>"; };
+		4DCDC123277067E700D3896E /* HRISViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRISViewController.swift; sourceTree = "<group>"; };
+		4DCDC125277067F900D3896E /* HRIS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HRIS.storyboard; sourceTree = "<group>"; };
+		4DCDC1272770696E00D3896E /* HRISBodyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HRISBodyView.xib; sourceTree = "<group>"; };
+		4DCDC129277069BE00D3896E /* HRISBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRISBodyView.swift; sourceTree = "<group>"; };
+		4DCDC12B27708BF200D3896E /* LeaveApprovalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveApprovalViewController.swift; sourceTree = "<group>"; };
+		4DCDC12D2770932A00D3896E /* LeaveApprovalBodyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaveApprovalBodyView.xib; sourceTree = "<group>"; };
+		4DCDC12F2770933B00D3896E /* LeaveApprovalBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveApprovalBodyView.swift; sourceTree = "<group>"; };
 		4DD0DD5D275C6DE5005EE588 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		4DD0DD69275C8126005EE588 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		4DD0DD6C275CB7A4005EE588 /* DailyAttendance.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DailyAttendance.storyboard; sourceTree = "<group>"; };
@@ -310,6 +324,7 @@
 		4D7FB4C82744D45100B318DA /* MascoAutomationApp */ = {
 			isa = PBXGroup;
 			children = (
+				4DCDC1222770678B00D3896E /* HRIS */,
 				4DC3F4C1276F181E005F2958 /* ATM */,
 				4DC3F4C0276F17ED005F2958 /* SEM */,
 				4DB0E0E2276749F900B188E6 /* PMS */,
@@ -490,6 +505,20 @@
 			path = CP;
 			sourceTree = "<group>";
 		};
+		4DCDC1222770678B00D3896E /* HRIS */ = {
+			isa = PBXGroup;
+			children = (
+				4DCDC123277067E700D3896E /* HRISViewController.swift */,
+				4DCDC125277067F900D3896E /* HRIS.storyboard */,
+				4DCDC1272770696E00D3896E /* HRISBodyView.xib */,
+				4DCDC129277069BE00D3896E /* HRISBodyView.swift */,
+				4DCDC12B27708BF200D3896E /* LeaveApprovalViewController.swift */,
+				4DCDC12D2770932A00D3896E /* LeaveApprovalBodyView.xib */,
+				4DCDC12F2770933B00D3896E /* LeaveApprovalBodyView.swift */,
+			);
+			path = HRIS;
+			sourceTree = "<group>";
+		};
 		4DD0DD6B275CB37B005EE588 /* DailyAttendance */ = {
 			isa = PBXGroup;
 			children = (
@@ -580,6 +609,7 @@
 			files = (
 				4DC80448275226760006A3E1 /* IncomeTaxView.xib in Resources */,
 				4DC3F4CB276F2C6D005F2958 /* ATMBodyView.xib in Resources */,
+				4DCDC12E2770932A00D3896E /* LeaveApprovalBodyView.xib in Resources */,
 				4DA65128274CA30F00488332 /* HomeScreenBody.xib in Resources */,
 				4DD772C3274DF8FD003261F6 /* HeaderFooter.xib in Resources */,
 				4D7665BC275F5A5900358097 /* DailyAttendanceTableViewCell.xib in Resources */,
@@ -610,11 +640,13 @@
 				4DE38551274F7B7800707916 /* InnerHeader.xib in Resources */,
 				4D7FB4D32744D45200B318DA /* Assets.xcassets in Resources */,
 				4DC8043C275201BB0006A3E1 /* CommonHeaderView.xib in Resources */,
+				4DCDC1282770696E00D3896E /* HRISBodyView.xib in Resources */,
 				4D116BF62764791A0065C07D /* LeaveDetailsControllerCell.xib in Resources */,
 				4D7FB4D12744D45100B318DA /* Main.storyboard in Resources */,
 				4D466E40275DD51C005F0E3C /* LeaveApply.storyboard in Resources */,
 				4D27A692276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.xib in Resources */,
 				4DC3F4D1276F2CAC005F2958 /* SEMBodyView.xib in Resources */,
+				4DCDC126277067F900D3896E /* HRIS.storyboard in Resources */,
 				4D466E44275DD57C005F0E3C /* Tax.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -642,12 +674,14 @@
 				4DC2D49427548861000EDCD8 /* InternetConnectionManager.swift in Sources */,
 				4D466E49275DDE70005F0E3C /* LeaveDetailsViewController.swift in Sources */,
 				4D99D96D2765C8B3004E6259 /* TaxDetailsViewControllerCell.swift in Sources */,
+				4DCDC12A277069BE00D3896E /* HRISBodyView.swift in Sources */,
 				4DD0DD6A275C8126005EE588 /* API.swift in Sources */,
 				4DD772C7274E4AAC003261F6 /* SideMenuViewController.swift in Sources */,
 				4D466E47275DDE45005F0E3C /* TaxDetailsViewController.swift in Sources */,
 				4DD0DD6F275CB7C7005EE588 /* DailyAttendanceViewControllerDetails.swift in Sources */,
 				4DB0E0EA27675AC500B188E6 /* PMSBodyView.swift in Sources */,
 				4DE38555274F866C00707916 /* CommonFooter.swift in Sources */,
+				4DCDC124277067E700D3896E /* HRISViewController.swift in Sources */,
 				4DC8043A275201930006A3E1 /* CommonHeaderView.swift in Sources */,
 				4D27A68E276DD9D000F0E4BA /* BWPDTitleView.swift in Sources */,
 				4DA6512F274CC85E00488332 /* HomeScreenBody.swift in Sources */,
@@ -675,11 +709,13 @@
 				4DAA63432768662B0073DBB0 /* HPDViewController.swift in Sources */,
 				4DAA63392768647E0073DBB0 /* GPMSViewController.swift in Sources */,
 				4DA6512D274CA55A00488332 /* XibView.swift in Sources */,
+				4DCDC12C27708BF200D3896E /* LeaveApprovalViewController.swift in Sources */,
 				4DE3854B274F533200707916 /* HRViewController.swift in Sources */,
 				4DAA63412768661D0073DBB0 /* BWPDViewController.swift in Sources */,
 				4DCDC12127703DD800D3896E /* CommunicationPortalViewController.swift in Sources */,
 				4DAA634D276878100073DBB0 /* GPMSBodyView.swift in Sources */,
 				4DC804372752000D0006A3E1 /* DailyAttendanceViewController.swift in Sources */,
+				4DCDC1302770933B00D3896E /* LeaveApprovalBodyView.swift in Sources */,
 				4DAA6345276866420073DBB0 /* LWPViewController.swift in Sources */,
 				4DB0E0E627674ABC00B188E6 /* PMSViewController.swift in Sources */,
 				4DBB3B64274B91C90009339B /* HomeViewController.swift in Sources */,
