@@ -92,6 +92,7 @@
 		4DCDC12C27708BF200D3896E /* LeaveApprovalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDC12B27708BF200D3896E /* LeaveApprovalViewController.swift */; };
 		4DCDC12E2770932A00D3896E /* LeaveApprovalBodyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DCDC12D2770932A00D3896E /* LeaveApprovalBodyView.xib */; };
 		4DCDC1302770933B00D3896E /* LeaveApprovalBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDC12F2770933B00D3896E /* LeaveApprovalBodyView.swift */; };
+		4DCDC1332770A14D00D3896E /* LeaveApprovalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCDC1322770A14D00D3896E /* LeaveApprovalDetailViewController.swift */; };
 		4DD0DD5E275C6DE5005EE588 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DD5D275C6DE5005EE588 /* Utils.swift */; };
 		4DD0DD6A275C8126005EE588 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DD69275C8126005EE588 /* API.swift */; };
 		4DD0DD6D275CB7A4005EE588 /* DailyAttendance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DD0DD6C275CB7A4005EE588 /* DailyAttendance.storyboard */; };
@@ -204,6 +205,7 @@
 		4DCDC12B27708BF200D3896E /* LeaveApprovalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveApprovalViewController.swift; sourceTree = "<group>"; };
 		4DCDC12D2770932A00D3896E /* LeaveApprovalBodyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaveApprovalBodyView.xib; sourceTree = "<group>"; };
 		4DCDC12F2770933B00D3896E /* LeaveApprovalBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveApprovalBodyView.swift; sourceTree = "<group>"; };
+		4DCDC1322770A14D00D3896E /* LeaveApprovalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveApprovalDetailViewController.swift; sourceTree = "<group>"; };
 		4DD0DD5D275C6DE5005EE588 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		4DD0DD69275C8126005EE588 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		4DD0DD6C275CB7A4005EE588 /* DailyAttendance.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DailyAttendance.storyboard; sourceTree = "<group>"; };
@@ -508,6 +510,7 @@
 		4DCDC1222770678B00D3896E /* HRIS */ = {
 			isa = PBXGroup;
 			children = (
+				4DCDC1312770A0AB00D3896E /* LeaveApproval */,
 				4DCDC123277067E700D3896E /* HRISViewController.swift */,
 				4DCDC125277067F900D3896E /* HRIS.storyboard */,
 				4DCDC1272770696E00D3896E /* HRISBodyView.xib */,
@@ -517,6 +520,14 @@
 				4DCDC12F2770933B00D3896E /* LeaveApprovalBodyView.swift */,
 			);
 			path = HRIS;
+			sourceTree = "<group>";
+		};
+		4DCDC1312770A0AB00D3896E /* LeaveApproval */ = {
+			isa = PBXGroup;
+			children = (
+				4DCDC1322770A14D00D3896E /* LeaveApprovalDetailViewController.swift */,
+			);
+			path = LeaveApproval;
 			sourceTree = "<group>";
 		};
 		4DD0DD6B275CB37B005EE588 /* DailyAttendance */ = {
@@ -691,6 +702,7 @@
 				4DC3F4BB276EE2D1005F2958 /* HPDsTotalView.swift in Sources */,
 				4D27A686276DB30E00F0E4BA /* HPDTitleView.swift in Sources */,
 				4D116BFB276491070065C07D /* LeaveSummaryCollectionCell.swift in Sources */,
+				4DCDC1332770A14D00D3896E /* LeaveApprovalDetailViewController.swift in Sources */,
 				4DC8044227520DA70006A3E1 /* LeaveView.swift in Sources */,
 				4DC3F4CD276F2C83005F2958 /* ATMBodyView.swift in Sources */,
 				4D27A689276DB4CE00F0E4BA /* HPDViewControllerCell.swift in Sources */,

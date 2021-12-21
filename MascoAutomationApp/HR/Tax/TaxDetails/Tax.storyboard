@@ -64,6 +64,9 @@
                                                                 <state key="normal" title="2020 - 2021">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="taxYearBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="vL1-Ub-3lf"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.044129841029999999" green="0.1185474172" blue="0.39544004199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -297,8 +300,9 @@
                         <outlet property="detailsBgView" destination="D3L-ao-3uk" id="1vQ-OL-9cp"/>
                         <outlet property="monthBgView" destination="ODt-pJ-N3w" id="nXh-iG-hec"/>
                         <outlet property="slBgView" destination="tZg-8N-TBL" id="D2T-3B-VjF"/>
-                        <outlet property="tableView" destination="Td5-rP-ysn" id="GXz-wV-H0m"/>
+                        <outlet property="taxTableView" destination="Td5-rP-ysn" id="vct-VC-Emt"/>
                         <outlet property="taxYearBgView" destination="SFO-xB-kZz" id="pGl-eJ-Nws"/>
+                        <outlet property="taxYearSelect" destination="hSV-Eg-aF1" id="fPK-QF-yfU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
