@@ -65,6 +65,9 @@
                                                                         <state key="normal" title="2021 - 2021">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="financialYearBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="R7e-do-FR3"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -359,9 +362,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="financialYearSelect" destination="9Vz-U2-m1r" id="cAQ-Na-OBZ"/>
                         <outlet property="headerView" destination="Jtk-iL-CmP" id="gUE-RH-gtc"/>
                         <outlet property="monthBgView" destination="59k-xU-MLc" id="UDV-kc-Pye"/>
-                        <outlet property="tableView" destination="56z-pb-SWb" id="Ldd-iB-Au0"/>
+                        <outlet property="tableViewDailyAttendance" destination="56z-pb-SWb" id="IQp-qk-ZI8"/>
+                        <outlet property="yearBgView" destination="Hvb-Ah-r5v" id="3Ip-wC-QgR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -50,41 +50,14 @@ class TaxDetailsViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(CellClass.self, forCellReuseIdentifier: "Cell")
         
-        
-        self.taxYearBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
-        self.taxYearBgView.layer.borderWidth = 0.5
-        self.taxYearBgView.layer.cornerRadius = 15
-        
-        self.detailsBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
-        self.detailsBgView.layer.borderWidth = 0.5
-        self.detailsBgView.layer.cornerRadius = 12
-        
-        self.slBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
-        self.slBgView.layer.borderWidth = 0.5
-        self.slBgView.layer.cornerRadius = 15
-        
-        self.DeductionAmountBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
-        self.DeductionAmountBgView.layer.borderWidth = 0.5
-        self.DeductionAmountBgView.layer.cornerRadius = 15
-        
-        
-        self.monthBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
-        self.monthBgView.layer.borderWidth = 0.5
-        self.monthBgView.layer.cornerRadius = 15
+        evenHandler()
+        viewDesign()
         
         let headerViewSize = self.headerView.frame.size.height
         let taxYearViewSize = self.taxYearBgView.frame.size.height/1.5
         totalHeight = Int(headerViewSize+taxYearViewSize)
         
         self.getFinancialYearList()
-        
-        self.headerView.backBtnHandler = {
-            [weak self] (isShow) in
-            guard let weakSelf = self else {
-            return
-         }
-         weakSelf.showBackController()
-        }
     }
     
     @IBAction func taxYearBtn(_ sender: Any) {
@@ -158,6 +131,41 @@ class TaxDetailsViewController: UIViewController {
                 }
         }
         task.resume()
+    }
+    
+    func evenHandler() {
+        
+        self.headerView.backBtnHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showBackController()
+        }
+    }
+    
+    func viewDesign()
+    {
+        self.taxYearBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
+        self.taxYearBgView.layer.borderWidth = 0.5
+        self.taxYearBgView.layer.cornerRadius = 15
+        
+        self.detailsBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
+        self.detailsBgView.layer.borderWidth = 0.5
+        self.detailsBgView.layer.cornerRadius = 12
+        
+        self.slBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
+        self.slBgView.layer.borderWidth = 0.5
+        self.slBgView.layer.cornerRadius = 15
+        
+        self.DeductionAmountBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
+        self.DeductionAmountBgView.layer.borderWidth = 0.5
+        self.DeductionAmountBgView.layer.cornerRadius = 15
+        
+        
+        self.monthBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
+        self.monthBgView.layer.borderWidth = 0.5
+        self.monthBgView.layer.cornerRadius = 15
     }
 }
 

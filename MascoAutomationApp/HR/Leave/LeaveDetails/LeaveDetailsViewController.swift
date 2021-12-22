@@ -7,12 +7,14 @@
 
 import UIKit
 
+class LeaveDetailsViewControllerCellClass: UITableViewCell {
+}
+
 class LeaveDetailsViewController: UIViewController {
 
     @IBOutlet weak var headerView: CommonHeaderView!
     @IBOutlet weak var footerView: CommonFooter!
-//    @IBOutlet weak var indicator: UIActivityIndicatorView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewAvail: UITableView!
     @IBOutlet weak var leaveSummaryCollectionView: UICollectionView!
     
     @IBOutlet weak var financialBgView: UIView!
@@ -26,6 +28,14 @@ class LeaveDetailsViewController: UIViewController {
     @IBOutlet weak var toDateBgView: UIView!
     @IBOutlet weak var applicationDateBgView: UIView!
     
+    @IBOutlet weak var financialYear: UIButton!
+    let transparentView = UIView()
+    let tableView = UITableView()
+    
+    var selectedButton = UIButton()
+    var totalHeight: Int = 0
+    var dataSource = [ListFinalYear]()
+    
     class func initWithStoryboard() -> LeaveDetailsViewController
     {
         let storyboard = UIStoryboard(name: "LeaveDetailsView", bundle: nil)
@@ -36,11 +46,100 @@ class LeaveDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      //  indicator.style = .large
-       // indicator.color = .red
+      
+        tableViewAvail.delegate = self
+        tableViewAvail.dataSource = self
+        self.tableViewAvail.register(UINib(nibName: "LeaveDetailsControllerCell", bundle: nil), forCellReuseIdentifier: "cell_avail")
         
-        getLeaveDetails()
+        tableView.delegate = self
+        tableView.dataSource = self
+        self.tableView.register(LeaveDetailsViewControllerCellClass.self, forCellReuseIdentifier: "Cell")
+        
+        self.leaveSummaryCollectionView.register(UINib(nibName: "LeaveSummaryCollectionCell", bundle: nil), forCellWithReuseIdentifier: "leave_summary_cell")
+        
+        evenHandler()
+        viewDesign()
+        
+        let headerViewSize = self.headerView.frame.size.height
+        let taxYearViewSize = self.financialBgView.frame.size.height/1.5
+        totalHeight = Int(headerViewSize+taxYearViewSize)
+       
+        getFinancialYearList()
+    }
+    @IBAction func financialYearBtn(_ sender: Any) {
+        selectedButton = financialYear
+        addTransparentView(frames: financialYear.frame)
+    }
+    
+    func showBackController(){
+        let controller = LeaveViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
+    
+    func addTransparentView(frames: CGRect) {
+        let window = UIApplication.shared.keyWindow
+        transparentView.frame = window?.frame ?? self.view.frame
+        self.view.addSubview(transparentView)
+        
+        tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height+CGFloat(self.totalHeight), width: frames.width+100, height: 0)
+        self.view.addSubview(tableView)
+        tableView.layer.cornerRadius = 5
+        
+        transparentView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
+        tableView.reloadData()
+        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeTransparentView))
+        transparentView.addGestureRecognizer(tapgesture)
+        transparentView.alpha = 0
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            self.transparentView.alpha = 0.5
+            self.tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height + 5+CGFloat(self.totalHeight), width: frames.width+100, height: CGFloat(self.dataSource.count * 50))
+        }, completion: nil)
+    }
+    
+    @objc func removeTransparentView() {
+        let frames = selectedButton.frame
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            self.transparentView.alpha = 0
+            self.tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y+CGFloat(self.totalHeight) + frames.height, width: frames.width, height: 0)
+        }, completion: nil)
+    }
 
+    func getFinancialYearList(){
+        
+        let url = URL(string: YEAR_URL)
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "GET"
+        
+        // Set HTTP Request Header
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+                DispatchQueue.main.async {
+                    
+                    if let error = error {
+                        print("Error took place \(error)")
+                        return
+                    }
+                    guard let data = data else {return}
+
+                    do{
+                        let finalYearItemModel = try JSONDecoder().decode(ListFinalYearResponse.self, from: data)
+                        self.dataSource = finalYearItemModel._listFinalYear
+                        
+                    }catch let jsonErr{
+                        print(jsonErr)
+                   }
+                }
+        }
+        task.resume()
+    }
+    
+    func evenHandler() {
+        
         self.headerView.backBtnHandler = {
             [weak self] (isShow) in
             guard let weakSelf = self else {
@@ -48,12 +147,10 @@ class LeaveDetailsViewController: UIViewController {
          }
          weakSelf.showBackController()
         }
+    }
+    
+    func viewDesign(){
         
-        self.tableView.register(UINib(nibName: "LeaveDetailsControllerCell", bundle: nil), forCellReuseIdentifier: "cell")
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        self.leaveSummaryCollectionView.register(UINib(nibName: "LeaveSummaryCollectionCell", bundle: nil), forCellWithReuseIdentifier: "leave_summary_cell")
         
         self.financialBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
         self.financialBgView.layer.borderWidth = 0.5
@@ -92,29 +189,7 @@ class LeaveDetailsViewController: UIViewController {
         self.applicationDateBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
         self.applicationDateBgView.layer.borderWidth = 0.5
         self.applicationDateBgView.layer.cornerRadius = 15
-        
-//        self.slBgView.roundedView()
-//        self.slBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
-//        self.slBgView.layer.borderWidth = 1
-       
-//        self.slBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
-//        self.slBgView.layer.borderWidth = 0.5
-//        self.slBgView.layer.cornerRadius = 15
-        
-//        self.leaveTypeBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
-//        self.leaveTypeBgView.layer.borderWidth = 0.5
-//        self.leaveTypeBgView.layer.cornerRadius = 15
-//
-//        self.availDayBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
-//        self.availDayBgView.layer.borderWidth = 0.5
-//        self.availDayBgView.layer.cornerRadius = 15
     }
-    
-    func showBackController(){
-        let controller = LeaveViewController.initWithStoryboard()
-        self.present(controller, animated: true, completion: nil);
-    }
-    
     
     func getLeaveDetails(){
         
@@ -380,29 +455,56 @@ extension LeaveDetailsViewController{
 extension LeaveDetailsViewController : UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("---you tapped me!----")
+        
+        if tableView == tableViewAvail {
+            print("---you tapped me!----")
+        }else{
+            selectedButton.setTitle(dataSource[indexPath.row].finalYearName, for: .normal)
+            print("Final Year id: \(dataSource[indexPath.row].finalYearNo!)")
+            removeTransparentView()
+        }
     }
 }
 
 extension LeaveDetailsViewController : UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if tableView == tableViewAvail {
+            return 10
+        }else{
+            return dataSource.count
+        }
+        
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeaveDetailsControllerCell
-        cell.slLbl.text = "1"
-        cell.leaveTypeLbl.text = "CL"
-        cell.avilDayLbl.text = "1"
-        cell.fromDateLbl.text = "12-06-2021"
-        cell.toDateLbl.text = "12-06-2021"
-        cell.applicationDateLbl.text = "15-06-2021"
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell_avail", for: indexPath) as! LeaveDetailsControllerCell
+        
+        if tableView == tableViewAvail {
+            
+            cell.slLbl.text = "1"
+            cell.leaveTypeLbl.text = "CL"
+            cell.avilDayLbl.text = "1"
+            cell.fromDateLbl.text = "12-06-2021"
+            cell.toDateLbl.text = "12-06-2021"
+            cell.applicationDateLbl.text = "15-06-2021"
+            return cell
+            
+        }else{
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+            cell.textLabel?.text = dataSource[indexPath.row].finalYearName
+            return cell
+        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
+        if tableView == tableViewAvail {
+            return 40
+        }else{
+            return 50
+        }
+        
     }
 
 }

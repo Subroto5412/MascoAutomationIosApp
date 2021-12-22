@@ -65,6 +65,9 @@
                                                                 <state key="normal" title="2021 - 2021">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="financialYearBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="j7a-Ps-n7l"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.034799609330000002" green="0.1083526388" blue="0.3913464546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -499,6 +502,7 @@
                         <outlet property="availDayBgView" destination="Sr0-lO-LZO" id="wRT-31-15v"/>
                         <outlet property="availSummaryBgView" destination="OJR-U1-u2q" id="MoA-rl-eN9"/>
                         <outlet property="financialBgView" destination="up1-WM-qiQ" id="5A6-9V-Tbe"/>
+                        <outlet property="financialYear" destination="B7z-eJ-lb4" id="ra7-AS-QzQ"/>
                         <outlet property="footerView" destination="vZ9-IM-SNj" id="l6K-gQ-p4t"/>
                         <outlet property="fromDateBgView" destination="zYU-d8-Nf9" id="6Ir-et-2od"/>
                         <outlet property="headerView" destination="VUT-TJ-DCs" id="B0v-3Q-2wN"/>
@@ -506,7 +510,7 @@
                         <outlet property="leaveSummaryCollectionView" destination="dVu-x2-fJx" id="Ikn-bU-pQw"/>
                         <outlet property="leaveTypeBgView" destination="K60-DI-TA4" id="Prf-Qy-ZgD"/>
                         <outlet property="slBgView" destination="liy-5l-Ud9" id="G38-WP-Z2C"/>
-                        <outlet property="tableView" destination="kFu-kX-Z4j" id="gPs-fh-Hby"/>
+                        <outlet property="tableViewAvail" destination="kFu-kX-Z4j" id="hei-aW-O97"/>
                         <outlet property="toDateBgView" destination="9mo-hT-pE0" id="XED-rR-mtM"/>
                     </connections>
                 </viewController>
