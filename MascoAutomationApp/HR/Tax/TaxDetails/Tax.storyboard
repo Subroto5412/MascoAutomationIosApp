@@ -298,6 +298,7 @@
                     <connections>
                         <outlet property="DeductionAmountBgView" destination="aLD-bG-H4N" id="0ia-Ia-hev"/>
                         <outlet property="detailsBgView" destination="D3L-ao-3uk" id="1vQ-OL-9cp"/>
+                        <outlet property="headerView" destination="Eie-pz-2Z0" id="WRd-HX-6Kq"/>
                         <outlet property="monthBgView" destination="ODt-pJ-N3w" id="nXh-iG-hec"/>
                         <outlet property="slBgView" destination="tZg-8N-TBL" id="D2T-3B-VjF"/>
                         <outlet property="taxTableView" destination="Td5-rP-ysn" id="vct-VC-Emt"/>
