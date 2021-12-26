@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import YYCalendar
 
 class HPDsViewController: UIViewController {
 
@@ -24,6 +25,7 @@ class HPDsViewController: UIViewController {
     @IBOutlet weak var foldingBgView: UIView!
     @IBOutlet weak var polyBgView: UIView!
     @IBOutlet weak var cartonBgView: UIView!
+    @IBOutlet weak var dateSelect: UILabel!
     
     class func initWithStoryboard() -> HPDsViewController
     {
@@ -94,7 +96,25 @@ class HPDsViewController: UIViewController {
         }
     }
     
-
+    @IBAction func datePickerBtn(_ sender: Any) {
+        let currentDate = Date()
+         let dateFormatter = DateFormatter()
+         dateFormatter.dateFormat = "dd-MM-yyyy"
+         
+         let calendar = YYCalendar(normalCalendarLangType: .ENG3,
+                                   date: dateFormatter.string(from: currentDate),
+                                           format: "dd-MM-yyyy") { [weak self] date in
+             self?.dateSelect.text = date
+             print(date)
+                 }
+         
+         calendar.sundayColor = UIColor.gray
+         calendar.defaultDayColor = UIColor.gray
+         calendar.saturdayColor = UIColor.gray
+         
+         calendar.show()
+    }
+    
     func showBackController(){
         let controller = GPMSViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);

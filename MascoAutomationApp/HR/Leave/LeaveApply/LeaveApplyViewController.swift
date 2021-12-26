@@ -99,11 +99,11 @@ class LeaveApplyViewController: UIViewController {
         
        let currentDate = Date()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy/MM/dd"
+        dateFormatter.dateFormat = "dd-MM-yyyy"
         
         let calendar = YYCalendar(normalCalendarLangType: .ENG3,
                                   date: dateFormatter.string(from: currentDate),
-                                          format: "yyyy/MM/dd") { [weak self] date in
+                                          format: "dd-MM-yyyy") { [weak self] date in
             self?.bodyView.applyFromDate.text = date
             print(date)
                 }
@@ -120,11 +120,11 @@ class LeaveApplyViewController: UIViewController {
         
        let currentDate = Date()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy/MM/dd"
+        dateFormatter.dateFormat = "dd-MM-yyyy"
         
         let calendar = YYCalendar(normalCalendarLangType: .ENG3,
                                   date: dateFormatter.string(from: currentDate),
-                                          format: "yyyy/MM/dd") { [weak self] date in
+                                          format: "dd-MM-yyyy") { [weak self] date in
             self?.bodyView.ApplyToDate.text = date
             print(date)
                 }

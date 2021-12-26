@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import YYCalendar
 
 class LWPViewController: UIViewController {
 
@@ -16,6 +17,7 @@ class LWPViewController: UIViewController {
     @IBOutlet weak var dateDropDown: UIButton!
     @IBOutlet weak var outputLbl: UILabel!
     
+    @IBOutlet weak var dateSelecct: UILabel!
     class func initWithStoryboard() -> LWPViewController
     {
         let storyboard = UIStoryboard(name: "PMS", bundle: nil)
@@ -64,6 +66,29 @@ class LWPViewController: UIViewController {
          }
          weakSelf.showBackController()
         }
+    }
+    
+    
+    @IBAction func datePickerBtn(_ sender: Any) {
+        
+        let currentDate = Date()
+         let dateFormatter = DateFormatter()
+         dateFormatter.dateFormat = "dd-MM-yyyy"
+         
+         let calendar = YYCalendar(normalCalendarLangType: .ENG3,
+                                   date: dateFormatter.string(from: currentDate),
+                                           format: "dd-MM-yyyy") { [weak self] date in
+             self?.dateSelecct.text = date
+             print(date)
+                 }
+         
+         calendar.sundayColor = UIColor.gray
+         calendar.defaultDayColor = UIColor.gray
+         calendar.saturdayColor = UIColor.gray
+         
+         calendar.show()
+        
+        
     }
     
     func showBackController(){

@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import YYCalendar
 
 class BWPDViewController: UIViewController {
 
     @IBOutlet weak var headerView: CommonHeaderView!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var dateSelect: UILabel!
     @IBOutlet weak var titleBgView: BWPDTitleView!
     @IBOutlet weak var dateDropDown: UIButton!
     @IBOutlet weak var unitNameDropDown: UIButton!
@@ -76,7 +78,26 @@ class BWPDViewController: UIViewController {
         }
     }
     
-
+    @IBAction func datePickerBtn(_ sender: Any) {
+        
+        let currentDate = Date()
+         let dateFormatter = DateFormatter()
+         dateFormatter.dateFormat = "dd-MM-yyyy"
+         
+         let calendar = YYCalendar(normalCalendarLangType: .ENG3,
+                                   date: dateFormatter.string(from: currentDate),
+                                           format: "dd-MM-yyyy") { [weak self] date in
+             self?.dateSelect.text = date
+             print(date)
+                 }
+         
+         calendar.sundayColor = UIColor.gray
+         calendar.defaultDayColor = UIColor.gray
+         calendar.saturdayColor = UIColor.gray
+         
+         calendar.show()
+    }
+    
     func showBackController(){
         let controller = GPMSViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);

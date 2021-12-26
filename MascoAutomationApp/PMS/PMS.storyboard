@@ -192,26 +192,39 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="03-10-2021" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQ7-2c-YoF">
+                                                        <rect key="frame" x="130" y="39.5" width="274" height="30"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LxO-sO-huC">
                                                         <rect key="frame" x="130" y="39.5" width="274" height="30"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="3-10-2021">
+                                                        <state key="normal">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="datePickerBtn:" destination="F7l-kG-WFj" eventType="touchUpInside" id="05e-6R-jqv"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="LxO-sO-huC" firstAttribute="width" secondItem="s7y-XH-j2T" secondAttribute="width" id="0aW-Pj-Qxt"/>
+                                                    <constraint firstItem="NQ7-2c-YoF" firstAttribute="height" secondItem="LxO-sO-huC" secondAttribute="height" id="0lo-KO-rNY"/>
                                                     <constraint firstAttribute="trailing" secondItem="LxO-sO-huC" secondAttribute="trailing" constant="10" id="3tY-yf-l3D"/>
                                                     <constraint firstAttribute="trailing" secondItem="s7y-XH-j2T" secondAttribute="trailing" constant="10" id="7PK-pP-Obu"/>
                                                     <constraint firstItem="Lm2-tr-Wby" firstAttribute="leading" secondItem="5TK-ua-Lr8" secondAttribute="leading" constant="10" id="LGJ-BS-IEF"/>
                                                     <constraint firstItem="s7y-XH-j2T" firstAttribute="top" secondItem="5TK-ua-Lr8" secondAttribute="top" id="T0c-GD-wfV"/>
                                                     <constraint firstItem="Lm2-tr-Wby" firstAttribute="centerY" secondItem="s7y-XH-j2T" secondAttribute="centerY" id="UGg-ur-49V"/>
                                                     <constraint firstAttribute="bottom" secondItem="LxO-sO-huC" secondAttribute="bottom" id="UVT-Pb-i1q"/>
+                                                    <constraint firstItem="NQ7-2c-YoF" firstAttribute="centerX" secondItem="LxO-sO-huC" secondAttribute="centerX" id="Vsj-s7-6tX"/>
+                                                    <constraint firstItem="NQ7-2c-YoF" firstAttribute="centerY" secondItem="LxO-sO-huC" secondAttribute="centerY" id="Y79-Y8-9In"/>
                                                     <constraint firstItem="Zi4-KC-5Gu" firstAttribute="centerY" secondItem="LxO-sO-huC" secondAttribute="centerY" id="cca-Vn-jJg"/>
                                                     <constraint firstItem="Zi4-KC-5Gu" firstAttribute="leading" secondItem="5TK-ua-Lr8" secondAttribute="leading" constant="10" id="hhS-SS-bb9"/>
                                                     <constraint firstItem="s7y-XH-j2T" firstAttribute="width" secondItem="5TK-ua-Lr8" secondAttribute="width" multiplier="258:390" id="nHJ-QP-436"/>
+                                                    <constraint firstItem="NQ7-2c-YoF" firstAttribute="width" secondItem="LxO-sO-huC" secondAttribute="width" id="sTJ-8j-egj"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VdU-kt-tRR" customClass="LWPTitleView" customModule="MascoAutomationApp" customModuleProvider="target">
@@ -321,7 +334,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="dateDropDown" destination="LxO-sO-huC" id="laa-7a-hWc"/>
+                        <outlet property="dateDropDown" destination="LxO-sO-huC" id="IYo-ke-7Wa"/>
+                        <outlet property="dateSelecct" destination="NQ7-2c-YoF" id="Bpz-HO-smm"/>
                         <outlet property="headerView" destination="d5w-y5-t6X" id="hTD-vZ-85U"/>
                         <outlet property="outputLbl" destination="TJc-ox-Ol4" id="9F2-Sa-vir"/>
                         <outlet property="tableView" destination="H6Z-Sg-ixi" id="w8a-ym-HTi"/>
@@ -368,13 +382,22 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3-10-2021" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNO-ve-LTH">
+                                                        <rect key="frame" x="119.5" y="37.5" width="274.5" height="32"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXO-yv-p1v">
                                                         <rect key="frame" x="119.5" y="37.5" width="274.5" height="32"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
-                                                        <state key="normal" title="3-10-2021">
+                                                        <state key="normal">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="datePickerBtn:" destination="pxT-MD-1Sh" eventType="touchUpInside" id="g2H-6E-18M"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uw8-HH-uSY">
                                                         <rect key="frame" x="0.0" y="44.5" width="41" height="18"/>
@@ -385,10 +408,14 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstItem="mNO-ve-LTH" firstAttribute="centerX" secondItem="uXO-yv-p1v" secondAttribute="centerX" id="5Jk-wE-150"/>
                                                     <constraint firstItem="5D3-Pa-I6J" firstAttribute="height" secondItem="cvf-T9-K7N" secondAttribute="height" multiplier="30:65" id="C4b-iC-AXf"/>
                                                     <constraint firstItem="uXO-yv-p1v" firstAttribute="height" secondItem="5D3-Pa-I6J" secondAttribute="height" id="Dze-Jg-sTd"/>
+                                                    <constraint firstItem="mNO-ve-LTH" firstAttribute="width" secondItem="uXO-yv-p1v" secondAttribute="width" id="JMV-ma-yUc"/>
                                                     <constraint firstAttribute="trailing" secondItem="uXO-yv-p1v" secondAttribute="trailing" id="NKi-kT-vJN"/>
+                                                    <constraint firstItem="mNO-ve-LTH" firstAttribute="centerY" secondItem="uXO-yv-p1v" secondAttribute="centerY" id="Q8C-Ts-y1F"/>
                                                     <constraint firstItem="Uw8-HH-uSY" firstAttribute="centerY" secondItem="uXO-yv-p1v" secondAttribute="centerY" id="RwR-aL-zA5"/>
+                                                    <constraint firstItem="mNO-ve-LTH" firstAttribute="height" secondItem="uXO-yv-p1v" secondAttribute="height" id="Sde-GB-otn"/>
                                                     <constraint firstItem="eBY-hc-OvX" firstAttribute="centerY" secondItem="5D3-Pa-I6J" secondAttribute="centerY" id="T61-DW-sQl"/>
                                                     <constraint firstAttribute="bottom" secondItem="uXO-yv-p1v" secondAttribute="bottom" id="Vb0-CU-yqI"/>
                                                     <constraint firstAttribute="trailing" secondItem="5D3-Pa-I6J" secondAttribute="trailing" id="Y3g-iv-GEP"/>
@@ -465,6 +492,7 @@
                     </view>
                     <connections>
                         <outlet property="dateDropDown" destination="uXO-yv-p1v" id="etg-CN-wth"/>
+                        <outlet property="dateSelect" destination="mNO-ve-LTH" id="778-2B-bpJ"/>
                         <outlet property="headerView" destination="HCT-Yg-e6Z" id="YTw-ri-uQf"/>
                         <outlet property="tableView" destination="LAm-E2-ibd" id="LmX-m5-GrJ"/>
                         <outlet property="titleBgView" destination="qcK-eo-Ho9" id="4o4-4i-jDJ"/>
@@ -512,12 +540,21 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3-10-2021" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dD9-wK-dbf">
+                                                        <rect key="frame" x="169.5" y="37.5" width="390.5" height="32"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWf-mG-8Fk">
                                                         <rect key="frame" x="169.5" y="37.5" width="390.5" height="32"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="Button">
+                                                        <state key="normal">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="datePickerBtn:" destination="Pc4-YC-35Q" eventType="touchUpInside" id="pcs-ZH-Wdt"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyD-bh-iDU">
                                                         <rect key="frame" x="0.0" y="45" width="40.5" height="17.5"/>
@@ -528,11 +565,15 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstItem="dD9-wK-dbf" firstAttribute="width" secondItem="uWf-mG-8Fk" secondAttribute="width" id="8iy-yg-LLU"/>
+                                                    <constraint firstItem="dD9-wK-dbf" firstAttribute="centerX" secondItem="uWf-mG-8Fk" secondAttribute="centerX" id="CYs-YK-yLp"/>
                                                     <constraint firstItem="eyD-bh-iDU" firstAttribute="leading" secondItem="rVY-7a-noK" secondAttribute="leading" id="FJd-wH-1L5"/>
                                                     <constraint firstItem="A1o-ms-CD9" firstAttribute="height" secondItem="rVY-7a-noK" secondAttribute="height" multiplier="30:65" id="HV0-wT-opd"/>
                                                     <constraint firstItem="G4t-dU-LSE" firstAttribute="centerY" secondItem="A1o-ms-CD9" secondAttribute="centerY" id="IdI-yx-iTF"/>
+                                                    <constraint firstItem="dD9-wK-dbf" firstAttribute="height" secondItem="uWf-mG-8Fk" secondAttribute="height" id="IfX-gD-Whz"/>
                                                     <constraint firstAttribute="bottom" secondItem="uWf-mG-8Fk" secondAttribute="bottom" id="Y9N-ki-egf"/>
                                                     <constraint firstAttribute="trailing" secondItem="A1o-ms-CD9" secondAttribute="trailing" id="aX0-Sa-66Y"/>
+                                                    <constraint firstItem="dD9-wK-dbf" firstAttribute="centerY" secondItem="uWf-mG-8Fk" secondAttribute="centerY" id="avi-sf-lFW"/>
                                                     <constraint firstItem="A1o-ms-CD9" firstAttribute="top" secondItem="rVY-7a-noK" secondAttribute="top" id="grt-Qq-BXT"/>
                                                     <constraint firstItem="uWf-mG-8Fk" firstAttribute="height" secondItem="A1o-ms-CD9" secondAttribute="height" id="mdz-ZE-iyr"/>
                                                     <constraint firstItem="uWf-mG-8Fk" firstAttribute="width" secondItem="A1o-ms-CD9" secondAttribute="width" id="phz-H9-o1q"/>
@@ -849,6 +890,7 @@
                         <outlet property="cartonBgView" destination="SAN-HG-LdK" id="Ohc-Lz-rim"/>
                         <outlet property="cuttingBgView" destination="mh6-R8-BXh" id="G35-FZ-ItF"/>
                         <outlet property="dateDropDown" destination="uWf-mG-8Fk" id="8yt-uV-a3w"/>
+                        <outlet property="dateSelect" destination="dD9-wK-dbf" id="Nqm-NM-dVO"/>
                         <outlet property="foldingBgView" destination="vTq-sA-qNj" id="L8r-sG-DC9"/>
                         <outlet property="headerView" destination="Mvh-4G-cuf" id="m5R-9W-dfR"/>
                         <outlet property="hourBgView" destination="CEw-aD-ysZ" id="at0-Y5-mBh"/>
@@ -903,13 +945,22 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                     </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="03-10-2021" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aax-i8-bvS">
+                                                        <rect key="frame" x="119.5" y="35" width="274.5" height="30"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42C-5P-wSB">
                                                         <rect key="frame" x="119.5" y="35" width="274.5" height="30"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
-                                                        <state key="normal" title="03-10-2021">
+                                                        <state key="normal">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="datePickerBtn:" destination="cm7-nt-sna" eventType="touchUpInside" id="RVF-HO-Tq4"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGP-yY-3Uo">
                                                         <rect key="frame" x="0.0" y="39.5" width="45" height="21"/>
@@ -925,8 +976,12 @@
                                                     <constraint firstItem="X1e-UI-dfM" firstAttribute="top" secondItem="TIf-x4-4ZI" secondAttribute="top" id="ELg-VK-9zs"/>
                                                     <constraint firstItem="UCh-h5-yh2" firstAttribute="centerY" secondItem="X1e-UI-dfM" secondAttribute="centerY" id="HTM-aA-sX1"/>
                                                     <constraint firstAttribute="trailing" secondItem="42C-5P-wSB" secondAttribute="trailing" id="KGj-TS-jVo"/>
+                                                    <constraint firstItem="aax-i8-bvS" firstAttribute="centerX" secondItem="42C-5P-wSB" secondAttribute="centerX" id="M0R-Tv-W1u"/>
                                                     <constraint firstItem="42C-5P-wSB" firstAttribute="top" secondItem="X1e-UI-dfM" secondAttribute="bottom" constant="5" id="XQu-5A-5BX"/>
                                                     <constraint firstItem="OGP-yY-3Uo" firstAttribute="leading" secondItem="TIf-x4-4ZI" secondAttribute="leading" id="ZAf-RV-rMm"/>
+                                                    <constraint firstItem="aax-i8-bvS" firstAttribute="width" secondItem="42C-5P-wSB" secondAttribute="width" id="ZKu-JG-p5G"/>
+                                                    <constraint firstItem="aax-i8-bvS" firstAttribute="height" secondItem="42C-5P-wSB" secondAttribute="height" id="dnb-yj-71q"/>
+                                                    <constraint firstItem="aax-i8-bvS" firstAttribute="centerY" secondItem="42C-5P-wSB" secondAttribute="centerY" id="q6g-JX-zm0"/>
                                                     <constraint firstItem="OGP-yY-3Uo" firstAttribute="centerY" secondItem="42C-5P-wSB" secondAttribute="centerY" id="rSB-jz-naq"/>
                                                     <constraint firstAttribute="trailing" secondItem="X1e-UI-dfM" secondAttribute="trailing" id="tsV-SF-0tT"/>
                                                     <constraint firstItem="UCh-h5-yh2" firstAttribute="leading" secondItem="TIf-x4-4ZI" secondAttribute="leading" id="xIv-F4-041"/>
@@ -1038,6 +1093,7 @@
                     </view>
                     <connections>
                         <outlet property="dateDropDown" destination="42C-5P-wSB" id="xLd-a7-xRu"/>
+                        <outlet property="dateSelect" destination="aax-i8-bvS" id="SOz-bP-PgX"/>
                         <outlet property="headerView" destination="LeL-xT-ugj" id="yid-aW-OmF"/>
                         <outlet property="tableView" destination="nl7-To-VlE" id="Zzl-uw-pMV"/>
                         <outlet property="titleBgView" destination="VHA-JG-EH0" id="sJs-On-Xqy"/>

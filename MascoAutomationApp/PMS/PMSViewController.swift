@@ -23,7 +23,6 @@ class PMSViewController: UIViewController {
         super.viewDidLoad()
 
         self.headerView.searchBgView.layer.cornerRadius = 10
-        
         let arcCenterKPMS = CGPoint(x: self.bodyView.iconKPMSBgView.bounds.size.width / 2, y: self.bodyView.iconKPMSBgView.bounds.size.height)
         let circleRadiusKPMS = self.bodyView.iconKPMSBgView.bounds.size.width / 2
         let circlePathKPMS = UIBezierPath(arcCenter: arcCenterKPMS, radius: circleRadiusKPMS, startAngle: CGFloat.pi, endAngle: CGFloat.pi * 2, clockwise: true)
