@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import YYCalendar
 
 class LeaveApplyViewController: UIViewController {
     
@@ -23,7 +23,7 @@ class LeaveApplyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.bodyView.IdBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.IdBgView.layer.borderWidth = 0.5
         self.bodyView.IdBgView.layer.cornerRadius = 4
@@ -71,12 +71,70 @@ class LeaveApplyViewController: UIViewController {
          }
          weakSelf.showBackController()
         }
+        
+        self.bodyView.applyFromHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.applyFromDate()
+        }
+        
+        self.bodyView.applyToHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.applyToDate()
+        }
     }
     
 
     func showBackController(){
         let controller = LeaveViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
+    }
+    
+    func applyFromDate() {
+        
+       let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd"
+        
+        let calendar = YYCalendar(normalCalendarLangType: .ENG3,
+                                  date: dateFormatter.string(from: currentDate),
+                                          format: "yyyy/MM/dd") { [weak self] date in
+            self?.bodyView.applyFromDate.text = date
+            print(date)
+                }
+        
+        calendar.sundayColor = UIColor.gray
+        calendar.defaultDayColor = UIColor.gray
+        calendar.saturdayColor = UIColor.gray
+        
+        calendar.show()
+        
+    }
+    
+    func applyToDate() {
+        
+       let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd"
+        
+        let calendar = YYCalendar(normalCalendarLangType: .ENG3,
+                                  date: dateFormatter.string(from: currentDate),
+                                          format: "yyyy/MM/dd") { [weak self] date in
+            self?.bodyView.ApplyToDate.text = date
+            print(date)
+                }
+        
+        calendar.sundayColor = UIColor.gray
+        calendar.defaultDayColor = UIColor.gray
+        calendar.saturdayColor = UIColor.gray
+        
+        calendar.show()
+        
     }
 
 }

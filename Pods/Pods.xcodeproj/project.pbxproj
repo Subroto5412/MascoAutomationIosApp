@@ -1,0 +1,700 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0452C191715BD8022958703465478F64 /* LimitedCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FFA7B720486E8A1C7FA140D534AA1B /* LimitedCalendar.swift */; };
+		0964CC1E4A40EB22B6730C228EC0DFB2 /* Useful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004822015513C99B4591801582E5B0AE /* Useful.swift */; };
+		09943F5CE2DB9238BD26168D1FCBF45D /* calendar_next_pr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1261E311C717D1BA4AFF1197FB76B9D5 /* calendar_next_pr@2x.png */; };
+		213A739C987463849C915C8C33B2F16B /* calendar_next@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A909019C7459AE2F204B892EFDFC6EB /* calendar_next@3x.png */; };
+		2A9F5506549839098F4AD7CA16462685 /* calendar_next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AEFA18675375A27429D2AEDFE13337A1 /* calendar_next@2x.png */; };
+		3044B1F3E10C638B668D895919FF28FD /* YYCalendar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C76D52DD4AC4778C5B7EC7038086C81D /* YYCalendar-dummy.m */; };
+		323C971A498C0AB4FA6A3C7576347EEC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
+		4230DC9AE5F37331C1B0B6C8DB07E3EE /* top_btn_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1054E6F90BD2C962A1B7C21AF0C3D67C /* top_btn_close@3x.png */; };
+		49D90ADA7DB75385AEA1025A2CBCDA59 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */; };
+		524CF076FA0C929A9D87AD8C59554773 /* Pods-MascoAutomationApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E74D4404688817162E3D60010EE464A5 /* Pods-MascoAutomationApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		536DC3035AAF62A73388C7D315518B38 /* today_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77C736195449A43138F7E752785F96AC /* today_icon@3x.png */; };
+		554F8708CD09C386922BC083B649D5FD /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7982176D9CB0F4C097B5D487BBA99D /* Image.swift */; };
+		6FA7C980433F6254D6C861ABCB038F4D /* DayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E74D0BF6F70988DFB4F1C74D57476F /* DayButton.swift */; };
+		83D4F791E4A7412D8B3FA34B86391CBA /* calendar_prev@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39555418618669762A29C60F0D28C0FA /* calendar_prev@2x.png */; };
+		91CC7112AAA3892FE9DB321C154BD53A /* top_btn_close_pr@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 098DF69F895E49402D0BC46A47685D3E /* top_btn_close_pr@3x.png */; };
+		9587F6651F0F4B7A264B5AFAA73AAC3C /* today_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0081C834B412F13F799DED50289253 /* today_icon@2x.png */; };
+		A06E450D321F08F83DECD9FD541DA689 /* calendar_prev_pr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 236952CCEF9FBA542F3D534F903D55DB /* calendar_prev_pr@2x.png */; };
+		AE3D68EF1F701940DF675DCD0DF2ADF2 /* Pods-MascoAutomationApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E076E0C15A8FC04D453B7913DF1B1EBA /* Pods-MascoAutomationApp-dummy.m */; };
+		B80E0AE923EE8BEEF3E495DB5BCBF323 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EA92A9444D2B614B61B04229F039A2 /* Constants.swift */; };
+		BDCC70BC34826402BFBAA2321F30909D /* NormalCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229F077EE512A4451789A3C269D6C9E3 /* NormalCalendar.swift */; };
+		C48CFC65A6193CED449E026AA69F90E7 /* calendar_next_pr@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BA08D85ED583D3556A66285AE8D0E86 /* calendar_next_pr@3x.png */; };
+		D535528FE04DC43858711999B0FB9609 /* calendar_prev@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C66A5C542C3E1C80E5A36093D6C901 /* calendar_prev@3x.png */; };
+		D68D6CB2DBDEDBAC5B26336BD81672F1 /* top_btn_close_pr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13C331083578B23BC26BFCEB8EB7652E /* top_btn_close_pr@2x.png */; };
+		D9DE9E8460C90F559BD5DBB9CEBE3427 /* top_btn_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DB353E59B8369A267D31E1187CC90E0 /* top_btn_close@2x.png */; };
+		DCB67EE2D25BBD5D0F9C83EDAF4EE611 /* calendar_prev_pr@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10B70C2F6AC8DBEFFCA7290F5961EA4B /* calendar_prev_pr@3x.png */; };
+		E3902B991E3DF28723F0992087467C0E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
+		F505367D237246CA45D412A20E547882 /* YYCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F697040EEDD4DE4F83B5B74D5201CF0 /* YYCalendar.swift */; };
+		F7532AE43CD5ACCFBFB5264D1B2A616D /* YYCalendar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AF7A8EFD3E8878760D5DAC0D4720082 /* YYCalendar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1B246E1EB17E11546C0F0B689C85FF94 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D87692C79C9F80E864A21E2BE2E9628C;
+			remoteInfo = YYCalendar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		004822015513C99B4591801582E5B0AE /* Useful.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Useful.swift; path = YYCalendar/Classes/Useful.swift; sourceTree = "<group>"; };
+		08EA92A9444D2B614B61B04229F039A2 /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = YYCalendar/Classes/Constants.swift; sourceTree = "<group>"; };
+		098DF69F895E49402D0BC46A47685D3E /* top_btn_close_pr@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "top_btn_close_pr@3x.png"; path = "YYCalendar/Assets/top_btn_close_pr@3x.png"; sourceTree = "<group>"; };
+		1054E6F90BD2C962A1B7C21AF0C3D67C /* top_btn_close@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "top_btn_close@3x.png"; path = "YYCalendar/Assets/top_btn_close@3x.png"; sourceTree = "<group>"; };
+		10B70C2F6AC8DBEFFCA7290F5961EA4B /* calendar_prev_pr@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "calendar_prev_pr@3x.png"; path = "YYCalendar/Assets/calendar_prev_pr@3x.png"; sourceTree = "<group>"; };
+		1261E311C717D1BA4AFF1197FB76B9D5 /* calendar_next_pr@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "calendar_next_pr@2x.png"; path = "YYCalendar/Assets/calendar_next_pr@2x.png"; sourceTree = "<group>"; };
+		13C331083578B23BC26BFCEB8EB7652E /* top_btn_close_pr@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "top_btn_close_pr@2x.png"; path = "YYCalendar/Assets/top_btn_close_pr@2x.png"; sourceTree = "<group>"; };
+		1DB353E59B8369A267D31E1187CC90E0 /* top_btn_close@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "top_btn_close@2x.png"; path = "YYCalendar/Assets/top_btn_close@2x.png"; sourceTree = "<group>"; };
+		1E7982176D9CB0F4C097B5D487BBA99D /* Image.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Image.swift; path = YYCalendar/Classes/Image.swift; sourceTree = "<group>"; };
+		229F077EE512A4451789A3C269D6C9E3 /* NormalCalendar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NormalCalendar.swift; path = YYCalendar/Classes/Components/NormalCalendar.swift; sourceTree = "<group>"; };
+		236952CCEF9FBA542F3D534F903D55DB /* calendar_prev_pr@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "calendar_prev_pr@2x.png"; path = "YYCalendar/Assets/calendar_prev_pr@2x.png"; sourceTree = "<group>"; };
+		2B1CDE28C8BF5C227BDF51B7D4184121 /* Pods-MascoAutomationApp */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-MascoAutomationApp"; path = Pods_MascoAutomationApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3014BD61919AC93336AA1031AAB5C438 /* YYCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YYCalendar.release.xcconfig; sourceTree = "<group>"; };
+		33F14BB17C99A5B6A7E4626A960F0D85 /* Pods-MascoAutomationApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MascoAutomationApp.release.xcconfig"; sourceTree = "<group>"; };
+		39555418618669762A29C60F0D28C0FA /* calendar_prev@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "calendar_prev@2x.png"; path = "YYCalendar/Assets/calendar_prev@2x.png"; sourceTree = "<group>"; };
+		488109D3597D492DC974EA74EC8778F8 /* Pods-MascoAutomationApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MascoAutomationApp-acknowledgements.markdown"; sourceTree = "<group>"; };
+		4B1967B0AEF9AB5A9A1D177CD5E5AE78 /* Pods-MascoAutomationApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-MascoAutomationApp.modulemap"; sourceTree = "<group>"; };
+		53E74D0BF6F70988DFB4F1C74D57476F /* DayButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DayButton.swift; path = YYCalendar/Classes/Components/DayButton.swift; sourceTree = "<group>"; };
+		5A909019C7459AE2F204B892EFDFC6EB /* calendar_next@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "calendar_next@3x.png"; path = "YYCalendar/Assets/calendar_next@3x.png"; sourceTree = "<group>"; };
+		5E3D923AA53DB133478E4E3F1C1ED7D3 /* YYCalendar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YYCalendar-prefix.pch"; sourceTree = "<group>"; };
+		6F697040EEDD4DE4F83B5B74D5201CF0 /* YYCalendar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YYCalendar.swift; path = YYCalendar/Classes/YYCalendar.swift; sourceTree = "<group>"; };
+		719E5C34C9847320C5FC31D5151F6772 /* YYCalendar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = YYCalendar.modulemap; sourceTree = "<group>"; };
+		731A36FD4F3C8371DA4AFB12552BC65C /* YYCalendar-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "YYCalendar-Info.plist"; sourceTree = "<group>"; };
+		77C736195449A43138F7E752785F96AC /* today_icon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "today_icon@3x.png"; path = "YYCalendar/Assets/today_icon@3x.png"; sourceTree = "<group>"; };
+		7EEA178A84606D684303C2B014D00CF2 /* Pods-MascoAutomationApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MascoAutomationApp-frameworks.sh"; sourceTree = "<group>"; };
+		7F0081C834B412F13F799DED50289253 /* today_icon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "today_icon@2x.png"; path = "YYCalendar/Assets/today_icon@2x.png"; sourceTree = "<group>"; };
+		8AF7A8EFD3E8878760D5DAC0D4720082 /* YYCalendar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YYCalendar-umbrella.h"; sourceTree = "<group>"; };
+		9BA08D85ED583D3556A66285AE8D0E86 /* calendar_next_pr@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "calendar_next_pr@3x.png"; path = "YYCalendar/Assets/calendar_next_pr@3x.png"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A66F46B2B756E5A351C7DBD59098622D /* YYCalendar */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = YYCalendar; path = YYCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEFA18675375A27429D2AEDFE13337A1 /* calendar_next@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "calendar_next@2x.png"; path = "YYCalendar/Assets/calendar_next@2x.png"; sourceTree = "<group>"; };
+		B0A4BA5280302A52F430D345BB01B197 /* Pods-MascoAutomationApp-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MascoAutomationApp-Info.plist"; sourceTree = "<group>"; };
+		C76D52DD4AC4778C5B7EC7038086C81D /* YYCalendar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YYCalendar-dummy.m"; sourceTree = "<group>"; };
+		D121993852BC25A887A0716D27ED6770 /* Pods-MascoAutomationApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MascoAutomationApp-acknowledgements.plist"; sourceTree = "<group>"; };
+		D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		D6C66A5C542C3E1C80E5A36093D6C901 /* calendar_prev@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "calendar_prev@3x.png"; path = "YYCalendar/Assets/calendar_prev@3x.png"; sourceTree = "<group>"; };
+		E076E0C15A8FC04D453B7913DF1B1EBA /* Pods-MascoAutomationApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MascoAutomationApp-dummy.m"; sourceTree = "<group>"; };
+		E74D4404688817162E3D60010EE464A5 /* Pods-MascoAutomationApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MascoAutomationApp-umbrella.h"; sourceTree = "<group>"; };
+		EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		EE31F318DDD4029129FF675840B47FB4 /* Pods-MascoAutomationApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MascoAutomationApp.debug.xcconfig"; sourceTree = "<group>"; };
+		F6FFA7B720486E8A1C7FA140D534AA1B /* LimitedCalendar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LimitedCalendar.swift; path = YYCalendar/Classes/Components/LimitedCalendar.swift; sourceTree = "<group>"; };
+		FA922D025DF4C2C5E6A15DA2A4E67B55 /* YYCalendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YYCalendar.debug.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		32D8B442B98A250F03ACFEECD774C522 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				323C971A498C0AB4FA6A3C7576347EEC /* Foundation.framework in Frameworks */,
+				49D90ADA7DB75385AEA1025A2CBCDA59 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1552582E6F7F75B37E7EC20E4FAADD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3902B991E3DF28723F0992087467C0E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				59DA5C1F72E1D5BABC43EACBA672C3BA /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		406B259C04E579F6F3AB1B4AD569B3A9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				50347329AE9BC9A4D31522988D67F67A /* YYCalendar */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		49AA29DA6482ABF9EA7C5B7322BCB189 /* Pods-MascoAutomationApp */ = {
+			isa = PBXGroup;
+			children = (
+				4B1967B0AEF9AB5A9A1D177CD5E5AE78 /* Pods-MascoAutomationApp.modulemap */,
+				488109D3597D492DC974EA74EC8778F8 /* Pods-MascoAutomationApp-acknowledgements.markdown */,
+				D121993852BC25A887A0716D27ED6770 /* Pods-MascoAutomationApp-acknowledgements.plist */,
+				E076E0C15A8FC04D453B7913DF1B1EBA /* Pods-MascoAutomationApp-dummy.m */,
+				7EEA178A84606D684303C2B014D00CF2 /* Pods-MascoAutomationApp-frameworks.sh */,
+				B0A4BA5280302A52F430D345BB01B197 /* Pods-MascoAutomationApp-Info.plist */,
+				E74D4404688817162E3D60010EE464A5 /* Pods-MascoAutomationApp-umbrella.h */,
+				EE31F318DDD4029129FF675840B47FB4 /* Pods-MascoAutomationApp.debug.xcconfig */,
+				33F14BB17C99A5B6A7E4626A960F0D85 /* Pods-MascoAutomationApp.release.xcconfig */,
+			);
+			name = "Pods-MascoAutomationApp";
+			path = "Target Support Files/Pods-MascoAutomationApp";
+			sourceTree = "<group>";
+		};
+		50347329AE9BC9A4D31522988D67F67A /* YYCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				08EA92A9444D2B614B61B04229F039A2 /* Constants.swift */,
+				53E74D0BF6F70988DFB4F1C74D57476F /* DayButton.swift */,
+				1E7982176D9CB0F4C097B5D487BBA99D /* Image.swift */,
+				F6FFA7B720486E8A1C7FA140D534AA1B /* LimitedCalendar.swift */,
+				229F077EE512A4451789A3C269D6C9E3 /* NormalCalendar.swift */,
+				004822015513C99B4591801582E5B0AE /* Useful.swift */,
+				6F697040EEDD4DE4F83B5B74D5201CF0 /* YYCalendar.swift */,
+				B59C1D59AFB72F1517BB56C94BAA85FA /* Resources */,
+				AA1A18AAF9B5F8409DCC6416DE836823 /* Support Files */,
+			);
+			name = YYCalendar;
+			path = YYCalendar;
+			sourceTree = "<group>";
+		};
+		59DA5C1F72E1D5BABC43EACBA672C3BA /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */,
+				D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		84A6D17F0CB347770F67AE017EDA2708 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				49AA29DA6482ABF9EA7C5B7322BCB189 /* Pods-MascoAutomationApp */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		AA1A18AAF9B5F8409DCC6416DE836823 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				719E5C34C9847320C5FC31D5151F6772 /* YYCalendar.modulemap */,
+				C76D52DD4AC4778C5B7EC7038086C81D /* YYCalendar-dummy.m */,
+				731A36FD4F3C8371DA4AFB12552BC65C /* YYCalendar-Info.plist */,
+				5E3D923AA53DB133478E4E3F1C1ED7D3 /* YYCalendar-prefix.pch */,
+				8AF7A8EFD3E8878760D5DAC0D4720082 /* YYCalendar-umbrella.h */,
+				FA922D025DF4C2C5E6A15DA2A4E67B55 /* YYCalendar.debug.xcconfig */,
+				3014BD61919AC93336AA1031AAB5C438 /* YYCalendar.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/YYCalendar";
+			sourceTree = "<group>";
+		};
+		B59C1D59AFB72F1517BB56C94BAA85FA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AEFA18675375A27429D2AEDFE13337A1 /* calendar_next@2x.png */,
+				5A909019C7459AE2F204B892EFDFC6EB /* calendar_next@3x.png */,
+				1261E311C717D1BA4AFF1197FB76B9D5 /* calendar_next_pr@2x.png */,
+				9BA08D85ED583D3556A66285AE8D0E86 /* calendar_next_pr@3x.png */,
+				39555418618669762A29C60F0D28C0FA /* calendar_prev@2x.png */,
+				D6C66A5C542C3E1C80E5A36093D6C901 /* calendar_prev@3x.png */,
+				236952CCEF9FBA542F3D534F903D55DB /* calendar_prev_pr@2x.png */,
+				10B70C2F6AC8DBEFFCA7290F5961EA4B /* calendar_prev_pr@3x.png */,
+				7F0081C834B412F13F799DED50289253 /* today_icon@2x.png */,
+				77C736195449A43138F7E752785F96AC /* today_icon@3x.png */,
+				1DB353E59B8369A267D31E1187CC90E0 /* top_btn_close@2x.png */,
+				1054E6F90BD2C962A1B7C21AF0C3D67C /* top_btn_close@3x.png */,
+				13C331083578B23BC26BFCEB8EB7652E /* top_btn_close_pr@2x.png */,
+				098DF69F895E49402D0BC46A47685D3E /* top_btn_close_pr@3x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
+				406B259C04E579F6F3AB1B4AD569B3A9 /* Pods */,
+				F283049343F1260D3E84CE68036C7546 /* Products */,
+				84A6D17F0CB347770F67AE017EDA2708 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		F283049343F1260D3E84CE68036C7546 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2B1CDE28C8BF5C227BDF51B7D4184121 /* Pods-MascoAutomationApp */,
+				A66F46B2B756E5A351C7DBD59098622D /* YYCalendar */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1A4AC820C378143D24B8FE2686FC8086 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				524CF076FA0C929A9D87AD8C59554773 /* Pods-MascoAutomationApp-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6877B07D170510799D9D9B952192C66E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7532AE43CD5ACCFBFB5264D1B2A616D /* YYCalendar-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		15397DBF9F445C5646449227B09C2819 /* Pods-MascoAutomationApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E3536C802BF28AEB9A9925A6C9E1CB62 /* Build configuration list for PBXNativeTarget "Pods-MascoAutomationApp" */;
+			buildPhases = (
+				1A4AC820C378143D24B8FE2686FC8086 /* Headers */,
+				54595EEC94EA71603EAD57AA434C22ED /* Sources */,
+				F1552582E6F7F75B37E7EC20E4FAADD4 /* Frameworks */,
+				CEA9663ABC1B556687FA1F81040118A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9B565350A0EE2588A91FB94AF374450F /* PBXTargetDependency */,
+			);
+			name = "Pods-MascoAutomationApp";
+			productName = Pods_MascoAutomationApp;
+			productReference = 2B1CDE28C8BF5C227BDF51B7D4184121 /* Pods-MascoAutomationApp */;
+			productType = "com.apple.product-type.framework";
+		};
+		D87692C79C9F80E864A21E2BE2E9628C /* YYCalendar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D9FE8DA878EC82899CE6E65AAD45FDE /* Build configuration list for PBXNativeTarget "YYCalendar" */;
+			buildPhases = (
+				6877B07D170510799D9D9B952192C66E /* Headers */,
+				558F8CF127D831C585EC9C14431B49F1 /* Sources */,
+				32D8B442B98A250F03ACFEECD774C522 /* Frameworks */,
+				75BC7C45C80BA7F5282D254DA7DF6309 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YYCalendar;
+			productName = YYCalendar;
+			productReference = A66F46B2B756E5A351C7DBD59098622D /* YYCalendar */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = F283049343F1260D3E84CE68036C7546 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				15397DBF9F445C5646449227B09C2819 /* Pods-MascoAutomationApp */,
+				D87692C79C9F80E864A21E2BE2E9628C /* YYCalendar */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		75BC7C45C80BA7F5282D254DA7DF6309 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A9F5506549839098F4AD7CA16462685 /* calendar_next@2x.png in Resources */,
+				213A739C987463849C915C8C33B2F16B /* calendar_next@3x.png in Resources */,
+				09943F5CE2DB9238BD26168D1FCBF45D /* calendar_next_pr@2x.png in Resources */,
+				C48CFC65A6193CED449E026AA69F90E7 /* calendar_next_pr@3x.png in Resources */,
+				83D4F791E4A7412D8B3FA34B86391CBA /* calendar_prev@2x.png in Resources */,
+				D535528FE04DC43858711999B0FB9609 /* calendar_prev@3x.png in Resources */,
+				A06E450D321F08F83DECD9FD541DA689 /* calendar_prev_pr@2x.png in Resources */,
+				DCB67EE2D25BBD5D0F9C83EDAF4EE611 /* calendar_prev_pr@3x.png in Resources */,
+				9587F6651F0F4B7A264B5AFAA73AAC3C /* today_icon@2x.png in Resources */,
+				536DC3035AAF62A73388C7D315518B38 /* today_icon@3x.png in Resources */,
+				D9DE9E8460C90F559BD5DBB9CEBE3427 /* top_btn_close@2x.png in Resources */,
+				4230DC9AE5F37331C1B0B6C8DB07E3EE /* top_btn_close@3x.png in Resources */,
+				D68D6CB2DBDEDBAC5B26336BD81672F1 /* top_btn_close_pr@2x.png in Resources */,
+				91CC7112AAA3892FE9DB321C154BD53A /* top_btn_close_pr@3x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEA9663ABC1B556687FA1F81040118A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		54595EEC94EA71603EAD57AA434C22ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE3D68EF1F701940DF675DCD0DF2ADF2 /* Pods-MascoAutomationApp-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		558F8CF127D831C585EC9C14431B49F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B80E0AE923EE8BEEF3E495DB5BCBF323 /* Constants.swift in Sources */,
+				6FA7C980433F6254D6C861ABCB038F4D /* DayButton.swift in Sources */,
+				554F8708CD09C386922BC083B649D5FD /* Image.swift in Sources */,
+				0452C191715BD8022958703465478F64 /* LimitedCalendar.swift in Sources */,
+				BDCC70BC34826402BFBAA2321F30909D /* NormalCalendar.swift in Sources */,
+				0964CC1E4A40EB22B6730C228EC0DFB2 /* Useful.swift in Sources */,
+				F505367D237246CA45D412A20E547882 /* YYCalendar.swift in Sources */,
+				3044B1F3E10C638B668D895919FF28FD /* YYCalendar-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9B565350A0EE2588A91FB94AF374450F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = YYCalendar;
+			target = D87692C79C9F80E864A21E2BE2E9628C /* YYCalendar */;
+			targetProxy = 1B246E1EB17E11546C0F0B689C85FF94 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		BC01E0B73776AF6B58DC318A9BE988D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		BFD83876D4D4A617D901564D1718485F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3014BD61919AC93336AA1031AAB5C438 /* YYCalendar.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/YYCalendar/YYCalendar-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/YYCalendar/YYCalendar-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/YYCalendar/YYCalendar.modulemap";
+				PRODUCT_MODULE_NAME = YYCalendar;
+				PRODUCT_NAME = YYCalendar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C605C363CC9F26F9FF97DBB1D5C6E25C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		C813E9800A1CFFFAF6E764388FBF9963 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE31F318DDD4029129FF675840B47FB4 /* Pods-MascoAutomationApp.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-MascoAutomationApp/Pods-MascoAutomationApp-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MascoAutomationApp/Pods-MascoAutomationApp.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CE158AE34D75FBA84F03539AED221608 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA922D025DF4C2C5E6A15DA2A4E67B55 /* YYCalendar.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/YYCalendar/YYCalendar-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/YYCalendar/YYCalendar-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/YYCalendar/YYCalendar.modulemap";
+				PRODUCT_MODULE_NAME = YYCalendar;
+				PRODUCT_NAME = YYCalendar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EDC3A387C7B87AF6127C3BDAED01956F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33F14BB17C99A5B6A7E4626A960F0D85 /* Pods-MascoAutomationApp.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-MascoAutomationApp/Pods-MascoAutomationApp-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MascoAutomationApp/Pods-MascoAutomationApp.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC01E0B73776AF6B58DC318A9BE988D7 /* Debug */,
+				C605C363CC9F26F9FF97DBB1D5C6E25C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5D9FE8DA878EC82899CE6E65AAD45FDE /* Build configuration list for PBXNativeTarget "YYCalendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE158AE34D75FBA84F03539AED221608 /* Debug */,
+				BFD83876D4D4A617D901564D1718485F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E3536C802BF28AEB9A9925A6C9E1CB62 /* Build configuration list for PBXNativeTarget "Pods-MascoAutomationApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C813E9800A1CFFFAF6E764388FBF9963 /* Debug */,
+				EDC3A387C7B87AF6127C3BDAED01956F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

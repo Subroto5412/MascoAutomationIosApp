@@ -111,9 +111,11 @@
 		4DE38553274F7B8D00707916 /* InnerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE38552274F7B8D00707916 /* InnerHeader.swift */; };
 		4DE38555274F866C00707916 /* CommonFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE38554274F866C00707916 /* CommonFooter.swift */; };
 		4DE38557274F868100707916 /* CommonFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DE38556274F868100707916 /* CommonFooter.xib */; };
+		DAFE924ADBB6907686B3149C /* Pods_MascoAutomationApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B1BCE2C9DB8E528327C359 /* Pods_MascoAutomationApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		16B1BCE2C9DB8E528327C359 /* Pods_MascoAutomationApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MascoAutomationApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D116BF1276453590065C07D /* LeaveDetailsView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeaveDetailsView.storyboard; sourceTree = "<group>"; };
 		4D116BF32764791A0065C07D /* LeaveDetailsControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveDetailsControllerCell.swift; sourceTree = "<group>"; };
 		4D116BF42764791A0065C07D /* LeaveDetailsControllerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaveDetailsControllerCell.xib; sourceTree = "<group>"; };
@@ -224,6 +226,8 @@
 		4DE38552274F7B8D00707916 /* InnerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerHeader.swift; sourceTree = "<group>"; };
 		4DE38554274F866C00707916 /* CommonFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFooter.swift; sourceTree = "<group>"; };
 		4DE38556274F868100707916 /* CommonFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonFooter.xib; sourceTree = "<group>"; };
+		DBEA5008F8D6BBF25B210534 /* Pods-MascoAutomationApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MascoAutomationApp.release.xcconfig"; path = "Target Support Files/Pods-MascoAutomationApp/Pods-MascoAutomationApp.release.xcconfig"; sourceTree = "<group>"; };
+		DC5E682C5B175BD4034E52A2 /* Pods-MascoAutomationApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MascoAutomationApp.debug.xcconfig"; path = "Target Support Files/Pods-MascoAutomationApp/Pods-MascoAutomationApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,12 +235,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAFE924ADBB6907686B3149C /* Pods_MascoAutomationApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4725752DD646C74C3034A95E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				16B1BCE2C9DB8E528327C359 /* Pods_MascoAutomationApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4D466E3D275DD43D005F0E3C /* LeaveDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +325,8 @@
 			children = (
 				4D7FB4C82744D45100B318DA /* MascoAutomationApp */,
 				4D7FB4C72744D45100B318DA /* Products */,
+				DB3CA16C918318186B553370 /* Pods */,
+				4725752DD646C74C3034A95E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -561,6 +576,16 @@
 			path = HR;
 			sourceTree = "<group>";
 		};
+		DB3CA16C918318186B553370 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DC5E682C5B175BD4034E52A2 /* Pods-MascoAutomationApp.debug.xcconfig */,
+				DBEA5008F8D6BBF25B210534 /* Pods-MascoAutomationApp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -568,9 +593,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4D7FB4DA2744D45200B318DA /* Build configuration list for PBXNativeTarget "MascoAutomationApp" */;
 			buildPhases = (
+				2D6B9776B9100DA77F233A05 /* [CP] Check Pods Manifest.lock */,
 				4D7FB4C22744D45100B318DA /* Sources */,
 				4D7FB4C32744D45100B318DA /* Frameworks */,
 				4D7FB4C42744D45100B318DA /* Resources */,
+				1A1B2B67F6F0AC77CCAF3416 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -663,6 +690,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1A1B2B67F6F0AC77CCAF3416 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MascoAutomationApp/Pods-MascoAutomationApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MascoAutomationApp/Pods-MascoAutomationApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MascoAutomationApp/Pods-MascoAutomationApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2D6B9776B9100DA77F233A05 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MascoAutomationApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4D7FB4C22744D45100B318DA /* Sources */ = {
@@ -875,6 +944,7 @@
 		};
 		4D7FB4DB2744D45200B318DA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC5E682C5B175BD4034E52A2 /* Pods-MascoAutomationApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -894,6 +964,7 @@
 		};
 		4D7FB4DC2744D45200B318DA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBEA5008F8D6BBF25B210534 /* Pods-MascoAutomationApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

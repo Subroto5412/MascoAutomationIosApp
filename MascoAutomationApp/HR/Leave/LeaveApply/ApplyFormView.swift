@@ -19,12 +19,18 @@ class ApplyFormView: XibView {
     @IBOutlet weak var reasonBgView: UITextField!
     @IBOutlet weak var saveBgView: UIView!
     
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    @IBOutlet weak var applyFromDate: UILabel!
+    @IBOutlet weak var ApplyToDate: UILabel!
+    
+    var applyFromHandler : ((Bool?) -> Void)?
+    var applyToHandler : ((Bool?) -> Void)?
+    
+    @IBAction func applyFromBtn(_ sender: Any) {
+        self.applyFromHandler?(true)
     }
-    */
-
+    
+    @IBAction func applyToBtn(_ sender: Any) {
+        self.applyToHandler?(true)
+    }
+    
 }
