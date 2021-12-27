@@ -344,6 +344,7 @@
                         <outlet property="outputLbl" destination="TJc-ox-Ol4" id="9F2-Sa-vir"/>
                         <outlet property="tableViewLWP" destination="H6Z-Sg-ixi" id="uWh-xV-DE0"/>
                         <outlet property="titleView" destination="VdU-kt-tRR" id="Mmn-In-N96"/>
+                        <outlet property="totalOutputPcs" destination="TJc-ox-Ol4" id="I8Z-iy-kSs"/>
                         <outlet property="unitNameBgView" destination="5TK-ua-Lr8" id="kbZ-8i-CMy"/>
                         <outlet property="unitNameDropDown" destination="s7y-XH-j2T" id="ZHg-cZ-tVs"/>
                     </connections>

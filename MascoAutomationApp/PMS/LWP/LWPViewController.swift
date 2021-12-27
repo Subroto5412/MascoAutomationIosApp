@@ -18,6 +18,7 @@ class LWPViewController: UIViewController {
     @IBOutlet weak var outputLbl: UILabel!
     @IBOutlet weak var dateSelecct: UILabel!
     
+    @IBOutlet weak var totalOutputPcs: UILabel!
     @IBOutlet weak var unitNameBgView: UIView!
     @IBOutlet weak var btnSelectUnitName: UIButton!
     
@@ -27,7 +28,9 @@ class LWPViewController: UIViewController {
     var selectedButton = UIButton()
     
     var dataSource = [ListUnitName]()
+    var dataSourceLWP = [ListLineWiseData]()
     var extraHeight: Int = 0
+    var unitNoId: Int = 0
     class func initWithStoryboard() -> LWPViewController
     {
         let storyboard = UIStoryboard(name: "PMS", bundle: nil)
@@ -47,6 +50,11 @@ class LWPViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(CellClass.self, forCellReuseIdentifier: "Cell")
+        
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        self.dateSelecct.text = dateFormatter.string(from: date)
         
         self.unitNameDropDown.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.unitNameDropDown.layer.borderWidth = 0.5
@@ -173,11 +181,6 @@ class LWPViewController: UIViewController {
                     do{
                         let unitNameItemModel = try JSONDecoder().decode(ListUnitNameResponse.self, from: data)
                         self.dataSource = unitNameItemModel._listUnitName
-//                        for x in unitNameItemModel._listUnitName
-//                        {
-//                            print("-------\(x.unitNo!)")
-//                            print("-------\(x.unitName)")
-//                        }
                         
                     }catch let jsonErr{
                         print(jsonErr)
@@ -185,6 +188,60 @@ class LWPViewController: UIViewController {
                 }
         }
         task.resume()
+    }
+    
+    func getLWPList(unitNo: Int, createDate: String){
+        
+        let url = URL(string: LWP_URL)
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        
+        // Set HTTP Request Header
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        
+        let newTodoItem = LineWiseDataRequest(unit_no: unitNo, created_date: createDate)
+        let jsonData = try? JSONEncoder().encode(newTodoItem)
+        
+       
+
+        request.httpBody = jsonData
+
+        print("jsonData jsonData  data:\n \(jsonData!)")
+        self.showLoading(finished: {
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+                DispatchQueue.main.async {
+                    
+                    self.hideLoading(finished: {
+                        
+                    if let error = error {
+                        print("Error took place \(error)")
+                        return
+                    }
+                    guard let data = data else {return}
+
+                    do{
+                        let LWPItemModel = try JSONDecoder().decode(ListLineWiseDataResponse.self, from: data)
+                        self.dataSourceLWP = LWPItemModel._lineWiseProduction
+                        
+                        var totalOuput : Int = 0
+                        for i in LWPItemModel._lineWiseProduction{
+                            totalOuput = totalOuput + i.goodGarments!
+                            self.totalOutputPcs.text = "\(totalOuput)"
+                        }
+                        self.tableViewLWP.reloadData()
+                    }catch let jsonErr{
+                        print(jsonErr)
+                   }
+                    })
+                }
+        }
+        task.resume()
+        })
     }
 }
 
@@ -195,9 +252,9 @@ extension LWPViewController : UITableViewDelegate{
         if tableView == tableViewLWP {
             print("---you tapped me!----")
         }else{
-//            selectedButton.setTitle(dataSource[indexPath.row], for: .normal)
+            unitNoId = dataSource[indexPath.row].unitNo!
             selectedButton.setTitle(dataSource[indexPath.row].unitName, for: .normal)
-            print("Final Year id: \(dataSource[indexPath.row].unitNo!)")
+            self.getLWPList(unitNo: unitNoId, createDate: dateSelecct.text!)
             removeTransparentView()
         }
 
@@ -208,7 +265,7 @@ extension LWPViewController : UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == tableViewLWP {
-            return 10
+            return dataSourceLWP.count
         }else{
             return dataSource.count
         }
@@ -220,9 +277,9 @@ extension LWPViewController : UITableViewDataSource{
         if tableView == tableViewLWP {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LWPViewControllerCell
-            cell.slLbl.text = "1"
-            cell.lineNoLbl.text = "101"
-            cell.outputLbl.text = "400200"
+            cell.slLbl.text = "\(indexPath.row+1)"
+            cell.lineNoLbl.text = dataSourceLWP[indexPath.row].lineName
+            cell.outputLbl.text = "\(String(describing: dataSourceLWP[indexPath.row].goodGarments!))"
             return cell
             
         }else{
@@ -291,4 +348,84 @@ extension LWPViewController {
             }
     }
     
+    //hour-wise-data
+    
+    struct LineWiseDataRequest: Codable {
+        var unit_no: Int?
+        var created_date: String = ""
+        
+        enum CodingKeys: String, CodingKey {
+            case unit_no = "unit_no"
+            case created_date = "created_date"
+        }
+    }
+    
+    struct ListLineWiseData: Codable {
+        var goodGarments: Int?
+        var lineName: String = ""
+        
+        enum CodingKeys: String, CodingKey {
+            case goodGarments = "goodGarments"
+            case lineName = "lineName"
+        }
+        
+        init(from decoder: Decoder) throws {
+
+               let container = try decoder.container(keyedBy: CodingKeys.self)
+               self.goodGarments = try container.decodeIfPresent(Int.self, forKey: .goodGarments) ?? 0
+               self.lineName = try container.decodeIfPresent(String.self, forKey: .lineName) ?? ""
+           }
+
+           func encode(to encoder: Encoder) throws {
+
+               var container = encoder.container(keyedBy: CodingKeys.self)
+               try container.encode(goodGarments, forKey: .goodGarments)
+               try container.encode(lineName, forKey: .lineName)
+           }
+    }
+    
+    struct ListLineWiseDataResponse: Codable {
+        var error: String = ""
+        var _lineWiseProduction : [ListLineWiseData]
+
+        enum CodingKeys: String, CodingKey {
+            case error = "error"
+            case _lineWiseProduction
+        }
+        
+         init(from decoder: Decoder) throws {
+
+                let container = try decoder.container(keyedBy: CodingKeys.self)
+                self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
+                self._lineWiseProduction = try container.decodeIfPresent([ListLineWiseData].self, forKey: ._lineWiseProduction) ?? []
+            }
+
+            func encode(to encoder: Encoder) throws {
+
+                var container = encoder.container(keyedBy: CodingKeys.self)
+                try container.encode(error, forKey: .error)
+                try container.encode(_lineWiseProduction, forKey: ._lineWiseProduction)
+            }
+    }
 }
+
+extension LWPViewController {
+    func showLoading(finished: @escaping () -> Void) {
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+
+        alert.view.addSubview(loadingIndicator)
+
+        present(alert, animated: false, completion: finished)
+    }
+
+    func hideLoading(finished: @escaping () -> Void) {
+        if ( presentedViewController != nil && !presentedViewController!.isBeingPresented ) {
+            dismiss(animated: false, completion: finished)
+        }
+    }
+ }

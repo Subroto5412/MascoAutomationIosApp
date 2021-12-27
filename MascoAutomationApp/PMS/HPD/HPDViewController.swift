@@ -224,8 +224,8 @@ class HPDViewController: UIViewController {
                         self.dataSourceHWD = HWDItemModel._hourWiseDataList
                         
                         var totalOuput : Int = 0
-                        for x in HWDItemModel._hourWiseDataList{
-                            totalOuput = totalOuput + x.output!
+                        for i in HWDItemModel._hourWiseDataList{
+                            totalOuput = totalOuput + i.output!
                             self.totalOutputPCS.text = "\(totalOuput)"
                         }
                         self.tableViewHPD.reloadData()
