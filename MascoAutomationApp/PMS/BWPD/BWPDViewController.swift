@@ -25,8 +25,9 @@ class BWPDViewController: UIViewController {
     var selectedButton = UIButton()
     
     var dataSource = [ListUnitName]()
+    var dataSourceBWPD = [ListBuyerWiseData]()
     var extraHeight: Int = 0
-    
+    var unitNoId: Int = 0
     
     class func initWithStoryboard() -> BWPDViewController
     {
@@ -48,6 +49,11 @@ class BWPDViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(CellClass.self, forCellReuseIdentifier: "Cell")
+        
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        self.dateSelect.text = dateFormatter.string(from: date)
         
         self.unitNameDropDown.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.unitNameDropDown.layer.borderWidth = 0.5
@@ -105,11 +111,11 @@ class BWPDViewController: UIViewController {
         
         let currentDate = Date()
          let dateFormatter = DateFormatter()
-         dateFormatter.dateFormat = "dd-MM-yyyy"
+         dateFormatter.dateFormat = "yyyy-MM-dd"
          
          let calendar = YYCalendar(normalCalendarLangType: .ENG3,
                                    date: dateFormatter.string(from: currentDate),
-                                           format: "dd-MM-yyyy") { [weak self] date in
+                                           format: "yyyy-MM-dd") { [weak self] date in
              self?.dateSelect.text = date
              print(date)
                  }
@@ -188,6 +194,61 @@ class BWPDViewController: UIViewController {
         task.resume()
     }
     
+    func getBWPDList(unitNo: Int, createDate: String){
+        
+        let url = URL(string: BWPD_URL)
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        
+        // Set HTTP Request Header
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        print("unitNo  : \(unitNo) ----createDate  : \(createDate)")
+//        print("createDate  : \(createDate)")
+        
+        let newTodoItem = BWPDRequest(unit_no: unitNo, created_date: createDate)
+        let jsonData = try? JSONEncoder().encode(newTodoItem)
+        
+       
+
+        request.httpBody = jsonData
+
+        print("jsonData jsonData  data:\n \(jsonData!)")
+        self.showLoading(finished: {
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+                DispatchQueue.main.async {
+                    
+                    self.hideLoading(finished: {
+                        
+                    if let error = error {
+                        print("Error took place \(error)")
+                        return
+                    }
+                    guard let data = data else {return}
+
+                    do{
+                        let BWPDItemModel = try JSONDecoder().decode(ListBWPDResponse.self, from: data)
+                        self.dataSourceBWPD = BWPDItemModel._listBuyerWiseData
+                        
+                        var totalOuput : Int = 0
+//                        for x in BWPDItemModel._listBuyerWiseData{
+//                            totalOuput = totalOuput + x.output!
+//                            self.totalOutputPCS.text = "\(totalOuput)"
+//                        }
+                        self.tableViewBWPD.reloadData()
+                    }catch let jsonErr{
+                        print(jsonErr)
+                   }
+                    })
+                }
+        }
+        task.resume()
+        })
+    }
 }
 
 
@@ -197,7 +258,9 @@ extension BWPDViewController : UITableViewDelegate{
         if tableView == tableViewBWPD {
             print("---you tapped me!----")
         }else{
+            unitNoId = dataSource[indexPath.row].unitNo!
             selectedButton.setTitle(dataSource[indexPath.row].unitName, for: .normal)
+            self.getBWPDList(unitNo: unitNoId, createDate: dateSelect.text!)
             removeTransparentView()
         }
        
@@ -208,7 +271,7 @@ extension BWPDViewController : UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == tableViewBWPD {
-            return 10
+            return dataSourceBWPD.count
         }else{
             return dataSource.count
         }
@@ -218,13 +281,13 @@ extension BWPDViewController : UITableViewDataSource{
         
         if tableView == tableViewBWPD {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BWPDTitleViewControllerCell
-            cell.slLbl.text = "1"
-            cell.buyerLbl.text = "H&M"
-            cell.styleLbl.text = "000001"
-            cell.orderLbl.text = "A"
-            cell.orderQtsLbl.text = "50000000"
-            cell.sewQtsLbl.text = "30000"
-            cell.balanceLbl.text = "20000"
+            cell.slLbl.text = "\(indexPath.row + 1)"
+            cell.buyerLbl.text = dataSourceBWPD[indexPath.row].buyerName
+            cell.styleLbl.text = dataSourceBWPD[indexPath.row].styleNo
+            cell.orderLbl.text = dataSourceBWPD[indexPath.row].orderNo
+            cell.orderQtsLbl.text = "\(String(describing: dataSourceBWPD[indexPath.row].orderQty))"
+            cell.sewQtsLbl.text = "\(String(describing: dataSourceBWPD[indexPath.row].sewingQty))"
+            cell.balanceLbl.text = "\(String(describing: dataSourceBWPD[indexPath.row].balance))"
             return cell
         }else{
             
@@ -238,7 +301,7 @@ extension BWPDViewController : UITableViewDataSource{
         if tableView == tableViewBWPD {
             return 40
         }else{
-            return 50
+            return 40
         }
     }
 
@@ -295,3 +358,118 @@ extension BWPDViewController {
     }
     
 }
+
+extension BWPDViewController {
+
+    //hour-wise-data
+    
+    struct BWPDRequest: Codable {
+        var unit_no: Int?
+        var created_date: String = ""
+        
+        enum CodingKeys: String, CodingKey {
+            case unit_no = "unit_no"
+            case created_date = "created_date"
+        }
+    }
+    
+    struct ListBuyerWiseData: Codable {
+        
+        var buyerName: String = ""
+        var orderNo: String = ""
+        var styleNo: String = ""
+        var buyerId: Int?
+        var styleId: Int?
+        var buyerReferenceId: Int?
+        var orderQty: Int?
+        var sewingQty: Int?
+        var balance: Int?
+        
+        enum CodingKeys: String, CodingKey {
+            case buyerName = "buyerName"
+            case orderNo = "orderNo"
+            case styleNo = "styleNo"
+            case buyerId = "buyerId"
+            case styleId = "styleId"
+            case buyerReferenceId = "buyerReferenceId"
+            case orderQty = "orderQty"
+            case sewingQty = "sewingQty"
+            case balance = "balance"
+        }
+        
+        init(from decoder: Decoder) throws {
+
+               let container = try decoder.container(keyedBy: CodingKeys.self)
+               self.buyerName = try container.decodeIfPresent(String.self, forKey: .buyerName) ?? ""
+               self.orderNo = try container.decodeIfPresent(String.self, forKey: .orderNo) ?? ""
+               self.styleNo = try container.decodeIfPresent(String.self, forKey: .styleNo) ?? ""
+               self.buyerId = try container.decodeIfPresent(Int.self, forKey: .buyerId) ?? 0
+               self.styleId = try container.decodeIfPresent(Int.self, forKey: .styleId) ?? 0
+               self.buyerReferenceId = try container.decodeIfPresent(Int.self, forKey: .buyerReferenceId) ?? 0
+               self.orderQty = try container.decodeIfPresent(Int.self, forKey: .orderQty) ?? 0
+               self.sewingQty = try container.decodeIfPresent(Int.self, forKey: .sewingQty) ?? 0
+               self.balance = try container.decodeIfPresent(Int.self, forKey: .balance) ?? 0
+            
+            
+           }
+
+           func encode(to encoder: Encoder) throws {
+
+               var container = encoder.container(keyedBy: CodingKeys.self)
+               try container.encode(buyerName, forKey: .buyerName)
+               try container.encode(orderNo, forKey: .orderNo)
+               try container.encode(styleNo, forKey: .styleNo)
+               try container.encode(buyerId, forKey: .buyerId)
+               try container.encode(styleId, forKey: .styleId)
+               try container.encode(buyerReferenceId, forKey: .buyerReferenceId)
+               try container.encode(orderQty, forKey: .orderQty)
+               try container.encode(sewingQty, forKey: .sewingQty)
+               try container.encode(balance, forKey: .balance)
+           }
+    }
+    
+    struct ListBWPDResponse: Codable {
+        var error: String = ""
+        var _listBuyerWiseData : [ListBuyerWiseData]
+
+        enum CodingKeys: String, CodingKey {
+            case error = "error"
+            case _listBuyerWiseData
+        }
+        
+         init(from decoder: Decoder) throws {
+
+                let container = try decoder.container(keyedBy: CodingKeys.self)
+                self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
+                self._listBuyerWiseData = try container.decodeIfPresent([ListBuyerWiseData].self, forKey: ._listBuyerWiseData) ?? []
+            }
+
+            func encode(to encoder: Encoder) throws {
+
+                var container = encoder.container(keyedBy: CodingKeys.self)
+                try container.encode(error, forKey: .error)
+                try container.encode(_listBuyerWiseData, forKey: ._listBuyerWiseData)
+            }
+    }
+}
+
+extension BWPDViewController {
+    func showLoading(finished: @escaping () -> Void) {
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+
+        alert.view.addSubview(loadingIndicator)
+
+        present(alert, animated: false, completion: finished)
+    }
+
+    func hideLoading(finished: @escaping () -> Void) {
+        if ( presentedViewController != nil && !presentedViewController!.isBeingPresented ) {
+            dismiss(animated: false, completion: finished)
+        }
+    }
+ }
