@@ -285,9 +285,9 @@ extension BWPDViewController : UITableViewDataSource{
             cell.buyerLbl.text = dataSourceBWPD[indexPath.row].buyerName
             cell.styleLbl.text = dataSourceBWPD[indexPath.row].styleNo
             cell.orderLbl.text = dataSourceBWPD[indexPath.row].orderNo
-            cell.orderQtsLbl.text = "\(String(describing: dataSourceBWPD[indexPath.row].orderQty))"
-            cell.sewQtsLbl.text = "\(String(describing: dataSourceBWPD[indexPath.row].sewingQty))"
-            cell.balanceLbl.text = "\(String(describing: dataSourceBWPD[indexPath.row].balance))"
+            cell.orderQtsLbl.text = "\(String(describing: dataSourceBWPD[indexPath.row].orderQty!))"
+            cell.sewQtsLbl.text = "\(String(describing: dataSourceBWPD[indexPath.row].sewingQty!))"
+            cell.balanceLbl.text = "\(String(describing: dataSourceBWPD[indexPath.row].balance!))"
             return cell
         }else{
             
