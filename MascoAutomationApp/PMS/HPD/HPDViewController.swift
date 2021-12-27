@@ -17,6 +17,7 @@ class HPDViewController: UIViewController {
     @IBOutlet weak var dateDropDown: UIButton!
     @IBOutlet weak var dateSelect: UILabel!
     
+    @IBOutlet weak var totalOutputPCS: UILabel!
     @IBOutlet weak var btnSelectUnitName: UIButton!
     @IBOutlet weak var unitNameBgView: UIView!
     
@@ -26,7 +27,9 @@ class HPDViewController: UIViewController {
     var selectedButton = UIButton()
     
     var dataSource = [ListUnitName]()
+    var dataSourceHWD = [ListHourWiseData]()
     var extraHeight: Int = 0
+    var unitNoId: Int = 0
     
     class func initWithStoryboard() -> HPDViewController
     {
@@ -38,7 +41,7 @@ class HPDViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         getUnitNameList()
         
         self.tableViewHPD.register(UINib(nibName: "HPDViewControllerCell", bundle: nil), forCellReuseIdentifier: "cell")
@@ -49,6 +52,11 @@ class HPDViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(CellClass.self, forCellReuseIdentifier: "Cell")
         
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        self.dateSelect.text = dateFormatter.string(from: date)
+
         self.unitNameDropDown.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.unitNameDropDown.layer.borderWidth = 0.5
         self.unitNameDropDown.layer.cornerRadius = 5
@@ -56,11 +64,6 @@ class HPDViewController: UIViewController {
         self.dateDropDown.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.dateDropDown.layer.borderWidth = 0.5
         self.dateDropDown.layer.cornerRadius = 5
-        
-//        self.titleBgView.SLView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
-//        self.titleBgView.SLView.layer.borderWidth = 0.5
-//        self.titleBgView.SLView.layer.cornerRadius = 15
-//
         
         self.titleBgView.slBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.titleBgView.slBgView.layer.borderWidth = 0.5
@@ -94,20 +97,21 @@ class HPDViewController: UIViewController {
     @IBAction func datePickerBtn(_ sender: Any) {
         let currentDate = Date()
          let dateFormatter = DateFormatter()
-         dateFormatter.dateFormat = "dd-MM-yyyy"
+         dateFormatter.dateFormat = "yyyy-MM-dd"
          
          let calendar = YYCalendar(normalCalendarLangType: .ENG3,
                                    date: dateFormatter.string(from: currentDate),
-                                           format: "dd-MM-yyyy") { [weak self] date in
-             self?.dateSelect.text = date
-             print(date)
-                 }
-         
+                                           format: "yyyy-MM-dd") { [weak self] date in
+           
+            self!.getHWDList(unitNo: self!.unitNoId, createDate: date)
+            self?.dateSelect.text = date
+            }
          calendar.sundayColor = UIColor.gray
          calendar.defaultDayColor = UIColor.gray
          calendar.saturdayColor = UIColor.gray
-         
          calendar.show()
+        
+       
     }
     
     func showBackController(){
@@ -175,6 +179,64 @@ class HPDViewController: UIViewController {
                 }
         }
         task.resume()
+        
+    }
+    
+    
+    func getHWDList(unitNo: Int, createDate: String){
+        
+        let url = URL(string: HWD_URL)
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        
+        // Set HTTP Request Header
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        print("unitNo  : \(unitNo) ----createDate  : \(createDate)")
+//        print("createDate  : \(createDate)")
+        
+        let newTodoItem = HourWiseDataRequest(unit_no: unitNo, created_date: createDate)
+        let jsonData = try? JSONEncoder().encode(newTodoItem)
+        
+       
+
+        request.httpBody = jsonData
+
+        print("jsonData jsonData  data:\n \(jsonData!)")
+        self.showLoading(finished: {
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+                DispatchQueue.main.async {
+                    
+                    self.hideLoading(finished: {
+                        
+                    if let error = error {
+                        print("Error took place \(error)")
+                        return
+                    }
+                    guard let data = data else {return}
+
+                    do{
+                        let HWDItemModel = try JSONDecoder().decode(ListHourWiseDataResponse.self, from: data)
+                        self.dataSourceHWD = HWDItemModel._hourWiseDataList
+                        
+                        var totalOuput : Int = 0
+                        for x in HWDItemModel._hourWiseDataList{
+                            totalOuput = totalOuput + x.output!
+                            self.totalOutputPCS.text = "\(totalOuput)"
+                        }
+                        self.tableViewHPD.reloadData()
+                    }catch let jsonErr{
+                        print(jsonErr)
+                   }
+                    })
+                }
+        }
+        task.resume()
+        })
     }
 }
 
@@ -186,9 +248,13 @@ extension HPDViewController : UITableViewDelegate{
         
         if tableView == tableViewHPD {
             print("---you tapped me!----")
+            
         }else{
+            unitNoId = dataSource[indexPath.row].unitNo!
             selectedButton.setTitle(dataSource[indexPath.row].unitName, for: .normal)
+            self.getHWDList(unitNo: unitNoId, createDate: dateSelect.text!)
             removeTransparentView()
+            
         }
         
     }
@@ -198,7 +264,7 @@ extension HPDViewController : UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == tableViewHPD {
-            return 10
+            return dataSourceHWD.count
         }else{
             return dataSource.count
         }
@@ -208,11 +274,12 @@ extension HPDViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         if tableView == tableViewHPD {
-            
+            var counting :Int = 1
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HPDViewControllerCell
-            cell.slLbl.text = "1"
-            cell.hourLbl.text = "8 - 9 AM"
-            cell.outputLbl.text = "400200"
+            counting = indexPath.row+1
+            cell.slLbl.text = "\(counting)"
+            cell.hourLbl.text = dataSourceHWD[indexPath.row].hour
+            cell.outputLbl.text = "\(String(describing: dataSourceHWD[indexPath.row].output!))"
             return cell
             
         }else{
@@ -228,7 +295,7 @@ extension HPDViewController : UITableViewDataSource{
         if tableView == tableViewHPD {
             return 40
         }else{
-            return 50
+            return 40
         }
     }
 
@@ -284,4 +351,85 @@ extension HPDViewController {
             }
     }
     
+    
+    //hour-wise-data
+    
+    struct HourWiseDataRequest: Codable {
+        var unit_no: Int?
+        var created_date: String = ""
+        
+        enum CodingKeys: String, CodingKey {
+            case unit_no = "unit_no"
+            case created_date = "created_date"
+        }
+    }
+    
+    struct ListHourWiseData: Codable {
+        var output: Int?
+        var hour: String = ""
+        
+        enum CodingKeys: String, CodingKey {
+            case output = "output"
+            case hour = "hour"
+        }
+        
+        init(from decoder: Decoder) throws {
+
+               let container = try decoder.container(keyedBy: CodingKeys.self)
+               self.output = try container.decodeIfPresent(Int.self, forKey: .output) ?? 0
+               self.hour = try container.decodeIfPresent(String.self, forKey: .hour) ?? ""
+           }
+
+           func encode(to encoder: Encoder) throws {
+
+               var container = encoder.container(keyedBy: CodingKeys.self)
+               try container.encode(output, forKey: .output)
+               try container.encode(hour, forKey: .hour)
+           }
+    }
+    
+    struct ListHourWiseDataResponse: Codable {
+        var error: String = ""
+        var _hourWiseDataList : [ListHourWiseData]
+
+        enum CodingKeys: String, CodingKey {
+            case error = "error"
+            case _hourWiseDataList
+        }
+        
+         init(from decoder: Decoder) throws {
+
+                let container = try decoder.container(keyedBy: CodingKeys.self)
+                self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
+                self._hourWiseDataList = try container.decodeIfPresent([ListHourWiseData].self, forKey: ._hourWiseDataList) ?? []
+            }
+
+            func encode(to encoder: Encoder) throws {
+
+                var container = encoder.container(keyedBy: CodingKeys.self)
+                try container.encode(error, forKey: .error)
+                try container.encode(_hourWiseDataList, forKey: ._hourWiseDataList)
+            }
+    }
 }
+
+extension HPDViewController {
+    func showLoading(finished: @escaping () -> Void) {
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+
+        alert.view.addSubview(loadingIndicator)
+
+        present(alert, animated: false, completion: finished)
+    }
+
+    func hideLoading(finished: @escaping () -> Void) {
+        if ( presentedViewController != nil && !presentedViewController!.isBeingPresented ) {
+            dismiss(animated: false, completion: finished)
+        }
+    }
+ }

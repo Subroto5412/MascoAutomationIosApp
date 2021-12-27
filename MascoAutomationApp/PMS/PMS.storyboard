@@ -377,7 +377,7 @@
                                                         <rect key="frame" x="119.5" y="0.0" width="274.5" height="32"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
-                                                        <state key="normal" title="Unit Name">
+                                                        <state key="normal" title="Select Unit Name">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -540,7 +540,7 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1o-ms-CD9">
                                                         <rect key="frame" x="169.5" y="0.0" width="390.5" height="32"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="Button">
+                                                        <state key="normal" title="Select Unit Name">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -1116,6 +1116,7 @@
                         <outlet property="headerView" destination="LeL-xT-ugj" id="yid-aW-OmF"/>
                         <outlet property="tableViewHPD" destination="nl7-To-VlE" id="nOp-zM-Fmw"/>
                         <outlet property="titleBgView" destination="VHA-JG-EH0" id="sJs-On-Xqy"/>
+                        <outlet property="totalOutputPCS" destination="fnL-6l-8vL" id="Oqu-xy-iw0"/>
                         <outlet property="unitNameBgView" destination="TIf-x4-4ZI" id="LBr-vy-AKV"/>
                         <outlet property="unitNameDropDown" destination="X1e-UI-dfM" id="CuA-YO-hx0"/>
                     </connections>
