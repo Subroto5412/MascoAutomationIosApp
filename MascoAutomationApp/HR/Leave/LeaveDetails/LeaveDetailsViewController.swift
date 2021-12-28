@@ -29,13 +29,7 @@ class LeaveDetailsViewController: UIViewController {
     @IBOutlet weak var applicationDateBgView: UIView!
     
     @IBOutlet weak var financialYear: UIButton!
-    let transparentView = UIView()
-    let tableView = UITableView()
-    
-    var selectedButton = UIButton()
-    var totalHeight: Int = 0
-    var dataSource = [ListFinalYear]()
-    
+
     class func initWithStoryboard() -> LeaveDetailsViewController
     {
         let storyboard = UIStoryboard(name: "LeaveDetailsView", bundle: nil)
@@ -51,24 +45,20 @@ class LeaveDetailsViewController: UIViewController {
         tableViewAvail.dataSource = self
         self.tableViewAvail.register(UINib(nibName: "LeaveDetailsControllerCell", bundle: nil), forCellReuseIdentifier: "cell_avail")
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        self.tableView.register(LeaveDetailsViewControllerCellClass.self, forCellReuseIdentifier: "Cell")
         
         self.leaveSummaryCollectionView.register(UINib(nibName: "LeaveSummaryCollectionCell", bundle: nil), forCellWithReuseIdentifier: "leave_summary_cell")
         
         evenHandler()
         viewDesign()
         
-        let headerViewSize = self.headerView.frame.size.height
-        let taxYearViewSize = self.financialBgView.frame.size.height/1.5
-        totalHeight = Int(headerViewSize+taxYearViewSize)
+//        let headerViewSize = self.headerView.frame.size.height
+//        let taxYearViewSize = self.financialBgView.frame.size.height/1.5
+//        totalHeight = Int(headerViewSize+taxYearViewSize)
        
-        getFinancialYearList()
+//        getFinancialYearList()
     }
     @IBAction func financialYearBtn(_ sender: Any) {
-        selectedButton = financialYear
-        addTransparentView(frames: financialYear.frame)
+    
     }
     
     func showBackController(){
@@ -76,68 +66,40 @@ class LeaveDetailsViewController: UIViewController {
         self.present(controller, animated: true, completion: nil);
     }
     
-    func addTransparentView(frames: CGRect) {
-        let window = UIApplication.shared.keyWindow
-        transparentView.frame = window?.frame ?? self.view.frame
-        self.view.addSubview(transparentView)
-        
-        tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height+CGFloat(self.totalHeight), width: frames.width+100, height: 0)
-        self.view.addSubview(tableView)
-        tableView.layer.cornerRadius = 5
-        
-        transparentView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
-        tableView.reloadData()
-        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeTransparentView))
-        transparentView.addGestureRecognizer(tapgesture)
-        transparentView.alpha = 0
-        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
-            self.transparentView.alpha = 0.5
-            self.tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height + 5+CGFloat(self.totalHeight), width: frames.width+100, height: CGFloat(self.dataSource.count * 50))
-        }, completion: nil)
-    }
-    
-    @objc func removeTransparentView() {
-        let frames = selectedButton.frame
-        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
-            self.transparentView.alpha = 0
-            self.tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y+CGFloat(self.totalHeight) + frames.height, width: frames.width, height: 0)
-        }, completion: nil)
-    }
-
-    func getFinancialYearList(){
-        
-        let url = URL(string: YEAR_URL)
-        guard let requestUrl = url else { fatalError() }
-        
-        var request = URLRequest(url: requestUrl)
-        request.httpMethod = "GET"
-        
-        // Set HTTP Request Header
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    
-            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                
-                DispatchQueue.main.async {
-                    
-                    if let error = error {
-                        print("Error took place \(error)")
-                        return
-                    }
-                    guard let data = data else {return}
-
-                    do{
-                        let finalYearItemModel = try JSONDecoder().decode(ListFinalYearResponse.self, from: data)
-                        self.dataSource = finalYearItemModel._listFinalYear
-                        
-                    }catch let jsonErr{
-                        print(jsonErr)
-                   }
-                }
-        }
-        task.resume()
-    }
-    
+//    func getFinancialYearList(){
+//
+//        let url = URL(string: YEAR_URL)
+//        guard let requestUrl = url else { fatalError() }
+//
+//        var request = URLRequest(url: requestUrl)
+//        request.httpMethod = "GET"
+//
+//        // Set HTTP Request Header
+//        request.setValue("application/json", forHTTPHeaderField: "Accept")
+//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//
+//            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+//
+//                DispatchQueue.main.async {
+//
+//                    if let error = error {
+//                        print("Error took place \(error)")
+//                        return
+//                    }
+//                    guard let data = data else {return}
+//
+//                    do{
+//                        let finalYearItemModel = try JSONDecoder().decode(ListFinalYearResponse.self, from: data)
+//                        self.dataSource = finalYearItemModel._listFinalYear
+//
+//                    }catch let jsonErr{
+//                        print(jsonErr)
+//                   }
+//                }
+//        }
+//        task.resume()
+//    }
+//
     func evenHandler() {
         
         self.headerView.backBtnHandler = {
@@ -459,9 +421,9 @@ extension LeaveDetailsViewController : UITableViewDelegate{
         if tableView == tableViewAvail {
             print("---you tapped me!----")
         }else{
-            selectedButton.setTitle(dataSource[indexPath.row].finalYearName, for: .normal)
-            print("Final Year id: \(dataSource[indexPath.row].finalYearNo!)")
-            removeTransparentView()
+//            selectedButton.setTitle(dataSource[indexPath.row].finalYearName, for: .normal)
+//            print("Final Year id: \(dataSource[indexPath.row].finalYearNo!)")
+//            removeTransparentView()
         }
     }
 }
@@ -469,11 +431,12 @@ extension LeaveDetailsViewController : UITableViewDelegate{
 extension LeaveDetailsViewController : UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == tableViewAvail {
-            return 10
-        }else{
-            return dataSource.count
-        }
+        return 10
+//        if tableView == tableViewAvail {
+//            return 10
+//        }else{
+//            return dataSource.count
+//        }
         
     }
 
@@ -481,29 +444,39 @@ extension LeaveDetailsViewController : UITableViewDataSource{
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell_avail", for: indexPath) as! LeaveDetailsControllerCell
         
-        if tableView == tableViewAvail {
-            
-            cell.slLbl.text = "1"
-            cell.leaveTypeLbl.text = "CL"
-            cell.avilDayLbl.text = "1"
-            cell.fromDateLbl.text = "12-06-2021"
-            cell.toDateLbl.text = "12-06-2021"
-            cell.applicationDateLbl.text = "15-06-2021"
-            return cell
-            
-        }else{
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            cell.textLabel?.text = dataSource[indexPath.row].finalYearName
-            return cell
-        }
+        cell.slLbl.text = "1"
+        cell.leaveTypeLbl.text = "CL"
+        cell.avilDayLbl.text = "1"
+        cell.fromDateLbl.text = "12-06-2021"
+        cell.toDateLbl.text = "12-06-2021"
+        cell.applicationDateLbl.text = "15-06-2021"
+        return cell
+        
+//        if tableView == tableViewAvail {
+//
+//            cell.slLbl.text = "1"
+//            cell.leaveTypeLbl.text = "CL"
+//            cell.avilDayLbl.text = "1"
+//            cell.fromDateLbl.text = "12-06-2021"
+//            cell.toDateLbl.text = "12-06-2021"
+//            cell.applicationDateLbl.text = "15-06-2021"
+//            return cell
+//
+//        }
+//        else{
+//
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+//            cell.textLabel?.text = dataSource[indexPath.row].finalYearName
+//            return cell
+//        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tableView == tableViewAvail {
-            return 40
-        }else{
-            return 50
-        }
+        return 40
+//        if tableView == tableViewAvail {
+//            return 40
+//        }else{
+//            return 50
+//        }
         
     }
 

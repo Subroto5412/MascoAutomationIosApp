@@ -12,7 +12,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var empId: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var signInBtn: UIButton!
-
+    @IBOutlet weak var customerProfilePhoto: UIImageView!
+    
     var empCodeString = ""
     
     override func viewDidLoad() {
@@ -70,6 +71,10 @@ class ViewController: UIViewController {
         self.present(controller, animated: true, completion: nil);
     }
     
+    @IBAction func getProfileImageTF(_ sender: Any) {
+        print("-----Subroto-----")
+        getProfilePhot(photoId: empId.text!)
+    }
     
     func userLogin(userId: String, password: String){
         
@@ -159,6 +164,63 @@ class ViewController: UIViewController {
         })
     }
         
+    
+    func getProfilePhot(photoId: String){
+        let urlLink = (PROFILE_PHOTO_URL+photoId)
+        
+        let url = URL(string: urlLink)!
+//        guard let requestUrl = url else { fatalError() }
+        
+        print("-----Subroto-----\(url)")
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        // Set HTTP Request Header
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+                DispatchQueue.main.async {
+                    
+                    if let error = error {
+                        print("Error took place \(error)")
+                        return
+                    }
+                    guard let data = data else {return}
+
+                    do{
+                        let itemModel = try JSONDecoder().decode(ProfilePhoto.self, from: data)
+                        
+//                        let fullName = "First Last"
+                        let photoArr = itemModel.serverFileName.components(separatedBy: "\\")
+//                        let firstName = fullNameArr[0] //First
+                        let photo = photoArr[1] //Last
+                        
+                        print("--photoUrl---\(photo)")
+                        
+                        let urlLinkPhoto = (PHOTO_LINK_URL+photo)
+                        let photoUrl =  URL(string: urlLinkPhoto)!
+                      
+                        print("--photoUrl--333-\(photoUrl)")
+                        
+                        
+                        if let data = try? Data(contentsOf: photoUrl) {
+                                // Create Image and Update Image View
+                            self.customerProfilePhoto.image = UIImage(data: data)
+                            self.customerProfilePhoto.setRounded()
+                            }
+                        
+                    }catch let jsonErr{
+                        print(jsonErr)
+                   }
+                }
+        }
+        task.resume()
+    }
+    
+    
     func pageNavigation(){
         
         let controller = HomeViewController.initWithStoryboard()
@@ -334,3 +396,48 @@ extension ViewController {
 //    }
 //    }
 //}}
+
+extension ViewController {
+  
+    struct ProfilePhoto: Codable {
+
+        var serverFileName: String = ""
+        var unitEName: String = ""
+        var emP_ENAME: String = ""
+        var error: String = ""
+        
+        enum CodingKeys: String, CodingKey {
+            case serverFileName = "serverFileName"
+            case unitEName = "unitEName"
+            case emP_ENAME = "emP_ENAME"
+            case error = "error"
+        }
+        
+        init(from decoder: Decoder) throws {
+
+               let container = try decoder.container(keyedBy: CodingKeys.self)
+               self.serverFileName = try container.decodeIfPresent(String.self, forKey: .serverFileName) ?? ""
+               self.unitEName = try container.decodeIfPresent(String.self, forKey: .unitEName) ?? ""
+               self.emP_ENAME = try container.decodeIfPresent(String.self, forKey: .emP_ENAME) ?? ""
+               self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
+           }
+
+           func encode(to encoder: Encoder) throws {
+
+               var container = encoder.container(keyedBy: CodingKeys.self)
+               try container.encode(serverFileName, forKey: .serverFileName)
+               try container.encode(unitEName, forKey: .unitEName)
+               try container.encode(emP_ENAME, forKey: .emP_ENAME)
+               try container.encode(error, forKey: .error)
+           }
+    }
+}
+
+extension UIImageView {
+
+   func setRounded() {
+    let radius = self.frame.width/2.5
+      self.layer.cornerRadius = radius
+      self.layer.masksToBounds = true
+   }
+}

@@ -403,6 +403,9 @@
                                                                 <color key="value" red="0.40761870150000001" green="0.61020892859999998" blue="0.99987643960000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="getProfileImageTF:" destination="BYZ-38-t0r" eventType="editingChanged" id="Gb1-FJ-Fm2"/>
+                                                        </connections>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot password?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pF-rF-V2v">
                                                         <rect key="frame" x="222.33333333333334" y="374.33333333333331" width="127.66666666666666" height="30"/>
@@ -555,6 +558,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="customerProfilePhoto" destination="rPc-EE-CF3" id="KzW-Ua-H7s"/>
                         <outlet property="empId" destination="BbZ-16-TKt" id="OFC-0C-Z9q"/>
                         <outlet property="password" destination="JS5-XY-Jaa" id="MpU-RV-Jzu"/>
                         <outlet property="signInBtn" destination="5cz-TW-hbN" id="5PO-qa-Wm0"/>
