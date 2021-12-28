@@ -13,6 +13,7 @@ class TaxDetailsViewControllerCell: UITableViewCell {
     @IBOutlet weak var monthLbl: UILabel!
     @IBOutlet weak var deductionAmountLbl: UILabel!
     
+    @IBOutlet weak var deductionAmoutBgView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

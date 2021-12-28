@@ -29,7 +29,8 @@ class TaxDetailsViewController: UIViewController {
     
     var selectedButton = UIButton()
     var totalHeight: Int = 0
-    var dataSource = [ListFinalYear]()
+    var dataSource = [ListTaxYear]()
+    var dataSourceTD = [ListTaxDeduct]()
     
     
     class func initWithStoryboard() -> TaxDetailsViewController
@@ -57,7 +58,7 @@ class TaxDetailsViewController: UIViewController {
         let taxYearViewSize = self.taxYearBgView.frame.size.height/1.5
         totalHeight = Int(headerViewSize+taxYearViewSize)
         
-        self.getFinancialYearList()
+        self.getTaxYearList()
     }
     
     @IBAction func taxYearBtn(_ sender: Any) {
@@ -99,9 +100,9 @@ class TaxDetailsViewController: UIViewController {
         }, completion: nil)
     }
 
-    func getFinancialYearList(){
+    func getTaxYearList(){
         
-        let url = URL(string: YEAR_URL)
+        let url = URL(string: TAX_URL)
         guard let requestUrl = url else { fatalError() }
         
         var request = URLRequest(url: requestUrl)
@@ -122,8 +123,8 @@ class TaxDetailsViewController: UIViewController {
                     guard let data = data else {return}
 
                     do{
-                        let finalYearItemModel = try JSONDecoder().decode(ListFinalYearResponse.self, from: data)
-                        self.dataSource = finalYearItemModel._listFinalYear
+                        let taxYearItemModel = try JSONDecoder().decode(ListTaxYearResponse.self, from: data)
+                        self.dataSource = taxYearItemModel._taxYearList
                         
                     }catch let jsonErr{
                         print(jsonErr)
@@ -131,6 +132,64 @@ class TaxDetailsViewController: UIViewController {
                 }
         }
         task.resume()
+    }
+    
+    func getTaxDeductionList(taxYearNo: Int){
+        
+        let utils = Utils()
+        let accessToken = utils.readStringData(key: "token")
+        
+        let url = URL(string: TAX_DEDUCTION_URL)
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        
+        // Set HTTP Request Header
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        
+        let newTodoItem = TaxDeductRequest(taxYearNo: taxYearNo)
+        let jsonData = try? JSONEncoder().encode(newTodoItem)
+        
+       
+
+        request.httpBody = jsonData
+
+        print("jsonData jsonData  data:\n \(jsonData!)")
+        self.showLoading(finished: {
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+                DispatchQueue.main.async {
+                    
+                    self.hideLoading(finished: {
+                        
+                    if let error = error {
+                        print("Error took place \(error)")
+                        return
+                    }
+                    guard let data = data else {return}
+
+                    do{
+                        let TDItemModel = try JSONDecoder().decode(ListTaxDeductResponse.self, from: data)
+                        self.dataSourceTD = TDItemModel._taxDeductionsList
+                        
+//                        var totalOuput : Int = 0
+//                        for i in LWPItemModel._lineWiseProduction{
+//                            totalOuput = totalOuput + i.goodGarments!
+//                            self.totalOutputPcs.text = "\(totalOuput)"
+//                        }
+                        self.taxTableView.reloadData()
+                    }catch let jsonErr{
+                        print(jsonErr)
+                   }
+                    })
+                }
+        }
+        task.resume()
+        })
     }
     
     func evenHandler() {
@@ -167,6 +226,40 @@ class TaxDetailsViewController: UIViewController {
         self.monthBgView.layer.borderWidth = 0.5
         self.monthBgView.layer.cornerRadius = 15
     }
+    
+    func monthForTax() -> Int{
+        
+        let date = Date()
+        let monthString = date.month
+
+        var month:Int = 0
+        if monthString == "January"{
+            month = 7
+        } else if monthString == "February"{
+            month = 8
+        } else if monthString == "March"{
+            month = 9
+        } else if monthString == "April"{
+            month = 10
+        } else if monthString == "May"{
+            month = 11
+        } else if monthString == "June"{
+            month = 12
+        } else if monthString == "July"{
+            month = 1
+        } else if monthString == "August"{
+            month = 2
+        } else if monthString == "September"{
+            month = 3
+        } else if monthString == "October"{
+            month = 4
+        } else if monthString == "November"{
+            month = 5
+        } else if monthString == "December"{
+            month = 6
+        }
+        return month
+    }
 }
 
 extension TaxDetailsViewController : UITableViewDelegate{
@@ -174,8 +267,9 @@ extension TaxDetailsViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == taxTableView {
         }else{
-            selectedButton.setTitle(dataSource[indexPath.row].finalYearName, for: .normal)
-            print("Final Year id: \(dataSource[indexPath.row].finalYearNo!)")
+            selectedButton.setTitle(dataSource[indexPath.row].yearName, for: .normal)
+            getTaxDeductionList(taxYearNo: dataSource[indexPath.row].taxYearNo!)
+            print("Final Year id: \(dataSource[indexPath.row].taxYearNo!)")
             removeTransparentView()
         }
     }
@@ -185,7 +279,7 @@ extension TaxDetailsViewController : UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == taxTableView {
-            return 10
+            return dataSourceTD.count
         }else{
             return dataSource.count
         }
@@ -196,15 +290,22 @@ extension TaxDetailsViewController : UITableViewDataSource{
         if tableView == taxTableView {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "cellTax", for: indexPath) as! TaxDetailsViewControllerCell
-            cell.slLbl.text = "1"
-            cell.monthLbl.text = "July - 20"
-            cell.deductionAmountLbl.text = "400"
+            cell.slLbl.text = "\(String(describing: dataSourceTD[indexPath.row].taxMonthNo!))"
+            cell.monthLbl.text = dataSourceTD[indexPath.row].monthYear
+            cell.deductionAmountLbl.text = "\(String(describing: dataSourceTD[indexPath.row].taxDeductionAmount!))"
+            
+            if dataSourceTD[indexPath.row].taxMonthNo! < monthForTax() {
+                cell.slLbl.textColor = UIColor.red
+                cell.monthLbl.textColor = UIColor.red
+                cell.deductionAmountLbl.textColor = UIColor.white
+                cell.deductionAmoutBgView.backgroundColor = UIColor.red
+            }
             return cell
             
         }else{
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            cell.textLabel?.text = dataSource[indexPath.row].finalYearName
+            cell.textLabel?.text = dataSource[indexPath.row].yearName
             return cell
         }
        
@@ -212,68 +313,150 @@ extension TaxDetailsViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if tableView == taxTableView {
-            return 40
+            return 35
         }else{
             return 50
         }
         
     }
-
 }
 
 
 extension TaxDetailsViewController {
   
-    struct ListFinalYear: Codable {
-        var finalYearNo: Int?
-        var finalYearName: String = ""
+    struct ListTaxYear: Codable {
+        var taxYearNo: Int?
         var yearName: String = ""
         
         enum CodingKeys: String, CodingKey {
-            case finalYearNo = "finalYearNo"
-            case finalYearName = "finalYearName"
+            case taxYearNo = "taxYearNo"
             case yearName = "yearName"
         }
         
         init(from decoder: Decoder) throws {
 
                let container = try decoder.container(keyedBy: CodingKeys.self)
-               self.finalYearNo = try container.decodeIfPresent(Int.self, forKey: .finalYearNo) ?? 0
-               self.finalYearName = try container.decodeIfPresent(String.self, forKey: .finalYearName) ?? ""
+               self.taxYearNo = try container.decodeIfPresent(Int.self, forKey: .taxYearNo) ?? 0
                self.yearName = try container.decodeIfPresent(String.self, forKey: .yearName) ?? ""
            }
 
            func encode(to encoder: Encoder) throws {
 
                var container = encoder.container(keyedBy: CodingKeys.self)
-               try container.encode(finalYearNo, forKey: .finalYearNo)
-               try container.encode(finalYearName, forKey: .finalYearName)
+               try container.encode(taxYearNo, forKey: .taxYearNo)
                try container.encode(yearName, forKey: .yearName)
            }
     }
     
-    struct ListFinalYearResponse: Codable {
+    struct ListTaxYearResponse: Codable {
         var error: String = ""
-        var _listFinalYear : [ListFinalYear]
+        var _taxYearList : [ListTaxYear]
 
         enum CodingKeys: String, CodingKey {
             case error = "error"
-            case _listFinalYear
+            case _taxYearList
         }
         
          init(from decoder: Decoder) throws {
 
                 let container = try decoder.container(keyedBy: CodingKeys.self)
                 self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
-                self._listFinalYear = try container.decodeIfPresent([ListFinalYear].self, forKey: ._listFinalYear) ?? []
+                self._taxYearList = try container.decodeIfPresent([ListTaxYear].self, forKey: ._taxYearList) ?? []
             }
 
             func encode(to encoder: Encoder) throws {
 
                 var container = encoder.container(keyedBy: CodingKeys.self)
                 try container.encode(error, forKey: .error)
-                try container.encode(_listFinalYear, forKey: ._listFinalYear)
+                try container.encode(_taxYearList, forKey: ._taxYearList)
             }
     }
     
+    struct TaxDeductRequest: Codable {
+        var taxYearNo: Int?
+        
+        enum CodingKeys: String, CodingKey {
+            case taxYearNo = "taxYearNo"
+        }
+    }
+    
+    struct ListTaxDeduct: Codable {
+        var taxMonthNo: Int?
+        var monthYear: String = ""
+        var taxDeductionAmount: Double?
+        
+        enum CodingKeys: String, CodingKey {
+            case taxMonthNo = "taxMonthNo"
+            case monthYear = "monthYear"
+            case taxDeductionAmount = "taxDeductionAmount"
+        }
+        
+        init(from decoder: Decoder) throws {
+
+               let container = try decoder.container(keyedBy: CodingKeys.self)
+               self.taxMonthNo = try container.decodeIfPresent(Int.self, forKey: .taxMonthNo) ?? 0
+               self.monthYear = try container.decodeIfPresent(String.self, forKey: .monthYear) ?? ""
+               self.taxDeductionAmount = try container.decodeIfPresent(Double.self, forKey: .taxDeductionAmount) ?? 0.0
+           }
+
+           func encode(to encoder: Encoder) throws {
+
+               var container = encoder.container(keyedBy: CodingKeys.self)
+               try container.encode(taxMonthNo, forKey: .taxMonthNo)
+               try container.encode(monthYear, forKey: .monthYear)
+               try container.encode(taxDeductionAmount, forKey: .taxDeductionAmount)
+           }
+    }
+    
+    struct ListTaxDeductResponse: Codable {
+        var error: String = ""
+        var _taxDeductionsList : [ListTaxDeduct]
+
+        enum CodingKeys: String, CodingKey {
+            case error = "error"
+            case _taxDeductionsList
+        }
+        
+         init(from decoder: Decoder) throws {
+
+                let container = try decoder.container(keyedBy: CodingKeys.self)
+                self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
+                self._taxDeductionsList = try container.decodeIfPresent([ListTaxDeduct].self, forKey: ._taxDeductionsList) ?? []
+            }
+
+            func encode(to encoder: Encoder) throws {
+
+                var container = encoder.container(keyedBy: CodingKeys.self)
+                try container.encode(error, forKey: .error)
+                try container.encode(_taxDeductionsList, forKey: ._taxDeductionsList)
+            }
+    }
+}
+
+extension TaxDetailsViewController {
+    func showLoading(finished: @escaping () -> Void) {
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+
+        alert.view.addSubview(loadingIndicator)
+
+        present(alert, animated: false, completion: finished)
+    }
+
+    func hideLoading(finished: @escaping () -> Void) {
+        if ( presentedViewController != nil && !presentedViewController!.isBeingPresented ) {
+            dismiss(animated: false, completion: finished)
+        }
+    }
+ }
+extension Date {
+    var month: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM"
+        return dateFormatter.string(from: self)
+    }
 }
