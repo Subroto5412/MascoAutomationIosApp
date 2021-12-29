@@ -21,6 +21,7 @@ class DailyAttendanceViewControllerDetails: UIViewController {
     var selectedButton = UIButton()
     
     var dataSource = [ListFinalYear]()
+    var dataSourceAttendanceDetails = [ListAttendanceDetails]()
     
     var totalHeight: Int = 0
     
@@ -34,6 +35,8 @@ class DailyAttendanceViewControllerDetails: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         self.tableViewDailyAttendance.register(UINib(nibName: "DailyAttendanceTableViewCell", bundle: nil), forCellReuseIdentifier: "cell_daily_attendance")
 
         tableViewDailyAttendance.delegate = self
@@ -42,6 +45,8 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(CellClass.self, forCellReuseIdentifier: "Cell")
+        
+        self.getAttendanceDetailsList(FromDate: "2021-09-01", ToDate: "2021-09-30")
         
         self.monthBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.monthBgView.layer.borderWidth = 0.5
@@ -58,7 +63,8 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         let headerViewSize = self.headerView.frame.size.height
         let taxYearViewSize = self.yearBgView.frame.size.height/1.5
         totalHeight = Int(headerViewSize+taxYearViewSize)
-        getFinancialYearList()
+//        getFinancialYearList()
+       
     }
     
     func addTransparentView(frames: CGRect) {
@@ -123,6 +129,75 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         task.resume()
     }
     
+    
+    func getAttendanceDetailsList(FromDate: String, ToDate: String){
+        
+        let utils = Utils()
+        let accessToken = utils.readStringData(key: "token")
+        
+        print("--accessToken----\(accessToken)")
+        
+        let url = URL(string: "https://mis-api.mascoknit.com/api/v1/Attendance/details")
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        
+        // Set HTTP Request Header
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        
+        let newItem = AttendanceDetailsRequest(fromDate: FromDate, toDate: ToDate)
+        let jsonData = try? JSONEncoder().encode(newItem)
+        
+       
+
+        request.httpBody = jsonData
+
+        print("jsonData jsonData  data:\n \(jsonData!)")
+        
+//        self.showLoading(finished: {
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+                DispatchQueue.main.async {
+                    
+//                    self.hideLoading(finished: {
+                        
+                    if let error = error {
+                        print("Error took place \(error)")
+                        return
+                    }
+                    guard let data = data else {return}
+
+                    do{
+                        let ItemModel = try JSONDecoder().decode(ListAttendanceDetailsResponse.self, from: data)
+                        self.dataSourceAttendanceDetails = ItemModel._attHistoryListStr
+                        
+//                        var totalOuput : Int = 0
+                        for i in ItemModel._attHistoryListStr{
+                            print("-----datePunch------\(i.datePunch)")
+                            print("-----shiftInTime------\(i.shiftInTime)")
+                            print("-----shiftOutTime------\(i.shiftOutTime)")
+                            print("----punchInTime-------\(i.punchInTime)")
+                            print("----punchOutTime-------\(i.punchOutTime)")
+                            print("----additionalTime-------\(i.additionalTime)")
+                            print("---fSts-------\(i.fSts)")
+
+                        }
+                        self.tableViewDailyAttendance.reloadData()
+                    }catch let jsonErr{
+                        print(jsonErr)
+                   }
+//                    })
+                }
+        }
+        task.resume()
+//        })
+    }
+    
+    
     @IBAction func financialYearBtn(_ sender: Any) {
         
         selectedButton = financialYearSelect
@@ -156,7 +231,7 @@ extension DailyAttendanceViewControllerDetails : UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == tableViewDailyAttendance {
-            return 10
+            return dataSourceAttendanceDetails.count
         }else{
             return dataSource.count
         }
@@ -168,10 +243,10 @@ extension DailyAttendanceViewControllerDetails : UITableViewDataSource{
         if tableView == tableViewDailyAttendance {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell_daily_attendance", for: indexPath) as! DailyAttendanceTableViewCell
-            cell.punchInLbl.text = "09 : 10 : 23 AM"
-            cell.punchOutLbl.text = "08 : 20 : 25 PM"
-            cell.statusLbl.text = "P"
-            cell.otLbl.text = "02 : 10 : 23"
+            cell.punchInLbl.text = dataSourceAttendanceDetails[indexPath.row].punchInTime
+            cell.punchOutLbl.text = dataSourceAttendanceDetails[indexPath.row].punchOutTime
+            cell.statusLbl.text = dataSourceAttendanceDetails[indexPath.row].fSts
+            cell.otLbl.text = dataSourceAttendanceDetails[indexPath.row].additionalTime
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
@@ -274,5 +349,135 @@ extension DailyAttendanceViewControllerDetails {
                 try container.encode(_listFinalYear, forKey: ._listFinalYear)
             }
     }
+   
+}
+
+extension DailyAttendanceViewControllerDetails {
+    func showLoading(finished: @escaping () -> Void) {
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+
+        alert.view.addSubview(loadingIndicator)
+
+        present(alert, animated: false, completion: finished)
+    }
+
+    func hideLoading(finished: @escaping () -> Void) {
+        if ( presentedViewController != nil && !presentedViewController!.isBeingPresented ) {
+            dismiss(animated: false, completion: finished)
+        }
+    }
+ }
+
+
+extension DailyAttendanceViewControllerDetails {
+    
+    //-------Daily Attendance Data--------
+    
+    struct AttendanceDetailsRequest: Codable {
+        var fromDate: String
+        var toDate: String
+        
+        enum CodingKeys: String, CodingKey {
+            case fromDate = "fromDate"
+            case toDate = "toDate"
+        }
+    }
+    
+    struct ListAttendanceDetails: Codable {
+        var datePunch: String = ""
+        var shiftInTime: String = ""
+        var shiftOutTime: String = ""
+        var shiftLateTime: String = ""
+        var punchInTime: String = ""
+        var punchOutTime: String = ""
+        var shiftName: String = ""
+        var lateTime: String = ""
+        var additionalTime: String = ""
+        var fSts: String = ""
+        
+        enum CodingKeys: String, CodingKey {
+            case datePunch = "datePunch"
+            case shiftInTime = "shiftInTime"
+            case shiftOutTime = "shiftOutTime"
+            case shiftLateTime = "shiftLateTime"
+            case punchInTime = "punchInTime"
+            case punchOutTime = "punchOutTime"
+            case shiftName = "shiftName"
+            case lateTime = "lateTime"
+            case additionalTime = "additionalTime"
+            case fSts = "fSts"
+        }
+        
+        init(from decoder: Decoder) throws {
+
+               let container = try decoder.container(keyedBy: CodingKeys.self)
+            self.datePunch = try container.decodeIfPresent(String.self, forKey: .datePunch) ?? ""
+            self.shiftInTime = try container.decodeIfPresent(String.self, forKey: .shiftInTime) ?? ""
+            self.shiftOutTime = try container.decodeIfPresent(String.self, forKey: .shiftOutTime) ?? ""
+            self.shiftLateTime = try container.decodeIfPresent(String.self, forKey: .shiftLateTime) ?? ""
+            self.punchInTime = try container.decodeIfPresent(String.self, forKey: .punchInTime) ?? ""
+            self.punchOutTime = try container.decodeIfPresent(String.self, forKey: .punchOutTime) ?? ""
+            self.shiftName = try container.decodeIfPresent(String.self, forKey: .shiftName) ?? ""
+            self.lateTime = try container.decodeIfPresent(String.self, forKey: .lateTime) ?? ""
+            self.additionalTime = try container.decodeIfPresent(String.self, forKey: .additionalTime) ?? ""
+            self.fSts = try container.decodeIfPresent(String.self, forKey: .fSts) ?? ""
+            
+           }
+
+           func encode(to encoder: Encoder) throws {
+
+               var container = encoder.container(keyedBy: CodingKeys.self)
+               try container.encode(datePunch, forKey: .datePunch)
+               try container.encode(shiftInTime, forKey: .shiftInTime)
+               try container.encode(shiftOutTime, forKey: .shiftOutTime)
+            
+            try container.encode(shiftLateTime, forKey: .shiftLateTime)
+            try container.encode(punchInTime, forKey: .punchInTime)
+            try container.encode(punchOutTime, forKey: .punchOutTime)
+            
+            try container.encode(shiftName, forKey: .shiftName)
+            try container.encode(lateTime, forKey: .lateTime)
+            try container.encode(additionalTime, forKey: .additionalTime)
+            try container.encode(fSts, forKey: .fSts)
+           }
+    }
+    
+    struct ListAttendanceDetailsResponse: Codable {
+        var error: String = ""
+   //     var allLeaveCount: String?
+       // var _allLeaveCountList: [Any?]
+        var _attHistoryListStr : [ListAttendanceDetails]
+
+        enum CodingKeys: String, CodingKey {
+            case error = "error"
+          //  case allLeaveCount = "allLeaveCount"
+         //   case _allLeaveCountList
+            case _attHistoryListStr
+        }
+        
+         init(from decoder: Decoder) throws {
+
+                let container = try decoder.container(keyedBy: CodingKeys.self)
+                self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
+          //      self.allLeaveCount = try container.decodeIfPresent(String.self, forKey: .allLeaveCount) ?? ""
+          //  self._allLeaveCountList = try container.decodeIfPresent([Any?].self, forKey: ._allLeaveCountList) ?? ""
+                self._attHistoryListStr = try container.decodeIfPresent([ListAttendanceDetails].self, forKey: ._attHistoryListStr) ?? []
+            }
+
+            func encode(to encoder: Encoder) throws {
+
+                var container = encoder.container(keyedBy: CodingKeys.self)
+                try container.encode(error, forKey: .error)
+               // try container.encode(allLeaveCount, forKey: .allLeaveCount)
+            //   try container.encode(_allLeaveCountList, forKey: ._allLeaveCountList)
+                try container.encode(_attHistoryListStr, forKey: ._attHistoryListStr)
+            }
+    }
+    
     
 }

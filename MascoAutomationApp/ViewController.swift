@@ -192,24 +192,19 @@ class ViewController: UIViewController {
 
                     do{
                         let itemModel = try JSONDecoder().decode(ProfilePhoto.self, from: data)
-                        
-//                        let fullName = "First Last"
                         let photoArr = itemModel.serverFileName.components(separatedBy: "\\")
-//                        let firstName = fullNameArr[0] //First
                         let photo = photoArr[1] //Last
-                        
-                        print("--photoUrl---\(photo)")
                         
                         let urlLinkPhoto = (PHOTO_LINK_URL+photo)
                         let photoUrl =  URL(string: urlLinkPhoto)!
-                      
-                        print("--photoUrl--333-\(photoUrl)")
-                        
-                        
+
                         if let data = try? Data(contentsOf: photoUrl) {
                                 // Create Image and Update Image View
                             self.customerProfilePhoto.image = UIImage(data: data)
                             self.customerProfilePhoto.setRounded()
+                            let skyBlueColor = UIColor(red: 104/255.0, green: 156/255.0, blue: 255/255.0, alpha: 1.0)
+                            self.customerProfilePhoto.layer.borderWidth = 2.0
+                            self.customerProfilePhoto.layer.borderColor = skyBlueColor.cgColor
                             }
                         
                     }catch let jsonErr{
@@ -436,8 +431,8 @@ extension ViewController {
 extension UIImageView {
 
    func setRounded() {
-    let radius = self.frame.width/2.5
-      self.layer.cornerRadius = radius
-      self.layer.masksToBounds = true
+    let radius = 10.0
+    self.layer.cornerRadius = CGFloat(radius)
+    self.layer.masksToBounds = true
    }
 }

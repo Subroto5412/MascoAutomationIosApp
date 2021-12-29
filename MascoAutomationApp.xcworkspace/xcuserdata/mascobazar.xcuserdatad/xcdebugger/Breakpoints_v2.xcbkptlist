@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "4AAFBD5D-C049-4FCF-A619-B69F5C7FF914"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A0F48A43-82B3-4378-9F7C-39CDFA5596ED"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MascoAutomationApp/HR/Attendance/DailyAttendance/DailyAttendanceViewControllerDetails.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "getAttendanceDetailsList(FromDate:ToDate:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A0F48A43-82B3-4378-9F7C-39CDFA5596ED - 809c252d0e8bbd0b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MascoAutomationApp.DailyAttendanceViewControllerDetails.getAttendanceDetailsList(FromDate: Swift.String, ToDate: Swift.String) -&gt; ()"
+                  moduleName = "MascoAutomationApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mascobazar/Documents/WorkSplace/MascoAutomationIOsApp/MascoAutomationApp/HR/Attendance/DailyAttendance/DailyAttendanceViewControllerDetails.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "3502">
+               </Location>
+               <Location
+                  uuid = "A0F48A43-82B3-4378-9F7C-39CDFA5596ED - 2fa4e9945fee0ad5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in MascoAutomationApp.DailyAttendanceViewControllerDetails.getAttendanceDetailsList(FromDate: Swift.String, ToDate: Swift.String) -&gt; ()"
+                  moduleName = "MascoAutomationApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mascobazar/Documents/WorkSplace/MascoAutomationIOsApp/MascoAutomationApp/HR/Attendance/DailyAttendance/DailyAttendanceViewControllerDetails.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "142"
+                  endingLineNumber = "142"
+                  offsetFromSymbolStart = "97">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "61EEC248-45D0-435A-9AB5-F89F8C542081"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MascoAutomationApp/HR/Attendance/DailyAttendance/DailyAttendanceViewControllerDetails.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "getAttendanceDetailsList(FromDate:ToDate:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "61EEC248-45D0-435A-9AB5-F89F8C542081 - 809c252d0e8bbd2c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MascoAutomationApp.DailyAttendanceViewControllerDetails.getAttendanceDetailsList(FromDate: Swift.String, ToDate: Swift.String) -&gt; ()"
+                  moduleName = "MascoAutomationApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mascobazar/Documents/WorkSplace/MascoAutomationIOsApp/MascoAutomationApp/HR/Attendance/DailyAttendance/DailyAttendanceViewControllerDetails.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "161"
+                  endingLineNumber = "161"
+                  offsetFromSymbolStart = "3463">
+               </Location>
+               <Location
+                  uuid = "61EEC248-45D0-435A-9AB5-F89F8C542081 - 4e0d9186ccca4d91"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in MascoAutomationApp.DailyAttendanceViewControllerDetails.getAttendanceDetailsList(FromDate: Swift.String, ToDate: Swift.String) -&gt; ()"
+                  moduleName = "MascoAutomationApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mascobazar/Documents/WorkSplace/MascoAutomationIOsApp/MascoAutomationApp/HR/Attendance/DailyAttendance/DailyAttendanceViewControllerDetails.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "163"
+                  endingLineNumber = "163"
+                  offsetFromSymbolStart = "211">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
