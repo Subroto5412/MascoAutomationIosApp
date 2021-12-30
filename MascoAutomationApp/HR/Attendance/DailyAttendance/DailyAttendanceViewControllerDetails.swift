@@ -15,6 +15,7 @@ class DailyAttendanceViewControllerDetails: UIViewController {
     @IBOutlet weak var financialYearSelect: UIButton!
     @IBOutlet weak var yearBgView: UIView!
     
+    @IBOutlet weak var leaveCountCollectionView: UICollectionView!
     let transparentView = UIView()
     let tableView = UITableView()
     
@@ -22,8 +23,11 @@ class DailyAttendanceViewControllerDetails: UIViewController {
     
     var dataSource = [ListFinalYear]()
     var dataSourceAttendanceDetails = [ListAttendanceDetails]()
+    var dataSourceLeaveCount = [ListLeaveCount]()
     
     var totalHeight: Int = 0
+    
+    var vSpinner : UIView?
     
     class func initWithStoryboard() -> DailyAttendanceViewControllerDetails
     {
@@ -35,8 +39,6 @@ class DailyAttendanceViewControllerDetails: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         self.tableViewDailyAttendance.register(UINib(nibName: "DailyAttendanceTableViewCell", bundle: nil), forCellReuseIdentifier: "cell_daily_attendance")
 
         tableViewDailyAttendance.delegate = self
@@ -45,8 +47,6 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(CellClass.self, forCellReuseIdentifier: "Cell")
-        
-        self.getAttendanceDetailsList(FromDate: "2021-09-01", ToDate: "2021-09-30")
         
         self.monthBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.monthBgView.layer.borderWidth = 0.5
@@ -63,7 +63,7 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         let headerViewSize = self.headerView.frame.size.height
         let taxYearViewSize = self.yearBgView.frame.size.height/1.5
         totalHeight = Int(headerViewSize+taxYearViewSize)
-//        getFinancialYearList()
+        getFinancialYearList()
        
     }
     
@@ -127,6 +127,7 @@ class DailyAttendanceViewControllerDetails: UIViewController {
                 }
         }
         task.resume()
+        self.getAttendanceDetailsList(FromDate: "2021-09-01", ToDate: "2021-09-30")
     }
     
     
@@ -134,10 +135,53 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         
         let utils = Utils()
         let accessToken = utils.readStringData(key: "token")
+
+        let url = URL(string: ATTENDANCE_DETAILS_URL)
+        guard let requestUrl = url else { fatalError() }
         
-        print("--accessToken----\(accessToken)")
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
         
-        let url = URL(string: "https://mis-api.mascoknit.com/api/v1/Attendance/details")
+        // Set HTTP Request Header
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        let newItem = AttendanceDetailsRequest(fromDate: FromDate, toDate: ToDate)
+        let jsonData = try? JSONEncoder().encode(newItem)
+        request.httpBody = jsonData
+        
+        self.showSpinner(onView: self.view)
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                self.removeSpinner()
+                DispatchQueue.main.async {
+                        
+                    if let error = error {
+                        print("Error took place \(error)")
+                        return
+                    }
+                    guard let data = data else {return}
+
+                    do{
+                        let ItemModel = try JSONDecoder().decode(ListAttendanceDetailsResponse.self, from: data)
+                        self.dataSourceAttendanceDetails = ItemModel._attHistoryListStr
+                        self.tableViewDailyAttendance.reloadData()
+                        
+                    }catch let jsonErr{
+                        print(jsonErr)
+                   }
+                }
+        }
+        task.resume()
+        self.getLeaveCountList(FromDate: FromDate, ToDate: ToDate)
+    }
+    
+    func getLeaveCountList(FromDate: String, ToDate: String){
+        
+        let utils = Utils()
+        let accessToken = utils.readStringData(key: "token")
+        
+        let url = URL(string: LEAVE_COUNT_URL)
         guard let requestUrl = url else { fatalError() }
         
         var request = URLRequest(url: requestUrl)
@@ -152,19 +196,12 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         let newItem = AttendanceDetailsRequest(fromDate: FromDate, toDate: ToDate)
         let jsonData = try? JSONEncoder().encode(newItem)
         
-       
-
         request.httpBody = jsonData
 
-        print("jsonData jsonData  data:\n \(jsonData!)")
-        
-//        self.showLoading(finished: {
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                
+
                 DispatchQueue.main.async {
-                    
-//                    self.hideLoading(finished: {
-                        
+                
                     if let error = error {
                         print("Error took place \(error)")
                         return
@@ -172,31 +209,17 @@ class DailyAttendanceViewControllerDetails: UIViewController {
                     guard let data = data else {return}
 
                     do{
-                        let ItemModel = try JSONDecoder().decode(ListAttendanceDetailsResponse.self, from: data)
-                        self.dataSourceAttendanceDetails = ItemModel._attHistoryListStr
+                        let ItemModel = try JSONDecoder().decode(ListLeaveCountResponse.self, from: data)
+                        self.dataSourceLeaveCount = ItemModel._listLeaveCount
+                        self.leaveCountCollectionView.reloadData()
                         
-//                        var totalOuput : Int = 0
-                        for i in ItemModel._attHistoryListStr{
-                            print("-----datePunch------\(i.datePunch)")
-                            print("-----shiftInTime------\(i.shiftInTime)")
-                            print("-----shiftOutTime------\(i.shiftOutTime)")
-                            print("----punchInTime-------\(i.punchInTime)")
-                            print("----punchOutTime-------\(i.punchOutTime)")
-                            print("----additionalTime-------\(i.additionalTime)")
-                            print("---fSts-------\(i.fSts)")
-
-                        }
-                        self.tableViewDailyAttendance.reloadData()
                     }catch let jsonErr{
                         print(jsonErr)
                    }
-//                    })
                 }
         }
         task.resume()
-//        })
     }
-    
     
     @IBAction func financialYearBtn(_ sender: Any) {
         
@@ -208,7 +231,6 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         let controller = DailyAttendanceViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
-
 }
 
 extension DailyAttendanceViewControllerDetails : UITableViewDelegate{
@@ -222,9 +244,6 @@ extension DailyAttendanceViewControllerDetails : UITableViewDelegate{
             removeTransparentView()
         }
     }
-    
-   
-    
 }
 
 extension DailyAttendanceViewControllerDetails : UITableViewDataSource{
@@ -235,7 +254,6 @@ extension DailyAttendanceViewControllerDetails : UITableViewDataSource{
         }else{
             return dataSource.count
         }
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -260,31 +278,24 @@ extension DailyAttendanceViewControllerDetails : UITableViewDataSource{
         }else{
             return 50
         }
-        
     }
-    
 }
 
 extension DailyAttendanceViewControllerDetails : UICollectionViewDelegate {
-    
 }
-
 
 extension DailyAttendanceViewControllerDetails : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return dataSourceLeaveCount.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collection_cell", for: indexPath) as! LeaveStatusCollectionViewCell
-        cell.statusNameLbl.text = "Present"
-        cell.starusValueLbl.text = "20"
+        cell.statusNameLbl.text = dataSourceLeaveCount[indexPath.row].status
+        cell.starusValueLbl.text = dataSourceLeaveCount[indexPath.row].statusValue
         return cell
     }
-    
-    
-
 }
 
 extension DailyAttendanceViewControllerDetails : UICollectionViewDelegateFlowLayout{
@@ -353,25 +364,28 @@ extension DailyAttendanceViewControllerDetails {
 }
 
 extension DailyAttendanceViewControllerDetails {
-    func showLoading(finished: @escaping () -> Void) {
-        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
-
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.gray
-        loadingIndicator.startAnimating();
-
-        alert.view.addSubview(loadingIndicator)
-
-        present(alert, animated: false, completion: finished)
-    }
-
-    func hideLoading(finished: @escaping () -> Void) {
-        if ( presentedViewController != nil && !presentedViewController!.isBeingPresented ) {
-            dismiss(animated: false, completion: finished)
-        }
-    }
- }
+    
+    func showSpinner(onView : UIView) {
+           let spinnerView = UIView.init(frame: onView.bounds)
+           spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+           let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+           ai.startAnimating()
+           ai.center = spinnerView.center
+           
+           DispatchQueue.main.async {
+               spinnerView.addSubview(ai)
+               onView.addSubview(spinnerView)
+           }
+           
+           vSpinner = spinnerView
+       }
+       
+       func removeSpinner() {
+           DispatchQueue.main.async {
+            self.vSpinner?.removeFromSuperview()
+            self.vSpinner = nil
+           }
+       } }
 
 
 extension DailyAttendanceViewControllerDetails {
@@ -414,8 +428,7 @@ extension DailyAttendanceViewControllerDetails {
         }
         
         init(from decoder: Decoder) throws {
-
-               let container = try decoder.container(keyedBy: CodingKeys.self)
+            let container = try decoder.container(keyedBy: CodingKeys.self)
             self.datePunch = try container.decodeIfPresent(String.self, forKey: .datePunch) ?? ""
             self.shiftInTime = try container.decodeIfPresent(String.self, forKey: .shiftInTime) ?? ""
             self.shiftOutTime = try container.decodeIfPresent(String.self, forKey: .shiftOutTime) ?? ""
@@ -427,57 +440,86 @@ extension DailyAttendanceViewControllerDetails {
             self.additionalTime = try container.decodeIfPresent(String.self, forKey: .additionalTime) ?? ""
             self.fSts = try container.decodeIfPresent(String.self, forKey: .fSts) ?? ""
             
-           }
+        }
 
            func encode(to encoder: Encoder) throws {
-
-               var container = encoder.container(keyedBy: CodingKeys.self)
-               try container.encode(datePunch, forKey: .datePunch)
-               try container.encode(shiftInTime, forKey: .shiftInTime)
-               try container.encode(shiftOutTime, forKey: .shiftOutTime)
-            
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(datePunch, forKey: .datePunch)
+            try container.encode(shiftInTime, forKey: .shiftInTime)
+            try container.encode(shiftOutTime, forKey: .shiftOutTime)
             try container.encode(shiftLateTime, forKey: .shiftLateTime)
             try container.encode(punchInTime, forKey: .punchInTime)
             try container.encode(punchOutTime, forKey: .punchOutTime)
-            
             try container.encode(shiftName, forKey: .shiftName)
             try container.encode(lateTime, forKey: .lateTime)
             try container.encode(additionalTime, forKey: .additionalTime)
             try container.encode(fSts, forKey: .fSts)
-           }
+        }
     }
     
     struct ListAttendanceDetailsResponse: Codable {
         var error: String = ""
-   //     var allLeaveCount: String?
-       // var _allLeaveCountList: [Any?]
         var _attHistoryListStr : [ListAttendanceDetails]
 
         enum CodingKeys: String, CodingKey {
             case error = "error"
-          //  case allLeaveCount = "allLeaveCount"
-         //   case _allLeaveCountList
             case _attHistoryListStr
         }
         
          init(from decoder: Decoder) throws {
-
                 let container = try decoder.container(keyedBy: CodingKeys.self)
                 self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
-          //      self.allLeaveCount = try container.decodeIfPresent(String.self, forKey: .allLeaveCount) ?? ""
-          //  self._allLeaveCountList = try container.decodeIfPresent([Any?].self, forKey: ._allLeaveCountList) ?? ""
                 self._attHistoryListStr = try container.decodeIfPresent([ListAttendanceDetails].self, forKey: ._attHistoryListStr) ?? []
             }
 
             func encode(to encoder: Encoder) throws {
-
                 var container = encoder.container(keyedBy: CodingKeys.self)
                 try container.encode(error, forKey: .error)
-               // try container.encode(allLeaveCount, forKey: .allLeaveCount)
-            //   try container.encode(_allLeaveCountList, forKey: ._allLeaveCountList)
                 try container.encode(_attHistoryListStr, forKey: ._attHistoryListStr)
             }
     }
     
+    struct ListLeaveCount: Codable {
+        var status: String = ""
+        var statusValue: String = ""
+        
+        enum CodingKeys: String, CodingKey {
+            case status = "status"
+            case statusValue = "statusValue"
+        }
+        
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            self.status = try container.decodeIfPresent(String.self, forKey: .status) ?? ""
+            self.statusValue = try container.decodeIfPresent(String.self, forKey: .statusValue) ?? ""
+           }
+
+           func encode(to encoder: Encoder) throws {
+               var container = encoder.container(keyedBy: CodingKeys.self)
+               try container.encode(status, forKey: .status)
+               try container.encode(statusValue, forKey: .statusValue)
+           }
+    }
     
+    struct ListLeaveCountResponse: Codable {
+        var error: String = ""
+        var _listLeaveCount : [ListLeaveCount]
+
+        enum CodingKeys: String, CodingKey {
+            case error = "error"
+            case _listLeaveCount
+        }
+        
+         init(from decoder: Decoder) throws {
+                let container = try decoder.container(keyedBy: CodingKeys.self)
+                self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
+                self._listLeaveCount = try container.decodeIfPresent([ListLeaveCount].self, forKey: ._listLeaveCount) ?? []
+            }
+
+            func encode(to encoder: Encoder) throws {
+                var container = encoder.container(keyedBy: CodingKeys.self)
+                try container.encode(error, forKey: .error)
+                try container.encode(_listLeaveCount, forKey: ._listLeaveCount)
+            }
+    }
 }

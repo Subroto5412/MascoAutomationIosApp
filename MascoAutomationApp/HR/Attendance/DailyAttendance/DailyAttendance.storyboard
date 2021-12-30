@@ -364,6 +364,7 @@
                     <connections>
                         <outlet property="financialYearSelect" destination="9Vz-U2-m1r" id="cAQ-Na-OBZ"/>
                         <outlet property="headerView" destination="Jtk-iL-CmP" id="gUE-RH-gtc"/>
+                        <outlet property="leaveCountCollectionView" destination="6aD-7p-oFO" id="elj-Tz-L7u"/>
                         <outlet property="monthBgView" destination="59k-xU-MLc" id="UDV-kc-Pye"/>
                         <outlet property="tableViewDailyAttendance" destination="56z-pb-SWb" id="IQp-qk-ZI8"/>
                         <outlet property="yearBgView" destination="Hvb-Ah-r5v" id="3Ip-wC-QgR"/>
