@@ -134,6 +134,7 @@
                 <outlet property="clLbl" destination="FPh-S7-NLq" id="X1r-Ac-ZX0"/>
                 <outlet property="elLbl" destination="gHV-aW-6vT" id="gxk-iS-ced"/>
                 <outlet property="leaveSummaryBgView" destination="EJC-Qq-vVR" id="5oI-Ua-F0G"/>
+                <outlet property="leaveTypeLbl" destination="L3C-xf-Gyl" id="zOU-Zt-g3Y"/>
                 <outlet property="slLbl" destination="eCt-K5-kOI" id="3dT-kN-lum"/>
             </connections>
             <point key="canvasLocation" x="236.23188405797103" y="157.70089285714286"/>

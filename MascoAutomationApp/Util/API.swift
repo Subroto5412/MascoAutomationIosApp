@@ -13,6 +13,7 @@ var BASE_URL = "https://mis-api.mascoknit.com/api/"
 
 var LOGIN_URL = BASE_URL+"v1/LoginAccess/login"
 var LEAVE_HISTORY_URL = BASE_URL+"v1/leave/leave-history"
+var AVAIL_HISTORY_URL = BASE_URL+"v1/leave/avail-history"
 var YEAR_URL = BASE_URL+"v1/Attendance/getFinalYear"
 var UNIT_NAME_URL = BASE_URL+"v1/gpms/production/load-unitname"
 var HWD_URL = BASE_URL+"v1/gpms/production/hour-wise-data"

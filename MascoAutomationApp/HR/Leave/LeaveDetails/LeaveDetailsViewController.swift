@@ -29,6 +29,15 @@ class LeaveDetailsViewController: UIViewController {
     @IBOutlet weak var applicationDateBgView: UIView!
     
     @IBOutlet weak var financialYear: UIButton!
+    
+    let transparentView = UIView()
+    let tableView = UITableView()
+    var selectedButton = UIButton()
+    var totalHeight:Int = 0
+    
+    var dataSource = [ListFinalYear]()
+    var dataSourceLeaveHistory = [LeaveHistoryformatList]()
+    var dataSourceAvail = [AvailHistorySummaryList]()
 
     class func initWithStoryboard() -> LeaveDetailsViewController
     {
@@ -39,8 +48,7 @@ class LeaveDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-      
+//
         tableViewAvail.delegate = self
         tableViewAvail.dataSource = self
         self.tableViewAvail.register(UINib(nibName: "LeaveDetailsControllerCell", bundle: nil), forCellReuseIdentifier: "cell_avail")
@@ -48,16 +56,23 @@ class LeaveDetailsViewController: UIViewController {
         
         self.leaveSummaryCollectionView.register(UINib(nibName: "LeaveSummaryCollectionCell", bundle: nil), forCellWithReuseIdentifier: "leave_summary_cell")
         
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(CellClass.self, forCellReuseIdentifier: "Cell")
+        
         evenHandler()
         viewDesign()
         
-//        let headerViewSize = self.headerView.frame.size.height
-//        let taxYearViewSize = self.financialBgView.frame.size.height/1.5
-//        totalHeight = Int(headerViewSize+taxYearViewSize)
+        let headerViewSize = self.headerView.frame.size.height
+        let taxYearViewSize = self.financialBgView.frame.size.height/1.5
+        totalHeight = Int(headerViewSize+taxYearViewSize)
        
-//        getFinancialYearList()
+        getYearList()
     }
     @IBAction func financialYearBtn(_ sender: Any) {
+//        dataSource = ["Apple", "Mango", "Orange"]
+        selectedButton = financialYear
+        addTransparentView(frames: financialYear.frame)
     
     }
     
@@ -153,7 +168,35 @@ class LeaveDetailsViewController: UIViewController {
         self.applicationDateBgView.layer.cornerRadius = 15
     }
     
-    func getLeaveDetails(){
+    func addTransparentView(frames: CGRect) {
+           let window = UIApplication.shared.keyWindow
+           transparentView.frame = window?.frame ?? self.view.frame
+           self.view.addSubview(transparentView)
+           
+        tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height+CGFloat(totalHeight), width: frames.width+100, height: 0)
+           self.view.addSubview(tableView)
+           tableView.layer.cornerRadius = 5
+           
+           transparentView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
+           tableView.reloadData()
+           let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeTransparentView))
+           transparentView.addGestureRecognizer(tapgesture)
+           transparentView.alpha = 0
+           UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+               self.transparentView.alpha = 0.5
+            self.tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height+CGFloat(self.totalHeight) + 5, width: frames.width+100, height: CGFloat(self.dataSource.count * 50))
+           }, completion: nil)
+       }
+       
+       @objc func removeTransparentView() {
+           let frames = selectedButton.frame
+           UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+               self.transparentView.alpha = 0
+            self.tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height+CGFloat(self.totalHeight), width: frames.width+100, height: 0)
+           }, completion: nil)
+       }
+    
+    func getLeaveHistorySummary(finalYear:Int){
         
         let utils = Utils()
         let accessToken = utils.readStringData(key: "token")
@@ -170,7 +213,7 @@ class LeaveDetailsViewController: UIViewController {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
 
-        let newTodoItem = LeaveDetailRequestModel(finalYear: 8)
+        let newTodoItem = LeaveDetailRequestModel(finalYear: finalYear)
         let jsonData = try? JSONEncoder().encode(newTodoItem)
         
         request.httpBody = jsonData
@@ -191,8 +234,7 @@ class LeaveDetailsViewController: UIViewController {
                     do{
                         
                         let todoItemModel = try JSONDecoder().decode(LeaveDetailsResponse.self, from: data)
-                        print("Response data:\n \(todoItemModel)")
-                        print("todoItemModel error: \(todoItemModel.error)")
+                        self.dataSourceLeaveHistory = todoItemModel._LeaveHistoryformatList
                         
                       
                         
@@ -212,21 +254,73 @@ class LeaveDetailsViewController: UIViewController {
 //                        }else{
 //                                print("----error: \(todoItemModel.error)----")
 //                        }
-                        
+                        self.leaveSummaryCollectionView.reloadData()
                     }catch let jsonErr{
                         print(jsonErr)
                    }
                 //    self.indicator.stopAnimating()
                   //  self.indicator.isHidden = true
-                    self.getYearList()
+//                    self.getYearList()
                 }
                
         }
      
         task.resume()
+        getAvailHistorySummary(finalYear:finalYear)
        
     }
 
+    
+    func getAvailHistorySummary(finalYear:Int){
+        
+        let utils = Utils()
+        let accessToken = utils.readStringData(key: "token")
+        
+        
+        let url = URL(string: AVAIL_HISTORY_URL)
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        
+        // Set HTTP Request Header
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+
+        let newTodoItem = LeaveDetailRequestModel(finalYear: finalYear)
+        let jsonData = try? JSONEncoder().encode(newTodoItem)
+        
+        request.httpBody = jsonData
+
+        print("jsonData jsonData  data:\n \(jsonData!)")
+       // indicator.startAnimating()
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+                DispatchQueue.main.async {
+                
+                    
+                    if let error = error {
+                        print("Error took place \(error)")
+                        return
+                    }
+                    guard let data = data else {return}
+
+                    do{
+                        
+                        let todoItemModel = try JSONDecoder().decode(AvailHistorySummaryResponse.self, from: data)
+                        self.dataSourceAvail = todoItemModel._availHistoryList
+                        self.tableViewAvail.reloadData()
+                        
+                    }catch let jsonErr{
+                        print(jsonErr)
+                   }
+                }
+        }
+     
+        task.resume()
+       
+    }
 
 func getYearList(){
     
@@ -256,6 +350,7 @@ func getYearList(){
                 do{
                     
                     let todoItemModel = try JSONDecoder().decode(ListFinalYearResponse.self, from: data)
+                    self.dataSource = todoItemModel._listFinalYear
                     print("Response data:\n \(todoItemModel)")
                     print("todoItemModel error: \(todoItemModel.error)")
                     
@@ -344,7 +439,7 @@ extension LeaveDetailsViewController{
                self.type_name = try container.decodeIfPresent(String.self, forKey: .type_name) ?? ""
                self.cl = try container.decodeIfPresent(String.self, forKey: .cl) ?? ""
                self.sl = try container.decodeIfPresent(String.self, forKey: .sl) ?? ""
-               self.el = try container.decodeIfPresent(String.self, forKey: .type_name) ?? ""
+               self.el = try container.decodeIfPresent(String.self, forKey: .el) ?? ""
             
            }
 
@@ -359,32 +454,70 @@ extension LeaveDetailsViewController{
     }
     
     
-    struct ListFinalYearResponse: Codable {
+    //AVail History Summary
+    struct AvailHistorySummaryList: Codable {
+        var leaveType: String = ""
+        var availDays: Int?
+        var approveFromDate: String = ""
+        var approveToDate: String = ""
+        var applicationDate: String = ""
+        
+        enum CodingKeys: String, CodingKey {
+            case leaveType = "leaveType"
+            case availDays = "availDays"
+            case approveFromDate = "approveFromDate"
+            case approveToDate = "approveToDate"
+            case applicationDate = "applicationDate"
+        }
+        
+        init(from decoder: Decoder) throws {
+
+               let container = try decoder.container(keyedBy: CodingKeys.self)
+               self.leaveType = try container.decodeIfPresent(String.self, forKey: .leaveType) ?? ""
+               self.availDays = try container.decodeIfPresent(Int.self, forKey: .availDays) ?? 0
+               self.approveFromDate = try container.decodeIfPresent(String.self, forKey: .approveFromDate) ?? ""
+               self.approveToDate = try container.decodeIfPresent(String.self, forKey: .approveToDate) ?? ""
+               self.applicationDate = try container.decodeIfPresent(String.self, forKey: .applicationDate) ?? ""
+            
+           }
+
+           func encode(to encoder: Encoder) throws {
+
+               var container = encoder.container(keyedBy: CodingKeys.self)
+               try container.encode(leaveType, forKey: .leaveType)
+               try container.encode(availDays, forKey: .availDays)
+               try container.encode(approveFromDate, forKey: .approveFromDate)
+               try container.encode(approveToDate, forKey: .approveToDate)
+               try container.encode(applicationDate, forKey: .applicationDate)
+           }
+    }
+    
+    
+    struct AvailHistorySummaryResponse: Codable {
         var error: String = ""
-        var _listFinalYear : [ListFinalYear]
+        var _availHistoryList : [AvailHistorySummaryList]
 
         enum CodingKeys: String, CodingKey {
             case error = "error"
-            case _listFinalYear
+            case _availHistoryList
         }
         
          init(from decoder: Decoder) throws {
 
                 let container = try decoder.container(keyedBy: CodingKeys.self)
                 self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
-                self._listFinalYear = try container.decodeIfPresent([ListFinalYear].self, forKey: ._listFinalYear) ?? []
+                self._availHistoryList = try container.decodeIfPresent([AvailHistorySummaryList].self, forKey: ._availHistoryList) ?? []
             }
 
             func encode(to encoder: Encoder) throws {
 
                 var container = encoder.container(keyedBy: CodingKeys.self)
                 try container.encode(error, forKey: .error)
-                try container.encode(_listFinalYear, forKey: ._listFinalYear)
+                try container.encode(_availHistoryList, forKey: ._availHistoryList)
             }
-
     }
     
-    
+    // Final Year Select
     struct ListFinalYear: Codable {
         var finalYearNo: Int?
         var finalYearName: String = ""
@@ -413,6 +546,31 @@ extension LeaveDetailsViewController{
                try container.encode(yearName, forKey: .yearName)
            }
     }
+    
+    struct ListFinalYearResponse: Codable {
+        var error: String = ""
+        var _listFinalYear : [ListFinalYear]
+
+        enum CodingKeys: String, CodingKey {
+            case error = "error"
+            case _listFinalYear
+        }
+        
+         init(from decoder: Decoder) throws {
+
+                let container = try decoder.container(keyedBy: CodingKeys.self)
+                self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
+                self._listFinalYear = try container.decodeIfPresent([ListFinalYear].self, forKey: ._listFinalYear) ?? []
+            }
+
+            func encode(to encoder: Encoder) throws {
+
+                var container = encoder.container(keyedBy: CodingKeys.self)
+                try container.encode(error, forKey: .error)
+                try container.encode(_listFinalYear, forKey: ._listFinalYear)
+            }
+
+    }
 }
 extension LeaveDetailsViewController : UITableViewDelegate{
 
@@ -421,9 +579,10 @@ extension LeaveDetailsViewController : UITableViewDelegate{
         if tableView == tableViewAvail {
             print("---you tapped me!----")
         }else{
-//            selectedButton.setTitle(dataSource[indexPath.row].finalYearName, for: .normal)
-//            print("Final Year id: \(dataSource[indexPath.row].finalYearNo!)")
-//            removeTransparentView()
+            selectedButton.setTitle(dataSource[indexPath.row].finalYearName, for: .normal)
+            print("---you tapped me!----\( dataSource[indexPath.row].finalYearNo!)")
+            self.getLeaveHistorySummary(finalYear: dataSource[indexPath.row].finalYearNo!)
+            removeTransparentView()
         }
     }
 }
@@ -431,52 +590,39 @@ extension LeaveDetailsViewController : UITableViewDelegate{
 extension LeaveDetailsViewController : UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-//        if tableView == tableViewAvail {
-//            return 10
-//        }else{
-//            return dataSource.count
-//        }
+        if tableView == tableViewAvail {
+            return dataSourceAvail.count
+        }else{
+            return dataSource.count
+        }
         
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if tableView == tableViewAvail {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell_avail", for: indexPath) as! LeaveDetailsControllerCell
+            cell.slLbl.text = "\(indexPath.row+1)"
+            cell.leaveTypeLbl.text = dataSourceAvail[indexPath.row].leaveType
+            cell.avilDayLbl.text = "\(String(describing: dataSourceAvail[indexPath.row].availDays!))"
+            cell.fromDateLbl.text = dataSourceAvail[indexPath.row].approveFromDate
+            cell.toDateLbl.text = dataSourceAvail[indexPath.row].approveToDate
+            cell.applicationDateLbl.text = dataSourceAvail[indexPath.row].applicationDate
+            return cell
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell_avail", for: indexPath) as! LeaveDetailsControllerCell
-        
-        cell.slLbl.text = "1"
-        cell.leaveTypeLbl.text = "CL"
-        cell.avilDayLbl.text = "1"
-        cell.fromDateLbl.text = "12-06-2021"
-        cell.toDateLbl.text = "12-06-2021"
-        cell.applicationDateLbl.text = "15-06-2021"
-        return cell
-        
-//        if tableView == tableViewAvail {
-//
-//            cell.slLbl.text = "1"
-//            cell.leaveTypeLbl.text = "CL"
-//            cell.avilDayLbl.text = "1"
-//            cell.fromDateLbl.text = "12-06-2021"
-//            cell.toDateLbl.text = "12-06-2021"
-//            cell.applicationDateLbl.text = "15-06-2021"
-//            return cell
-//
-//        }
-//        else{
-//
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-//            cell.textLabel?.text = dataSource[indexPath.row].finalYearName
-//            return cell
-//        }
+        }
+        else{
+
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+            cell.textLabel?.text = dataSource[indexPath.row].finalYearName
+            return cell
+        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
-//        if tableView == tableViewAvail {
-//            return 40
-//        }else{
-//            return 50
-//        }
+        if tableView == tableViewAvail {
+            return 40
+        }else{
+            return 50
+        }
         
     }
 
@@ -490,15 +636,26 @@ extension LeaveDetailsViewController : UICollectionViewDelegate {
 
 extension LeaveDetailsViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return dataSourceLeaveHistory.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "leave_summary_cell", for: indexPath) as! LeaveSummaryCollectionCell
-        cell.clLbl.text = "10"
-        cell.slLbl.text = "14"
-        cell.elLbl.text = "17"
+        cell.clLbl.text = dataSourceLeaveHistory[indexPath.row].cl
+        cell.slLbl.text = dataSourceLeaveHistory[indexPath.row].sl
+        cell.elLbl.text = dataSourceLeaveHistory[indexPath.row].el
+        
+        if indexPath.row == 0 {
+            cell.leaveTypeLbl.text = "Leave Type"
+        }else if indexPath.row == 1 {
+            cell.leaveTypeLbl.text = "Total Balance"
+        }else if indexPath.row == 2 {
+            cell.leaveTypeLbl.text = "Avail Day"
+        }else if indexPath.row == 3 {
+            cell.leaveTypeLbl.text = "Rest Balance"
+        }
+        
         return cell
     }
     

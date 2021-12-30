@@ -39,6 +39,8 @@ class DailyAttendanceViewControllerDetails: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         self.tableViewDailyAttendance.register(UINib(nibName: "DailyAttendanceTableViewCell", bundle: nil), forCellReuseIdentifier: "cell_daily_attendance")
 
         tableViewDailyAttendance.delegate = self
@@ -147,6 +149,7 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
+        
         let newItem = AttendanceDetailsRequest(fromDate: FromDate, toDate: ToDate)
         let jsonData = try? JSONEncoder().encode(newItem)
         request.httpBody = jsonData
@@ -175,6 +178,7 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         task.resume()
         self.getLeaveCountList(FromDate: FromDate, ToDate: ToDate)
     }
+    
     
     func getLeaveCountList(FromDate: String, ToDate: String){
         

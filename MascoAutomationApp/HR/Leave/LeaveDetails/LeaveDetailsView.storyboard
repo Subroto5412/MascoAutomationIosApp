@@ -50,39 +50,39 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrG-7y-sYd">
-                                                                <rect key="frame" x="367" y="15" width="1" height="34"/>
+                                                                <rect key="frame" x="347" y="15" width="1" height="34"/>
                                                                 <color key="backgroundColor" red="0.35380434989999998" green="0.92506664989999998" blue="0.50702255959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="1" id="2dQ-Qz-z6t"/>
                                                                 </constraints>
                                                             </view>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="PPl-yj-HZ7">
-                                                                <rect key="frame" x="388" y="13" width="61.5" height="38.5"/>
+                                                                <rect key="frame" x="358" y="13" width="61.5" height="38.5"/>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7z-eJ-lb4">
-                                                                <rect key="frame" x="474.5" y="16" width="85" height="32"/>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
-                                                                <state key="normal" title="2021 - 2021">
+                                                                <rect key="frame" x="429.5" y="17" width="147" height="30"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                                                                <state key="normal" title="Select Financial Year">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <action selector="financialYearBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="j7a-Ps-n7l"/>
+                                                                    <action selector="financialYearBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Fpk-To-MDx"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.034799609330000002" green="0.1083526388" blue="0.3913464546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstItem="B7z-eJ-lb4" firstAttribute="leading" secondItem="PPl-yj-HZ7" secondAttribute="trailing" constant="25" id="C8A-Zs-8FS"/>
+                                                            <constraint firstItem="B7z-eJ-lb4" firstAttribute="leading" secondItem="PPl-yj-HZ7" secondAttribute="trailing" constant="10" id="C8A-Zs-8FS"/>
                                                             <constraint firstItem="B7z-eJ-lb4" firstAttribute="centerY" secondItem="up1-WM-qiQ" secondAttribute="centerY" id="F1C-Hh-sPt"/>
                                                             <constraint firstItem="97W-8m-102" firstAttribute="centerY" secondItem="up1-WM-qiQ" secondAttribute="centerY" id="FFg-vT-zTf"/>
                                                             <constraint firstItem="PPl-yj-HZ7" firstAttribute="height" secondItem="up1-WM-qiQ" secondAttribute="height" multiplier="36:60" id="Kns-A2-TTA"/>
                                                             <constraint firstItem="PPl-yj-HZ7" firstAttribute="width" secondItem="up1-WM-qiQ" secondAttribute="width" multiplier="31:370" id="LtN-q2-rdl"/>
                                                             <constraint firstItem="97W-8m-102" firstAttribute="leading" secondItem="up1-WM-qiQ" secondAttribute="leading" constant="20" id="X8M-fY-lPT"/>
                                                             <constraint firstItem="PPl-yj-HZ7" firstAttribute="centerY" secondItem="up1-WM-qiQ" secondAttribute="centerY" id="ZrF-3T-MT9"/>
-                                                            <constraint firstItem="PPl-yj-HZ7" firstAttribute="leading" secondItem="rrG-7y-sYd" secondAttribute="trailing" constant="20" id="bfL-T1-J29"/>
+                                                            <constraint firstItem="PPl-yj-HZ7" firstAttribute="leading" secondItem="rrG-7y-sYd" secondAttribute="trailing" constant="10" id="bfL-T1-J29"/>
                                                             <constraint firstItem="rrG-7y-sYd" firstAttribute="top" secondItem="up1-WM-qiQ" secondAttribute="top" constant="15" id="fJV-qD-VEJ"/>
                                                             <constraint firstAttribute="bottom" secondItem="rrG-7y-sYd" secondAttribute="bottom" constant="15" id="oRf-BN-B8y"/>
-                                                            <constraint firstItem="rrG-7y-sYd" firstAttribute="centerX" secondItem="up1-WM-qiQ" secondAttribute="centerX" id="sby-vU-Jqf"/>
+                                                            <constraint firstItem="rrG-7y-sYd" firstAttribute="centerX" secondItem="up1-WM-qiQ" secondAttribute="centerX" constant="-20" id="sby-vU-Jqf"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -411,7 +411,7 @@
                                                             </view>
                                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kFu-kX-Z4j">
                                                                 <rect key="frame" x="0.0" y="30" width="775" height="227.5"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <color key="backgroundColor" red="0.053341299299999999" green="0.095807306470000006" blue="0.39218080039999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             </tableView>
                                                         </subviews>
                                                         <constraints>
@@ -510,7 +510,7 @@
                         <outlet property="leaveSummaryCollectionView" destination="dVu-x2-fJx" id="Ikn-bU-pQw"/>
                         <outlet property="leaveTypeBgView" destination="K60-DI-TA4" id="Prf-Qy-ZgD"/>
                         <outlet property="slBgView" destination="liy-5l-Ud9" id="G38-WP-Z2C"/>
-                        <outlet property="tableViewAvail" destination="kFu-kX-Z4j" id="hei-aW-O97"/>
+                        <outlet property="tableViewAvail" destination="kFu-kX-Z4j" id="UW6-9M-dBE"/>
                         <outlet property="toDateBgView" destination="9mo-hT-pE0" id="XED-rR-mtM"/>
                     </connections>
                 </viewController>
@@ -524,9 +524,6 @@
         <image name="home_bg" width="408" height="862"/>
         <image name="next" width="24" height="24"/>
         <image name="previous" width="24" height="24"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

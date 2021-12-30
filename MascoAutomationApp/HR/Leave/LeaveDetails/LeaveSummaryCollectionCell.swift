@@ -9,6 +9,7 @@ import UIKit
 
 class LeaveSummaryCollectionCell: UICollectionViewCell {
 
+    @IBOutlet weak var leaveTypeLbl: UILabel!
     @IBOutlet weak var clLbl: UILabel!
     @IBOutlet weak var slLbl: UILabel!
     @IBOutlet weak var elLbl: UILabel!
