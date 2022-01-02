@@ -12,6 +12,8 @@ class SEMViewController: UIViewController {
     @IBOutlet weak var headerView: InnerHeader!
     @IBOutlet weak var bodyView: SEMBodyView!
     
+
+    
     class func initWithStoryboard() -> SEMViewController
     {
         let storyboard = UIStoryboard(name: "SEM", bundle: nil)

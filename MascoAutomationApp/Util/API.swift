@@ -26,3 +26,8 @@ var PROFILE_PHOTO_URL = BASE_URL+"v1/LoginAccess/getImageById?empCode="
 var PHOTO_LINK_URL = "https://mis-api.mascoknit.com/EmpImages/"
 var ATTENDANCE_DETAILS_URL = BASE_URL+"v1/Attendance/details"
 var LEAVE_COUNT_URL = BASE_URL+"v1/Attendance/summary"
+
+
+var LOAD_UNITNAME_URL = BASE_URL+"v1/sem/communication-portal/load-unitname"
+var LOAD_EMPNAME_URL = BASE_URL+"v1/sem/communication-portal/load-emp-name-autocomplete"
+var GET_EMP_DETAILS_URL = BASE_URL+"v1/sem/communication-portal/get-emp-details"
