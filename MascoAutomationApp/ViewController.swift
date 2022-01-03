@@ -166,6 +166,9 @@ class ViewController: UIViewController {
         
     
     func getProfilePhot(photoId: String){
+        
+        let utils = Utils()
+        
         let urlLink = (PROFILE_PHOTO_URL+photoId)
         
         let url = URL(string: urlLink)!
@@ -194,6 +197,8 @@ class ViewController: UIViewController {
                         let itemModel = try JSONDecoder().decode(ProfilePhoto.self, from: data)
                         let photoArr = itemModel.serverFileName.components(separatedBy: "\\")
                         let photo = photoArr[1] //Last
+                        
+                        utils.writeAnyData(key: "photo", value: photo)
                         
                         let urlLinkPhoto = (PHOTO_LINK_URL+photo)
                         let photoUrl =  URL(string: urlLinkPhoto)!
@@ -435,4 +440,10 @@ extension UIImageView {
     self.layer.cornerRadius = CGFloat(radius)
     self.layer.masksToBounds = true
    }
+    
+    func setCornerRounded() {
+     let radius = 40.0
+     self.layer.cornerRadius = CGFloat(radius)
+     self.layer.masksToBounds = true
+    }
 }

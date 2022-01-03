@@ -31,3 +31,6 @@ var LEAVE_COUNT_URL = BASE_URL+"v1/Attendance/summary"
 var LOAD_UNITNAME_URL = BASE_URL+"v1/sem/communication-portal/load-unitname"
 var LOAD_EMPNAME_URL = BASE_URL+"v1/sem/communication-portal/load-emp-name-autocomplete"
 var GET_EMP_DETAILS_URL = BASE_URL+"v1/sem/communication-portal/get-emp-details"
+
+var FORM_DATA_URL = BASE_URL+"v1/leave/form-data"
+var LEAVE_SUBMIT_URL = BASE_URL+"v1/leave/submit"

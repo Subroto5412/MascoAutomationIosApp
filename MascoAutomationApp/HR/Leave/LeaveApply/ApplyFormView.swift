@@ -19,11 +19,18 @@ class ApplyFormView: XibView {
     @IBOutlet weak var reasonBgView: UITextField!
     @IBOutlet weak var saveBgView: UIView!
     
+    @IBOutlet weak var totalApplyDayLbl: UILabel!
+    @IBOutlet weak var fullLeaveTypeBgView: UIView!
     @IBOutlet weak var applyFromDate: UILabel!
     @IBOutlet weak var ApplyToDate: UILabel!
     
+    @IBOutlet weak var profilePhotoImg: UIImageView!
+    @IBOutlet weak var leaveTypeValueLbl: UILabel!
+    @IBOutlet weak var leaveTypeBtn: UIButton!
     var applyFromHandler : ((Bool?) -> Void)?
     var applyToHandler : ((Bool?) -> Void)?
+    var leaveTypeHandler : ((Bool?) -> Void)?
+    var saveHandler : ((Bool?) -> Void)?
     
     @IBAction func applyFromBtn(_ sender: Any) {
         self.applyFromHandler?(true)
@@ -33,4 +40,11 @@ class ApplyFormView: XibView {
         self.applyToHandler?(true)
     }
     
+    @IBAction func leaveTypeSelectBtn(_ sender: Any) {
+        self.leaveTypeHandler?(true)
+    }
+    
+    @IBAction func saveBtn(_ sender: Any) {
+        self.saveHandler?(true)
+    }
 }
