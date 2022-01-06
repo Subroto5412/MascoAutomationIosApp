@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="montserrat_bold.otf">
+            <string>Montserrat-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ApprovalBgView" customModule="MascoAutomationApp" customModuleProvider="target">
+            <connections>
+                <outlet property="approvedBtnView" destination="wKe-iI-gGT" id="2FX-JX-3AK"/>
+                <outlet property="rejectBtnView" destination="nI2-Hm-JuG" id="85c-bl-CrR"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n3a-AR-kvZ">
+                    <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKe-iI-gGT">
+                            <rect key="frame" x="55" y="5" width="120" height="40"/>
+                            <color key="backgroundColor" red="0.52765488620000001" green="0.63661628960000005" blue="0.75687938929999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                            <state key="normal" title="Approved">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="approvedBtn:" destination="-1" eventType="touchUpInside" id="BY0-BU-R29"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nI2-Hm-JuG">
+                            <rect key="frame" x="215" y="5" width="120" height="40"/>
+                            <color key="backgroundColor" red="0.92290180919999998" green="0.37733763460000003" blue="0.36076107619999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                            <state key="normal" title="Reject">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="rejectBtn:" destination="-1" eventType="touchUpInside" id="Kba-zz-BLC"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="wKe-iI-gGT" firstAttribute="centerY" secondItem="n3a-AR-kvZ" secondAttribute="centerY" id="Brt-hF-qbh"/>
+                        <constraint firstAttribute="trailing" secondItem="nI2-Hm-JuG" secondAttribute="trailing" constant="55" id="Ev3-2T-EUa"/>
+                        <constraint firstItem="nI2-Hm-JuG" firstAttribute="width" secondItem="n3a-AR-kvZ" secondAttribute="width" multiplier="120:390" id="PIY-sy-nQn"/>
+                        <constraint firstItem="nI2-Hm-JuG" firstAttribute="height" secondItem="n3a-AR-kvZ" secondAttribute="height" multiplier="40:50" id="Ug6-SI-TVa"/>
+                        <constraint firstItem="nI2-Hm-JuG" firstAttribute="centerY" secondItem="n3a-AR-kvZ" secondAttribute="centerY" id="eq8-ek-yY1"/>
+                        <constraint firstItem="wKe-iI-gGT" firstAttribute="height" secondItem="n3a-AR-kvZ" secondAttribute="height" multiplier="40:50" id="uBd-Wt-fb8"/>
+                        <constraint firstItem="wKe-iI-gGT" firstAttribute="leading" secondItem="n3a-AR-kvZ" secondAttribute="leading" constant="55" id="ues-vu-SQm"/>
+                        <constraint firstItem="wKe-iI-gGT" firstAttribute="width" secondItem="n3a-AR-kvZ" secondAttribute="width" multiplier="120:390" id="xBC-vp-F4B"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="n3a-AR-kvZ" secondAttribute="trailing" id="1KI-EH-bsr"/>
+                <constraint firstItem="n3a-AR-kvZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="2qk-La-6KS"/>
+                <constraint firstAttribute="bottom" secondItem="n3a-AR-kvZ" secondAttribute="bottom" id="bOQ-oP-FHU"/>
+                <constraint firstItem="n3a-AR-kvZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qVi-f9-0dy"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="132" y="61"/>
+        </view>
+    </objects>
+</document>

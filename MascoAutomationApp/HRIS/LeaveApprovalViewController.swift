@@ -41,9 +41,23 @@ class LeaveApprovalViewController: UIViewController {
          }
          weakSelf.showBackController()
         }
+        
+        self.bodyView.leaveApprovalHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showLeaveApprovalController()
+        }
+        
     }
     func showBackController(){
         let controller = HRISViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
+    
+    func showLeaveApprovalController(){
+        let controller = LeaveApprovalDetailViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
 

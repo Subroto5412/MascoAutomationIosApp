@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -136,7 +135,7 @@
         <!--Leave Approval Detail View Controller-->
         <scene sceneID="atb-p1-5yn">
             <objects>
-                <viewController storyboardIdentifier="LeaveApprovalDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JGQ-BT-VFt" customClass="LeaveApprovalDetailViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LeaveApprovalDetailViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JGQ-BT-VFt" customClass="LeaveApprovalDetailViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M3q-bs-jTg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -146,30 +145,46 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kJG-Mk-SsH" customClass="CommonHeaderView" customModule="MascoAutomationApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eU8-wT-16g">
                                         <rect key="frame" x="0.0" y="96" width="414" height="636.5"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnu-ZC-WuC">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnu-ZC-WuC" customClass="ApprovalBgView" customModule="MascoAutomationApp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="20" width="414" height="53.5"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hoX-Sw-SSU" customClass="HeaderBarTableView" customModule="MascoAutomationApp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="78.5" width="414" height="64"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PzG-8F-2EG">
+                                                <rect key="frame" x="0.0" y="142.5" width="414" height="494"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </tableView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="pnu-ZC-WuC" firstAttribute="top" secondItem="eU8-wT-16g" secondAttribute="top" constant="20" id="1uP-2s-0gK"/>
+                                            <constraint firstItem="hoX-Sw-SSU" firstAttribute="height" secondItem="eU8-wT-16g" secondAttribute="height" multiplier="60:596" id="3hZ-BO-iS2"/>
                                             <constraint firstItem="pnu-ZC-WuC" firstAttribute="height" secondItem="eU8-wT-16g" secondAttribute="height" multiplier="50:596" id="44S-gy-8RO"/>
+                                            <constraint firstAttribute="trailing" secondItem="PzG-8F-2EG" secondAttribute="trailing" id="7c1-VF-0Gs"/>
                                             <constraint firstAttribute="trailing" secondItem="pnu-ZC-WuC" secondAttribute="trailing" id="KAL-Bs-Vra"/>
+                                            <constraint firstItem="hoX-Sw-SSU" firstAttribute="top" secondItem="pnu-ZC-WuC" secondAttribute="bottom" constant="5" id="LYe-xn-6cr"/>
+                                            <constraint firstItem="hoX-Sw-SSU" firstAttribute="leading" secondItem="eU8-wT-16g" secondAttribute="leading" id="RWO-ef-KUT"/>
+                                            <constraint firstAttribute="bottom" secondItem="PzG-8F-2EG" secondAttribute="bottom" id="kFJ-9P-dpQ"/>
                                             <constraint firstItem="pnu-ZC-WuC" firstAttribute="leading" secondItem="eU8-wT-16g" secondAttribute="leading" id="mWR-bc-ufG"/>
+                                            <constraint firstItem="PzG-8F-2EG" firstAttribute="leading" secondItem="eU8-wT-16g" secondAttribute="leading" id="qr3-Sy-gtZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="hoX-Sw-SSU" secondAttribute="trailing" id="uKw-04-RCC"/>
+                                            <constraint firstItem="PzG-8F-2EG" firstAttribute="top" secondItem="hoX-Sw-SSU" secondAttribute="bottom" id="zU7-Jg-gzc"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0b3-lN-rb9" customClass="CommonFooter" customModule="MascoAutomationApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="732.5" width="414" height="85.5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="eU8-wT-16g" firstAttribute="leading" secondItem="aor-tP-xGt" secondAttribute="leading" id="1Cy-Wa-L0q"/>
                                     <constraint firstItem="eU8-wT-16g" firstAttribute="top" secondItem="kJG-Mk-SsH" secondAttribute="bottom" id="63B-LT-g6I"/>
@@ -195,6 +210,11 @@
                             <constraint firstItem="aor-tP-xGt" firstAttribute="leading" secondItem="1hf-tD-tIZ" secondAttribute="leading" id="zNw-os-a3m"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="approvalView" destination="pnu-ZC-WuC" id="jgs-hV-Muj"/>
+                        <outlet property="headerView" destination="kJG-Mk-SsH" id="jc1-VA-0EW"/>
+                        <outlet property="leaveApprovalDetailsTableView" destination="PzG-8F-2EG" id="YqC-mf-fE1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sTc-WQ-bkT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -203,11 +223,5 @@
     </scenes>
     <resources>
         <image name="home_bg" width="408" height="862"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

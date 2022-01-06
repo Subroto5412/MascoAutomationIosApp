@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -38,6 +38,12 @@
 		4D7FB4D62744D45200B318DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D7FB4D42744D45200B318DA /* LaunchScreen.storyboard */; };
 		4D99D96D2765C8B3004E6259 /* TaxDetailsViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D99D96B2765C8B3004E6259 /* TaxDetailsViewControllerCell.swift */; };
 		4D99D96E2765C8B3004E6259 /* TaxDetailsViewControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D99D96C2765C8B3004E6259 /* TaxDetailsViewControllerCell.xib */; };
+		4D9E269127858F4B00EA93C2 /* ApprovalBgView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9E269027858F4B00EA93C2 /* ApprovalBgView.xib */; };
+		4D9E269327858F7000EA93C2 /* ApprovalBgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E269227858F7000EA93C2 /* ApprovalBgView.swift */; };
+		4D9E269527859B6900EA93C2 /* HeaderBarTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9E269427859B6900EA93C2 /* HeaderBarTableView.xib */; };
+		4D9E269727859B7700EA93C2 /* HeaderBarTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E269627859B7700EA93C2 /* HeaderBarTableView.swift */; };
+		4D9E269A27859BFD00EA93C2 /* LeaveApprovalItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E269827859BFD00EA93C2 /* LeaveApprovalItemViewCell.swift */; };
+		4D9E269B27859BFD00EA93C2 /* LeaveApprovalItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9E269927859BFD00EA93C2 /* LeaveApprovalItemViewCell.xib */; };
 		4DA65128274CA30F00488332 /* HomeScreenBody.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA65127274CA30F00488332 /* HomeScreenBody.xib */; };
 		4DA6512D274CA55A00488332 /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6512C274CA55A00488332 /* XibView.swift */; };
 		4DA6512F274CC85E00488332 /* HomeScreenBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6512E274CC85E00488332 /* HomeScreenBody.swift */; };
@@ -153,6 +159,12 @@
 		4D7FB4D72744D45200B318DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D99D96B2765C8B3004E6259 /* TaxDetailsViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxDetailsViewControllerCell.swift; sourceTree = "<group>"; };
 		4D99D96C2765C8B3004E6259 /* TaxDetailsViewControllerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaxDetailsViewControllerCell.xib; sourceTree = "<group>"; };
+		4D9E269027858F4B00EA93C2 /* ApprovalBgView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApprovalBgView.xib; sourceTree = "<group>"; };
+		4D9E269227858F7000EA93C2 /* ApprovalBgView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovalBgView.swift; sourceTree = "<group>"; };
+		4D9E269427859B6900EA93C2 /* HeaderBarTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderBarTableView.xib; sourceTree = "<group>"; };
+		4D9E269627859B7700EA93C2 /* HeaderBarTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderBarTableView.swift; sourceTree = "<group>"; };
+		4D9E269827859BFD00EA93C2 /* LeaveApprovalItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveApprovalItemViewCell.swift; sourceTree = "<group>"; };
+		4D9E269927859BFD00EA93C2 /* LeaveApprovalItemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaveApprovalItemViewCell.xib; sourceTree = "<group>"; };
 		4DA65127274CA30F00488332 /* HomeScreenBody.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeScreenBody.xib; sourceTree = "<group>"; };
 		4DA6512C274CA55A00488332 /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		4DA6512E274CC85E00488332 /* HomeScreenBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenBody.swift; sourceTree = "<group>"; };
@@ -541,6 +553,12 @@
 			isa = PBXGroup;
 			children = (
 				4DCDC1322770A14D00D3896E /* LeaveApprovalDetailViewController.swift */,
+				4D9E269027858F4B00EA93C2 /* ApprovalBgView.xib */,
+				4D9E269227858F7000EA93C2 /* ApprovalBgView.swift */,
+				4D9E269427859B6900EA93C2 /* HeaderBarTableView.xib */,
+				4D9E269627859B7700EA93C2 /* HeaderBarTableView.swift */,
+				4D9E269827859BFD00EA93C2 /* LeaveApprovalItemViewCell.swift */,
+				4D9E269927859BFD00EA93C2 /* LeaveApprovalItemViewCell.xib */,
 			);
 			path = LeaveApproval;
 			sourceTree = "<group>";
@@ -582,7 +600,6 @@
 				DC5E682C5B175BD4034E52A2 /* Pods-MascoAutomationApp.debug.xcconfig */,
 				DBEA5008F8D6BBF25B210534 /* Pods-MascoAutomationApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -655,6 +672,7 @@
 				4D99D96E2765C8B3004E6259 /* TaxDetailsViewControllerCell.xib in Resources */,
 				4DB0E0E12766FFE700B188E6 /* ApplyFormView.xib in Resources */,
 				4DD0DD6D275CB7A4005EE588 /* DailyAttendance.storyboard in Resources */,
+				4D9E269127858F4B00EA93C2 /* ApprovalBgView.xib in Resources */,
 				4D27A684276DB2EF00F0E4BA /* HPDTitleView.xib in Resources */,
 				4DC8044027520D8B0006A3E1 /* LeaveView.xib in Resources */,
 				4D27A682276D970B00F0E4BA /* LWPViewControllerCell.xib in Resources */,
@@ -666,6 +684,7 @@
 				4DD772BF274DF30D003261F6 /* HomeHeader.xib in Resources */,
 				4D7FB4D62744D45200B318DA /* LaunchScreen.storyboard in Resources */,
 				4DB0E0E427674A8200B188E6 /* PMS.storyboard in Resources */,
+				4D9E269527859B6900EA93C2 /* HeaderBarTableView.xib in Resources */,
 				4DC3F4C7276F18D4005F2958 /* SEM.storyboard in Resources */,
 				4D27A68A276DB4CE00F0E4BA /* HPDViewControllerCell.xib in Resources */,
 				4DC3F4BF276EF262005F2958 /* HPDsViewControllerCell.xib in Resources */,
@@ -673,6 +692,7 @@
 				4DC804332751F3800006A3E1 /* DailyAttendanceView.xib in Resources */,
 				4D116BFC276491070065C07D /* LeaveSummaryCollectionCell.xib in Resources */,
 				4DAA634B276877F20073DBB0 /* GPMSBodyView.xib in Resources */,
+				4D9E269B27859BFD00EA93C2 /* LeaveApprovalItemViewCell.xib in Resources */,
 				4D116BF2276453590065C07D /* LeaveDetailsView.storyboard in Resources */,
 				4D27A68C276DD97900F0E4BA /* BWPDTitleView.xib in Resources */,
 				4DE38551274F7B7800707916 /* InnerHeader.xib in Resources */,
@@ -769,8 +789,10 @@
 				4D27A691276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.swift in Sources */,
 				4DC3F4C3276F1886005F2958 /* ATMViewController.swift in Sources */,
 				4DC3F4BB276EE2D1005F2958 /* HPDsTotalView.swift in Sources */,
+				4D9E269727859B7700EA93C2 /* HeaderBarTableView.swift in Sources */,
 				4D27A686276DB30E00F0E4BA /* HPDTitleView.swift in Sources */,
 				4D116BFB276491070065C07D /* LeaveSummaryCollectionCell.swift in Sources */,
+				4D9E269A27859BFD00EA93C2 /* LeaveApprovalItemViewCell.swift in Sources */,
 				4DCDC1332770A14D00D3896E /* LeaveApprovalDetailViewController.swift in Sources */,
 				4DC8044227520DA70006A3E1 /* LeaveView.swift in Sources */,
 				4DC3F4CD276F2C83005F2958 /* ATMBodyView.swift in Sources */,
@@ -794,6 +816,7 @@
 				4DE3854B274F533200707916 /* HRViewController.swift in Sources */,
 				4DAA63412768661D0073DBB0 /* BWPDViewController.swift in Sources */,
 				4DCDC12127703DD800D3896E /* CommunicationPortalViewController.swift in Sources */,
+				4D9E269327858F7000EA93C2 /* ApprovalBgView.swift in Sources */,
 				4DAA634D276878100073DBB0 /* GPMSBodyView.swift in Sources */,
 				4DC804372752000D0006A3E1 /* DailyAttendanceViewController.swift in Sources */,
 				4DCDC1302770933B00D3896E /* LeaveApprovalBodyView.swift in Sources */,
