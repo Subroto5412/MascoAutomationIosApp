@@ -195,6 +195,10 @@ class ViewController: UIViewController {
 
                     do{
                         let itemModel = try JSONDecoder().decode(ProfilePhoto.self, from: data)
+                        print("--emP_ENAME----\(itemModel.emP_ENAME)")
+                        
+                        utils.writeAnyData(key: "empName", value: itemModel.emP_ENAME)
+                        
                         let photoArr = itemModel.serverFileName.components(separatedBy: "\\")
                         let photo = photoArr[1] //Last
                         

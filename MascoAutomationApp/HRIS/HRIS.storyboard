@@ -214,6 +214,7 @@
                         <outlet property="approvalView" destination="pnu-ZC-WuC" id="jgs-hV-Muj"/>
                         <outlet property="headerView" destination="kJG-Mk-SsH" id="jc1-VA-0EW"/>
                         <outlet property="leaveApprovalDetailsTableView" destination="PzG-8F-2EG" id="YqC-mf-fE1"/>
+                        <outlet property="tableViewHeaderView" destination="hoX-Sw-SSU" id="HpU-1p-ekd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sTc-WQ-bkT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

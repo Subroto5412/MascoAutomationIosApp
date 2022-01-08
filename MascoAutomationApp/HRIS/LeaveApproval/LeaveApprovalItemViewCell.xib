@@ -35,6 +35,9 @@
                                             <constraint firstAttribute="width" constant="21" id="fvq-eQ-nT7"/>
                                         </constraints>
                                         <state key="normal" image="not_checking"/>
+                                        <connections>
+                                            <action selector="checkBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="goG-fi-cXt"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -231,6 +234,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="balanceLbl" destination="sep-AA-sCX" id="D5y-Ij-jHS"/>
+                <outlet property="checkingBtn" destination="tGT-UW-cCb" id="Wlj-fM-vXX"/>
                 <outlet property="designationLbl" destination="6UE-1c-D4b" id="f1q-lV-MBs"/>
                 <outlet property="fromDateLbl" destination="jZN-SK-mKd" id="G5a-vg-glM"/>
                 <outlet property="idLbl" destination="Qt8-1F-KgY" id="a7X-iC-q1W"/>

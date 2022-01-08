@@ -20,6 +20,9 @@ class LeaveApprovalItemViewCell: UITableViewCell {
     @IBOutlet weak var balanceLbl: UILabel!
     @IBOutlet weak var totalDaysLbl: UILabel!
     
+    @IBOutlet weak var checkingBtn: UIButton!
+    var checkBtnPressed : (() -> ()) = {}
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,4 +34,9 @@ class LeaveApprovalItemViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    var leaveApprovalHandler : ((Bool?) -> Void)?
+    
+    @IBAction func checkBtn(_ sender: Any) {
+        checkBtnPressed()
+    }
 }

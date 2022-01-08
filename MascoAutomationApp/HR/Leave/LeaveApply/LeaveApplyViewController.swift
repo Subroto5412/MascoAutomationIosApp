@@ -152,11 +152,11 @@ class LeaveApplyViewController: UIViewController {
         
        let currentDate = Date()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         
         let calendar = YYCalendar(normalCalendarLangType: .ENG3,
                                   date: dateFormatter.string(from: currentDate),
-                                          format: "dd-MM-yyyy") { [weak self] date in
+                                          format: "yyyy-MM-dd") { [weak self] date in
             self?.bodyView.applyFromDate.text = date
             self!.fromDate = date
             print(date)
@@ -168,7 +168,7 @@ class LeaveApplyViewController: UIViewController {
                 let end = self!.toDate
                 
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "dd-MM-yyyy"
+                dateFormatter.dateFormat = "yyyy-MM-dd"
 
                 let firstDate = dateFormatter.date(from: start)!
                 let secondDate = dateFormatter.date(from: end)!
@@ -203,11 +203,11 @@ class LeaveApplyViewController: UIViewController {
         
        let currentDate = Date()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         
         let calendar = YYCalendar(normalCalendarLangType: .ENG3,
                                   date: dateFormatter.string(from: currentDate),
-                                          format: "dd-MM-yyyy") { [weak self] date in
+                                          format: "yyyy-MM-dd") { [weak self] date in
             self?.bodyView.ApplyToDate.text = date
             
             self!.toDate = date
@@ -220,7 +220,7 @@ class LeaveApplyViewController: UIViewController {
                 let end = self!.toDate
                 
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "dd-MM-yyyy"
+                dateFormatter.dateFormat = "yyyy-MM-dd"
 
                 let firstDate = dateFormatter.date(from: start)!
                 let secondDate = dateFormatter.date(from: end)!

@@ -34,3 +34,7 @@ var GET_EMP_DETAILS_URL = BASE_URL+"v1/sem/communication-portal/get-emp-details"
 
 var FORM_DATA_URL = BASE_URL+"v1/leave/form-data"
 var LEAVE_SUBMIT_URL = BASE_URL+"v1/leave/submit"
+
+var LEAVE_APPROVAL_PENDING_LIST_URL = BASE_URL+"v1/leave/pending"
+var LEAVE_APPROVE_LIST_URL = BASE_URL+"v1/leave/approve"
+var LEAVE_REJECT_LIST_URL = BASE_URL+"v1/leave/reject"
