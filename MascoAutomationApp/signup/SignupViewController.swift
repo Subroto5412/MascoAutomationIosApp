@@ -30,6 +30,8 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var otpVerified: UIImageView!
     @IBOutlet weak var passwordVerified: UIImageView!
     
+    @IBOutlet weak var mobileLbl: UILabel!
+    @IBOutlet weak var mobileLbl2: UILabel!
     
     class func initWithStoryboard() -> SignupViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -77,6 +79,9 @@ class SignupViewController: UIViewController {
 
         signupBtn.layer.cornerRadius = 20.0;
         
+        let utils = Utils()
+        mobileLbl.text = utils.readStringData(key: "mobile")
+        
         
     }
     
@@ -114,7 +119,6 @@ class SignupViewController: UIViewController {
         }else{
             self.passwordVerified.isHidden = true
         }
-        print("----\(passwordTxtField.text)")
     }
     
     @IBAction func rePasswordBtn(_ sender: Any) {

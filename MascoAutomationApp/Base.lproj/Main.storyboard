@@ -22,7 +22,7 @@
         <!--Signup View Controller-->
         <scene sceneID="yEx-LB-98G">
             <objects>
-                <viewController storyboardIdentifier="SignupViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="D02-O7-s6a" customClass="SignupViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignupViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="D02-O7-s6a" customClass="SignupViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yko-rd-28s">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -54,8 +54,8 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01130 12345678" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oC8-aq-tmQ">
-                                                        <rect key="frame" x="81" y="112.66666666666666" width="120.33333333333331" height="19.666666666666657"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oC8-aq-tmQ">
+                                                        <rect key="frame" x="201.33333333333331" y="112.66666666666666" width="0.0" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                                         <color key="textColor" red="0.40761870150000001" green="0.61020892859999998" blue="0.99987643960000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -66,8 +66,8 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01230 12345678" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVp-TL-Mhj">
-                                                        <rect key="frame" x="85" y="137.33333333333334" width="123.33333333333331" height="19.666666666666657"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVp-TL-Mhj">
+                                                        <rect key="frame" x="208.33333333333331" y="137.33333333333334" width="0.0" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                                         <color key="textColor" red="0.40761870150000001" green="0.61020892859999998" blue="0.99987643960000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -81,12 +81,12 @@
                                                     <constraint firstItem="GN4-z1-D6K" firstAttribute="leading" secondItem="KWg-6h-yeo" secondAttribute="leading" constant="10" id="Mch-Dv-8BO"/>
                                                     <constraint firstAttribute="trailing" secondItem="oC8-aq-tmQ" secondAttribute="trailing" constant="43.666666666666686" id="QDx-RI-qPl"/>
                                                     <constraint firstItem="gkC-9v-O7I" firstAttribute="leading" secondItem="KWg-6h-yeo" secondAttribute="leading" constant="38" id="RO7-EG-gzX"/>
-                                                    <constraint firstItem="oC8-aq-tmQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gkC-9v-O7I" secondAttribute="trailing" symbolic="YES" id="Thq-Ec-ITe"/>
+                                                    <constraint firstItem="oC8-aq-tmQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gkC-9v-O7I" secondAttribute="trailing" constant="8" symbolic="YES" id="Thq-Ec-ITe"/>
                                                     <constraint firstItem="gkC-9v-O7I" firstAttribute="top" secondItem="GN4-z1-D6K" secondAttribute="bottom" constant="32" id="VBf-ra-cxD"/>
                                                     <constraint firstAttribute="trailing" secondItem="GN4-z1-D6K" secondAttribute="trailing" constant="10" id="WIO-UJ-1ja"/>
                                                     <constraint firstAttribute="trailing" secondItem="IVp-TL-Mhj" secondAttribute="trailing" constant="36.666666666666686" id="eh9-Lv-ncF"/>
                                                     <constraint firstItem="QhB-sd-Jpb" firstAttribute="top" secondItem="gkC-9v-O7I" secondAttribute="bottom" constant="5" id="erN-nN-6QJ"/>
-                                                    <constraint firstItem="IVp-TL-Mhj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QhB-sd-Jpb" secondAttribute="trailing" symbolic="YES" id="mFo-ba-rSL"/>
+                                                    <constraint firstItem="IVp-TL-Mhj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QhB-sd-Jpb" secondAttribute="trailing" constant="8" symbolic="YES" id="mFo-ba-rSL"/>
                                                     <constraint firstItem="oC8-aq-tmQ" firstAttribute="top" secondItem="gkC-9v-O7I" secondAttribute="top" id="phA-X9-TE9"/>
                                                 </constraints>
                                             </view>
@@ -217,6 +217,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7zy-2C-EeE">
                                                 <rect key="frame" x="100" y="343" width="190" height="40"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
@@ -231,6 +232,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-Enter your password" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wTh-98-ypi">
                                                 <rect key="frame" x="100" y="394" width="190" height="40"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
@@ -357,6 +359,8 @@
                         <outlet property="digitThreeView" destination="Shj-0P-sAk" id="hRx-DQ-rOX"/>
                         <outlet property="digitTwoView" destination="MbL-ZF-s5R" id="ZY5-qW-BIp"/>
                         <outlet property="fourTxtField" destination="eyf-Hf-sqH" id="czC-ZQ-fei"/>
+                        <outlet property="mobileLbl" destination="oC8-aq-tmQ" id="wHr-sM-wza"/>
+                        <outlet property="mobileLbl2" destination="IVp-TL-Mhj" id="Rg8-Rw-W8Y"/>
                         <outlet property="oneTxtField" destination="ShE-Pc-GRp" id="ta2-zH-BrT"/>
                         <outlet property="otpVerified" destination="uGB-2L-jx5" id="SEX-be-TCe"/>
                         <outlet property="passwordTxtField" destination="7zy-2C-EeE" id="vBR-0o-gtU"/>
@@ -376,7 +380,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

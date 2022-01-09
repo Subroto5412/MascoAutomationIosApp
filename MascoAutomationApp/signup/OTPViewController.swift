@@ -57,7 +57,7 @@ class OTPViewController: UIViewController {
     }
     
     func sendOTP(empID: String){
-        var utils = Utils()
+        let utils = Utils()
         let url = URL(string: SEND_OTP_URL)
         guard let requestUrl = url else { fatalError() }
         
@@ -93,6 +93,7 @@ class OTPViewController: UIViewController {
                         print(item.response!)
                         if item.response! {
                             utils.writeAnyData(key: "empCode", value: empID)
+                            utils.writeAnyData(key: "mobile", value: item.mobile)
                             self.toastMessage("OTP Send Successfully!!")
                             let controller = SignupViewController.initWithStoryboard()
                             self.present(controller, animated: true, completion: nil);
