@@ -27,6 +27,10 @@ class SignupViewController: UIViewController {
     
     @IBOutlet weak var signupBtn: UIButton!
     
+    @IBOutlet weak var otpVerified: UIImageView!
+    @IBOutlet weak var passwordVerified: UIImageView!
+    
+    
     class func initWithStoryboard() -> SignupViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: SignupViewController.className) as! SignupViewController
@@ -104,6 +108,30 @@ class SignupViewController: UIViewController {
         getOTPVerified(otp:otp, empID: utils.readStringData(key: "empCode"))
     }
     
+    @IBAction func passwordBtn(_ sender: Any) {
+        if repasswordTxtField.text == passwordTxtField.text{
+            self.passwordVerified.isHidden = false
+        }else{
+            self.passwordVerified.isHidden = true
+        }
+        print("----\(passwordTxtField.text)")
+    }
+    
+    @IBAction func rePasswordBtn(_ sender: Any) {
+        
+        if passwordTxtField.text == repasswordTxtField.text{
+            self.passwordVerified.isHidden = false
+        }else{
+            self.passwordVerified.isHidden = true
+        }
+        print("----\(passwordTxtField.text)")
+        
+    }
+    
+    @IBAction func signUpBtn(_ sender: Any) {
+        let utils = Utils()
+        self.setPassword(empCODE: utils.readStringData(key: "empCode"), Password: repasswordTxtField.text!)
+    }
     
     func getOTPVerified(otp:String, empID: String){
         
@@ -145,8 +173,60 @@ class SignupViewController: UIViewController {
                         print(item.response!)
                         if item.response! {
                             self.toastMessage("OTP Send Successfully!!")
-//                            let controller = SignupViewController.initWithStoryboard()
-//                            self.present(controller, animated: true, completion: nil);
+                            self.otpVerified.isHidden = false
+                        }else{
+                            self.otpVerified.isHidden = true
+                        }
+                        
+                    }catch let jsonErr{
+                        print(jsonErr)
+                   }
+                    })
+                }
+        }
+        task.resume()
+        })
+    }
+    
+    func setPassword(empCODE: String, Password: String){
+        
+        let url = URL(string: REGISTER_URL)
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        
+        // Set HTTP Request Header
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        
+        let itemModel = setPasswordRequest(emP_CODE: empCODE, password: Password)
+        let jsonData = try? JSONEncoder().encode(itemModel)
+        
+        request.httpBody = jsonData
+        
+        self.showLoading(finished: {
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+                DispatchQueue.main.async {
+                    
+                    self.hideLoading(finished: {
+                        
+                    if let error = error {
+                        print("Error took place \(error)")
+                        return
+                    }
+                    guard let data = data else {return}
+
+                    do{
+                        let item = try JSONDecoder().decode(setPasswordResponse.self, from: data)
+
+                        print(item.response!)
+                        if item.response! {
+                            self.toastMessage("Successfully Registration!")
+                            let controller = ViewController.initWithStoryboard()
+                            self.present(controller, animated: true, completion: nil);
                         }
                         
                     }catch let jsonErr{
@@ -217,6 +297,45 @@ extension SignupViewController{
                try container.encode(image_name, forKey: .image_name)
                try container.encode(user_entry_id, forKey: .user_entry_id)
                try container.encode(mobile, forKey: .mobile)
+           }
+    }
+}
+
+
+extension SignupViewController{
+    
+    struct setPasswordRequest: Codable {
+        var emP_CODE: String = ""
+        var password: String = ""
+        
+        enum CodingKeys: String, CodingKey {
+            case emP_CODE = "emP_CODE"
+            case password = "password"
+        }
+    }
+    
+    struct setPasswordResponse: Codable {
+        var response: Bool?
+        var error: String = ""
+        
+        enum CodingKeys: String, CodingKey {
+            case response = "response"
+            case error = "error"
+        }
+        
+        init(from decoder: Decoder) throws {
+
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            self.response = try container.decodeIfPresent(Bool.self, forKey: .response)
+            self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
+            
+        }
+
+           func encode(to encoder: Encoder) throws {
+
+               var container = encoder.container(keyedBy: CodingKeys.self)
+               try container.encode(response, forKey: .response)
+               try container.encode(error, forKey: .error)
            }
     }
 }

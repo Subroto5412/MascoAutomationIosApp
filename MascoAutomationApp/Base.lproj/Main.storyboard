@@ -96,7 +96,7 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="uGB-2L-jx5">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="uGB-2L-jx5">
                                                 <rect key="frame" x="236.66666666666666" y="243" width="19" height="15"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NuG-mZ-pqa">
@@ -109,7 +109,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="27.333333333333332"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                                 <connections>
                                                                     <action selector="firstBtn:" destination="D02-O7-s6a" eventType="editingChanged" id="EJY-Qq-pYD"/>
                                                                 </connections>
@@ -130,7 +130,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="27.333333333333332"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                                 <connections>
                                                                     <action selector="secondBtn:" destination="D02-O7-s6a" eventType="editingChanged" id="uQh-lh-kDr"/>
                                                                 </connections>
@@ -151,7 +151,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="27.333333333333332"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                                 <connections>
                                                                     <action selector="threeBTn:" destination="D02-O7-s6a" eventType="editingDidEnd" id="k8w-gl-u0O"/>
                                                                 </connections>
@@ -172,7 +172,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="27.333333333333332"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                                 <connections>
                                                                     <action selector="fourBtn:" destination="D02-O7-s6a" eventType="editingChanged" id="Obc-mV-8Ga"/>
                                                                 </connections>
@@ -218,25 +218,31 @@
                                                 <rect key="frame" x="100" y="343" width="190" height="40"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                                         <color key="value" red="0.40761870150000001" green="0.61020892859999998" blue="0.99987643960000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="passwordBtn:" destination="D02-O7-s6a" eventType="editingChanged" id="2Yx-UW-rhg"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-Enter your password" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wTh-98-ypi">
                                                 <rect key="frame" x="100" y="394" width="190" height="40"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                                         <color key="value" red="0.40761870150000001" green="0.61020892859999998" blue="0.99987643960000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="rePasswordBtn:" destination="D02-O7-s6a" eventType="editingChanged" id="kNn-8l-nKD"/>
+                                                </connections>
                                             </textField>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="IuH-WD-Ko9">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="IuH-WD-Ko9">
                                                 <rect key="frame" x="300" y="406.66666666666669" width="19" height="15"/>
                                             </imageView>
                                         </subviews>
@@ -290,6 +296,9 @@
                                                 <state key="normal" title="SIGN UP">
                                                     <color key="titleColor" red="0.2099210322" green="0.20995694400000001" blue="0.20991316439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="signUpBtn:" destination="D02-O7-s6a" eventType="touchUpInside" id="2FZ-1z-0xm"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olP-kI-GW4">
                                                 <rect key="frame" x="65" y="63.000000000000007" width="180" height="16.333333333333336"/>
@@ -349,7 +358,9 @@
                         <outlet property="digitTwoView" destination="MbL-ZF-s5R" id="ZY5-qW-BIp"/>
                         <outlet property="fourTxtField" destination="eyf-Hf-sqH" id="czC-ZQ-fei"/>
                         <outlet property="oneTxtField" destination="ShE-Pc-GRp" id="ta2-zH-BrT"/>
+                        <outlet property="otpVerified" destination="uGB-2L-jx5" id="SEX-be-TCe"/>
                         <outlet property="passwordTxtField" destination="7zy-2C-EeE" id="vBR-0o-gtU"/>
+                        <outlet property="passwordVerified" destination="IuH-WD-Ko9" id="eoD-MH-xOP"/>
                         <outlet property="repasswordTxtField" destination="wTh-98-ypi" id="QKu-j7-LAn"/>
                         <outlet property="signupBtn" destination="HCR-sS-ORU" id="3y8-0a-5oJ"/>
                         <outlet property="threeTxtField" destination="XYk-KM-TJR" id="NRJ-sr-UC4"/>
