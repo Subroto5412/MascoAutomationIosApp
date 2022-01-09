@@ -12,18 +12,50 @@ class SideMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+    }
+    @IBAction func mascoWebBtn(_ sender: Any) {
+        if let url = URL(string: "https://www.mascoknit.com/") {
+            UIApplication.shared.open(url)
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func facebookBtn(_ sender: Any) {
+        if let url = URL(string: "https://www.facebook.com/mascofamily/") {
+            UIApplication.shared.open(url)
+        }
     }
-    */
-
+    
+    @IBAction func youtubeBtn(_ sender: Any) {
+        if let url = URL(string: "https://www.youtube.com/channel/UCc98wa0Vj7KcXYZPhRKxvgw") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @IBAction func linkedInBtn(_ sender: Any) {
+        if let url = URL(string: "https://www.linkedin.com/company/masco-group-bangladesh") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @IBAction func twitterBtn(_ sender: Any) {
+        if let url = URL(string: "https://twitter.com/Masco_Group") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @IBAction func instagramBtn(_ sender: Any) {
+        if let url = URL(string: "https://www.instagram.com/mascogroupbd") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @IBAction func outputBtn(_ sender: Any) {
+        let utils = Utils()
+        utils.writeAnyData(key: "empCode", value: "")
+        
+        self.dismiss(animated: true, completion: nil)
+        let controller = ViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
+    
 }
