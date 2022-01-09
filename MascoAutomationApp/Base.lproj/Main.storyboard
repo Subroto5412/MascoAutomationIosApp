@@ -22,7 +22,7 @@
         <!--Signup View Controller-->
         <scene sceneID="yEx-LB-98G">
             <objects>
-                <viewController id="D02-O7-s6a" customClass="SignupViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignupViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="D02-O7-s6a" customClass="SignupViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yko-rd-28s">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -110,6 +110,9 @@
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
+                                                                <connections>
+                                                                    <action selector="firstBtn:" destination="D02-O7-s6a" eventType="editingChanged" id="EJY-Qq-pYD"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -128,6 +131,9 @@
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
+                                                                <connections>
+                                                                    <action selector="secondBtn:" destination="D02-O7-s6a" eventType="editingChanged" id="uQh-lh-kDr"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -146,6 +152,9 @@
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
+                                                                <connections>
+                                                                    <action selector="threeBTn:" destination="D02-O7-s6a" eventType="editingDidEnd" id="k8w-gl-u0O"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -164,6 +173,9 @@
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
+                                                                <connections>
+                                                                    <action selector="fourBtn:" destination="D02-O7-s6a" eventType="editingChanged" id="Obc-mV-8Ga"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -322,7 +334,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rrH-BA-0Kg"/>
-                        <color key="backgroundColor" red="0.087394736710000004" green="0.25520369409999999" blue="0.57615613939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.15302801129999999" green="0.31049105529999999" blue="0.65493535999999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="rrH-BA-0Kg" firstAttribute="bottom" secondItem="OBp-lZ-5iY" secondAttribute="bottom" id="2kQ-j0-L4f"/>
                             <constraint firstItem="OBp-lZ-5iY" firstAttribute="leading" secondItem="rrH-BA-0Kg" secondAttribute="leading" id="BqW-xo-Zu9"/>
@@ -331,14 +343,18 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="digitFourView" destination="aCC-7F-If2" id="IMn-8r-jNb"/>
+                        <outlet property="digitFourView" destination="aCC-7F-If2" id="M8M-Di-4w7"/>
                         <outlet property="digitOneView" destination="Ywh-7B-d3W" id="Zff-Iu-wAD"/>
                         <outlet property="digitThreeView" destination="Shj-0P-sAk" id="hRx-DQ-rOX"/>
                         <outlet property="digitTwoView" destination="MbL-ZF-s5R" id="ZY5-qW-BIp"/>
+                        <outlet property="fourTxtField" destination="eyf-Hf-sqH" id="czC-ZQ-fei"/>
+                        <outlet property="oneTxtField" destination="ShE-Pc-GRp" id="ta2-zH-BrT"/>
                         <outlet property="passwordTxtField" destination="7zy-2C-EeE" id="vBR-0o-gtU"/>
                         <outlet property="repasswordTxtField" destination="wTh-98-ypi" id="QKu-j7-LAn"/>
                         <outlet property="signupBtn" destination="HCR-sS-ORU" id="3y8-0a-5oJ"/>
+                        <outlet property="threeTxtField" destination="XYk-KM-TJR" id="NRJ-sr-UC4"/>
                         <outlet property="topUIView" destination="KWg-6h-yeo" id="W26-mp-PWA"/>
+                        <outlet property="twoTxtField" destination="yHA-la-54p" id="Bhl-Pn-w9Q"/>
                         <outlet property="verifiedDigitView" destination="NuG-mZ-pqa" id="wrv-qV-yMn"/>
                     </connections>
                 </viewController>

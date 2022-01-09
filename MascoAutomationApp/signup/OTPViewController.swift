@@ -37,7 +37,7 @@ class OTPViewController: UIViewController {
                 self.toastMessage("Enter Employee ID")
             }else{
                 let _empIdTxtfield: String = empIdTxtfield.text!
-                self.getTaxDeductionList(empID: _empIdTxtfield)
+                self.sendOTP(empID: _empIdTxtfield)
             }
             
         }else{
@@ -56,8 +56,8 @@ class OTPViewController: UIViewController {
        
     }
     
-    func getTaxDeductionList(empID: String){
-        
+    func sendOTP(empID: String){
+        var utils = Utils()
         let url = URL(string: SEND_OTP_URL)
         guard let requestUrl = url else { fatalError() }
         
@@ -90,8 +90,13 @@ class OTPViewController: UIViewController {
                     do{
                         let item = try JSONDecoder().decode(OTPSendResponse.self, from: data)
 
-                        print(item.response)
-                        print(item.mobile)
+                        print(item.response!)
+                        if item.response! {
+                            utils.writeAnyData(key: "empCode", value: empID)
+                            self.toastMessage("OTP Send Successfully!!")
+                            let controller = SignupViewController.initWithStoryboard()
+                            self.present(controller, animated: true, completion: nil);
+                        }
                         
                     }catch let jsonErr{
                         print(jsonErr)
