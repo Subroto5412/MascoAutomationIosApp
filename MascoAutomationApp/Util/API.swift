@@ -12,6 +12,7 @@ var BASE_URL = "https://mis-api.mascoknit.com/api/"
 
 
 var LOGIN_URL = BASE_URL+"v1/LoginAccess/login"
+var SEND_OTP_URL = BASE_URL+"v1/LoginAccess/sendOTP"
 var LEAVE_HISTORY_URL = BASE_URL+"v1/leave/leave-history"
 var AVAIL_HISTORY_URL = BASE_URL+"v1/leave/avail-history"
 var YEAR_URL = BASE_URL+"v1/Attendance/getFinalYear"

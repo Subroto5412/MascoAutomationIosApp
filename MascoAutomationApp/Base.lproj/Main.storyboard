@@ -349,7 +349,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -978,7 +978,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your employee ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ren-gq-c87">
                                                 <rect key="frame" x="96" y="220.66666666666669" width="198" height="40"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -986,6 +986,9 @@
                                                         <color key="value" red="0.40761870150000001" green="0.61020892859999998" blue="0.99987643960000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="sendBtnActive:" destination="M1P-8m-Kmk" eventType="editingChanged" id="lTg-Cd-i5q"/>
+                                                </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lrB-Lg-oR3">
                                                 <rect key="frame" x="115" y="292.66666666666669" width="160" height="48.666666666666686"/>
@@ -994,6 +997,9 @@
                                                 <state key="normal" title="Send OTP">
                                                     <color key="titleColor" red="0.2099210322" green="0.20995694400000001" blue="0.20991316439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="sendOTPBtn:" destination="M1P-8m-Kmk" eventType="touchUpInside" id="Fhp-E3-2rc"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJE-9v-S2R">
                                                 <rect key="frame" x="105" y="361.33333333333331" width="180" height="17.333333333333314"/>
@@ -1002,20 +1008,29 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SIGN IN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kw-Di-PNA">
-                                                <rect key="frame" x="290" y="361.33333333333331" width="55" height="17.333333333333314"/>
+                                                <rect key="frame" x="290" y="355" width="55" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                                 <color key="textColor" red="0.40761870150000001" green="0.61020892859999998" blue="0.99987643960000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O56-lY-1xy">
+                                                <rect key="frame" x="290" y="355" width="55" height="30"/>
+                                                <connections>
+                                                    <action selector="signInBtn:" destination="M1P-8m-Kmk" eventType="touchUpInside" id="fWe-l9-Dwm"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="lrB-Lg-oR3" firstAttribute="top" secondItem="ren-gq-c87" secondAttribute="bottom" constant="32" id="1Wg-r7-heQ"/>
+                                            <constraint firstItem="O56-lY-1xy" firstAttribute="height" secondItem="1kw-Di-PNA" secondAttribute="height" id="74O-Zp-hHV"/>
                                             <constraint firstItem="1kw-Di-PNA" firstAttribute="leading" secondItem="GJE-9v-S2R" secondAttribute="trailing" constant="5" id="7Jh-i3-Lk1"/>
                                             <constraint firstItem="ren-gq-c87" firstAttribute="width" secondItem="2Ef-58-Czo" secondAttribute="width" multiplier="198:390" id="9xa-ov-PQO"/>
                                             <constraint firstItem="KFN-II-pAg" firstAttribute="width" secondItem="2Ef-58-Czo" secondAttribute="width" multiplier="139:390" id="Ahr-oK-C6H"/>
+                                            <constraint firstItem="O56-lY-1xy" firstAttribute="width" secondItem="1kw-Di-PNA" secondAttribute="width" id="DsM-M3-Qp8"/>
                                             <constraint firstItem="D2V-ta-MnD" firstAttribute="centerX" secondItem="2Ef-58-Czo" secondAttribute="centerX" id="Ejj-xF-3dM"/>
                                             <constraint firstItem="lrB-Lg-oR3" firstAttribute="centerX" secondItem="2Ef-58-Czo" secondAttribute="centerX" id="MuD-VO-PiH"/>
+                                            <constraint firstItem="O56-lY-1xy" firstAttribute="centerX" secondItem="1kw-Di-PNA" secondAttribute="centerX" id="Nek-0U-qCN"/>
                                             <constraint firstItem="GJE-9v-S2R" firstAttribute="centerX" secondItem="2Ef-58-Czo" secondAttribute="centerX" id="U9Y-Fh-O6u"/>
                                             <constraint firstItem="1kw-Di-PNA" firstAttribute="centerY" secondItem="GJE-9v-S2R" secondAttribute="centerY" id="VaS-f4-sog"/>
                                             <constraint firstItem="lrB-Lg-oR3" firstAttribute="height" secondItem="2Ef-58-Czo" secondAttribute="height" multiplier="40:390" id="Yko-Bb-nYF"/>
@@ -1024,6 +1039,7 @@
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1kw-Di-PNA" secondAttribute="trailing" constant="20" symbolic="YES" id="c75-ne-icg"/>
                                             <constraint firstItem="KFN-II-pAg" firstAttribute="centerX" secondItem="2Ef-58-Czo" secondAttribute="centerX" id="dXb-t0-mtq"/>
                                             <constraint firstItem="GJE-9v-S2R" firstAttribute="top" secondItem="lrB-Lg-oR3" secondAttribute="bottom" constant="20" id="gLH-KU-ZOS"/>
+                                            <constraint firstItem="O56-lY-1xy" firstAttribute="centerY" secondItem="1kw-Di-PNA" secondAttribute="centerY" id="hWf-dv-q3b"/>
                                             <constraint firstItem="KFN-II-pAg" firstAttribute="height" secondItem="2Ef-58-Czo" secondAttribute="height" multiplier="139:476" id="stw-0S-DPR"/>
                                             <constraint firstItem="lrB-Lg-oR3" firstAttribute="width" secondItem="2Ef-58-Czo" secondAttribute="width" multiplier="160:390" id="t99-eC-Que"/>
                                             <constraint firstItem="ren-gq-c87" firstAttribute="centerX" secondItem="2Ef-58-Czo" secondAttribute="centerX" id="tPB-pM-7x3"/>

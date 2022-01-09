@@ -17,6 +17,14 @@ class ViewController: UIViewController {
     
     var empCodeString = ""
     
+    
+    class func initWithStoryboard() -> ViewController
+    {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: ViewController.className) as! ViewController
+        return controller
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -76,14 +84,7 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func rememberMeBtn(_ sender: Any) {
-        
-//        if dataSource[index].check == !false {
-//            self.dataSource[index].check = false
-//            self.tableViewHeaderView.allCheckingBtn.setImage(UIImage(named: "not_checking"), for: UIControl.State.normal)
-//        }else {
-//             self.dataSource[index].check = true
-//             self.tableViewHeaderView.allCheckingBtn.setImage(UIImage(named: "checking"), for: UIControl.State.normal)
-//        }
+
        let utils = Utils()
         if utils.readStringData(key: "REMEMBER_ME") == "true"{
             self.rememberMe.setImage(UIImage(named: "not_checking"), for: UIControl.State.normal)
