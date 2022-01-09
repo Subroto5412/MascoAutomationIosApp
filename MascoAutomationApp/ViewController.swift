@@ -13,11 +13,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var signInBtn: UIButton!
     @IBOutlet weak var customerProfilePhoto: UIImageView!
+    @IBOutlet weak var rememberMe: UIButton!
     
     var empCodeString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        let utils = Utils()
+         if utils.readStringData(key: "REMEMBER_ME") == "true"{
+             self.rememberMe.setImage(UIImage(named: "checking"), for: UIControl.State.normal)
+             self.empId.text = utils.readStringData(key: "EMP_ID")
+             self.password.text = utils.readStringData(key: "PASSWORD")
+         } else {
+             self.rememberMe.setImage(UIImage(named: "not_checking"), for: UIControl.State.normal)
+             utils.writeAnyData(key: "EMP_ID", value: "")
+             utils.writeAnyData(key: "PASSWORD", value: "")
+         }
+        
         
         empId.layer.borderColor = UIColor(red: 104, green: 156, blue: 255, alpha: 1.0).cgColor
         empId.layer.borderWidth = 0.5;
@@ -38,7 +52,7 @@ class ViewController: UIViewController {
         }
     
     @IBAction func signInBtn(_ sender: Any) {
-        
+        let utils = Utils()
         if InternetConnectionManager.isConnectedToNetwork(){
             
             if let text = empId.text, text.isEmpty {
@@ -51,11 +65,32 @@ class ViewController: UIViewController {
                 let _empId: String = empId.text!
                 let _password: String = password.text!
                
+                utils.writeAnyData(key: "EMP_ID", value: _empId)
+                utils.writeAnyData(key: "PASSWORD", value: _password)
+                
                 self.userLogin(userId: _empId, password: _password)
             }
             
         }else{
             print("Not Connected")
+        }
+    }
+    @IBAction func rememberMeBtn(_ sender: Any) {
+        
+//        if dataSource[index].check == !false {
+//            self.dataSource[index].check = false
+//            self.tableViewHeaderView.allCheckingBtn.setImage(UIImage(named: "not_checking"), for: UIControl.State.normal)
+//        }else {
+//             self.dataSource[index].check = true
+//             self.tableViewHeaderView.allCheckingBtn.setImage(UIImage(named: "checking"), for: UIControl.State.normal)
+//        }
+       let utils = Utils()
+        if utils.readStringData(key: "REMEMBER_ME") == "true"{
+            self.rememberMe.setImage(UIImage(named: "not_checking"), for: UIControl.State.normal)
+            utils.writeAnyData(key: "REMEMBER_ME", value: "false")
+        } else {
+            self.rememberMe.setImage(UIImage(named: "checking"), for: UIControl.State.normal)
+            utils.writeAnyData(key: "REMEMBER_ME", value: "true")
         }
     }
     

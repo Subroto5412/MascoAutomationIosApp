@@ -427,6 +427,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkG-UJ-e0M">
                                                         <rect key="frame" x="96" y="417" width="33" height="33"/>
                                                         <state key="normal" image="not_checking"/>
+                                                        <connections>
+                                                            <action selector="rememberMeBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c51-G2-E0e"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gw-4A-Xjr">
                                                         <rect key="frame" x="137" y="425" width="107.66666666666669" height="17.333333333333314"/>
@@ -563,6 +566,7 @@
                         <outlet property="customerProfilePhoto" destination="rPc-EE-CF3" id="KzW-Ua-H7s"/>
                         <outlet property="empId" destination="BbZ-16-TKt" id="OFC-0C-Z9q"/>
                         <outlet property="password" destination="JS5-XY-Jaa" id="MpU-RV-Jzu"/>
+                        <outlet property="rememberMe" destination="LkG-UJ-e0M" id="Hli-cN-djh"/>
                         <outlet property="signInBtn" destination="5cz-TW-hbN" id="5PO-qa-Wm0"/>
                     </connections>
                 </viewController>
