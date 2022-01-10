@@ -39,7 +39,7 @@ class DailyAttendanceViewControllerDetails: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.headerView.titleNameLbl.text = "Daily Attendance"
         
         self.tableViewDailyAttendance.register(UINib(nibName: "DailyAttendanceTableViewCell", bundle: nil), forCellReuseIdentifier: "cell_daily_attendance")
 

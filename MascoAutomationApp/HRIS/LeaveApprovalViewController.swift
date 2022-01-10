@@ -23,7 +23,10 @@ class LeaveApprovalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.headerView.titleNameLbl.text = "HR Information Systems"
+        
+        self.headerView.titleNameLbl.text = "Leave Approval"
         self.bodyView.leaveApprovalBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.leaveApprovalBgView.layer.borderWidth = 0.5
         self.bodyView.leaveApprovalBgView.layer.cornerRadius = 20

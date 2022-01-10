@@ -30,6 +30,7 @@ class HPDViewController: UIViewController {
     var dataSourceHWD = [ListHourWiseData]()
     var extraHeight: Int = 0
     var unitNoId: Int = 0
+    var vSpinner : UIView?
     
     class func initWithStoryboard() -> HPDViewController
     {
@@ -42,6 +43,8 @@ class HPDViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.headerView.titleNameLbl.text = "Hourly Production Data"
+        
         getUnitNameList()
         
         self.tableViewHPD.register(UINib(nibName: "HPDViewControllerCell", bundle: nil), forCellReuseIdentifier: "cell")
@@ -206,12 +209,13 @@ class HPDViewController: UIViewController {
         request.httpBody = jsonData
 
         print("jsonData jsonData  data:\n \(jsonData!)")
-        self.showLoading(finished: {
+//        self.showLoading(finished: {
+        self.showSpinner(onView: self.view)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                
+                self.removeSpinner()
                 DispatchQueue.main.async {
                     
-                    self.hideLoading(finished: {
+                    //self.hideLoading(finished: {
                         
                     if let error = error {
                         print("Error took place \(error)")
@@ -232,11 +236,11 @@ class HPDViewController: UIViewController {
                     }catch let jsonErr{
                         print(jsonErr)
                    }
-                    })
+                  //  })
                 }
         }
         task.resume()
-        })
+       // })
     }
 }
 
@@ -414,22 +418,27 @@ extension HPDViewController {
 }
 
 extension HPDViewController {
-    func showLoading(finished: @escaping () -> Void) {
-        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
-
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.gray
-        loadingIndicator.startAnimating();
-
-        alert.view.addSubview(loadingIndicator)
-
-        present(alert, animated: false, completion: finished)
-    }
-
-    func hideLoading(finished: @escaping () -> Void) {
-        if ( presentedViewController != nil && !presentedViewController!.isBeingPresented ) {
-            dismiss(animated: false, completion: finished)
-        }
-    }
- }
+    
+    func showSpinner(onView : UIView) {
+           let spinnerView = UIView.init(frame: onView.bounds)
+           spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+           let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+           ai.startAnimating()
+           ai.center = spinnerView.center
+           
+           DispatchQueue.main.async {
+               spinnerView.addSubview(ai)
+               onView.addSubview(spinnerView)
+           }
+           
+           vSpinner = spinnerView
+       }
+       
+       func removeSpinner() {
+           DispatchQueue.main.async {
+            self.vSpinner?.removeFromSuperview()
+            self.vSpinner = nil
+           }
+       }
+    
+}

@@ -23,7 +23,7 @@ class LeaveApplyViewController: UIViewController {
     var fromDate:String = ""
     var toDate:String = ""
     var leaveTypeId:Int = 0
-    
+    var vSpinner : UIView?
     class func initWithStoryboard() -> LeaveApplyViewController
     {
         let storyboard = UIStoryboard(name: "LeaveApply", bundle: nil)
@@ -33,6 +33,8 @@ class LeaveApplyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.headerView.titleNameLbl.text = "Leave Application Form"
         
         self.getLeaveFormData()
         
@@ -320,8 +322,10 @@ class LeaveApplyViewController: UIViewController {
         
         request.httpBody = jsonData
 
+        self.showSpinner(onView: self.view)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 
+                self.removeSpinner()
                 DispatchQueue.main.async {
                         
                     if let error = error {
@@ -559,3 +563,26 @@ extension LeaveApplyViewController {
             }
     }
 }
+extension LeaveApplyViewController {
+    func showSpinner(onView : UIView) {
+           let spinnerView = UIView.init(frame: onView.bounds)
+           spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+           let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+           ai.startAnimating()
+           ai.center = spinnerView.center
+           
+           DispatchQueue.main.async {
+               spinnerView.addSubview(ai)
+               onView.addSubview(spinnerView)
+           }
+           
+           vSpinner = spinnerView
+       }
+       
+       func removeSpinner() {
+           DispatchQueue.main.async {
+            self.vSpinner?.removeFromSuperview()
+            self.vSpinner = nil
+           }
+       }
+ }

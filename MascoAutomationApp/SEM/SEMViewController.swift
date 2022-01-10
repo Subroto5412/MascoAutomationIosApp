@@ -9,10 +9,11 @@ import UIKit
 
 class SEMViewController: UIViewController {
 
-    @IBOutlet weak var headerView: InnerHeader!
+
     @IBOutlet weak var bodyView: SEMBodyView!
     
-
+    @IBOutlet weak var headerView: CommonHeaderView!
+    
     
     class func initWithStoryboard() -> SEMViewController
     {
@@ -23,7 +24,7 @@ class SEMViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.headerView.titleNameLbl.text = "Search Engine Management"
         
         self.bodyView.communicationPortalUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.communicationPortalUnderBgView.layer.borderWidth = 0.5
@@ -32,8 +33,6 @@ class SEMViewController: UIViewController {
         self.bodyView.communicationPortalBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.communicationPortalBgView.layer.borderWidth = 0.5
         self.bodyView.communicationPortalBgView.layer.cornerRadius = 20
-        
-        self.headerView.searchBgView.layer.cornerRadius = 10
         
         self.headerView.backBtnHandler = {
             [weak self] (isShow) in

@@ -51,6 +51,7 @@ class HPDsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.headerView.titleNameLbl.text = "Hourly Production \nDetails"
         getUnitNameList()
         
         self.tableViewHPDs.register(UINib(nibName: "HPDsViewControllerCell", bundle: nil), forCellReuseIdentifier: "cell")

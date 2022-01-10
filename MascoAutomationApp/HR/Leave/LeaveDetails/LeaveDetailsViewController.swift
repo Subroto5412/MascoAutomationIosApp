@@ -34,7 +34,7 @@ class LeaveDetailsViewController: UIViewController {
     let tableView = UITableView()
     var selectedButton = UIButton()
     var totalHeight:Int = 0
-    
+    var vSpinner : UIView?
     var dataSource = [ListFinalYear]()
     var dataSourceLeaveHistory = [LeaveHistoryformatList]()
     var dataSourceAvail = [AvailHistorySummaryList]()
@@ -48,7 +48,9 @@ class LeaveDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//
+
+        self.headerView.titleNameLbl.text = "Personal Leave Details"
+        
         tableViewAvail.delegate = self
         tableViewAvail.dataSource = self
         self.tableViewAvail.register(UINib(nibName: "LeaveDetailsControllerCell", bundle: nil), forCellReuseIdentifier: "cell_avail")
@@ -295,8 +297,9 @@ class LeaveDetailsViewController: UIViewController {
 
         print("jsonData jsonData  data:\n \(jsonData!)")
        // indicator.startAnimating()
+        self.showSpinner(onView: self.view)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                
+                self.removeSpinner()
                 DispatchQueue.main.async {
                 
                     
@@ -682,3 +685,28 @@ extension UIView{
         layer.mask = maskLayer1
     }
 }
+
+
+extension LeaveDetailsViewController {
+    func showSpinner(onView : UIView) {
+           let spinnerView = UIView.init(frame: onView.bounds)
+           spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+           let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+           ai.startAnimating()
+           ai.center = spinnerView.center
+           
+           DispatchQueue.main.async {
+               spinnerView.addSubview(ai)
+               onView.addSubview(spinnerView)
+           }
+           
+           vSpinner = spinnerView
+       }
+       
+       func removeSpinner() {
+           DispatchQueue.main.async {
+            self.vSpinner?.removeFromSuperview()
+            self.vSpinner = nil
+           }
+       }
+ }

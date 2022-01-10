@@ -30,7 +30,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eQb-D8-vY2">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rAH-g3-9QV" customClass="InnerHeader" customModule="MascoAutomationApp" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rAH-g3-9QV" customClass="CommonHeaderView" customModule="MascoAutomationApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
@@ -75,7 +75,7 @@
                     </view>
                     <connections>
                         <outlet property="bodyView" destination="QHF-nP-M37" id="2bJ-gc-B0c"/>
-                        <outlet property="headerView" destination="rAH-g3-9QV" id="q7I-Cd-4er"/>
+                        <outlet property="headerView" destination="rAH-g3-9QV" id="ava-lY-oCb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

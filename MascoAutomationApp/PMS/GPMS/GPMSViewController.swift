@@ -22,7 +22,7 @@ class GPMSViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.headerView.titleNameLbl.text = "Garments Production \nManagement"
         
         self.headerView.backBtnHandler = {
             [weak self] (isShow) in

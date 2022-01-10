@@ -24,7 +24,7 @@ class CommunicationPortalViewController: UIViewController {
     @IBOutlet weak var unitLbl: UILabel!
     
     @IBOutlet weak var profilePic: UIImageView!
-    
+    var vSpinner : UIView?
     
     var searching = false
     var searchingName = false
@@ -55,6 +55,8 @@ class CommunicationPortalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.headerView.titleNameLbl.text = "Communication Portal"
+        
         self.nameTextField.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.nameTextField.layer.borderWidth = 0.5
         self.nameTextField.layer.cornerRadius = 5
@@ -261,8 +263,10 @@ class CommunicationPortalViewController: UIViewController {
 
         request.httpBody = jsonData
     
+        self.showSpinner(onView: self.view)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 
+                self.removeSpinner()
                 DispatchQueue.main.async {
                     
                     if let error = error {
@@ -308,8 +312,10 @@ class CommunicationPortalViewController: UIViewController {
 
         request.httpBody = jsonData
     
+        self.showSpinner(onView: self.view)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 
+                self.removeSpinner()
                 DispatchQueue.main.async {
                     
                     if let error = error {
@@ -651,3 +657,28 @@ extension CommunicationPortalViewController {
             }
     }
 }
+
+
+extension CommunicationPortalViewController {
+    func showSpinner(onView : UIView) {
+           let spinnerView = UIView.init(frame: onView.bounds)
+           spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+           let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+           ai.startAnimating()
+           ai.center = spinnerView.center
+           
+           DispatchQueue.main.async {
+               spinnerView.addSubview(ai)
+               onView.addSubview(spinnerView)
+           }
+           
+           vSpinner = spinnerView
+       }
+       
+       func removeSpinner() {
+           DispatchQueue.main.async {
+            self.vSpinner?.removeFromSuperview()
+            self.vSpinner = nil
+           }
+       }
+ }

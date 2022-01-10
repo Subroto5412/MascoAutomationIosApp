@@ -26,7 +26,7 @@ class LeaveViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        self.headerView.titleNameLbl.text = "Leave History"
         self.leaveBodyView.leaveDetailsUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.leaveBodyView.leaveDetailsUnderBgView.layer.borderWidth = 0.5
         self.leaveBodyView.leaveDetailsUnderBgView.layer.cornerRadius = 20
