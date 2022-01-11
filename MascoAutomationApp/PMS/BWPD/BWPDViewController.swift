@@ -18,6 +18,7 @@ class BWPDViewController: UIViewController {
     @IBOutlet weak var titleBgView: BWPDTitleView!
     @IBOutlet weak var dateDropDown: UIButton!
     @IBOutlet weak var unitNameDropDown: UIButton!
+    @IBOutlet weak var totalAmoutView: TotalAmountShowView!
     
     let transparentView = UIView()
     let tableView = UITableView()
@@ -239,11 +240,18 @@ class BWPDViewController: UIViewController {
                         let BWPDItemModel = try JSONDecoder().decode(ListBWPDResponse.self, from: data)
                         self.dataSourceBWPD = BWPDItemModel._listBuyerWiseData
                         
-                        var totalOuput : Int = 0
-//                        for x in BWPDItemModel._listBuyerWiseData{
-//                            totalOuput = totalOuput + x.output!
-//                            self.totalOutputPCS.text = "\(totalOuput)"
-//                        }
+                        var totalOrderQts : Int = 0
+                        var totalSewQts : Int = 0
+                        var totalBalance : Int = 0
+                        for i in BWPDItemModel._listBuyerWiseData{
+                            totalOrderQts = totalOrderQts + i.orderQty!
+                            totalSewQts = totalSewQts + i.sewingQty!
+                            totalBalance = totalBalance + i.balance!
+                            
+                            self.totalAmoutView.orderQtsLbl.text = "\(totalOrderQts)"
+                            self.totalAmoutView.sewQtsLbl.text = "\(totalSewQts)"
+                            self.totalAmoutView.balanceLbl.text = "\(totalBalance)"
+                        }
                         self.tableViewBWPD.reloadData()
                     }catch let jsonErr{
                         print(jsonErr)
@@ -306,7 +314,7 @@ extension BWPDViewController : UITableViewDataSource{
         if tableView == tableViewBWPD {
             return 40
         }else{
-            return 40
+            return 50
         }
     }
 

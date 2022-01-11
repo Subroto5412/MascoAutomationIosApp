@@ -443,7 +443,7 @@
                                                 <rect key="frame" x="10" y="128.5" width="394" height="465.5"/>
                                                 <color key="backgroundColor" red="0.034799609330000002" green="0.1083526388" blue="0.3913464546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </tableView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Igl-7D-PJk">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Igl-7D-PJk" customClass="TotalAmountShowView" customModule="MascoAutomationApp" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="594" width="394" height="42.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
@@ -506,6 +506,7 @@
                         <outlet property="headerView" destination="HCT-Yg-e6Z" id="YTw-ri-uQf"/>
                         <outlet property="tableViewBWPD" destination="LAm-E2-ibd" id="tkH-So-M0M"/>
                         <outlet property="titleBgView" destination="qcK-eo-Ho9" id="4o4-4i-jDJ"/>
+                        <outlet property="totalAmoutView" destination="Igl-7D-PJk" id="QNw-WL-hK1"/>
                         <outlet property="unitNameBgView" destination="cvf-T9-K7N" id="SfA-gy-o33"/>
                         <outlet property="unitNameDropDown" destination="5D3-Pa-I6J" id="bE5-i6-9h0"/>
                     </connections>
@@ -843,7 +844,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="bVS-yO-CDG" secondAttribute="trailing" id="hA1-EI-kFR"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTS-SO-6to" customClass="HPDsTotalView" customModule="MascoAutomationApp" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTS-SO-6to" customClass="TotalAmountHPDsView" customModule="MascoAutomationApp" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="530" width="560" height="106.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
@@ -915,6 +916,7 @@
                         <outlet property="sewingOutputBgView" destination="LeF-6p-U0F" id="9CM-5F-KcT"/>
                         <outlet property="slBgView" destination="Y5a-ct-v6O" id="yhP-bq-i5s"/>
                         <outlet property="tableViewHPDs" destination="jBG-eu-rW9" id="Dlb-D1-g9p"/>
+                        <outlet property="totalAmoutView" destination="eTS-SO-6to" id="2hM-gV-1b0"/>
                         <outlet property="unitNameBgView" destination="rVY-7a-noK" id="iEj-r5-37M"/>
                         <outlet property="unitNameDropDown" destination="A1o-ms-CD9" id="7Nx-3b-4NK"/>
                     </connections>

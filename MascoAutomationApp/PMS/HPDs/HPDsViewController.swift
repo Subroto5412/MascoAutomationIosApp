@@ -12,6 +12,7 @@ class HPDsViewController: UIViewController {
 
     @IBOutlet weak var headerView: CommonHeaderView!
     
+    @IBOutlet weak var totalAmoutView: TotalAmountHPDsView!
     @IBOutlet weak var dateDropDown: UIButton!
     @IBOutlet weak var unitNameDropDown: UIButton!
     @IBOutlet weak var tableViewHPDs: UITableView!
@@ -252,11 +253,30 @@ class HPDsViewController: UIViewController {
                         let HWPDsItemModel = try JSONDecoder().decode(ListHPDsResponse.self, from: data)
                         self.dataSourceHPDs = HWPDsItemModel._productionDetailsList
                         
-//                        var totalOuput : Int = 0
-//                        for x in BWPDItemModel._listBuyerWiseData{
-//                            totalOuput = totalOuput + x.output!
-//                            self.totalOutputPCS.text = "\(totalOuput)"
-//                        }
+                        var totalCutting : Int = 0
+                        var totalLineInput : Int = 0
+                        var totalSewOutput : Int = 0
+                        var totalIron : Int = 0
+                        var totalFolding: Int = 0
+                        var totalPoly : Int = 0
+                        var totalCarton : Int = 0
+                        
+                        for index in HWPDsItemModel._productionDetailsList{
+                            totalCutting = totalCutting + index.cutting!
+                            totalLineInput = totalLineInput + index.lineInput!
+                            totalSewOutput = totalSewOutput + index.swingOutput!
+                            totalIron = totalIron + index.iron!
+                            totalFolding = totalFolding + index.folder!
+                            totalPoly = totalPoly + index.ploy!
+                            totalCarton = totalCarton + index.cartoon!
+                            self.totalAmoutView.cuttingLbl.text = "\(totalCutting)"
+                            self.totalAmoutView.lineInputLbl.text = "\(totalLineInput)"
+                            self.totalAmoutView.sewOutputLbl.text = "\(totalSewOutput)"
+                            self.totalAmoutView.ironLbl.text = "\(totalIron)"
+                            self.totalAmoutView.foldingLbl.text = "\(totalFolding)"
+                            self.totalAmoutView.polyLbl.text = "\(totalPoly)"
+                            self.totalAmoutView.cartonLbl.text = "\(totalCarton)"
+                        }
                         self.tableViewHPDs.reloadData()
                     }catch let jsonErr{
                         print(jsonErr)
@@ -319,7 +339,7 @@ extension HPDsViewController : UITableViewDataSource{
         if tableView == tableViewHPDs {
             return 40
         }else{
-            return 40
+            return 50
         }
     }
 

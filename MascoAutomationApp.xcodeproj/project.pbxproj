@@ -117,6 +117,10 @@
 		4DE38553274F7B8D00707916 /* InnerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE38552274F7B8D00707916 /* InnerHeader.swift */; };
 		4DE38555274F866C00707916 /* CommonFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE38554274F866C00707916 /* CommonFooter.swift */; };
 		4DE38557274F868100707916 /* CommonFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DE38556274F868100707916 /* CommonFooter.xib */; };
+		4DECB9DD278D7314000AC92F /* TotalAmountShowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DECB9DC278D7314000AC92F /* TotalAmountShowView.xib */; };
+		4DECB9DF278D732A000AC92F /* TotalAmountShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DECB9DE278D732A000AC92F /* TotalAmountShowView.swift */; };
+		4DECB9E1278D780E000AC92F /* TotalAmountHPDsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DECB9E0278D780E000AC92F /* TotalAmountHPDsView.xib */; };
+		4DECB9E3278D7CB4000AC92F /* TotalAmountHPDsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DECB9E2278D7CB4000AC92F /* TotalAmountHPDsView.swift */; };
 		DAFE924ADBB6907686B3149C /* Pods_MascoAutomationApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B1BCE2C9DB8E528327C359 /* Pods_MascoAutomationApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -238,6 +242,10 @@
 		4DE38552274F7B8D00707916 /* InnerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerHeader.swift; sourceTree = "<group>"; };
 		4DE38554274F866C00707916 /* CommonFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFooter.swift; sourceTree = "<group>"; };
 		4DE38556274F868100707916 /* CommonFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonFooter.xib; sourceTree = "<group>"; };
+		4DECB9DC278D7314000AC92F /* TotalAmountShowView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TotalAmountShowView.xib; sourceTree = "<group>"; };
+		4DECB9DE278D732A000AC92F /* TotalAmountShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalAmountShowView.swift; sourceTree = "<group>"; };
+		4DECB9E0278D780E000AC92F /* TotalAmountHPDsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TotalAmountHPDsView.xib; sourceTree = "<group>"; };
+		4DECB9E2278D7CB4000AC92F /* TotalAmountHPDsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalAmountHPDsView.swift; sourceTree = "<group>"; };
 		DBEA5008F8D6BBF25B210534 /* Pods-MascoAutomationApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MascoAutomationApp.release.xcconfig"; path = "Target Support Files/Pods-MascoAutomationApp/Pods-MascoAutomationApp.release.xcconfig"; sourceTree = "<group>"; };
 		DC5E682C5B175BD4034E52A2 /* Pods-MascoAutomationApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MascoAutomationApp.debug.xcconfig"; path = "Target Support Files/Pods-MascoAutomationApp/Pods-MascoAutomationApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -425,6 +433,8 @@
 				4D27A68D276DD9D000F0E4BA /* BWPDTitleView.swift */,
 				4D27A68F276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.swift */,
 				4D27A690276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.xib */,
+				4DECB9DC278D7314000AC92F /* TotalAmountShowView.xib */,
+				4DECB9DE278D732A000AC92F /* TotalAmountShowView.swift */,
 			);
 			path = BWPD;
 			sourceTree = "<group>";
@@ -437,6 +447,8 @@
 				4DC3F4BA276EE2D1005F2958 /* HPDsTotalView.swift */,
 				4DC3F4BC276EF262005F2958 /* HPDsViewControllerCell.swift */,
 				4DC3F4BD276EF262005F2958 /* HPDsViewControllerCell.xib */,
+				4DECB9E0278D780E000AC92F /* TotalAmountHPDsView.xib */,
+				4DECB9E2278D7CB4000AC92F /* TotalAmountHPDsView.swift */,
 			);
 			path = HPDs;
 			sourceTree = "<group>";
@@ -671,6 +683,8 @@
 				4DC3F4B9276EE2AF005F2958 /* HPDsTotalView.xib in Resources */,
 				4D99D96E2765C8B3004E6259 /* TaxDetailsViewControllerCell.xib in Resources */,
 				4DB0E0E12766FFE700B188E6 /* ApplyFormView.xib in Resources */,
+				4DECB9DD278D7314000AC92F /* TotalAmountShowView.xib in Resources */,
+				4DECB9E1278D780E000AC92F /* TotalAmountHPDsView.xib in Resources */,
 				4DD0DD6D275CB7A4005EE588 /* DailyAttendance.storyboard in Resources */,
 				4D9E269127858F4B00EA93C2 /* ApprovalBgView.xib in Resources */,
 				4D27A684276DB2EF00F0E4BA /* HPDTitleView.xib in Resources */,
@@ -768,6 +782,7 @@
 				4DC4DF172748FD7200EF43ED /* SignupViewController.swift in Sources */,
 				4DD0DD5E275C6DE5005EE588 /* Utils.swift in Sources */,
 				4DB0E0DF2766FFD900B188E6 /* ApplyFormView.swift in Sources */,
+				4DECB9E3278D7CB4000AC92F /* TotalAmountHPDsView.swift in Sources */,
 				4DC3F4C5276F1898005F2958 /* SEMViewController.swift in Sources */,
 				4DBDEAE72760A65A002AD6FF /* LeaveStatusCollectionViewCell.swift in Sources */,
 				4D7FB4CA2744D45100B318DA /* AppDelegate.swift in Sources */,
@@ -776,6 +791,7 @@
 				4D99D96D2765C8B3004E6259 /* TaxDetailsViewControllerCell.swift in Sources */,
 				4DCDC12A277069BE00D3896E /* HRISBodyView.swift in Sources */,
 				4DD0DD6A275C8126005EE588 /* API.swift in Sources */,
+				4DECB9DF278D732A000AC92F /* TotalAmountShowView.swift in Sources */,
 				4DD772C7274E4AAC003261F6 /* SideMenuViewController.swift in Sources */,
 				4D466E47275DDE45005F0E3C /* TaxDetailsViewController.swift in Sources */,
 				4DD0DD6F275CB7C7005EE588 /* DailyAttendanceViewControllerDetails.swift in Sources */,

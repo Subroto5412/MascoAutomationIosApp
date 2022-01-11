@@ -299,7 +299,7 @@ extension HPDViewController : UITableViewDataSource{
         if tableView == tableViewHPD {
             return 40
         }else{
-            return 40
+            return 50
         }
     }
 
