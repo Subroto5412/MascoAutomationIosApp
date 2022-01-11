@@ -231,9 +231,10 @@ class ViewController: UIViewController {
 
                     do{
                         let itemModel = try JSONDecoder().decode(ProfilePhoto.self, from: data)
-                        print("--emP_ENAME----\(itemModel.emP_ENAME)")
+                        print("--unitEName----\(itemModel.unitEName)")
                         
                         utils.writeAnyData(key: "empName", value: itemModel.emP_ENAME)
+                        utils.writeAnyData(key: "unitName", value: itemModel.unitEName)
                         
                         let photoArr = itemModel.serverFileName.components(separatedBy: "\\")
                         let photo = photoArr[1] //Last
@@ -476,7 +477,7 @@ extension ViewController {
 extension UIImageView {
 
    func setRounded() {
-    let radius = 10.0
+    let radius = 15.0
     self.layer.cornerRadius = CGFloat(radius)
     self.layer.masksToBounds = true
    }
