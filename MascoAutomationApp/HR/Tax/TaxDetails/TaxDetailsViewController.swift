@@ -299,10 +299,10 @@ extension TaxDetailsViewController : UITableViewDataSource{
             cell.deductionAmountLbl.text = "\(String(describing: dataSourceTD[indexPath.row].taxDeductionAmount!))"
             
             if dataSourceTD[indexPath.row].taxMonthNo! < monthForTax() {
-                cell.slLbl.textColor = UIColor.red
-                cell.monthLbl.textColor = UIColor.red
+                cell.slLbl.textColor = UIColor(red: 1.00, green: 0.33, blue: 0.33, alpha: 1.00)
+                cell.monthLbl.textColor = UIColor(red: 1.00, green: 0.33, blue: 0.33, alpha: 1.00)
                 cell.deductionAmountLbl.textColor = UIColor.white
-                cell.deductionAmoutBgView.backgroundColor = UIColor.red
+                cell.deductionAmoutBgView.backgroundColor = UIColor(red: 1.00, green: 0.33, blue: 0.33, alpha: 1.00)
             }
             return cell
             
