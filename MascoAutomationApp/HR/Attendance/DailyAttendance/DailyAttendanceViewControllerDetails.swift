@@ -14,6 +14,12 @@ class DailyAttendanceViewControllerDetails: UIViewController {
     @IBOutlet weak var headerView: CommonHeaderView!
     @IBOutlet weak var financialYearSelect: UIButton!
     @IBOutlet weak var yearBgView: UIView!
+    @IBOutlet weak var backMonthIm: UIImageView!
+    @IBOutlet weak var nextMonthIm: UIImageView!
+    
+    @IBOutlet weak var backMonthLbl: UILabel!
+    @IBOutlet weak var nextMonthLbl: UILabel!
+    @IBOutlet weak var selectedMonthLbl: UILabel!
     
     @IBOutlet weak var leaveCountCollectionView: UICollectionView!
     let transparentView = UIView()
@@ -21,13 +27,23 @@ class DailyAttendanceViewControllerDetails: UIViewController {
     
     var selectedButton = UIButton()
     
+    var yearName:String = ""
+    
     var dataSource = [ListFinalYear]()
+    var monthList = [String]()
+    
     var dataSourceAttendanceDetails = [ListAttendanceDetails]()
     var dataSourceLeaveCount = [ListLeaveCount]()
     
     var totalHeight: Int = 0
     
     var vSpinner : UIView?
+    
+//    var currentMonth: Int = 0
+    var index:Int = 0
+    var totalMonth: Int = 0
+    var month:Int = 0
+    var day:Int = 0
     
     class func initWithStoryboard() -> DailyAttendanceViewControllerDetails
     {
@@ -53,6 +69,49 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         self.monthBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.monthBgView.layer.borderWidth = 0.5
         self.monthBgView.layer.cornerRadius = 15
+        
+        self.yearBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
+        self.yearBgView.layer.borderWidth = 0.5
+        self.yearBgView.layer.cornerRadius = 15
+        
+        monthList = ["January","February","March","April","May","June","July","August","September","October","November","December"]
+        
+
+//        let date = Date()
+//        let format = DateFormatter()
+//        format.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//        format.dateFormat = "MM"
+//        let formattedDate = format.string(from: date)
+//        print(formattedDate)
+        
+       let date = Date()
+       let calendar = Calendar.current
+       let year =  calendar.component(.year, from: date)
+           month = calendar.component(.month, from: date)
+        day = calendar.component(.day, from: date)
+        
+        print("--month----\(month)")
+        
+//        let monthName:Int = Int(monthList[month]) ?? 0
+//        currentMonth = monthName - 1
+        
+//        print("--currentMonth----\(currentMonth)")
+        print("--indexes----\(monthList[month])")
+        
+        if month-1 < 1 {
+            self.backMonthIm.isHidden = true
+        }else{
+            
+            self.backMonthIm.isHidden = false
+            let nextMonth = monthList[month].prefix(3)
+            self.backMonthLbl.text = String(nextMonth)
+        }
+        
+        
+        self.selectedMonthLbl.text = monthList[month-1]
+        let nextMonth = monthList[month].prefix(3)
+        self.nextMonthLbl.text = String(nextMonth)
+        
         
         self.headerView.backBtnHandler = {
             [weak self] (isShow) in
@@ -129,11 +188,13 @@ class DailyAttendanceViewControllerDetails: UIViewController {
                 }
         }
         task.resume()
-        self.getAttendanceDetailsList(FromDate: "2021-09-01", ToDate: "2021-09-30")
     }
     
     
     func getAttendanceDetailsList(FromDate: String, ToDate: String){
+        
+        print("--FromDate---\(FromDate)")
+        print("--ToDate---\(ToDate)")
         
         let utils = Utils()
         let accessToken = utils.readStringData(key: "token")
@@ -235,6 +296,117 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         let controller = DailyAttendanceViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
+    
+    @IBAction func backMonthBtn(_ sender: Any) {
+        
+        if financialYearSelect.titleLabel?.text == "Select Financial Year" {
+            toastMessage("Please Select Financial Year")
+        }else{
+            
+            index = index - 1
+            totalMonth = (month-1) + index
+            
+            if totalMonth > -2 {
+                
+                if totalMonth == 0 {
+                    let month = monthList[0]
+                    let nextMonth = monthList[1]
+                    
+                    self.backMonthLbl.text = ""
+                    self.selectedMonthLbl.text = month
+                    
+                    let nextMonth2 = nextMonth.prefix(3)
+                    self.nextMonthLbl.text = String(nextMonth2)
+                    self.backMonthIm.isHidden = true
+                    self.nextMonthIm.isHidden = false
+                    
+                    
+                }else{
+                    var nextMonth:String = ""
+                    var month:String = ""
+                    var backMonth:String = ""
+                    
+                    if totalMonth == 9 {
+                        month = monthList[totalMonth]
+                        nextMonth = String(monthList[totalMonth + 1].prefix(3))
+                        backMonth = String(monthList[totalMonth-1].prefix(3))
+                        
+                    }else{
+                        month = monthList[totalMonth]
+                        nextMonth = String(monthList[totalMonth + 1].prefix(3))
+                        
+                        if totalMonth == 0{
+                            self.backMonthIm.isHidden = true
+                            self.nextMonthIm.isHidden = false
+                        }else{
+                            backMonth = String(monthList[totalMonth-1].prefix(3))
+                        }
+                        self.nextMonthIm.isHidden = false
+                    }
+                   
+                    if totalMonth == 0 {
+                        self.backMonthLbl.text = ""
+                    }else{
+                        self.backMonthLbl.text = backMonth
+                    }
+                    
+                    self.selectedMonthLbl.text = month
+                    self.nextMonthLbl.text = nextMonth
+                    
+                }
+            }
+            
+            let year = yearName
+            let month = monthList.firstIndex(where: {$0 == selectedMonthLbl.text})! + 1
+            let day = day
+            let fromDate = "\(year)"+"-"+"\(month)"+"-"+"\("01")"
+            let toDate = "\(year)"+"-"+"\(month)"+"-"+"\(day)"
+            
+            self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+        }
+    }
+    
+    @IBAction func nextMonthBtn(_ sender: Any) {
+        
+        if financialYearSelect.titleLabel?.text == "Select Financial Year" {
+            toastMessage("Please Select Financial Year")
+        }else{
+            
+            index = index+1
+            totalMonth = (month-2) + index
+            
+            if totalMonth < 12{
+                if totalMonth == 10 {
+                    let month = monthList[totalMonth+1]
+                    let backMonth:String = String(monthList[totalMonth].prefix(3))
+                    self.backMonthLbl.text = backMonth
+                    self.selectedMonthLbl.text = month
+                    self.nextMonthLbl.text = ""
+                    self.totalMonth = totalMonth + 2
+                    self.nextMonthIm.isHidden = true
+                }else{
+                    
+                    let month = monthList[totalMonth+1]
+                    let nextMonth:String = String(monthList[totalMonth + 2].prefix(3))
+                    let backMonth:String = String(monthList[totalMonth].prefix(3))
+                    
+                    self.selectedMonthLbl.text = month
+                    self.nextMonthLbl.text = nextMonth
+                    self.backMonthLbl.text = backMonth
+                    self.backMonthIm.isHidden = false
+                }
+            }
+            
+            let year = yearName
+            let month = monthList.firstIndex(where: {$0 == selectedMonthLbl.text})! + 1
+            let day = day
+            let fromDate = "\(year)"+"-"+"\(month)"+"-"+"\("01")"
+            let toDate = "\(year)"+"-"+"\(month)"+"-"+"\(day)"
+            
+            self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+        }
+    }
+    
 }
 
 extension DailyAttendanceViewControllerDetails : UITableViewDelegate{
@@ -244,7 +416,16 @@ extension DailyAttendanceViewControllerDetails : UITableViewDelegate{
         if tableView == tableViewDailyAttendance {
         }else{
             selectedButton.setTitle(dataSource[indexPath.row].finalYearName, for: .normal)
+            yearName = dataSource[indexPath.row].yearName
             print("Final Year id: \(dataSource[indexPath.row].finalYearNo!)")
+            
+            let month = monthList.firstIndex(where: {$0 == selectedMonthLbl.text})! + 1
+            let day = day
+            let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
+            let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(day)"
+        
+            self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+            
             removeTransparentView()
         }
     }

@@ -41,28 +41,28 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hvb-Ah-r5v">
-                                                                <rect key="frame" x="20" y="0.0" width="374" height="64"/>
+                                                                <rect key="frame" x="27" y="0.0" width="360" height="64"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Financial Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOf-OG-obD">
-                                                                        <rect key="frame" x="20" y="22" width="113" height="20"/>
+                                                                        <rect key="frame" x="15" y="22" width="113" height="20"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Na0-CA-mza">
-                                                                        <rect key="frame" x="186.5" y="8" width="1" height="48"/>
+                                                                        <rect key="frame" x="154.5" y="8" width="1" height="48"/>
                                                                         <color key="backgroundColor" red="0.35380434989999998" green="0.92506664989999998" blue="0.50702255959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="1" id="BSD-8M-Jv6"/>
                                                                         </constraints>
                                                                     </view>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="NOd-GN-Rxc">
-                                                                        <rect key="frame" x="202.5" y="13" width="38.5" height="38.5"/>
+                                                                        <rect key="frame" x="165.5" y="13" width="37" height="38.5"/>
                                                                     </imageView>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Vz-U2-m1r">
-                                                                        <rect key="frame" x="261" y="16" width="85" height="32"/>
-                                                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
-                                                                        <state key="normal" title="2021 - 2021">
+                                                                        <rect key="frame" x="212.5" y="17" width="147" height="30"/>
+                                                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                                                                        <state key="normal" title="Select Financial Year">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
                                                                         <connections>
@@ -72,14 +72,14 @@
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstItem="mOf-OG-obD" firstAttribute="leading" secondItem="Hvb-Ah-r5v" secondAttribute="leading" constant="20" id="Hvs-RL-Z00"/>
-                                                                    <constraint firstItem="Na0-CA-mza" firstAttribute="centerX" secondItem="Hvb-Ah-r5v" secondAttribute="centerX" id="LLu-DG-TfI"/>
+                                                                    <constraint firstItem="mOf-OG-obD" firstAttribute="leading" secondItem="Hvb-Ah-r5v" secondAttribute="leading" constant="15" id="Hvs-RL-Z00"/>
+                                                                    <constraint firstItem="Na0-CA-mza" firstAttribute="centerX" secondItem="Hvb-Ah-r5v" secondAttribute="centerX" constant="-25" id="LLu-DG-TfI"/>
                                                                     <constraint firstItem="NOd-GN-Rxc" firstAttribute="centerY" secondItem="Hvb-Ah-r5v" secondAttribute="centerY" id="WVz-84-2hA"/>
                                                                     <constraint firstItem="NOd-GN-Rxc" firstAttribute="height" secondItem="Hvb-Ah-r5v" secondAttribute="height" multiplier="36:60" id="Xcn-aV-uJW"/>
                                                                     <constraint firstItem="9Vz-U2-m1r" firstAttribute="centerY" secondItem="Hvb-Ah-r5v" secondAttribute="centerY" id="cZc-Gd-g6R"/>
-                                                                    <constraint firstItem="9Vz-U2-m1r" firstAttribute="leading" secondItem="NOd-GN-Rxc" secondAttribute="trailing" constant="20" id="g7T-fj-8DH"/>
+                                                                    <constraint firstItem="9Vz-U2-m1r" firstAttribute="leading" secondItem="NOd-GN-Rxc" secondAttribute="trailing" constant="10" id="g7T-fj-8DH"/>
                                                                     <constraint firstAttribute="bottom" secondItem="Na0-CA-mza" secondAttribute="bottom" constant="8" id="gxf-z6-Ffh"/>
-                                                                    <constraint firstItem="NOd-GN-Rxc" firstAttribute="leading" secondItem="Na0-CA-mza" secondAttribute="trailing" constant="15" id="jDb-GP-HRh"/>
+                                                                    <constraint firstItem="NOd-GN-Rxc" firstAttribute="leading" secondItem="Na0-CA-mza" secondAttribute="trailing" constant="10" id="jDb-GP-HRh"/>
                                                                     <constraint firstItem="mOf-OG-obD" firstAttribute="centerY" secondItem="Hvb-Ah-r5v" secondAttribute="centerY" id="pE6-kg-Yo5"/>
                                                                     <constraint firstItem="Na0-CA-mza" firstAttribute="top" secondItem="Hvb-Ah-r5v" secondAttribute="top" constant="8" id="rdT-QY-h4B"/>
                                                                     <constraint firstItem="NOd-GN-Rxc" firstAttribute="width" secondItem="Hvb-Ah-r5v" secondAttribute="width" multiplier="31:300" id="xLI-Ue-eMz"/>
@@ -88,29 +88,41 @@
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="Hvb-Ah-r5v" secondAttribute="trailing" constant="20" id="apM-tG-SIJ"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Hvb-Ah-r5v" secondAttribute="trailing" constant="27" id="apM-tG-SIJ"/>
                                                             <constraint firstAttribute="bottom" secondItem="Hvb-Ah-r5v" secondAttribute="bottom" id="cKK-f7-EoW"/>
                                                             <constraint firstItem="Hvb-Ah-r5v" firstAttribute="top" secondItem="ce3-cO-j7Q" secondAttribute="top" id="oEU-b7-Fxz"/>
-                                                            <constraint firstItem="Hvb-Ah-r5v" firstAttribute="leading" secondItem="ce3-cO-j7Q" secondAttribute="leading" constant="20" id="pnu-TE-nhD"/>
+                                                            <constraint firstItem="Hvb-Ah-r5v" firstAttribute="leading" secondItem="ce3-cO-j7Q" secondAttribute="leading" constant="27" id="pnu-TE-nhD"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCn-DY-59M">
                                                         <rect key="frame" x="0.0" y="64" width="414" height="76"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="previous" translatesAutoresizingMaskIntoConstraints="NO" id="pRD-Sg-k0l">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back_circle_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="pRD-Sg-k0l">
                                                                 <rect key="frame" x="28" y="21" width="34" height="34"/>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jul" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Joc-2Z-x20">
-                                                                <rect key="frame" x="77" y="29.5" width="21" height="17.5"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ti3-Nu-LHm">
+                                                                <rect key="frame" x="28" y="21" width="34" height="34"/>
+                                                                <connections>
+                                                                    <action selector="backMonthBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="0f9-aG-u9U"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Joc-2Z-x20">
+                                                                <rect key="frame" x="77" y="38" width="0.0" height="0.0"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="next" translatesAutoresizingMaskIntoConstraints="NO" id="1n5-ra-j1n">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="next_circle_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="1n5-ra-j1n">
                                                                 <rect key="frame" x="360" y="21" width="34" height="34"/>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sep" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hsb-tP-aUH">
-                                                                <rect key="frame" x="318" y="29.5" width="27" height="17.5"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o8q-kY-wfm">
+                                                                <rect key="frame" x="360" y="21" width="34" height="34"/>
+                                                                <connections>
+                                                                    <action selector="nextMonthBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="6nv-yv-V9o"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hsb-tP-aUH">
+                                                                <rect key="frame" x="345" y="38" width="0.0" height="0.0"/>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -136,14 +148,21 @@
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
+                                                            <constraint firstItem="Ti3-Nu-LHm" firstAttribute="centerY" secondItem="pRD-Sg-k0l" secondAttribute="centerY" id="2P3-nh-nED"/>
+                                                            <constraint firstItem="Ti3-Nu-LHm" firstAttribute="height" secondItem="pRD-Sg-k0l" secondAttribute="height" id="AZe-9M-ZBR"/>
+                                                            <constraint firstItem="o8q-kY-wfm" firstAttribute="width" secondItem="1n5-ra-j1n" secondAttribute="width" id="Aey-nz-9f6"/>
                                                             <constraint firstItem="1n5-ra-j1n" firstAttribute="leading" secondItem="Hsb-tP-aUH" secondAttribute="trailing" constant="15" id="BAh-eq-KjH"/>
                                                             <constraint firstItem="1n5-ra-j1n" firstAttribute="width" secondItem="gCn-DY-59M" secondAttribute="width" multiplier="32:390" id="J0K-at-RNJ"/>
                                                             <constraint firstItem="59k-xU-MLc" firstAttribute="width" secondItem="gCn-DY-59M" secondAttribute="width" multiplier="140:390" id="J9J-EK-0uG"/>
                                                             <constraint firstItem="59k-xU-MLc" firstAttribute="height" secondItem="gCn-DY-59M" secondAttribute="height" multiplier="40:71" id="Kh9-qD-J1u"/>
+                                                            <constraint firstItem="o8q-kY-wfm" firstAttribute="centerX" secondItem="1n5-ra-j1n" secondAttribute="centerX" id="S99-XH-Apj"/>
+                                                            <constraint firstItem="Ti3-Nu-LHm" firstAttribute="centerX" secondItem="pRD-Sg-k0l" secondAttribute="centerX" id="UwE-Yb-gVL"/>
                                                             <constraint firstItem="Joc-2Z-x20" firstAttribute="centerY" secondItem="gCn-DY-59M" secondAttribute="centerY" id="VEP-UW-pn4"/>
                                                             <constraint firstItem="1n5-ra-j1n" firstAttribute="centerY" secondItem="gCn-DY-59M" secondAttribute="centerY" id="bJl-XX-yyM"/>
                                                             <constraint firstItem="pRD-Sg-k0l" firstAttribute="leading" secondItem="gCn-DY-59M" secondAttribute="leading" constant="28" id="bjb-BX-Cc6"/>
+                                                            <constraint firstItem="o8q-kY-wfm" firstAttribute="height" secondItem="1n5-ra-j1n" secondAttribute="height" id="boR-V9-lYm"/>
                                                             <constraint firstItem="Joc-2Z-x20" firstAttribute="leading" secondItem="pRD-Sg-k0l" secondAttribute="trailing" constant="15" id="dVa-DE-6XK"/>
+                                                            <constraint firstItem="o8q-kY-wfm" firstAttribute="centerY" secondItem="1n5-ra-j1n" secondAttribute="centerY" id="gq5-kB-UoG"/>
                                                             <constraint firstItem="pRD-Sg-k0l" firstAttribute="height" secondItem="gCn-DY-59M" secondAttribute="height" multiplier="32:71" id="hOg-kE-T2C"/>
                                                             <constraint firstItem="pRD-Sg-k0l" firstAttribute="width" secondItem="gCn-DY-59M" secondAttribute="width" multiplier="32:390" id="hku-oy-qqA"/>
                                                             <constraint firstItem="1n5-ra-j1n" firstAttribute="height" secondItem="gCn-DY-59M" secondAttribute="height" multiplier="32:71" id="irT-R1-7yM"/>
@@ -152,6 +171,7 @@
                                                             <constraint firstItem="59k-xU-MLc" firstAttribute="centerX" secondItem="gCn-DY-59M" secondAttribute="centerX" id="rOp-Bj-lKC"/>
                                                             <constraint firstItem="59k-xU-MLc" firstAttribute="centerY" secondItem="gCn-DY-59M" secondAttribute="centerY" id="uWY-uh-JCt"/>
                                                             <constraint firstItem="pRD-Sg-k0l" firstAttribute="centerY" secondItem="gCn-DY-59M" secondAttribute="centerY" id="ush-Zt-Cwe"/>
+                                                            <constraint firstItem="Ti3-Nu-LHm" firstAttribute="width" secondItem="pRD-Sg-k0l" secondAttribute="width" id="zFg-A7-5dG"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -362,10 +382,15 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backMonthIm" destination="pRD-Sg-k0l" id="WpR-zY-tgz"/>
+                        <outlet property="backMonthLbl" destination="Joc-2Z-x20" id="HVb-Qw-YXP"/>
                         <outlet property="financialYearSelect" destination="9Vz-U2-m1r" id="cAQ-Na-OBZ"/>
                         <outlet property="headerView" destination="Jtk-iL-CmP" id="gUE-RH-gtc"/>
                         <outlet property="leaveCountCollectionView" destination="6aD-7p-oFO" id="elj-Tz-L7u"/>
                         <outlet property="monthBgView" destination="59k-xU-MLc" id="UDV-kc-Pye"/>
+                        <outlet property="nextMonthIm" destination="1n5-ra-j1n" id="y5G-Qf-Vwf"/>
+                        <outlet property="nextMonthLbl" destination="Hsb-tP-aUH" id="jn6-Yy-74o"/>
+                        <outlet property="selectedMonthLbl" destination="UFq-vd-2it" id="d3I-OH-PoB"/>
                         <outlet property="tableViewDailyAttendance" destination="56z-pb-SWb" id="IQp-qk-ZI8"/>
                         <outlet property="yearBgView" destination="Hvb-Ah-r5v" id="3Ip-wC-QgR"/>
                     </connections>
@@ -376,9 +401,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="back_circle_arrow" width="30" height="30"/>
         <image name="calendar" width="31.5" height="36"/>
         <image name="home_bg" width="408" height="862"/>
         <image name="next" width="24" height="24"/>
+        <image name="next_circle_arrow" width="30" height="30"/>
         <image name="previous" width="24" height="24"/>
     </resources>
 </document>
