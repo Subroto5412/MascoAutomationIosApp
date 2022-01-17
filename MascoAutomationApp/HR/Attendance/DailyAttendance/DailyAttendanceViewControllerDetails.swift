@@ -38,12 +38,12 @@ class DailyAttendanceViewControllerDetails: UIViewController {
     var totalHeight: Int = 0
     
     var vSpinner : UIView?
-    
-//    var currentMonth: Int = 0
     var index:Int = 0
     var totalMonth: Int = 0
-    var month:Int = 0
-    var day:Int = 0
+    var myMonth:Int = 0
+    var myDay:Int = 0
+    var myYear:Int = 0
+    var formattedDate:String = ""
     
     class func initWithStoryboard() -> DailyAttendanceViewControllerDetails
     {
@@ -76,40 +76,27 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         
         monthList = ["January","February","March","April","May","June","July","August","September","October","November","December"]
         
-
-//        let date = Date()
-//        let format = DateFormatter()
-//        format.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//        format.dateFormat = "MM"
-//        let formattedDate = format.string(from: date)
-//        print(formattedDate)
-        
        let date = Date()
        let calendar = Calendar.current
-       let year =  calendar.component(.year, from: date)
-           month = calendar.component(.month, from: date)
-        day = calendar.component(.day, from: date)
+       myYear =  calendar.component(.year, from: date)
+       myMonth = calendar.component(.month, from: date)
+       myDay = calendar.component(.day, from: date)
         
-        print("--month----\(month)")
+       let utils = Utils()
+        formattedDate = utils.currentFormattedDate()
         
-//        let monthName:Int = Int(monthList[month]) ?? 0
-//        currentMonth = monthName - 1
-        
-//        print("--currentMonth----\(currentMonth)")
-        print("--indexes----\(monthList[month])")
-        
-        if month-1 < 1 {
+        if myMonth-1 < 1 {
             self.backMonthIm.isHidden = true
         }else{
             
             self.backMonthIm.isHidden = false
-            let nextMonth = monthList[month].prefix(3)
+            let nextMonth = monthList[myMonth].prefix(3)
             self.backMonthLbl.text = String(nextMonth)
         }
         
         
-        self.selectedMonthLbl.text = monthList[month-1]
-        let nextMonth = monthList[month].prefix(3)
+        self.selectedMonthLbl.text = monthList[myMonth-1]
+        let nextMonth = monthList[myMonth].prefix(3)
         self.nextMonthLbl.text = String(nextMonth)
         
         
@@ -237,7 +224,11 @@ class DailyAttendanceViewControllerDetails: UIViewController {
                 }
         }
         task.resume()
+        
+        self.removeSpinner()
         self.getLeaveCountList(FromDate: FromDate, ToDate: ToDate)
+        
+       
     }
     
     
@@ -258,13 +249,14 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         
-        let newItem = AttendanceDetailsRequest(fromDate: FromDate, toDate: ToDate)
+        let newItem = LeaveCountRequest(fromDate: FromDate, toDate: ToDate)
         let jsonData = try? JSONEncoder().encode(newItem)
         
         request.httpBody = jsonData
-
+//        self.showSpinner(onView: self.view)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
 
+//                self.removeSpinner()
                 DispatchQueue.main.async {
                 
                     if let error = error {
@@ -304,7 +296,7 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         }else{
             
             index = index - 1
-            totalMonth = (month-1) + index
+            totalMonth = (myMonth-1) + index
             
             if totalMonth > -2 {
                 
@@ -356,13 +348,28 @@ class DailyAttendanceViewControllerDetails: UIViewController {
                 }
             }
             
-            let year = yearName
-            let month = monthList.firstIndex(where: {$0 == selectedMonthLbl.text})! + 1
-            let day = day
-            let fromDate = "\(year)"+"-"+"\(month)"+"-"+"\("01")"
-            let toDate = "\(year)"+"-"+"\(month)"+"-"+"\(day)"
+            let _month = monthList.firstIndex(where: {$0 == selectedMonthLbl.text})! + 1
             
-            self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+            var month:String = ""
+            
+            if _month<10 {
+                month = "0\(_month)"
+            }else{
+                month = "\(_month)"
+            }
+            
+            if yearName ==  "\(myYear)"{
+                let day = myDay
+                let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
+                let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(day)"
+            
+                self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+            }else{
+                let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
+                let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(howManyDayMonth(monthName: monthList[monthList.firstIndex(where: {$0 == selectedMonthLbl.text})!]))"
+            
+                self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+            }
         }
     }
     
@@ -373,7 +380,7 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         }else{
             
             index = index+1
-            totalMonth = (month-2) + index
+            totalMonth = (myMonth-2) + index
             
             if totalMonth < 12{
                 if totalMonth == 10 {
@@ -397,16 +404,72 @@ class DailyAttendanceViewControllerDetails: UIViewController {
                 }
             }
             
-            let year = yearName
-            let month = monthList.firstIndex(where: {$0 == selectedMonthLbl.text})! + 1
-            let day = day
-            let fromDate = "\(year)"+"-"+"\(month)"+"-"+"\("01")"
-            let toDate = "\(year)"+"-"+"\(month)"+"-"+"\(day)"
+            let _month = monthList.firstIndex(where: {$0 == selectedMonthLbl.text})! + 1
             
-            self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+            var month:String = ""
+            
+            if _month<10 {
+                month = "0\(_month)"
+            }else{
+                month = "\(_month)"
+            }
+            
+            if yearName ==  "\(myYear)"{
+//                let month = monthList.firstIndex(where: {$0 == selectedMonthLbl.text})! + 1
+                let day = myDay
+                let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
+                let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(day)"
+            
+                self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+            }else{
+//                let month = monthList.firstIndex(where: {$0 == selectedMonthLbl.text})! + 1
+                let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
+                let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(howManyDayMonth(monthName: monthList[monthList.firstIndex(where: {$0 == selectedMonthLbl.text})!]))"
+            
+                self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+            }
         }
     }
     
+    func howManyDayMonth(monthName:String)->String{
+        var monthDay: String = ""
+        if monthName == "January"{
+            monthDay = "31"
+        }
+        else if monthName == "February"{
+            monthDay = "28"
+        }
+        else if monthName == "March"{
+            monthDay = "31"
+        }
+        else if monthName == "April"{
+            monthDay = "30"
+        }
+        else if monthName == "May"{
+            monthDay = "31"
+        }else if monthName == "June"{
+            monthDay = "30"
+        }
+        else if monthName == "July"{
+            monthDay = "31"
+        }
+        else if monthName == "August"{
+            monthDay = "31"
+        }
+        else if monthName == "September"{
+            monthDay = "30"
+        }
+        else if monthName == "October"{
+            monthDay = "31"
+        }
+        else if monthName == "November"{
+            monthDay = "30"
+        }
+        else if monthName == "December"{
+            monthDay = "31"
+        }
+        return monthDay
+    }
 }
 
 extension DailyAttendanceViewControllerDetails : UITableViewDelegate{
@@ -419,12 +482,30 @@ extension DailyAttendanceViewControllerDetails : UITableViewDelegate{
             yearName = dataSource[indexPath.row].yearName
             print("Final Year id: \(dataSource[indexPath.row].finalYearNo!)")
             
-            let month = monthList.firstIndex(where: {$0 == selectedMonthLbl.text})! + 1
-            let day = day
-            let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
-            let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(day)"
-        
-            self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+            let _month = monthList.firstIndex(where: {$0 == selectedMonthLbl.text})! + 1
+            
+            var month:String = ""
+            
+            if _month<10 {
+                month = "0\(_month)"
+            }else{
+                month = "\(_month)"
+            }
+            
+            if yearName ==  "\(myYear)"{
+//                let month = monthList.firstIndex(where: {$0 == selectedMonthLbl.text})! + 1
+                let day = myDay
+                let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
+                let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(day)"
+            
+                self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+            }else{
+//                let month = monthList.firstIndex(where: {$0 == selectedMonthLbl.text})! + 1
+                let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
+                let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(howManyDayMonth(monthName: monthList[monthList.firstIndex(where: {$0 == selectedMonthLbl.text})!]))"
+            
+                self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+            }
             
             removeTransparentView()
         }
@@ -446,10 +527,46 @@ extension DailyAttendanceViewControllerDetails : UITableViewDataSource{
         if tableView == tableViewDailyAttendance {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell_daily_attendance", for: indexPath) as! DailyAttendanceTableViewCell
-            cell.punchInLbl.text = dataSourceAttendanceDetails[indexPath.row].punchInTime
-            cell.punchOutLbl.text = dataSourceAttendanceDetails[indexPath.row].punchOutTime
+        
             cell.statusLbl.text = dataSourceAttendanceDetails[indexPath.row].fSts
             cell.otLbl.text = dataSourceAttendanceDetails[indexPath.row].additionalTime
+            cell.punchInLbl.text = dataSourceAttendanceDetails[indexPath.row].punchInTime
+            cell.punchInLbl.text = dataSourceAttendanceDetails[indexPath.row].punchOutTime
+            cell.dayLbl.text = String(dataSourceAttendanceDetails[indexPath.row].datePunch.prefix(2))
+            
+            let monthString:String = dataSourceAttendanceDetails[indexPath.row].datePunch
+            cell.monthLbl.text = monthString.substring(with: 3..<6)
+            
+            
+            if dataSourceAttendanceDetails[indexPath.row].punchInTime == "12:00:00 AM" {
+                cell.punchInLbl.text = "0"
+            }else{
+                cell.punchInLbl.text = dataSourceAttendanceDetails[indexPath.row].punchInTime
+            }
+
+            if dataSourceAttendanceDetails[indexPath.row].punchOutTime == "12:00:00 AM" {
+                cell.punchOutLbl.text = "0"
+            }else{
+                cell.punchOutLbl.text = dataSourceAttendanceDetails[indexPath.row].punchOutTime
+            }
+           
+            if dataSourceAttendanceDetails[indexPath.row].datePunch == formattedDate {
+                cell.dateBgView.backgroundColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0)
+            }
+            
+            
+            if dataSourceAttendanceDetails[indexPath.row].fSts == "SL" || dataSourceAttendanceDetails[indexPath.row].fSts == "CL" || dataSourceAttendanceDetails[indexPath.row].fSts == "EL" || dataSourceAttendanceDetails[indexPath.row].fSts == "LWP"{
+                
+                print(dataSourceAttendanceDetails[indexPath.row].fSts)
+                
+                cell.dateBgView.backgroundColor = UIColor(red: 255/255, green: 84/255, blue: 85/255, alpha: 1.0)
+            }
+            
+            if dataSourceAttendanceDetails[indexPath.row].fSts == "WHD" || dataSourceAttendanceDetails[indexPath.row].fSts == "GHD" ||
+                dataSourceAttendanceDetails[indexPath.row].fSts == "CHD" || dataSourceAttendanceDetails[indexPath.row].fSts == "QO"{
+                cell.statusLbl.textColor = UIColor(red: 255/255, green: 84/255, blue: 85/255, alpha: 1.0)
+            }
+            
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
@@ -664,6 +781,17 @@ extension DailyAttendanceViewControllerDetails {
             }
     }
     
+    
+    struct LeaveCountRequest: Codable {
+        var fromDate: String
+        var toDate: String
+        
+        enum CodingKeys: String, CodingKey {
+            case fromDate = "fromDate"
+            case toDate = "toDate"
+        }
+        
+    }
     struct ListLeaveCount: Codable {
         var status: String = ""
         var statusValue: String = ""

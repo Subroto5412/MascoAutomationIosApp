@@ -15,6 +15,8 @@ class DailyAttendanceTableViewCell: UITableViewCell {
     @IBOutlet weak var otLbl: UILabel!
     @IBOutlet weak var dateBgView: UIView!
     @IBOutlet weak var cellBgView: UIView!
+    @IBOutlet weak var dayLbl: UILabel!
+    @IBOutlet weak var monthLbl: UILabel!
     
     
     override func awakeFromNib() {

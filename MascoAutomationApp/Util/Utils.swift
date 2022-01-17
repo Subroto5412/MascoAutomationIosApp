@@ -42,4 +42,13 @@ class Utils: NSObject {
             return userDefault.bool(forKey: key)
         }
     }
+    
+    func currentFormattedDate() -> String{
+        
+        let date = Date()
+        let format = DateFormatter()
+        format.dateFormat = "dd-MMM-yyyy"
+        return format.string(from: date)
+        
+    }
 }
