@@ -171,6 +171,7 @@ class ViewController: UIViewController {
                             
                             for subMenuList in permission._subMenuList {
                                 print("activityName -----: \(subMenuList.activityName)")
+                                dataSourceScreen.append(subMenuList.activityName)
                             }
                         }
                         

@@ -20,6 +20,14 @@ class HomeViewController: UIViewController {
     //    @IBOutlet weak var homeBodyView: HomeBody!
     var sideMenuViewController : SideMenuViewController?
     
+    var searching = false
+    let transparentView = UIView()
+    let tableViewDropDown = UITableView()
+    var selectedButton = UITextField()
+    
+    //var dataSource = [String]()
+    var dataSourceScreenFiltered = [String]()
+    
     class func initWithStoryboard() -> HomeViewController
     {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -33,35 +41,15 @@ class HomeViewController: UIViewController {
         self.menuBackgroundView.isHidden = true
         
         let utils = Utils()
-        
         print("--------\(utils.readStringData(key: "empCode"))----")
         
+       // dataSource = dataSourceScreen
         
-//        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-//        backgroundImage.image = UIImage(named: "home_bg")
-//        backgroundImage.contentMode = .scaleAspectFill
-//        view.insertSubview(backgroundImage, at: 0)
+        tableViewDropDown.delegate = self
+        tableViewDropDown.dataSource = self
+        tableViewDropDown.register(CellClass.self, forCellReuseIdentifier: "Cell")
         
-
-     //   self.homeBody.hrisIconView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
-     //   self.homeBodyView.hrisIconView.layer.borderWidth = homeBody
-        
-        
-//        self.homeBody.iconView.layer.cornerRadius = 50
-//        self.homeBody.iconView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
-        //semiCircleUp
-//     let circlePath =  UIBezierPath(arcCenter: CGPoint(x: self.homeBody.iconView.bounds.size.width/2, y: 0), radius: self.homeBody.iconView.bounds.size.height, startAngle: 2 * .pi, endAngle: .pi, clockwise: true).cgPath
-//
-//        let shape = CAShapeLayer()
-//        shape.path = circlePath.CGPath
-//        self.homeBody.iconView.layer.mask = shape
-        
-        
-//        let circlePath =  UIBezierPath(arcCenter: CGPoint(x: self.homeBody.iconView.bounds.size.width/2, y: 0), radius: self.homeBody.iconView.bounds.size.height, startAngle: 0, endAngle: .pi, clockwise: true)
-        
-//        let circlePath =  UIBezierPath(arcCenter: CGPoint(x: self.homeBody.iconView.bounds.size.width/2, y: 0), radius: self.homeBody.iconView.bounds.size.height,startAngle: 2 * .pi, endAngle: .pi, clockwise: false)
-        
+        self.homeHeader.commonSearchTxtField.addTarget(self, action: #selector(searchRecord), for: .editingChanged)
         
         self.homeHeader.menuHandler = {
               [weak self] (isShow) in
@@ -110,11 +98,6 @@ class HomeViewController: UIViewController {
          }
          weakSelf.showHRISController()
         }
-        
-        
-//        let arcCenter = CGPoint(x: self.homeBody.iconView.bounds.size.width / 2.2, y: self.homeBody.iconView.bounds.size.height)
-//        let circleRadius = self.homeBody.iconView.bounds.size.width / 2.2
-//        let circlePath = UIBezierPath(arcCenter: arcCenter, radius: circleRadius, startAngle: CGFloat.pi, endAngle: CGFloat.pi * 2, clockwise: true)
           
         let arcCenter = CGPoint(x: self.homeBody.iconView.bounds.size.width / 2, y: self.homeBody.iconView.bounds.size.height)
         let circleRadius = self.homeBody.iconView.bounds.size.width / 2
@@ -281,6 +264,92 @@ class HomeViewController: UIViewController {
                 self.isMenuShown = false
             }
         }
+    }
+    
+    @objc func searchRecord(sender:UITextField ){
+        self.dataSourceScreenFiltered.removeAll()
+        let searchData: Int = self.homeHeader.commonSearchTxtField.text!.count
+        if searchData != 0 {
+            searching = true
+            for screen in dataSourceScreen
+            {
+                if let ascreenToSearch = self.homeHeader.commonSearchTxtField.text
+                {
+                    let range = screen.lowercased().range(of: ascreenToSearch, options: .caseInsensitive, range: nil, locale: nil)
+                    if range != nil {
+                        self.dataSourceScreenFiltered.append(screen)
+                    }
+                }
+            }
+        }else{
+            dataSourceScreenFiltered = dataSourceScreen
+            searching = false
+        }
+        selectedButton = homeHeader.commonSearchTxtField
+        addTransparentView(frames: homeHeader.commonSearchTxtField.frame)
+        
+        tableViewDropDown.reloadData()
+    }
+
+    func addTransparentView(frames: CGRect) {
+        let window = UIApplication.shared.keyWindow
+        transparentView.frame = window?.frame ?? self.view.frame
+        self.view.addSubview(transparentView)
+        
+        tableViewDropDown.frame = CGRect(x: frames.origin.x+100, y: frames.origin.y + frames.height+80, width: frames.width, height: 0)
+        self.view.addSubview(tableViewDropDown)
+        tableViewDropDown.layer.cornerRadius = 5
+        
+        transparentView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
+        tableViewDropDown.reloadData()
+        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeTransparentView))
+        transparentView.addGestureRecognizer(tapgesture)
+        transparentView.alpha = 0
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            self.transparentView.alpha = 0.5
+            self.tableViewDropDown.frame = CGRect(x: frames.origin.x+100, y: frames.origin.y + frames.height + 5+80, width: frames.width, height: CGFloat(self.dataSourceScreenFiltered.count * 50))
+        }, completion: nil)
+    }
+    
+    @objc func removeTransparentView() {
+        let frames = selectedButton.frame
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            self.transparentView.alpha = 0
+            self.tableViewDropDown.frame = CGRect(x: frames.origin.x+100, y: frames.origin.y + frames.height+80, width: frames.width, height: 0)
+        }, completion: nil)
+    }
+
+}
+
+
+extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if searching {
+            return dataSourceScreenFiltered.count
+        }else{
+            return dataSourceScreen.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableViewDropDown.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        if searching {
+            cell.textLabel?.text = dataSourceScreenFiltered[indexPath.row]
+        }else{
+            cell.textLabel?.text = dataSourceScreen[indexPath.row]
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedButton.text = dataSourceScreenFiltered[indexPath.row]
+        removeTransparentView()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        homeHeader.commonSearchTxtField.resignFirstResponder()
+        return true
     }
     
 }

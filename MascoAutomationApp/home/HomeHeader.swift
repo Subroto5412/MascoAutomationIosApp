@@ -11,6 +11,7 @@ class HomeHeader: XibView {
 
     @IBOutlet weak var sideMenuView: UIButton!
     @IBOutlet weak var homeHeaderBg: UIView!
+    @IBOutlet weak var commonSearchTxtField: UITextField!
     
     var menuHandler : ((Bool?) -> Void)?
     /*

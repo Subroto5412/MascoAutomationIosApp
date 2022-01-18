@@ -78,6 +78,7 @@
 		4DC3F4D1276F2CAC005F2958 /* SEMBodyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC3F4D0276F2CAC005F2958 /* SEMBodyView.xib */; };
 		4DC4DF152748B48F00EF43ED /* OTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4DF142748B48F00EF43ED /* OTPViewController.swift */; };
 		4DC4DF172748FD7200EF43ED /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4DF162748FD7200EF43ED /* SignupViewController.swift */; };
+		4DC7D87F2796AD8800D7762F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC7D87E2796AD8800D7762F /* Constant.swift */; };
 		4DC804332751F3800006A3E1 /* DailyAttendanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC804322751F3800006A3E1 /* DailyAttendanceView.xib */; };
 		4DC804352751F3960006A3E1 /* DailyAttendanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC804342751F3960006A3E1 /* DailyAttendanceView.swift */; };
 		4DC804372752000D0006A3E1 /* DailyAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC804362752000D0006A3E1 /* DailyAttendanceViewController.swift */; };
@@ -203,6 +204,7 @@
 		4DC3F4D0276F2CAC005F2958 /* SEMBodyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SEMBodyView.xib; sourceTree = "<group>"; };
 		4DC4DF142748B48F00EF43ED /* OTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewController.swift; sourceTree = "<group>"; };
 		4DC4DF162748FD7200EF43ED /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		4DC7D87E2796AD8800D7762F /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		4DC804322751F3800006A3E1 /* DailyAttendanceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyAttendanceView.xib; sourceTree = "<group>"; };
 		4DC804342751F3960006A3E1 /* DailyAttendanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAttendanceView.swift; sourceTree = "<group>"; };
 		4DC804362752000D0006A3E1 /* DailyAttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAttendanceViewController.swift; sourceTree = "<group>"; };
@@ -534,6 +536,7 @@
 				4DC2D49327548861000EDCD8 /* InternetConnectionManager.swift */,
 				4DD0DD5D275C6DE5005EE588 /* Utils.swift */,
 				4DD0DD69275C8126005EE588 /* API.swift */,
+				4DC7D87E2796AD8800D7762F /* Constant.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -828,6 +831,7 @@
 				4DAA63432768662B0073DBB0 /* HPDViewController.swift in Sources */,
 				4DAA63392768647E0073DBB0 /* GPMSViewController.swift in Sources */,
 				4DA6512D274CA55A00488332 /* XibView.swift in Sources */,
+				4DC7D87F2796AD8800D7762F /* Constant.swift in Sources */,
 				4DCDC12C27708BF200D3896E /* LeaveApprovalViewController.swift in Sources */,
 				4DE3854B274F533200707916 /* HRViewController.swift in Sources */,
 				4DAA63412768661D0073DBB0 /* BWPDViewController.swift in Sources */,

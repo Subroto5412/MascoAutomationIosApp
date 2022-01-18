@@ -41,3 +41,4 @@ var LEAVE_SUBMIT_URL = BASE_URL+"v1/leave/submit"
 var LEAVE_APPROVAL_PENDING_LIST_URL = BASE_URL+"v1/leave/pending"
 var LEAVE_APPROVE_LIST_URL = BASE_URL+"v1/leave/approve"
 var LEAVE_REJECT_LIST_URL = BASE_URL+"v1/leave/reject"
+

@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeHeader" customModule="MascoAutomationApp" customModuleProvider="target">
             <connections>
+                <outlet property="commonSearchTxtField" destination="tQa-tJ-hpJ" id="hle-J6-4C2"/>
                 <outlet property="homeHeaderBg" destination="GYA-Pz-Qqx" id="5Xi-6o-th0"/>
                 <outlet property="sideMenuView" destination="HCK-h7-i3Z" id="iRm-P0-g6k"/>
             </connections>
