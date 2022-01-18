@@ -60,7 +60,12 @@ class TaxDetailsViewController: UIViewController {
         let taxYearViewSize = self.taxYearBgView.frame.size.height/1.5
         totalHeight = Int(headerViewSize+taxYearViewSize)
         
-        self.getTaxYearList()
+        if InternetConnectionManager.isConnectedToNetwork(){
+            self.getTaxYearList()
+        }else{
+            self.toastMessage("No Internet Connected!!")
+        }
+        
     }
     
     @IBAction func taxYearBtn(_ sender: Any) {
@@ -179,12 +184,7 @@ class TaxDetailsViewController: UIViewController {
                     do{
                         let TDItemModel = try JSONDecoder().decode(ListTaxDeductResponse.self, from: data)
                         self.dataSourceTD = TDItemModel._taxDeductionsList
-                        
-//                        var totalOuput : Int = 0
-//                        for i in LWPItemModel._lineWiseProduction{
-//                            totalOuput = totalOuput + i.goodGarments!
-//                            self.totalOutputPcs.text = "\(totalOuput)"
-//                        }
+                    
                         self.taxTableView.reloadData()
                     }catch let jsonErr{
                         print(jsonErr)
@@ -272,8 +272,13 @@ extension TaxDetailsViewController : UITableViewDelegate{
         if tableView == taxTableView {
         }else{
             selectedButton.setTitle(dataSource[indexPath.row].yearName, for: .normal)
-            getTaxDeductionList(taxYearNo: dataSource[indexPath.row].taxYearNo!)
-            print("Final Year id: \(dataSource[indexPath.row].taxYearNo!)")
+            
+            if InternetConnectionManager.isConnectedToNetwork(){
+                self.getTaxDeductionList(taxYearNo: dataSource[indexPath.row].taxYearNo!)
+            }else{
+                self.toastMessage("No Internet Connected!!")
+            }
+            
             removeTransparentView()
         }
     }

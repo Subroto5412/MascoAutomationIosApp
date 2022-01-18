@@ -80,7 +80,7 @@ class ViewController: UIViewController {
             }
             
         }else{
-            print("Not Connected")
+            self.toastMessage("No Internet Connected!!")
         }
     }
     @IBAction func rememberMeBtn(_ sender: Any) {

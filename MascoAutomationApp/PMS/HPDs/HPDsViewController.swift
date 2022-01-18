@@ -53,7 +53,12 @@ class HPDsViewController: UIViewController {
         super.viewDidLoad()
 
         self.headerView.titleNameLbl.text = "Hourly Production \nDetails"
-        getUnitNameList()
+        
+        if InternetConnectionManager.isConnectedToNetwork(){
+            self.getUnitNameList()
+        }else{
+            self.toastMessage("No Internet Connected!!")
+        }
         
         self.tableViewHPDs.register(UINib(nibName: "HPDsViewControllerCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableViewHPDs.delegate = self
@@ -299,7 +304,12 @@ extension HPDsViewController : UITableViewDelegate{
         }else{
             unitNoId = dataSource[indexPath.row].unitNo!
             selectedButton.setTitle(dataSource[indexPath.row].unitName, for: .normal)
-            self.getHWPDsList(unitNo: unitNoId, createDate: dateSelect.text!)
+            
+            if InternetConnectionManager.isConnectedToNetwork(){
+                self.getHWPDsList(unitNo: unitNoId, createDate: dateSelect.text!)
+            }else{
+                self.toastMessage("No Internet Connected!!")
+            }
             removeTransparentView()
         }
     }

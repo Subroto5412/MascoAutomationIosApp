@@ -88,29 +88,45 @@ class SignupViewController: UIViewController {
     @IBAction func firstBtn(_ sender: Any) {
         let utils = Utils()
         let otp = oneTxtField.text! + twoTxtField.text! + threeTxtField.text! + fourTxtField.text!
-        print(otp)
-        getOTPVerified(otp:otp, empID: utils.readStringData(key: "empCode"))
+       
+        if InternetConnectionManager.isConnectedToNetwork(){
+            self.getOTPVerified(otp:otp, empID: utils.readStringData(key: "empCode"))
+        }else{
+            self.toastMessage("No Internet Connected!!")
+        }
     }
     
     @IBAction func secondBtn(_ sender: Any) {
         let utils = Utils()
         let otp = oneTxtField.text! + twoTxtField.text! + threeTxtField.text! + fourTxtField.text!
-        print(otp)
-        getOTPVerified(otp:otp, empID: utils.readStringData(key: "empCode"))
+       
+        if InternetConnectionManager.isConnectedToNetwork(){
+            self.getOTPVerified(otp:otp, empID: utils.readStringData(key: "empCode"))
+        }else{
+            self.toastMessage("No Internet Connected!!")
+        }
     }
     
     @IBAction func threeBTn(_ sender: Any) {
         let utils = Utils()
         let otp = oneTxtField.text! + twoTxtField.text! + threeTxtField.text! + fourTxtField.text!
-        print(otp)
-        getOTPVerified(otp:otp, empID: utils.readStringData(key: "empCode"))
+       
+        if InternetConnectionManager.isConnectedToNetwork(){
+            self.getOTPVerified(otp:otp, empID: utils.readStringData(key: "empCode"))
+        }else{
+            self.toastMessage("No Internet Connected!!")
+        }
     }
     
     @IBAction func fourBtn(_ sender: Any) {
         let utils = Utils()
         let otp = oneTxtField.text! + twoTxtField.text! + threeTxtField.text! + fourTxtField.text!
-        print(otp)
-        getOTPVerified(otp:otp, empID: utils.readStringData(key: "empCode"))
+        
+        if InternetConnectionManager.isConnectedToNetwork(){
+            self.getOTPVerified(otp:otp, empID: utils.readStringData(key: "empCode"))
+        }else{
+            self.toastMessage("No Internet Connected!!")
+        }
     }
     
     @IBAction func passwordBtn(_ sender: Any) {
@@ -128,19 +144,21 @@ class SignupViewController: UIViewController {
         }else{
             self.passwordVerified.isHidden = true
         }
-        print("----\(passwordTxtField.text)")
         
     }
     
     @IBAction func signUpBtn(_ sender: Any) {
         let utils = Utils()
-        self.setPassword(empCODE: utils.readStringData(key: "empCode"), Password: repasswordTxtField.text!)
+        
+        if InternetConnectionManager.isConnectedToNetwork(){
+            self.setPassword(empCODE: utils.readStringData(key: "empCode"), Password: repasswordTxtField.text!)
+        }else{
+            self.toastMessage("No Internet Connected!!")
+        }
+    
     }
     
     func getOTPVerified(otp:String, empID: String){
-        
-        print(otp)
-        print(empID)
         
         let url = URL(string: VERIFY_OTP_URL)
         guard let requestUrl = url else { fatalError() }

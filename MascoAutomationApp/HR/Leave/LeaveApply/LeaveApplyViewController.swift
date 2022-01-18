@@ -134,7 +134,16 @@ class LeaveApplyViewController: UIViewController {
             guard let weakSelf = self else {
             return
          }
-         weakSelf.leaveSubmit()
+            if let textReason = self?.bodyView.reasonBgView.text, textReason.isEmpty {
+                self?.toastMessage("Enter Reason!!")
+           }else{
+            if InternetConnectionManager.isConnectedToNetwork(){
+                weakSelf.leaveSubmit()
+            }else{
+                self?.toastMessage("No Internet Connected!!")
+            }
+           }
+         
         }
         
         

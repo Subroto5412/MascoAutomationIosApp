@@ -111,8 +111,12 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         let headerViewSize = self.headerView.frame.size.height
         let taxYearViewSize = self.yearBgView.frame.size.height/1.5
         totalHeight = Int(headerViewSize+taxYearViewSize)
-        getFinancialYearList()
-       
+        
+        if InternetConnectionManager.isConnectedToNetwork(){
+            self.getFinancialYearList()
+        }else{
+            self.toastMessage("No Internet Connected!!")
+        }
     }
     
     func addTransparentView(frames: CGRect) {
@@ -180,9 +184,6 @@ class DailyAttendanceViewControllerDetails: UIViewController {
     
     func getAttendanceDetailsList(FromDate: String, ToDate: String){
         
-        print("--FromDate---\(FromDate)")
-        print("--ToDate---\(ToDate)")
-        
         let utils = Utils()
         let accessToken = utils.readStringData(key: "token")
 
@@ -226,9 +227,13 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         task.resume()
         
         self.removeSpinner()
-        self.getLeaveCountList(FromDate: FromDate, ToDate: ToDate)
         
-       
+        if InternetConnectionManager.isConnectedToNetwork(){
+            self.getLeaveCountList(FromDate: FromDate, ToDate: ToDate)
+        }else{
+            self.toastMessage("No Internet Connected!!")
+        }
+        
     }
     
     
@@ -363,12 +368,20 @@ class DailyAttendanceViewControllerDetails: UIViewController {
                 let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
                 let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(day)"
             
-                self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+                if InternetConnectionManager.isConnectedToNetwork(){
+                    self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+                }else{
+                    self.toastMessage("No Internet Connected!!")
+                }
             }else{
                 let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
                 let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(howManyDayMonth(monthName: monthList[monthList.firstIndex(where: {$0 == selectedMonthLbl.text})!]))"
             
-                self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+                if InternetConnectionManager.isConnectedToNetwork(){
+                    self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+                }else{
+                    self.toastMessage("No Internet Connected!!")
+                }
             }
         }
     }
@@ -420,13 +433,23 @@ class DailyAttendanceViewControllerDetails: UIViewController {
                 let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
                 let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(day)"
             
-                self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+                if InternetConnectionManager.isConnectedToNetwork(){
+                    self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+                }else{
+                    self.toastMessage("No Internet Connected!!")
+                }
+            
             }else{
 //                let month = monthList.firstIndex(where: {$0 == selectedMonthLbl.text})! + 1
                 let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
                 let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(howManyDayMonth(monthName: monthList[monthList.firstIndex(where: {$0 == selectedMonthLbl.text})!]))"
             
-                self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+                if InternetConnectionManager.isConnectedToNetwork(){
+                    self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+                }else{
+                    self.toastMessage("No Internet Connected!!")
+                }
+                
             }
         }
     }
@@ -498,13 +521,23 @@ extension DailyAttendanceViewControllerDetails : UITableViewDelegate{
                 let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
                 let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(day)"
             
-                self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+                if InternetConnectionManager.isConnectedToNetwork(){
+                    self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+                }else{
+                    self.toastMessage("No Internet Connected!!")
+                }
+                
             }else{
 //                let month = monthList.firstIndex(where: {$0 == selectedMonthLbl.text})! + 1
                 let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
                 let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(howManyDayMonth(monthName: monthList[monthList.firstIndex(where: {$0 == selectedMonthLbl.text})!]))"
             
-                self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+                if InternetConnectionManager.isConnectedToNetwork(){
+                    self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+                }else{
+                    self.toastMessage("No Internet Connected!!")
+                }
+                
             }
             
             removeTransparentView()

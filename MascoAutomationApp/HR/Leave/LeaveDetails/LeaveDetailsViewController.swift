@@ -69,10 +69,14 @@ class LeaveDetailsViewController: UIViewController {
         let taxYearViewSize = self.financialBgView.frame.size.height/1.5
         totalHeight = Int(headerViewSize+taxYearViewSize)
        
-        getYearList()
+        if InternetConnectionManager.isConnectedToNetwork(){
+            self.getYearList()
+        }else{
+            self.toastMessage("No Internet Connected!!")
+        }
     }
     @IBAction func financialYearBtn(_ sender: Any) {
-//        dataSource = ["Apple", "Mango", "Orange"]
+        
         selectedButton = financialYear
         addTransparentView(frames: financialYear.frame)
     
@@ -83,40 +87,6 @@ class LeaveDetailsViewController: UIViewController {
         self.present(controller, animated: true, completion: nil);
     }
     
-//    func getFinancialYearList(){
-//
-//        let url = URL(string: YEAR_URL)
-//        guard let requestUrl = url else { fatalError() }
-//
-//        var request = URLRequest(url: requestUrl)
-//        request.httpMethod = "GET"
-//
-//        // Set HTTP Request Header
-//        request.setValue("application/json", forHTTPHeaderField: "Accept")
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//
-//            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-//
-//                DispatchQueue.main.async {
-//
-//                    if let error = error {
-//                        print("Error took place \(error)")
-//                        return
-//                    }
-//                    guard let data = data else {return}
-//
-//                    do{
-//                        let finalYearItemModel = try JSONDecoder().decode(ListFinalYearResponse.self, from: data)
-//                        self.dataSource = finalYearItemModel._listFinalYear
-//
-//                    }catch let jsonErr{
-//                        print(jsonErr)
-//                   }
-//                }
-//        }
-//        task.resume()
-//    }
-//
     func evenHandler() {
         
         self.headerView.backBtnHandler = {
@@ -129,7 +99,6 @@ class LeaveDetailsViewController: UIViewController {
     }
     
     func viewDesign(){
-        
         
         self.financialBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
         self.financialBgView.layer.borderWidth = 0.5
@@ -583,8 +552,13 @@ extension LeaveDetailsViewController : UITableViewDelegate{
             print("---you tapped me!----")
         }else{
             selectedButton.setTitle(dataSource[indexPath.row].finalYearName, for: .normal)
-            print("---you tapped me!----\( dataSource[indexPath.row].finalYearNo!)")
-            self.getLeaveHistorySummary(finalYear: dataSource[indexPath.row].finalYearNo!)
+            
+            if InternetConnectionManager.isConnectedToNetwork(){
+                self.getLeaveHistorySummary(finalYear: dataSource[indexPath.row].finalYearNo!)
+            }else{
+                self.toastMessage("No Internet Connected!!")
+            }
+        
             removeTransparentView()
         }
     }

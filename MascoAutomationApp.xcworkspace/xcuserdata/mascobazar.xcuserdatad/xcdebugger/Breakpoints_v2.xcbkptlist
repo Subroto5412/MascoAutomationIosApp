@@ -14,8 +14,8 @@
             filePath = "MascoAutomationApp/HR/Attendance/DailyAttendance/DailyAttendanceViewControllerDetails.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "getAttendanceDetailsList(FromDate:ToDate:)"
             landmarkType = "7">
             <Locations>

@@ -44,7 +44,11 @@ class BWPDViewController: UIViewController {
         
         self.headerView.titleNameLbl.text = "Buyer Wise Production \nData"
         
-        getUnitNameList()
+        if InternetConnectionManager.isConnectedToNetwork(){
+            self.getUnitNameList()
+        }else{
+            self.toastMessage("No Internet Connected!!")
+        }
         
         self.tableViewBWPD.register(UINib(nibName: "BWPDTitleViewControllerCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableViewBWPD.delegate = self
@@ -273,7 +277,12 @@ extension BWPDViewController : UITableViewDelegate{
         }else{
             unitNoId = dataSource[indexPath.row].unitNo!
             selectedButton.setTitle(dataSource[indexPath.row].unitName, for: .normal)
-            self.getBWPDList(unitNo: unitNoId, createDate: dateSelect.text!)
+            
+            if InternetConnectionManager.isConnectedToNetwork(){
+                self.getBWPDList(unitNo: unitNoId, createDate: dateSelect.text!)
+            }else{
+                self.toastMessage("No Internet Connected!!")
+            }
             removeTransparentView()
         }
        

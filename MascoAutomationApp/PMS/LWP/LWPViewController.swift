@@ -45,7 +45,11 @@ class LWPViewController: UIViewController {
         
         self.headerView.titleNameLbl.text = "Line Wise Production"
         
-        getUnitNameList()
+        if InternetConnectionManager.isConnectedToNetwork(){
+            self.getUnitNameList()
+        }else{
+            self.toastMessage("No Internet Connected!!")
+        }
         
         self.tableViewLWP.register(UINib(nibName: "LWPViewControllerCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableViewLWP.delegate = self
@@ -258,7 +262,13 @@ extension LWPViewController : UITableViewDelegate{
         }else{
             unitNoId = dataSource[indexPath.row].unitNo!
             selectedButton.setTitle(dataSource[indexPath.row].unitName, for: .normal)
-            self.getLWPList(unitNo: unitNoId, createDate: dateSelecct.text!)
+            
+            if InternetConnectionManager.isConnectedToNetwork(){
+                self.self.getLWPList(unitNo: unitNoId, createDate: dateSelecct.text!)
+            }else{
+                self.toastMessage("No Internet Connected!!")
+            }
+            
             removeTransparentView()
         }
 

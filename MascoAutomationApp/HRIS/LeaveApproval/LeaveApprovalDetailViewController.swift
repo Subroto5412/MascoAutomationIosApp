@@ -17,7 +17,6 @@ class LeaveApprovalDetailViewController: UIViewController {
     var vSpinner : UIView?
     
     var dataSource = [ListLeaveApproval]()
-//    var dataSourceApprove = [LeaveApproveList]()
     
     class func initWithStoryboard() -> LeaveApprovalDetailViewController
     {
@@ -25,7 +24,6 @@ class LeaveApprovalDetailViewController: UIViewController {
         let controller = storyboard.instantiateViewController(withIdentifier: LeaveApprovalDetailViewController.className) as! LeaveApprovalDetailViewController
         return controller
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +33,11 @@ class LeaveApprovalDetailViewController: UIViewController {
         leaveApprovalDetailsTableView.delegate = self
         leaveApprovalDetailsTableView.dataSource = self
         
-        getLeaveApprovalDetails()
+        if InternetConnectionManager.isConnectedToNetwork(){
+            self.getLeaveApprovalDetails()
+        }else{
+            self.toastMessage("No Internet Connected!!")
+        }
         
         self.approvalView.approvedBtnView.layer.cornerRadius = 20.0;
         self.approvalView.rejectBtnView.layer.cornerRadius = 20.0;
@@ -69,7 +71,11 @@ class LeaveApprovalDetailViewController: UIViewController {
             guard let weakSelf = self else {
             return
          }
-            weakSelf.submitLeaveApproval()
+            if InternetConnectionManager.isConnectedToNetwork(){
+                weakSelf.submitLeaveApproval()
+            }else{
+                self?.toastMessage("No Internet Connected!!")
+            }
         }
         
         self.approvalView.rejectedBtnHandler = {
@@ -77,7 +83,11 @@ class LeaveApprovalDetailViewController: UIViewController {
             guard let weakSelf = self else {
             return
          }
-            weakSelf.submitLeaveReject()
+            if InternetConnectionManager.isConnectedToNetwork(){
+                weakSelf.submitLeaveReject()
+            }else{
+                self?.toastMessage("No Internet Connected!!")
+            }
         }
     }
     
@@ -89,8 +99,6 @@ class LeaveApprovalDetailViewController: UIViewController {
     func showAllCheckingController(){
       
         let dataSourceLength:Int = Int(dataSource.count)
-       // var index:Int = 0
-      //  print(dataSourceLength)
         
         for index in 0...dataSourceLength-1 {
             
@@ -125,8 +133,6 @@ class LeaveApprovalDetailViewController: UIViewController {
         let newTodoItem = LeaveApprovalPendingRequest(recommPersNo: Int(empCode), responsiblePersNo: Int(empCode))
         let jsonData = try? JSONEncoder().encode(newTodoItem)
         
-       
-
         request.httpBody = jsonData
 
         print("jsonData jsonData  data:\n \(jsonData!)")
@@ -248,9 +254,6 @@ class LeaveApprovalDetailViewController: UIViewController {
                 arrayListReject.append(LeaveRejectList(ApplyNo: applyNo))
             }
         }
-        
-        print(arrayListReject)
-        print("--------\(utils.readStringData(key: "empName"))")
         
         let newTodoItem = LeaveRejectListRequest(leaveRejectList:arrayListReject, ActionBy: utils.readStringData(key: "empName"))
         print(newTodoItem)

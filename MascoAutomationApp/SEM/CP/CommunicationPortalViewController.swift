@@ -73,11 +73,18 @@ class CommunicationPortalViewController: UIViewController {
          weakSelf.showBackController()
         }
         
-        
-        self.getUnitList()
+        if InternetConnectionManager.isConnectedToNetwork(){
+            self.getUnitList()
+        }else{
+            self.toastMessage("No Internet Connected!!")
+        }
         
         if ((unitTextField.text?.isEmpty) != nil) {
-            self.getEmpNameList(unitNo: 0, EmpName: "")
+            if InternetConnectionManager.isConnectedToNetwork(){
+                self.getEmpNameList(unitNo: 0, EmpName: "")
+            }else{
+                self.toastMessage("No Internet Connected!!")
+            }
         }
         
         tableViewUnit.delegate = self
@@ -232,8 +239,6 @@ class CommunicationPortalViewController: UIViewController {
                     do{
                         let unitItemModel = try JSONDecoder().decode(ListUnitNameResponse.self, from: data)
                         self.dataSource = unitItemModel._listUnitName
-                        print("----\(self.dataSource)")
-                        
                         
                     }catch let jsonErr{
                         print(jsonErr)
@@ -278,12 +283,6 @@ class CommunicationPortalViewController: UIViewController {
                     do{
                         let empNameItemModel = try JSONDecoder().decode(ListEmpNameResponse.self, from: data)
                         self.dataSourceName = empNameItemModel._listEmployee
-                        
-                        for i in self.dataSourceName{
-                            print("--------unitNo-----\(i.unitNo)")
-                            print("--------emP_CODE-----\(i.emP_CODE)")
-                            print("--------emp_full-----\(i.emp_full)")
-                        }
                         
                     }catch let jsonErr{
                         print(jsonErr)
@@ -346,8 +345,8 @@ class CommunicationPortalViewController: UIViewController {
                         if let data = try? Data(contentsOf: photoUrl) {
                                 // Create Image and Update Image View
                             self.profilePic.image = UIImage(data: data)
-                            self.profilePic.setRounded()
-                            let skyBlueColor = UIColor(red: 104/255.0, green: 156/255.0, blue: 255/255.0, alpha: 1.0)
+                            self.profilePic.setCornerRounded()
+                            let skyBlueColor = UIColor(red: 255/255.0, green: 234/255.0, blue: 167/255.0, alpha: 1.0)
                             self.profilePic.layer.borderWidth = 2.0
                             self.profilePic.layer.borderColor = skyBlueColor.cgColor
                             }
@@ -414,23 +413,30 @@ extension CommunicationPortalViewController : UITableViewDelegate, UITableViewDa
         if tableView == tableViewUnit{
             
             self.selectedButton.text = filteredDataSource[indexPath.row].unitEName
-            print("----unitNo-----\(filteredDataSource[indexPath.row].unitNo!)")
-            self.getEmpNameList(unitNo: filteredDataSource[indexPath.row].unitNo!, EmpName: "")
+            
+            if InternetConnectionManager.isConnectedToNetwork(){
+                self.getEmpNameList(unitNo: filteredDataSource[indexPath.row].unitNo!, EmpName: "")
+            }else{
+                self.toastMessage("No Internet Connected!!")
+            }
+            
             removeTransparentView()
             
         }else{
-            
             self.selectedButtonName.text = filteredDataSourceName[indexPath.row].emp_full
-            print("----unitNo-----\(filteredDataSourceName[indexPath.row].emP_CODE)")
-//            self.getEmpNameList(unitNo: filteredDataSource[indexPath.row].unitNo!, EmpName: "")
-            getEmpNameDetails(empCode: filteredDataSourceName[indexPath.row].emP_CODE)
+            
+            if InternetConnectionManager.isConnectedToNetwork(){
+                self.getEmpNameDetails(empCode: filteredDataSourceName[indexPath.row].emP_CODE)
+            }else{
+                self.toastMessage("No Internet Connected!!")
+            }
+            
             removeTransparentViewName()
             
         }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("--textField--\(textField)")
         unitTextField.resignFirstResponder()
         nameTextField.resignFirstResponder()
         return true
