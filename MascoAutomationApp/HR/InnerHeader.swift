@@ -9,6 +9,7 @@ import UIKit
 
 class InnerHeader: XibView {
     @IBOutlet weak var searchBgView: UIView!
+    @IBOutlet weak var commonSearchTxtField: UITextField!
     
     var backBtnHandler : ((Bool?) -> Void)?
     /*

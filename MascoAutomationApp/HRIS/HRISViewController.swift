@@ -12,6 +12,15 @@ class HRISViewController: UIViewController {
     @IBOutlet weak var headerView: InnerHeader!
     @IBOutlet weak var bodyView: HRISBodyView!
     
+    
+    var searching = false
+    let transparentView = UIView()
+    let tableViewDropDown = UITableView()
+    var selectedButton = UITextField()
+    
+    //var dataSource = [String]()
+    var dataSourceScreenFiltered = [String]()
+    
     class func initWithStoryboard() -> HRISViewController
     {
         let storyboard = UIStoryboard(name: "HRIS", bundle: nil)
@@ -21,6 +30,12 @@ class HRISViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableViewDropDown.delegate = self
+        tableViewDropDown.dataSource = self
+        tableViewDropDown.register(CellClass.self, forCellReuseIdentifier: "Cell")
+        
+        self.headerView.commonSearchTxtField.addTarget(self, action: #selector(searchRecord), for: .editingChanged)
 
         self.bodyView.HRISUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.HRISUnderBgView.layer.borderWidth = 0.5
@@ -59,4 +74,90 @@ class HRISViewController: UIViewController {
         self.present(controller, animated: true, completion: nil);
     }
 
+    @objc func searchRecord(sender:UITextField ){
+        self.dataSourceScreenFiltered.removeAll()
+        let searchData: Int = self.headerView.commonSearchTxtField.text!.count
+        if searchData != 0 {
+            searching = true
+            for screen in dataSourceScreen
+            {
+                if let ascreenToSearch = self.headerView.commonSearchTxtField.text
+                {
+                    let range = screen.lowercased().range(of: ascreenToSearch, options: .caseInsensitive, range: nil, locale: nil)
+                    if range != nil {
+                        self.dataSourceScreenFiltered.append(screen)
+                    }
+                }
+            }
+        }else{
+            dataSourceScreenFiltered = dataSourceScreen
+            searching = false
+        }
+        selectedButton = headerView.commonSearchTxtField
+        addTransparentView(frames: headerView.commonSearchTxtField.frame)
+        
+        tableViewDropDown.reloadData()
+    }
+
+    func addTransparentView(frames: CGRect) {
+        let window = UIApplication.shared.keyWindow
+        transparentView.frame = window?.frame ?? self.view.frame
+        self.view.addSubview(transparentView)
+        
+        tableViewDropDown.frame = CGRect(x: frames.origin.x+100, y: frames.origin.y + frames.height+80, width: frames.width, height: 0)
+        self.view.addSubview(tableViewDropDown)
+        tableViewDropDown.layer.cornerRadius = 5
+        
+        transparentView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
+        tableViewDropDown.reloadData()
+        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeTransparentView))
+        transparentView.addGestureRecognizer(tapgesture)
+        transparentView.alpha = 0
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            self.transparentView.alpha = 0.5
+            self.tableViewDropDown.frame = CGRect(x: frames.origin.x+100, y: frames.origin.y + frames.height + 5+80, width: frames.width, height: CGFloat(self.dataSourceScreenFiltered.count * 50))
+        }, completion: nil)
+    }
+    
+    @objc func removeTransparentView() {
+        let frames = selectedButton.frame
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            self.transparentView.alpha = 0
+            self.tableViewDropDown.frame = CGRect(x: frames.origin.x+100, y: frames.origin.y + frames.height+80, width: frames.width, height: 0)
+        }, completion: nil)
+    }
+
+}
+
+
+extension HRISViewController : UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if searching {
+            return dataSourceScreenFiltered.count
+        }else{
+            return dataSourceScreen.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableViewDropDown.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        if searching {
+            cell.textLabel?.text = dataSourceScreenFiltered[indexPath.row]
+        }else{
+            cell.textLabel?.text = dataSourceScreen[indexPath.row]
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedButton.text = dataSourceScreenFiltered[indexPath.row]
+        removeTransparentView()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        headerView.commonSearchTxtField.resignFirstResponder()
+        return true
+    }
+    
 }

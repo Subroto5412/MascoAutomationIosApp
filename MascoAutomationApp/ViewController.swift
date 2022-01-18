@@ -170,8 +170,8 @@ class ViewController: UIViewController {
                             print("_subMenuList -----: \(permission._subMenuList)")
                             
                             for subMenuList in permission._subMenuList {
-                                print("activityName -----: \(subMenuList.activityName)")
-                                dataSourceScreen.append(subMenuList.activityName)
+                                print("activityName -----: \(subMenuList.activityNameStr)")
+                                dataSourceScreen.append(subMenuList.activityNameStr)
                             }
                         }
                         
@@ -355,6 +355,7 @@ extension ViewController{
 
     struct SubMenuList: Codable {
         var activityName: String = ""
+        var activityNameStr: String = ""
         var manuId: Int = 0
         var manuStepId: Int = 0
         var parantManuId: Int = 0
@@ -362,6 +363,7 @@ extension ViewController{
         
         enum CodingKeys: String, CodingKey {
             case activityName = "activityName"
+            case activityNameStr = "activityNameStr"
             case manuId = "manuId"
             case manuStepId = "manuStepId"
             case parantManuId = "parantManuId"
@@ -374,6 +376,7 @@ extension ViewController{
 
                let container = try decoder.container(keyedBy: CodingKeys.self)
                self.activityName = try container.decodeIfPresent(String.self, forKey: .activityName) ?? ""
+               self.activityNameStr = try container.decodeIfPresent(String.self, forKey: .activityNameStr) ?? ""
                self.manuId = try container.decodeIfPresent(Int.self, forKey: .manuId) ?? 0
                self.manuStepId = try container.decodeIfPresent(Int.self, forKey: .manuStepId) ?? 0
                self.parantManuId = try container.decodeIfPresent(Int.self, forKey: .parantManuId) ?? 0
@@ -384,6 +387,7 @@ extension ViewController{
 
                var container = encoder.container(keyedBy: CodingKeys.self)
                try container.encode(activityName, forKey: .activityName)
+               try container.encode(activityNameStr, forKey: .activityNameStr)
            }
         
     }
