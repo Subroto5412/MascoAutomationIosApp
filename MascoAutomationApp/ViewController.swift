@@ -180,29 +180,29 @@ class ViewController: UIViewController {
                             print("_subMenuList -----: \(permission._subMenuList)")
                             
                             for subMenuList in permission._subMenuList {
-                                print("activityName -----: \(subMenuList.activityName)")
+                                print("activityName -----: \(subMenuList.activityNameStr)")
                                 dataSourceScreen.append(subMenuList.activityNameStr)
                                 
                                 if subMenuList.activityName == "buyer_wise_production_data"{
-                                    utils.writeAnyData(key: "BWPD", value: subMenuList.activityName)
+                                    utils.writeAnyData(key: "BWPD", value: subMenuList.activityNameStr)
                                 }
                                 else if subMenuList.activityName == "hourly_production_data"{
-                                    utils.writeAnyData(key: "HPD", value: subMenuList.activityName)
+                                    utils.writeAnyData(key: "HPD", value: subMenuList.activityNameStr)
                                 }
                                 else if subMenuList.activityName == "hourly_production_details"{
-                                    utils.writeAnyData(key: "HPDs", value: subMenuList.activityName)
+                                    utils.writeAnyData(key: "HPDs", value: subMenuList.activityNameStr)
                                 }
                                 else if subMenuList.activityName == "line_wise_production"{
-                                    utils.writeAnyData(key: "LWP", value: subMenuList.activityName)
+                                    utils.writeAnyData(key: "LWP", value: subMenuList.activityNameStr)
                                 }
                                 else if subMenuList.activityName == "daily_attendance"{
-                                    utils.writeAnyData(key: "DA", value: subMenuList.activityName)
+                                    utils.writeAnyData(key: "DA", value: subMenuList.activityNameStr)
                                 }
                                 else if subMenuList.activityName == "leave_history"{
-                                    utils.writeAnyData(key: "LH", value: subMenuList.activityName)
+                                    utils.writeAnyData(key: "LH", value: subMenuList.activityNameStr)
                                 }
                                 else if subMenuList.activityName == "tax_history"{
-                                    utils.writeAnyData(key: "TH", value: subMenuList.activityName)
+                                    utils.writeAnyData(key: "TH", value: subMenuList.activityNameStr)
                                 }
                             }
                         }

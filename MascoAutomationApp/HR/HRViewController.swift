@@ -17,7 +17,7 @@ class HRViewController: UIViewController {
     let tableViewDropDown = UITableView()
     var selectedButton = UITextField()
     
-    //var dataSource = [String]()
+    var utils = Utils()
     var dataSourceScreenFiltered = [String]()
     
     class func initWithStoryboard() -> HRViewController
@@ -213,6 +213,37 @@ extension HRViewController : UITableViewDelegate, UITableViewDataSource, UITextF
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedButton.text = dataSourceScreenFiltered[indexPath.row]
+        
+        if String(utils.readStringData(key: "BWPD")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = BWPDViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "HPD")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = HPDViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "HPDs")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = HPDsViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "LWP")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = LWPViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "DA")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = DailyAttendanceViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "LH")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = LeaveViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+            
+        }
+        else if String(utils.readStringData(key: "TH")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = IncomeTaxViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        
         removeTransparentView()
     }
     

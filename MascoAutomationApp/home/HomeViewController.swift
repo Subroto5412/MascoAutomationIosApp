@@ -27,6 +27,7 @@ class HomeViewController: UIViewController {
     
     //var dataSource = [String]()
     var dataSourceScreenFiltered = [String]()
+    var utils = Utils()
     
     class func initWithStoryboard() -> HomeViewController
     {
@@ -40,7 +41,7 @@ class HomeViewController: UIViewController {
         
         self.menuBackgroundView.isHidden = true
         
-        let utils = Utils()
+        
         print("--------\(utils.readStringData(key: "empCode"))----")
         
        // dataSource = dataSourceScreen
@@ -396,7 +397,6 @@ class HomeViewController: UIViewController {
             self.tableViewDropDown.frame = CGRect(x: frames.origin.x+100, y: frames.origin.y + frames.height+80, width: frames.width, height: 0)
         }, completion: nil)
     }
-
 }
 
 
@@ -422,6 +422,37 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UITex
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedButton.text = dataSourceScreenFiltered[indexPath.row]
+        
+        if String(utils.readStringData(key: "BWPD")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = BWPDViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "HPD")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = HPDViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "HPDs")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = HPDsViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "LWP")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = LWPViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "DA")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = DailyAttendanceViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "LH")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = LeaveViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+            
+        }
+        else if String(utils.readStringData(key: "TH")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = IncomeTaxViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        
         removeTransparentView()
     }
     
