@@ -39,12 +39,20 @@ class HomeScreenBody: XibView {
     @IBOutlet weak var dmsItemNameview: UIView!
     @IBOutlet weak var dmsIconView: UIView!
     
+    @IBOutlet weak var amIconView: UIView!
+    @IBOutlet weak var amItemNameView: UIView!
     
     var HRISHandler : ((Bool?) -> Void)?
     var PMSHandler : ((Bool?) -> Void)?
     var SEMHandler : ((Bool?) -> Void)?
     var ATMHandler : ((Bool?) -> Void)?
     var ILMHandler : ((Bool?) -> Void)?
+    var DSMHandler : ((Bool?) -> Void)?
+    var DMSHandler : ((Bool?) -> Void)?
+    var AMSHandler : ((Bool?) -> Void)?
+    var AMHandler : ((Bool?) -> Void)?
+    var MMHandler : ((Bool?) -> Void)?
+    var SCMHandler : ((Bool?) -> Void)?
     
     @IBAction func HRISBtn(_ sender: UIButton) {
         self.HRISHandler?(true)
@@ -64,5 +72,29 @@ class HomeScreenBody: XibView {
     
     @IBAction func ILMBtn(_ sender: Any) {
         self.ILMHandler?(true)
+    }
+    
+    @IBAction func AMBtn(_ sender: Any) {
+        self.AMHandler?(true)
+    }
+    
+    @IBAction func DMSBtn(_ sender: Any) {
+        self.DMSHandler?(true)
+    }
+    
+    @IBAction func DSMBtn(_ sender: Any) {
+        self.DSMHandler?(true)
+    }
+    
+    @IBAction func AMSBtn(_ sender: Any) {
+        self.AMSHandler?(true)
+    }
+    
+    @IBAction func MMBtn(_ sender: Any) {
+        self.MMHandler?(true)
+    }
+    
+    @IBAction func SCMBtn(_ sender: Any) {
+        self.SCMHandler?(true)
     }
 }

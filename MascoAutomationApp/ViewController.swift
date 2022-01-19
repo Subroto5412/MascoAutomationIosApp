@@ -166,12 +166,44 @@ class ViewController: UIViewController {
                         
                         for permission in todoItemModel._permissionList {
                             
+                            if permission.moduleName == "GPMSModule"{
+                                utils.writeAnyData(key: "GPMSModule", value: permission.moduleName)
+                            }
+                            else if permission.moduleName == "HRModule"{
+                                utils.writeAnyData(key: "HRModule", value: permission.moduleName)
+                            }
+                            else if permission.moduleName == "SCMModule"{
+                                utils.writeAnyData(key: "SCMModule", value: permission.moduleName)
+                            }
+                            
                             print("todoItemModel -----: \(permission.moduleName)")
                             print("_subMenuList -----: \(permission._subMenuList)")
                             
                             for subMenuList in permission._subMenuList {
-                                print("activityName -----: \(subMenuList.activityNameStr)")
+                                print("activityName -----: \(subMenuList.activityName)")
                                 dataSourceScreen.append(subMenuList.activityNameStr)
+                                
+                                if subMenuList.activityName == "buyer_wise_production_data"{
+                                    utils.writeAnyData(key: "BWPD", value: subMenuList.activityName)
+                                }
+                                else if subMenuList.activityName == "hourly_production_data"{
+                                    utils.writeAnyData(key: "HPD", value: subMenuList.activityName)
+                                }
+                                else if subMenuList.activityName == "hourly_production_details"{
+                                    utils.writeAnyData(key: "HPDs", value: subMenuList.activityName)
+                                }
+                                else if subMenuList.activityName == "line_wise_production"{
+                                    utils.writeAnyData(key: "LWP", value: subMenuList.activityName)
+                                }
+                                else if subMenuList.activityName == "daily_attendance"{
+                                    utils.writeAnyData(key: "DA", value: subMenuList.activityName)
+                                }
+                                else if subMenuList.activityName == "leave_history"{
+                                    utils.writeAnyData(key: "LH", value: subMenuList.activityName)
+                                }
+                                else if subMenuList.activityName == "tax_history"{
+                                    utils.writeAnyData(key: "TH", value: subMenuList.activityName)
+                                }
                             }
                         }
                         

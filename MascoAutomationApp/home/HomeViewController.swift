@@ -96,7 +96,54 @@ class HomeViewController: UIViewController {
             guard let weakSelf = self else {
             return
          }
-         weakSelf.showHRISController()
+         weakSelf.showILMController()
+        }
+        
+        self.homeBody.DSMHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showDSMController()
+        }
+        
+        self.homeBody.DMSHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showDMSController()
+        }
+        
+        self.homeBody.AMSHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showAMSController()
+        }
+        
+        self.homeBody.AMHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showAMController()
+        }
+        
+        self.homeBody.MMHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showMMController()
+        }
+        self.homeBody.SCMHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showSCMController()
         }
           
         let arcCenter = CGPoint(x: self.homeBody.iconView.bounds.size.width / 2, y: self.homeBody.iconView.bounds.size.height)
@@ -190,6 +237,15 @@ class HomeViewController: UIViewController {
         self.homeBody.dmsIconView.layer.mask = circleShapeDMS
         self.homeBody.dmsItemNameview.layer.cornerRadius = 20
         
+        let arcCenterAM = CGPoint(x: self.homeBody.dmsIconView.bounds.size.width / 2, y: self.homeBody.amIconView.bounds.size.height)
+        let circleRadiusAM = self.homeBody.amIconView.bounds.size.width / 2
+        let circlePathAM = UIBezierPath(arcCenter: arcCenterAM, radius: circleRadiusAM, startAngle: CGFloat.pi, endAngle: CGFloat.pi * 2, clockwise: true)
+          
+        let circleShapeAM = CAShapeLayer()
+        circleShapeAM.path = circlePathAM.cgPath
+        self.homeBody.amIconView.layer.mask = circleShapeAM
+        self.homeBody.amItemNameView.layer.cornerRadius = 20
+        
         self.homeHeader.homeHeaderBg.layer.cornerRadius = 10
     }
     
@@ -240,14 +296,36 @@ class HomeViewController: UIViewController {
         let controller = ATMViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
+
+    func showILMController(){
+        toastMessage("under construction!!")
+    }
     
+    func showSCMController(){
+        toastMessage("under construction!!")
+    }
     
-    func showHRISController(){
+    func showMMController(){
+        toastMessage("under construction!!")
+    }
+    
+    func showAMController(){
         
         let controller = HRISViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
     
+    func showAMSController(){
+        toastMessage("under construction!!")
+    }
+    
+    func showDMSController(){
+        toastMessage("under construction!!")
+    }
+    
+    func showDSMController(){
+        toastMessage("under construction!!")
+    }
     
     func hideMenuView()
     {
