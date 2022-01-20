@@ -9,7 +9,18 @@ import UIKit
 
 class PopUpViewController: UIViewController {
 
-    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var assetNoLbl: UILabel!
+    @IBOutlet weak var assetNameLbl: UILabel!
+    @IBOutlet weak var unitLbl: UILabel!
+    @IBOutlet weak var purchaseDateLbl: UILabel!
+    @IBOutlet weak var purchaseValueLbl: UILabel!
+    @IBOutlet weak var assetEntryDateLbl: UILabel!
+    
+    @IBOutlet weak var popupViewBg: UIView!
+    
+    @IBOutlet weak var scanAnotherQR: UIButton!
+    @IBOutlet weak var cancel: UIButton!
+    
     var vSpinner : UIView?
     class func initWithStoryboard() -> PopUpViewController
     {
@@ -21,11 +32,15 @@ class PopUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.popupViewBg.layer.cornerRadius = 5
+        self.scanAnotherQR.layer.cornerRadius = 20
+        self.cancel.layer.cornerRadius = 20
+        
         print("--QRCODE-----\(QRCODE)")
         getQRCoder(qrCode: QRCODE)
     }
     
-    @IBAction func againBtn(_ sender: Any) {
+    @IBAction func scanAnotherQRBtn(_ sender: Any) {
         
          self.dismiss(animated: true, completion: nil)
         let controller = QRCodeScannerViewController.initWithStoryboard()
@@ -51,21 +66,15 @@ class PopUpViewController: UIViewController {
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        
         let newTodoItem = QRCodeRequest(qr_code: qrCode)
         let jsonData = try? JSONEncoder().encode(newTodoItem)
-        
-       
-
+    
         request.httpBody = jsonData
-
-        print("jsonData jsonData  data:\n \(jsonData!)")
+        
         self.showSpinner(onView: self.view)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 self.removeSpinner()
                 DispatchQueue.main.async {
-                    
-                   // self.hideLoading(finished: {
                         
                     if let error = error {
                         print("Error took place \(error)")
@@ -76,21 +85,16 @@ class PopUpViewController: UIViewController {
                     do{
                         let itemModel = try JSONDecoder().decode(QRCodeDataResponse.self, from: data)
                        
-                        self.nameLbl.text = itemModel.assetDataDetails.assetName
-//                        self.toastMessage("\(itemModel.assetDataDetails.assetName)")"
+                        self.assetNoLbl.text = itemModel.assetDataDetails.assetNo
+                        self.assetNameLbl.text = itemModel.assetDataDetails.assetName
+                        self.unitLbl.text = itemModel.assetDataDetails.unitName
+                        self.purchaseDateLbl.text = itemModel.assetDataDetails.purchaseDate
+                        self.purchaseValueLbl.text = "\(String(describing: itemModel.assetDataDetails.purchaseValue!))"
+                        self.assetEntryDateLbl.text = itemModel.assetDataDetails.assetEntryDate
                         
-                       // self.alertDialog.isHidden = false
-                        
-//                        for item in itemModel.assetDataDetails{
-                         
-//                            self.toastMessage(item.assetName)
-                         //   self.nameLbl.text = item.assetName
-//                        }
-                    
                     }catch let jsonErr{
                         print(jsonErr)
                    }
-                   // })
                 }
         }
         task.resume()

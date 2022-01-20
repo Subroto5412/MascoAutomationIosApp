@@ -9,7 +9,7 @@ import UIKit
 
 class ATMViewController: UIViewController {
 
-    @IBOutlet weak var headerView: InnerHeader!
+    @IBOutlet weak var headerView: CommonHeaderView!
     @IBOutlet weak var bodyView: ATMBodyView!
     
     class func initWithStoryboard() -> ATMViewController
@@ -22,6 +22,8 @@ class ATMViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.headerView.titleNameLbl.text = "Asset Basic Data"
+        
         self.bodyView.assetBasicUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.assetBasicUnderBgView.layer.borderWidth = 0.5
         self.bodyView.assetBasicUnderBgView.layer.cornerRadius = 20
@@ -29,8 +31,6 @@ class ATMViewController: UIViewController {
         self.bodyView.assetBasicBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.assetBasicBgView.layer.borderWidth = 0.5
         self.bodyView.assetBasicBgView.layer.cornerRadius = 20
-        
-        self.headerView.searchBgView.layer.cornerRadius = 10
         
         self.headerView.backBtnHandler = {
             [weak self] (isShow) in
