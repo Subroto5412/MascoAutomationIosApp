@@ -66,6 +66,9 @@
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z6z-Ox-TCr">
                             <rect key="frame" x="0.0" y="0.0" width="390" height="75"/>
+                            <connections>
+                                <action selector="ATMBtn:" destination="-1" eventType="touchUpInside" id="FMA-Vf-MmQ"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

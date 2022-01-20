@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D00610B2799344200E13D26 /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D00610A2799344200E13D26 /* QRCodeScannerViewController.swift */; };
 		4D116BF2276453590065C07D /* LeaveDetailsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D116BF1276453590065C07D /* LeaveDetailsView.storyboard */; };
 		4D116BF52764791A0065C07D /* LeaveDetailsControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D116BF32764791A0065C07D /* LeaveDetailsControllerCell.swift */; };
 		4D116BF62764791A0065C07D /* LeaveDetailsControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D116BF42764791A0065C07D /* LeaveDetailsControllerCell.xib */; };
@@ -36,6 +37,7 @@
 		4D7FB4D12744D45100B318DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D7FB4CF2744D45100B318DA /* Main.storyboard */; };
 		4D7FB4D32744D45200B318DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D7FB4D22744D45200B318DA /* Assets.xcassets */; };
 		4D7FB4D62744D45200B318DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D7FB4D42744D45200B318DA /* LaunchScreen.storyboard */; };
+		4D8C5B4B27994E3D00FB8D3F /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8C5B4A27994E3D00FB8D3F /* PopUpViewController.swift */; };
 		4D99D96D2765C8B3004E6259 /* TaxDetailsViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D99D96B2765C8B3004E6259 /* TaxDetailsViewControllerCell.swift */; };
 		4D99D96E2765C8B3004E6259 /* TaxDetailsViewControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D99D96C2765C8B3004E6259 /* TaxDetailsViewControllerCell.xib */; };
 		4D9E269127858F4B00EA93C2 /* ApprovalBgView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9E269027858F4B00EA93C2 /* ApprovalBgView.xib */; };
@@ -127,6 +129,7 @@
 
 /* Begin PBXFileReference section */
 		16B1BCE2C9DB8E528327C359 /* Pods_MascoAutomationApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MascoAutomationApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D00610A2799344200E13D26 /* QRCodeScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerViewController.swift; sourceTree = "<group>"; };
 		4D116BF1276453590065C07D /* LeaveDetailsView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeaveDetailsView.storyboard; sourceTree = "<group>"; };
 		4D116BF32764791A0065C07D /* LeaveDetailsControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveDetailsControllerCell.swift; sourceTree = "<group>"; };
 		4D116BF42764791A0065C07D /* LeaveDetailsControllerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaveDetailsControllerCell.xib; sourceTree = "<group>"; };
@@ -162,6 +165,7 @@
 		4D7FB4D22744D45200B318DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D7FB4D52744D45200B318DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D7FB4D72744D45200B318DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D8C5B4A27994E3D00FB8D3F /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		4D99D96B2765C8B3004E6259 /* TaxDetailsViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxDetailsViewControllerCell.swift; sourceTree = "<group>"; };
 		4D99D96C2765C8B3004E6259 /* TaxDetailsViewControllerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaxDetailsViewControllerCell.xib; sourceTree = "<group>"; };
 		4D9E269027858F4B00EA93C2 /* ApprovalBgView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApprovalBgView.xib; sourceTree = "<group>"; };
@@ -490,6 +494,8 @@
 				4DC3F4C8276F2077005F2958 /* ATM.storyboard */,
 				4DC3F4CA276F2C6D005F2958 /* ATMBodyView.xib */,
 				4DC3F4CC276F2C83005F2958 /* ATMBodyView.swift */,
+				4D00610A2799344200E13D26 /* QRCodeScannerViewController.swift */,
+				4D8C5B4A27994E3D00FB8D3F /* PopUpViewController.swift */,
 			);
 			path = ATM;
 			sourceTree = "<group>";
@@ -783,6 +789,7 @@
 				4DC8044A27523DFA0006A3E1 /* NSObject+Extension.swift in Sources */,
 				4DC3F4CF276F2C9D005F2958 /* SEMBodyView.swift in Sources */,
 				4DC4DF172748FD7200EF43ED /* SignupViewController.swift in Sources */,
+				4D8C5B4B27994E3D00FB8D3F /* PopUpViewController.swift in Sources */,
 				4DD0DD5E275C6DE5005EE588 /* Utils.swift in Sources */,
 				4DB0E0DF2766FFD900B188E6 /* ApplyFormView.swift in Sources */,
 				4DECB9E3278D7CB4000AC92F /* TotalAmountHPDsView.swift in Sources */,
@@ -792,6 +799,7 @@
 				4DC2D49427548861000EDCD8 /* InternetConnectionManager.swift in Sources */,
 				4D466E49275DDE70005F0E3C /* LeaveDetailsViewController.swift in Sources */,
 				4D99D96D2765C8B3004E6259 /* TaxDetailsViewControllerCell.swift in Sources */,
+				4D00610B2799344200E13D26 /* QRCodeScannerViewController.swift in Sources */,
 				4DCDC12A277069BE00D3896E /* HRISBodyView.swift in Sources */,
 				4DD0DD6A275C8126005EE588 /* API.swift in Sources */,
 				4DECB9DF278D732A000AC92F /* TotalAmountShowView.swift in Sources */,

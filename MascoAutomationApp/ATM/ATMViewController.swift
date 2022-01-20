@@ -39,10 +39,23 @@ class ATMViewController: UIViewController {
          }
          weakSelf.showHomeController()
         }
+        
+        self.bodyView.ATMHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.scanATMProduct()
+        }
     }
 
     func showHomeController(){
         let controller = HomeViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
+    
+    func scanATMProduct(){
+        let controller = QRCodeScannerViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
 }

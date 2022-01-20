@@ -11,12 +11,10 @@ class ATMBodyView: XibView {
 
     @IBOutlet weak var assetBasicUnderBgView: UIView!
     @IBOutlet weak var assetBasicBgView: UIView!
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+    
+    var ATMHandler : ((Bool?) -> Void)?
 
+    @IBAction func ATMBtn(_ sender: Any) {
+        self.ATMHandler?(true)
+    }
 }

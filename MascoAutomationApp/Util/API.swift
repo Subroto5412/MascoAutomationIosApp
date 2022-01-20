@@ -42,3 +42,4 @@ var LEAVE_APPROVAL_PENDING_LIST_URL = BASE_URL+"v1/leave/pending"
 var LEAVE_APPROVE_LIST_URL = BASE_URL+"v1/leave/approve"
 var LEAVE_REJECT_LIST_URL = BASE_URL+"v1/leave/reject"
 
+var ATM_QRCODE_READ_URL = BASE_URL+"v1/atm/asset/basic-data"
