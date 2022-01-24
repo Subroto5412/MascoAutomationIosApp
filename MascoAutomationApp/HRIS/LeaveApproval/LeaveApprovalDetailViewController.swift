@@ -17,6 +17,7 @@ class LeaveApprovalDetailViewController: UIViewController {
     var vSpinner : UIView?
     
     var dataSource = [ListLeaveApproval]()
+    var AllCheck:Bool = false
     
     class func initWithStoryboard() -> LeaveApprovalDetailViewController
     {
@@ -99,17 +100,30 @@ class LeaveApprovalDetailViewController: UIViewController {
     func showAllCheckingController(){
       
         let dataSourceLength:Int = Int(dataSource.count)
-        
-        for index in 0...dataSourceLength-1 {
-            
-            if dataSource[index].check == !false {
-                self.dataSource[index].check = false
-                self.tableViewHeaderView.allCheckingBtn.setImage(UIImage(named: "not_checking"), for: UIControl.State.normal)
-            }else {
-                 self.dataSource[index].check = true
-                 self.tableViewHeaderView.allCheckingBtn.setImage(UIImage(named: "checking"), for: UIControl.State.normal)
+        if AllCheck == false {
+            for index in 0...dataSourceLength-1 {
+            self.dataSource[index].check = true
+            self.tableViewHeaderView.allCheckingBtn.setImage(UIImage(named: "checking"), for: UIControl.State.normal)
+                AllCheck = true
+            }
+        }else{
+            for index in 0...dataSourceLength-1 {
+            self.dataSource[index].check = false
+            self.tableViewHeaderView.allCheckingBtn.setImage(UIImage(named: "not_checking"), for: UIControl.State.normal)
+                AllCheck = false
             }
         }
+       
+//        for index in 0...dataSourceLength-1 {
+//
+//            if dataSource[index].check == !false {
+//                self.dataSource[index].check = false
+//                self.tableViewHeaderView.allCheckingBtn.setImage(UIImage(named: "not_checking"), for: UIControl.State.normal)
+//            }else {
+//                 self.dataSource[index].check = true
+//                 self.tableViewHeaderView.allCheckingBtn.setImage(UIImage(named: "checking"), for: UIControl.State.normal)
+//            }
+//        }
         self.leaveApprovalDetailsTableView.reloadData()
     }
     
