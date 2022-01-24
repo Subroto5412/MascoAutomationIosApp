@@ -55,7 +55,6 @@ class LeaveDetailsViewController: UIViewController {
         tableViewAvail.dataSource = self
         self.tableViewAvail.register(UINib(nibName: "LeaveDetailsControllerCell", bundle: nil), forCellReuseIdentifier: "cell_avail")
         
-        
         self.leaveSummaryCollectionView.register(UINib(nibName: "LeaveSummaryCollectionCell", bundle: nil), forCellWithReuseIdentifier: "leave_summary_cell")
         
         tableView.delegate = self
@@ -195,7 +194,6 @@ class LeaveDetailsViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                 
-                    
                     if let error = error {
                         print("Error took place \(error)")
                         return
@@ -203,37 +201,14 @@ class LeaveDetailsViewController: UIViewController {
                     guard let data = data else {return}
 
                     do{
-                        
                         let todoItemModel = try JSONDecoder().decode(LeaveDetailsResponse.self, from: data)
                         self.dataSourceLeaveHistory = todoItemModel._LeaveHistoryformatList
                         
-                      
-                        
-                        for leaveHistoryformatList in todoItemModel._LeaveHistoryformatList {
-                            
-                            print("------type_name -----: \(leaveHistoryformatList.type_name)")
-                            print("------cl -----: \(leaveHistoryformatList.cl)")
-                            print("----sl -----: \(leaveHistoryformatList.sl)")
-                            print("----el -----: \(leaveHistoryformatList.el)")
-                            
-                        }
-                        
-//                        if !self.empCodeString.isEmpty{
-//                            let controller = HomeViewController.initWithStoryboard()
-//                            self.present(controller, animated: true, completion: nil);
-//                            print("----error: \("Success")----")
-//                        }else{
-//                                print("----error: \(todoItemModel.error)----")
-//                        }
                         self.leaveSummaryCollectionView.reloadData()
                     }catch let jsonErr{
                         print(jsonErr)
                    }
-                //    self.indicator.stopAnimating()
-                  //  self.indicator.isHidden = true
-//                    self.getYearList()
                 }
-               
         }
      
         task.resume()
@@ -241,7 +216,6 @@ class LeaveDetailsViewController: UIViewController {
        
     }
 
-    
     func getAvailHistorySummary(finalYear:Int){
         
         let utils = Utils()
@@ -271,7 +245,6 @@ class LeaveDetailsViewController: UIViewController {
                 self.removeSpinner()
                 DispatchQueue.main.async {
                 
-                    
                     if let error = error {
                         print("Error took place \(error)")
                         return
@@ -279,7 +252,6 @@ class LeaveDetailsViewController: UIViewController {
                     guard let data = data else {return}
 
                     do{
-                        
                         let todoItemModel = try JSONDecoder().decode(AvailHistorySummaryResponse.self, from: data)
                         self.dataSourceAvail = todoItemModel._availHistoryList
                         self.tableViewAvail.reloadData()
@@ -312,7 +284,6 @@ func getYearList(){
             
             DispatchQueue.main.async {
             
-                
                 if let error = error {
                     print("Error took place \(error)")
                     return
@@ -320,41 +291,19 @@ func getYearList(){
                 guard let data = data else {return}
 
                 do{
-                    
                     let todoItemModel = try JSONDecoder().decode(ListFinalYearResponse.self, from: data)
                     self.dataSource = todoItemModel._listFinalYear
                     print("Response data:\n \(todoItemModel)")
                     print("todoItemModel error: \(todoItemModel.error)")
                     
-                  
-                    
-                    for leaveHistoryformatList in todoItemModel._listFinalYear {
-                        
-                        print("------type_finalYearNamename -----: \(leaveHistoryformatList.finalYearName)")
-                        print("------yearName -----: \(leaveHistoryformatList.yearName)")
-                        print("----finalYearNo -----: \(leaveHistoryformatList.finalYearNo!)")
-                       
-                        
-                    }
-                    
-//                        if !self.empCodeString.isEmpty{
-//                            let controller = HomeViewController.initWithStoryboard()
-//                            self.present(controller, animated: true, completion: nil);
-//                            print("----error: \("Success")----")
-//                        }else{
-//                                print("----error: \(todoItemModel.error)----")
-//                        }
-                    
                 }catch let jsonErr{
                     print(jsonErr)
                }
-            //    self.indicator.isHidden = true
-            //    self.indicator.stopAnimating()
-            }
+        }
     }
  
     task.resume()
-}
+  }
 }
 
 extension LeaveDetailsViewController{
@@ -412,7 +361,6 @@ extension LeaveDetailsViewController{
                self.cl = try container.decodeIfPresent(String.self, forKey: .cl) ?? ""
                self.sl = try container.decodeIfPresent(String.self, forKey: .sl) ?? ""
                self.el = try container.decodeIfPresent(String.self, forKey: .el) ?? ""
-            
            }
 
            func encode(to encoder: Encoder) throws {
@@ -424,7 +372,6 @@ extension LeaveDetailsViewController{
                try container.encode(el, forKey: .el)
            }
     }
-    
     
     //AVail History Summary
     struct AvailHistorySummaryList: Codable {
@@ -450,7 +397,6 @@ extension LeaveDetailsViewController{
                self.approveFromDate = try container.decodeIfPresent(String.self, forKey: .approveFromDate) ?? ""
                self.approveToDate = try container.decodeIfPresent(String.self, forKey: .approveToDate) ?? ""
                self.applicationDate = try container.decodeIfPresent(String.self, forKey: .applicationDate) ?? ""
-            
            }
 
            func encode(to encoder: Encoder) throws {
@@ -507,7 +453,6 @@ extension LeaveDetailsViewController{
                self.finalYearNo = try container.decodeIfPresent(Int.self, forKey: .finalYearNo) ?? 0
                self.finalYearName = try container.decodeIfPresent(String.self, forKey: .finalYearName) ?? ""
                self.yearName = try container.decodeIfPresent(String.self, forKey: .yearName) ?? ""
-            
            }
 
            func encode(to encoder: Encoder) throws {
@@ -529,14 +474,12 @@ extension LeaveDetailsViewController{
         }
         
          init(from decoder: Decoder) throws {
-
                 let container = try decoder.container(keyedBy: CodingKeys.self)
                 self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
                 self._listFinalYear = try container.decodeIfPresent([ListFinalYear].self, forKey: ._listFinalYear) ?? []
             }
 
             func encode(to encoder: Encoder) throws {
-
                 var container = encoder.container(keyedBy: CodingKeys.self)
                 try container.encode(error, forKey: .error)
                 try container.encode(_listFinalYear, forKey: ._listFinalYear)
@@ -558,7 +501,6 @@ extension LeaveDetailsViewController : UITableViewDelegate{
             }else{
                 self.toastMessage("No Internet Connected!!")
             }
-        
             removeTransparentView()
         }
     }
@@ -572,7 +514,6 @@ extension LeaveDetailsViewController : UITableViewDataSource{
         }else{
             return dataSource.count
         }
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -585,10 +526,8 @@ extension LeaveDetailsViewController : UITableViewDataSource{
             cell.toDateLbl.text = dataSourceAvail[indexPath.row].approveToDate
             cell.applicationDateLbl.text = dataSourceAvail[indexPath.row].applicationDate
             return cell
-
         }
         else{
-
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
             cell.textLabel?.text = dataSource[indexPath.row].finalYearName
             return cell
@@ -600,16 +539,12 @@ extension LeaveDetailsViewController : UITableViewDataSource{
         }else{
             return 50
         }
-        
     }
-
 }
 
 
 extension LeaveDetailsViewController : UICollectionViewDelegate {
-    
 }
-
 
 extension LeaveDetailsViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -635,9 +570,6 @@ extension LeaveDetailsViewController : UICollectionViewDataSource {
         
         return cell
     }
-    
-    
-
 }
 
 extension LeaveDetailsViewController : UICollectionViewDelegateFlowLayout{
@@ -673,7 +605,6 @@ extension LeaveDetailsViewController {
                spinnerView.addSubview(ai)
                onView.addSubview(spinnerView)
            }
-           
            vSpinner = spinnerView
        }
        
