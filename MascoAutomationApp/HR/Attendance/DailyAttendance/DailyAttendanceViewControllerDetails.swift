@@ -560,46 +560,10 @@ extension DailyAttendanceViewControllerDetails : UITableViewDataSource{
         if tableView == tableViewDailyAttendance {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell_daily_attendance", for: indexPath) as! DailyAttendanceTableViewCell
-        
-            cell.statusLbl.text = dataSourceAttendanceDetails[indexPath.row].fSts
-            cell.otLbl.text = dataSourceAttendanceDetails[indexPath.row].additionalTime
-            cell.punchInLbl.text = dataSourceAttendanceDetails[indexPath.row].punchInTime
-            cell.punchInLbl.text = dataSourceAttendanceDetails[indexPath.row].punchOutTime
-            cell.dayLbl.text = String(dataSourceAttendanceDetails[indexPath.row].datePunch.prefix(2))
             
-            let monthString:String = dataSourceAttendanceDetails[indexPath.row].datePunch
-            cell.monthLbl.text = monthString.substring(with: 3..<6)
-            
-            
-            if dataSourceAttendanceDetails[indexPath.row].punchInTime == "12:00:00 AM" {
-                cell.punchInLbl.text = "0"
-            }else{
-                cell.punchInLbl.text = dataSourceAttendanceDetails[indexPath.row].punchInTime
-            }
-
-            if dataSourceAttendanceDetails[indexPath.row].punchOutTime == "12:00:00 AM" {
-                cell.punchOutLbl.text = "0"
-            }else{
-                cell.punchOutLbl.text = dataSourceAttendanceDetails[indexPath.row].punchOutTime
-            }
-           
-            if dataSourceAttendanceDetails[indexPath.row].datePunch == formattedDate {
-                cell.dateBgView.backgroundColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0)
-            }
-            
-            
-            if dataSourceAttendanceDetails[indexPath.row].fSts == "SL" || dataSourceAttendanceDetails[indexPath.row].fSts == "CL" || dataSourceAttendanceDetails[indexPath.row].fSts == "EL" || dataSourceAttendanceDetails[indexPath.row].fSts == "LWP"{
-                
-                print(dataSourceAttendanceDetails[indexPath.row].fSts)
-                
-                cell.dateBgView.backgroundColor = UIColor(red: 255/255, green: 84/255, blue: 85/255, alpha: 1.0)
-            }
-            
-            if dataSourceAttendanceDetails[indexPath.row].fSts == "WHD" || dataSourceAttendanceDetails[indexPath.row].fSts == "GHD" ||
-                dataSourceAttendanceDetails[indexPath.row].fSts == "CHD" || dataSourceAttendanceDetails[indexPath.row].fSts == "QO"{
-                cell.statusLbl.textColor = UIColor(red: 255/255, green: 84/255, blue: 85/255, alpha: 1.0)
-            }
-            
+            cell.setInformation(withItem: dataSourceAttendanceDetails[indexPath.row] as ListAttendanceDetails, formattedDate: formattedDate)
+            cell.layoutIfNeeded()
+            cell.setNeedsDisplay()
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
