@@ -51,7 +51,7 @@ class DDViewController: UIViewController {
     }
     
     func showBackController(){
-        let controller = HRViewController.initWithStoryboard()
+        let controller = HomeViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
     

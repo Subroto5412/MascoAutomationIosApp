@@ -12,7 +12,7 @@ class TrackingListViewController: UIViewController {
     @IBOutlet weak var headerView: CommonHeaderView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var footerView: CommonFooter!
-    
+    var dataSource = [TrackingList]()
     
     class func initWithStoryboard() -> TrackingListViewController
     {
@@ -43,6 +43,47 @@ class TrackingListViewController: UIViewController {
         let controller = DDViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
+    
+    func getTrackingList(){
+        
+        let url = URL(string: TRACKING_LIST_URL)
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "GET"
+        
+        // Set HTTP Request Header
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        self.showLoading(finished: {
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+                DispatchQueue.main.async {
+                    
+                    self.hideLoading(finished: {
+                        
+                    if let error = error {
+                        print("Error took place \(error)")
+                        return
+                    }
+                    guard let data = data else {return}
+
+                    do{
+                        let itemModel = try JSONDecoder().decode(TrackingListResponse.self, from: data)
+                        self.dataSource = itemModel._trackingList
+                        
+                        self.tableView.reloadData()
+                    }catch let jsonErr{
+                        print(jsonErr)
+                   }
+                    })
+                }
+        }
+        task.resume()
+        })
+    }
+    
 }
 
 extension TrackingListViewController : UITableViewDelegate{
@@ -74,3 +115,79 @@ extension TrackingListViewController : UITableViewDataSource{
     }
 }
 
+extension TrackingListViewController {
+
+    struct TrackingList: Codable {
+        
+        var trackingNo: String = ""
+        var sendToAddress: String = ""
+        
+        enum CodingKeys: String, CodingKey {
+            case trackingNo = "trackingNo"
+            case sendToAddress = "sendToAddress"
+        }
+        
+        init(from decoder: Decoder) throws {
+
+               let container = try decoder.container(keyedBy: CodingKeys.self)
+               self.trackingNo = try container.decodeIfPresent(String.self, forKey: .trackingNo) ?? ""
+               self.sendToAddress = try container.decodeIfPresent(String.self, forKey: .sendToAddress) ?? ""
+           }
+
+           func encode(to encoder: Encoder) throws {
+
+               var container = encoder.container(keyedBy: CodingKeys.self)
+               try container.encode(trackingNo, forKey: .trackingNo)
+               try container.encode(sendToAddress, forKey: .sendToAddress)
+           }
+    }
+    
+    struct TrackingListResponse: Codable {
+        var error: String = ""
+        var success: Bool = false
+        var _trackingList : [TrackingList]
+
+        enum CodingKeys: String, CodingKey {
+            case error = "error"
+            case success = "success"
+            case _trackingList
+        }
+        
+         init(from decoder: Decoder) throws {
+
+                let container = try decoder.container(keyedBy: CodingKeys.self)
+                self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
+                self.success = try container.decodeIfPresent(Bool.self, forKey: .success)!
+                self._trackingList = try container.decodeIfPresent([TrackingList].self, forKey: ._trackingList) ?? []
+            }
+
+            func encode(to encoder: Encoder) throws {
+
+                var container = encoder.container(keyedBy: CodingKeys.self)
+                try container.encode(error, forKey: .error)
+                try container.encode(success, forKey: .success)
+                try container.encode(_trackingList, forKey: ._trackingList)
+            }
+    }
+}
+
+extension TrackingListViewController {
+    func showLoading(finished: @escaping () -> Void) {
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+
+        alert.view.addSubview(loadingIndicator)
+
+        present(alert, animated: false, completion: finished)
+    }
+
+    func hideLoading(finished: @escaping () -> Void) {
+        if ( presentedViewController != nil && !presentedViewController!.isBeingPresented ) {
+            dismiss(animated: false, completion: finished)
+        }
+    }
+ }

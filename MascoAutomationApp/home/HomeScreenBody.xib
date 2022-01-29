@@ -890,7 +890,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EHU-cw-PWv">
                                                     <rect key="frame" x="25" y="0.0" width="120" height="60"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ams" translatesAutoresizingMaskIntoConstraints="NO" id="SDR-Ho-vOa">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dd" translatesAutoresizingMaskIntoConstraints="NO" id="SDR-Ho-vOa">
                                                             <rect key="frame" x="17" y="8" width="86" height="44"/>
                                                         </imageView>
                                                     </subviews>
@@ -1001,6 +1001,7 @@
         <image name="am" width="73.333335876464844" height="37"/>
         <image name="ams" width="86.666664123535156" height="44.333332061767578"/>
         <image name="atm" width="82" height="42.666667938232422"/>
+        <image name="dd" width="74" height="37.333332061767578"/>
         <image name="dms" width="68" height="36.666667938232422"/>
         <image name="dsm" width="74.333335876464844" height="44.333332061767578"/>
         <image name="hris" width="72" height="37.666667938232422"/>

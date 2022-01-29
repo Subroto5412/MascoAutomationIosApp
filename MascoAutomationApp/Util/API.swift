@@ -43,3 +43,4 @@ var LEAVE_APPROVE_LIST_URL = BASE_URL+"v1/leave/approve"
 var LEAVE_REJECT_LIST_URL = BASE_URL+"v1/leave/reject"
 
 var ATM_QRCODE_READ_URL = BASE_URL+"v1/atm/asset/basic-data"
+var TRACKING_LIST_URL = BASE_URL+"v1/dispatch-delivery/tracking-list"
