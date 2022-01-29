@@ -40,10 +40,23 @@ class DDViewController: UIViewController {
          }
          weakSelf.showBackController()
         }
+        
+        self.bodyView.trackingListHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showTrackingListController()
+        }
     }
     
     func showBackController(){
-        let controller = PMSViewController.initWithStoryboard()
+        let controller = HRViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
+    
+    func showTrackingListController(){
+        let controller = TrackingListViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
 }

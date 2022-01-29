@@ -42,6 +42,8 @@
 		4D99D96E2765C8B3004E6259 /* TaxDetailsViewControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D99D96C2765C8B3004E6259 /* TaxDetailsViewControllerCell.xib */; };
 		4D9A2B3227A4F4E700F86700 /* DDBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A2B3127A4F4E700F86700 /* DDBodyView.swift */; };
 		4D9A2B3427A4F4F900F86700 /* DDBodyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A2B3327A4F4F900F86700 /* DDBodyView.xib */; };
+		4D9A2B3727A500AE00F86700 /* TrackingListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A2B3527A500AE00F86700 /* TrackingListViewCell.swift */; };
+		4D9A2B3827A500AE00F86700 /* TrackingListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A2B3627A500AE00F86700 /* TrackingListViewCell.xib */; };
 		4D9E269127858F4B00EA93C2 /* ApprovalBgView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9E269027858F4B00EA93C2 /* ApprovalBgView.xib */; };
 		4D9E269327858F7000EA93C2 /* ApprovalBgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E269227858F7000EA93C2 /* ApprovalBgView.swift */; };
 		4D9E269527859B6900EA93C2 /* HeaderBarTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9E269427859B6900EA93C2 /* HeaderBarTableView.xib */; };
@@ -176,6 +178,8 @@
 		4D99D96C2765C8B3004E6259 /* TaxDetailsViewControllerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaxDetailsViewControllerCell.xib; sourceTree = "<group>"; };
 		4D9A2B3127A4F4E700F86700 /* DDBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDBodyView.swift; sourceTree = "<group>"; };
 		4D9A2B3327A4F4F900F86700 /* DDBodyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DDBodyView.xib; sourceTree = "<group>"; };
+		4D9A2B3527A500AE00F86700 /* TrackingListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingListViewCell.swift; sourceTree = "<group>"; };
+		4D9A2B3627A500AE00F86700 /* TrackingListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackingListViewCell.xib; sourceTree = "<group>"; };
 		4D9E269027858F4B00EA93C2 /* ApprovalBgView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApprovalBgView.xib; sourceTree = "<group>"; };
 		4D9E269227858F7000EA93C2 /* ApprovalBgView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovalBgView.swift; sourceTree = "<group>"; };
 		4D9E269427859B6900EA93C2 /* HeaderBarTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderBarTableView.xib; sourceTree = "<group>"; };
@@ -418,6 +422,8 @@
 			isa = PBXGroup;
 			children = (
 				4DA4052C27A2B8B900E0B7F4 /* TrackingListViewController.swift */,
+				4D9A2B3527A500AE00F86700 /* TrackingListViewCell.swift */,
+				4D9A2B3627A500AE00F86700 /* TrackingListViewCell.xib */,
 			);
 			path = TrackingList;
 			sourceTree = "<group>";
@@ -742,6 +748,7 @@
 				4D27A684276DB2EF00F0E4BA /* HPDTitleView.xib in Resources */,
 				4DC8044027520D8B0006A3E1 /* LeaveView.xib in Resources */,
 				4D27A682276D970B00F0E4BA /* LWPViewControllerCell.xib in Resources */,
+				4D9A2B3827A500AE00F86700 /* TrackingListViewCell.xib in Resources */,
 				4DE38557274F868100707916 /* CommonFooter.xib in Resources */,
 				4DE3854F274F538700707916 /* HrBodyView.xib in Resources */,
 				4D27A67C276D8F7400F0E4BA /* LWPTitleView.xib in Resources */,
@@ -868,6 +875,7 @@
 				4D116BFB276491070065C07D /* LeaveSummaryCollectionCell.swift in Sources */,
 				4D9E269A27859BFD00EA93C2 /* LeaveApprovalItemViewCell.swift in Sources */,
 				4DCDC1332770A14D00D3896E /* LeaveApprovalDetailViewController.swift in Sources */,
+				4D9A2B3727A500AE00F86700 /* TrackingListViewCell.swift in Sources */,
 				4DC8044227520DA70006A3E1 /* LeaveView.swift in Sources */,
 				4DC3F4CD276F2C83005F2958 /* ATMBodyView.swift in Sources */,
 				4D27A689276DB4CE00F0E4BA /* HPDViewControllerCell.swift in Sources */,

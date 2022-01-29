@@ -78,7 +78,7 @@
         <!--Tracking List View Controller-->
         <scene sceneID="xIS-0w-Ogz">
             <objects>
-                <viewController storyboardIdentifier="TrackingListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="STM-fA-qpx" customClass="TrackingListViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TrackingListViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="STM-fA-qpx" customClass="TrackingListViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AjT-Eg-yvb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -88,18 +88,30 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cR8-0I-1a1" customClass="CommonHeaderView" customModule="MascoAutomationApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DFQ-qF-wmk">
                                         <rect key="frame" x="0.0" y="96" width="414" height="636.5"/>
-                                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pw4-mK-Dxu">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="636.5"/>
+                                                <color key="backgroundColor" red="0.034799609330000002" green="0.1083526388" blue="0.3913464546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </tableView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="Pw4-mK-Dxu" firstAttribute="leading" secondItem="DFQ-qF-wmk" secondAttribute="leading" id="Q4j-bL-dvq"/>
+                                            <constraint firstAttribute="bottom" secondItem="Pw4-mK-Dxu" secondAttribute="bottom" id="VPP-Dk-EsI"/>
+                                            <constraint firstAttribute="trailing" secondItem="Pw4-mK-Dxu" secondAttribute="trailing" id="phI-GQ-2Zc"/>
+                                            <constraint firstItem="Pw4-mK-Dxu" firstAttribute="top" secondItem="DFQ-qF-wmk" secondAttribute="top" id="xOs-UL-Rp6"/>
+                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xbP-IZ-038" customClass="CommonFooter" customModule="MascoAutomationApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="732.5" width="414" height="85.5"/>
-                                        <color key="backgroundColor" systemColor="systemGrayColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="DFQ-qF-wmk" secondAttribute="trailing" id="2oR-Mg-bsb"/>
                                     <constraint firstItem="cR8-0I-1a1" firstAttribute="height" secondItem="uJT-92-UAk" secondAttribute="height" multiplier="90:766" id="6Pf-cW-AFx"/>
@@ -117,7 +129,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fgC-dZ-362"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.034799609330000002" green="0.1083526388" blue="0.3913464546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="uJT-92-UAk" firstAttribute="leading" secondItem="fgC-dZ-362" secondAttribute="leading" id="GtP-qe-aji"/>
                             <constraint firstItem="uJT-92-UAk" firstAttribute="top" secondItem="fgC-dZ-362" secondAttribute="top" id="JGH-T9-bWz"/>
@@ -125,6 +137,11 @@
                             <constraint firstItem="fgC-dZ-362" firstAttribute="trailing" secondItem="uJT-92-UAk" secondAttribute="trailing" id="euB-aC-lyp"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="footerView" destination="xbP-IZ-038" id="H7Q-l9-iJE"/>
+                        <outlet property="headerView" destination="cR8-0I-1a1" id="xww-pT-S8H"/>
+                        <outlet property="tableView" destination="Pw4-mK-Dxu" id="jrv-ny-Iwz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fY1-Ja-TN1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -196,12 +213,6 @@
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -12,6 +12,9 @@ class DDBodyView: XibView {
     @IBOutlet weak var trackingBgViewUnder: UIView!
     @IBOutlet weak var trackingBgView: UIView!
     
+    var trackingListHandler : ((Bool?) -> Void)?
+    
     @IBAction func trackingListBtn(_ sender: Any) {
+        self.trackingListHandler?(true)
     }
 }
