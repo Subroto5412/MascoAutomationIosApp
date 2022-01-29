@@ -48,6 +48,9 @@ class TrackingListViewController: UIViewController {
 extension TrackingListViewController : UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let controller = TrackingListDetailsViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
     }
 }
 

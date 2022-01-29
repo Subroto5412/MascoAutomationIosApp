@@ -44,6 +44,12 @@
 		4D9A2B3427A4F4F900F86700 /* DDBodyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A2B3327A4F4F900F86700 /* DDBodyView.xib */; };
 		4D9A2B3727A500AE00F86700 /* TrackingListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A2B3527A500AE00F86700 /* TrackingListViewCell.swift */; };
 		4D9A2B3827A500AE00F86700 /* TrackingListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A2B3627A500AE00F86700 /* TrackingListViewCell.xib */; };
+		4D9A2B3A27A5178200F86700 /* TrackingDetailsBodyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A2B3927A5178200F86700 /* TrackingDetailsBodyView.xib */; };
+		4D9A2B3C27A5179200F86700 /* TrackingDetailsBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A2B3B27A5179200F86700 /* TrackingDetailsBodyView.swift */; };
+		4D9A2B3E27A526E200F86700 /* TrackingTableBodyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A2B3D27A526E200F86700 /* TrackingTableBodyView.xib */; };
+		4D9A2B4027A526FB00F86700 /* TrackingTableBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A2B3F27A526FB00F86700 /* TrackingTableBodyView.swift */; };
+		4D9A2B4327A54A3700F86700 /* TrackingDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A2B4127A54A3700F86700 /* TrackingDetailsTableViewCell.swift */; };
+		4D9A2B4427A54A3700F86700 /* TrackingDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A2B4227A54A3700F86700 /* TrackingDetailsTableViewCell.xib */; };
 		4D9E269127858F4B00EA93C2 /* ApprovalBgView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9E269027858F4B00EA93C2 /* ApprovalBgView.xib */; };
 		4D9E269327858F7000EA93C2 /* ApprovalBgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E269227858F7000EA93C2 /* ApprovalBgView.swift */; };
 		4D9E269527859B6900EA93C2 /* HeaderBarTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9E269427859B6900EA93C2 /* HeaderBarTableView.xib */; };
@@ -180,6 +186,12 @@
 		4D9A2B3327A4F4F900F86700 /* DDBodyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DDBodyView.xib; sourceTree = "<group>"; };
 		4D9A2B3527A500AE00F86700 /* TrackingListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingListViewCell.swift; sourceTree = "<group>"; };
 		4D9A2B3627A500AE00F86700 /* TrackingListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackingListViewCell.xib; sourceTree = "<group>"; };
+		4D9A2B3927A5178200F86700 /* TrackingDetailsBodyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackingDetailsBodyView.xib; sourceTree = "<group>"; };
+		4D9A2B3B27A5179200F86700 /* TrackingDetailsBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingDetailsBodyView.swift; sourceTree = "<group>"; };
+		4D9A2B3D27A526E200F86700 /* TrackingTableBodyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackingTableBodyView.xib; sourceTree = "<group>"; };
+		4D9A2B3F27A526FB00F86700 /* TrackingTableBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingTableBodyView.swift; sourceTree = "<group>"; };
+		4D9A2B4127A54A3700F86700 /* TrackingDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		4D9A2B4227A54A3700F86700 /* TrackingDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackingDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		4D9E269027858F4B00EA93C2 /* ApprovalBgView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApprovalBgView.xib; sourceTree = "<group>"; };
 		4D9E269227858F7000EA93C2 /* ApprovalBgView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovalBgView.swift; sourceTree = "<group>"; };
 		4D9E269427859B6900EA93C2 /* HeaderBarTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderBarTableView.xib; sourceTree = "<group>"; };
@@ -432,6 +444,12 @@
 			isa = PBXGroup;
 			children = (
 				4DA4052A27A2B8A800E0B7F4 /* TrackingListDetailsViewController.swift */,
+				4D9A2B3927A5178200F86700 /* TrackingDetailsBodyView.xib */,
+				4D9A2B3B27A5179200F86700 /* TrackingDetailsBodyView.swift */,
+				4D9A2B3D27A526E200F86700 /* TrackingTableBodyView.xib */,
+				4D9A2B3F27A526FB00F86700 /* TrackingTableBodyView.swift */,
+				4D9A2B4127A54A3700F86700 /* TrackingDetailsTableViewCell.swift */,
+				4D9A2B4227A54A3700F86700 /* TrackingDetailsTableViewCell.xib */,
 			);
 			path = TrackingListDetails;
 			sourceTree = "<group>";
@@ -766,7 +784,9 @@
 				4D116BFC276491070065C07D /* LeaveSummaryCollectionCell.xib in Resources */,
 				4DAA634B276877F20073DBB0 /* GPMSBodyView.xib in Resources */,
 				4D9E269B27859BFD00EA93C2 /* LeaveApprovalItemViewCell.xib in Resources */,
+				4D9A2B3E27A526E200F86700 /* TrackingTableBodyView.xib in Resources */,
 				4D116BF2276453590065C07D /* LeaveDetailsView.storyboard in Resources */,
+				4D9A2B3A27A5178200F86700 /* TrackingDetailsBodyView.xib in Resources */,
 				4D27A68C276DD97900F0E4BA /* BWPDTitleView.xib in Resources */,
 				4DE38551274F7B7800707916 /* InnerHeader.xib in Resources */,
 				4D7FB4D32744D45200B318DA /* Assets.xcassets in Resources */,
@@ -779,6 +799,7 @@
 				4DC3F4D1276F2CAC005F2958 /* SEMBodyView.xib in Resources */,
 				4DCDC126277067F900D3896E /* HRIS.storyboard in Resources */,
 				4DA4052427A2B82400E0B7F4 /* DD.storyboard in Resources */,
+				4D9A2B4427A54A3700F86700 /* TrackingDetailsTableViewCell.xib in Resources */,
 				4D466E44275DD57C005F0E3C /* Tax.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -872,6 +893,7 @@
 				4DC3F4BB276EE2D1005F2958 /* HPDsTotalView.swift in Sources */,
 				4D9E269727859B7700EA93C2 /* HeaderBarTableView.swift in Sources */,
 				4D27A686276DB30E00F0E4BA /* HPDTitleView.swift in Sources */,
+				4D9A2B4027A526FB00F86700 /* TrackingTableBodyView.swift in Sources */,
 				4D116BFB276491070065C07D /* LeaveSummaryCollectionCell.swift in Sources */,
 				4D9E269A27859BFD00EA93C2 /* LeaveApprovalItemViewCell.swift in Sources */,
 				4DCDC1332770A14D00D3896E /* LeaveApprovalDetailViewController.swift in Sources */,
@@ -888,6 +910,7 @@
 				4DE38553274F7B8D00707916 /* InnerHeader.swift in Sources */,
 				4D7665BB275F5A5900358097 /* DailyAttendanceTableViewCell.swift in Sources */,
 				4D27A67E276D8F8300F0E4BA /* LWPTitleView.swift in Sources */,
+				4D9A2B4327A54A3700F86700 /* TrackingDetailsTableViewCell.swift in Sources */,
 				4D116BF52764791A0065C07D /* LeaveDetailsControllerCell.swift in Sources */,
 				4DAA633F2768660B0073DBB0 /* HPDsViewController.swift in Sources */,
 				4DD772C1274DF8EA003261F6 /* HeaderFooter.swift in Sources */,
@@ -904,6 +927,7 @@
 				4DC804372752000D0006A3E1 /* DailyAttendanceViewController.swift in Sources */,
 				4DCDC1302770933B00D3896E /* LeaveApprovalBodyView.swift in Sources */,
 				4DAA6345276866420073DBB0 /* LWPViewController.swift in Sources */,
+				4D9A2B3C27A5179200F86700 /* TrackingDetailsBodyView.swift in Sources */,
 				4DB0E0E627674ABC00B188E6 /* PMSViewController.swift in Sources */,
 				4DBB3B64274B91C90009339B /* HomeViewController.swift in Sources */,
 				4D9A2B3227A4F4E700F86700 /* DDBodyView.swift in Sources */,

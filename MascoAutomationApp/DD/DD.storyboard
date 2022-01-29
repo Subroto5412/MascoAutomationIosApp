@@ -7,6 +7,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="montserrat_bold.otf">
+            <string>Montserrat-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -150,7 +155,7 @@
         <!--Tracking List Details View Controller-->
         <scene sceneID="gy3-hR-IcS">
             <objects>
-                <viewController storyboardIdentifier="TrackingListDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CGD-zb-TZe" customClass="TrackingListDetailsViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TrackingListDetailsViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CGD-zb-TZe" customClass="TrackingListDetailsViewController" customModule="MascoAutomationApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pPG-gC-9Qm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -160,18 +165,67 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wdj-0j-67Z" customClass="CommonHeaderView" customModule="MascoAutomationApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gkQ-K9-Qa7">
                                         <rect key="frame" x="0.0" y="96" width="414" height="636.5"/>
-                                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2tV-Hj-i6U" customClass="TrackingDetailsBodyView" customModule="MascoAutomationApp" customModuleProvider="target">
+                                                <rect key="frame" x="10" y="10" width="394" height="266"/>
+                                                <color key="backgroundColor" red="0.034799609330000002" green="0.1083526388" blue="0.3913464546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dwr-5O-KY6" customClass="TrackingTableBodyView" customModule="MascoAutomationApp" customModuleProvider="target">
+                                                <rect key="frame" x="10" y="286" width="394" height="214.5"/>
+                                                <color key="backgroundColor" red="0.034799609330000002" green="0.1083526388" blue="0.3913464546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hn1-JO-L6V">
+                                                <rect key="frame" x="10" y="510.5" width="394" height="116"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfG-Ja-oE0">
+                                                        <rect key="frame" x="112" y="35.5" width="170" height="45"/>
+                                                        <color key="backgroundColor" red="0.67309755090000001" green="0.89056992530000001" blue="0.99987715479999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="45" id="0aW-OD-HTu"/>
+                                                            <constraint firstAttribute="width" constant="170" id="djg-PN-KtU"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                                                        <state key="normal" title="Done">
+                                                            <color key="titleColor" red="0.2099210322" green="0.20995694400000001" blue="0.20991316439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="doneBtn:" destination="CGD-zb-TZe" eventType="touchUpInside" id="yYw-k4-tlN"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.034799609330000002" green="0.1083526388" blue="0.3913464546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="jfG-Ja-oE0" firstAttribute="centerX" secondItem="Hn1-JO-L6V" secondAttribute="centerX" id="9PK-v5-XpI"/>
+                                                    <constraint firstItem="jfG-Ja-oE0" firstAttribute="centerY" secondItem="Hn1-JO-L6V" secondAttribute="centerY" id="x9h-C7-xR0"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="2tV-Hj-i6U" firstAttribute="top" secondItem="gkQ-K9-Qa7" secondAttribute="top" constant="10" id="25i-My-XZ2"/>
+                                            <constraint firstItem="2tV-Hj-i6U" firstAttribute="leading" secondItem="gkQ-K9-Qa7" secondAttribute="leading" constant="10" id="3ar-Au-lh1"/>
+                                            <constraint firstItem="Dwr-5O-KY6" firstAttribute="top" secondItem="2tV-Hj-i6U" secondAttribute="bottom" constant="10" id="9A2-1D-oWT"/>
+                                            <constraint firstAttribute="trailing" secondItem="2tV-Hj-i6U" secondAttribute="trailing" constant="10" id="BA6-Xv-rhv"/>
+                                            <constraint firstAttribute="bottom" secondItem="Hn1-JO-L6V" secondAttribute="bottom" constant="10" id="TkY-fh-5Mt"/>
+                                            <constraint firstItem="Dwr-5O-KY6" firstAttribute="leading" secondItem="gkQ-K9-Qa7" secondAttribute="leading" constant="10" id="VfL-Wo-yFQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="Hn1-JO-L6V" secondAttribute="trailing" constant="10" id="Wvh-ID-b1u"/>
+                                            <constraint firstItem="Dwr-5O-KY6" firstAttribute="height" secondItem="gkQ-K9-Qa7" secondAttribute="height" multiplier="200:594" id="aDL-fS-nub"/>
+                                            <constraint firstItem="Hn1-JO-L6V" firstAttribute="top" secondItem="Dwr-5O-KY6" secondAttribute="bottom" constant="10" id="aoA-Of-gTs"/>
+                                            <constraint firstItem="Hn1-JO-L6V" firstAttribute="leading" secondItem="gkQ-K9-Qa7" secondAttribute="leading" constant="10" id="mdj-E1-3YL"/>
+                                            <constraint firstItem="2tV-Hj-i6U" firstAttribute="height" secondItem="gkQ-K9-Qa7" secondAttribute="height" multiplier="249:596" id="sHK-72-cde"/>
+                                            <constraint firstAttribute="trailing" secondItem="Dwr-5O-KY6" secondAttribute="trailing" constant="10" id="u8J-r9-IHc"/>
+                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBF-UK-Tqg" customClass="CommonFooter" customModule="MascoAutomationApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="732.5" width="414" height="85.5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Wdj-0j-67Z" firstAttribute="height" secondItem="U22-hz-L2K" secondAttribute="height" multiplier="90:766" id="0iy-JM-bOM"/>
                                     <constraint firstAttribute="bottom" secondItem="BBF-UK-Tqg" secondAttribute="bottom" id="4hl-El-GU8"/>
@@ -189,7 +243,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jlQ-JX-UnL"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.034799609330000002" green="0.1083526388" blue="0.3913464546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="U22-hz-L2K" firstAttribute="top" secondItem="jlQ-JX-UnL" secondAttribute="top" id="2Up-w5-EVo"/>
                             <constraint firstItem="jlQ-JX-UnL" firstAttribute="trailing" secondItem="U22-hz-L2K" secondAttribute="trailing" id="44y-Ke-sQM"/>
@@ -197,6 +251,13 @@
                             <constraint firstItem="U22-hz-L2K" firstAttribute="leading" secondItem="jlQ-JX-UnL" secondAttribute="leading" id="geY-ub-Nop"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="doneBtnView" destination="jfG-Ja-oE0" id="Hxa-ue-Sfn"/>
+                        <outlet property="footerView" destination="BBF-UK-Tqg" id="0S5-IQ-XzE"/>
+                        <outlet property="headerView" destination="Wdj-0j-67Z" id="MJs-NT-Rvi"/>
+                        <outlet property="trackingDetailBgView" destination="2tV-Hj-i6U" id="Tuy-Fi-dz3"/>
+                        <outlet property="trackingTableView" destination="Dwr-5O-KY6" id="D2S-Q1-y9N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r4a-w4-jSJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -207,12 +268,6 @@
         <image name="home_bg" width="408" height="862"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
