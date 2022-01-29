@@ -146,6 +146,14 @@ class HomeViewController: UIViewController {
          }
          weakSelf.showSCMController()
         }
+        
+        self.homeBody.DDHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showDDController()
+        }
           
         let arcCenter = CGPoint(x: self.homeBody.iconView.bounds.size.width / 2, y: self.homeBody.iconView.bounds.size.height)
         let circleRadius = self.homeBody.iconView.bounds.size.width / 2
@@ -247,6 +255,16 @@ class HomeViewController: UIViewController {
         self.homeBody.amIconView.layer.mask = circleShapeAM
         self.homeBody.amItemNameView.layer.cornerRadius = 20
         
+        
+        let arcCenterDD = CGPoint(x: self.homeBody.ddIconView.bounds.size.width / 2, y: self.homeBody.ddIconView.bounds.size.height)
+        let circleRadiusDD = self.homeBody.ddIconView.bounds.size.width / 2
+        let circlePathDD = UIBezierPath(arcCenter: arcCenterDD, radius: circleRadiusDD, startAngle: CGFloat.pi, endAngle: CGFloat.pi * 2, clockwise: true)
+          
+        let circleShapeDD = CAShapeLayer()
+        circleShapeDD.path = circlePathDD.cgPath
+        self.homeBody.ddIconView.layer.mask = circleShapeDD
+        self.homeBody.ddItemNameView.layer.cornerRadius = 20
+        
         self.homeHeader.homeHeaderBg.layer.cornerRadius = 10
     }
     
@@ -313,6 +331,12 @@ class HomeViewController: UIViewController {
     func showAMController(){
         
         let controller = HRISViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
+    
+    func showDDController(){
+        
+        let controller = DDViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
     

@@ -42,6 +42,10 @@ class HomeScreenBody: XibView {
     @IBOutlet weak var amIconView: UIView!
     @IBOutlet weak var amItemNameView: UIView!
     
+    @IBOutlet weak var ddItemNameView: UIView!
+    @IBOutlet weak var ddIconView: UIView!
+    
+    
     var HRISHandler : ((Bool?) -> Void)?
     var PMSHandler : ((Bool?) -> Void)?
     var SEMHandler : ((Bool?) -> Void)?
@@ -53,6 +57,7 @@ class HomeScreenBody: XibView {
     var AMHandler : ((Bool?) -> Void)?
     var MMHandler : ((Bool?) -> Void)?
     var SCMHandler : ((Bool?) -> Void)?
+    var DDHandler : ((Bool?) -> Void)?
     
     @IBAction func HRISBtn(_ sender: UIButton) {
         self.HRISHandler?(true)
@@ -97,4 +102,9 @@ class HomeScreenBody: XibView {
     @IBAction func SCMBtn(_ sender: Any) {
         self.SCMHandler?(true)
     }
+    
+    @IBAction func DDBtn(_ sender: Any) {
+        self.DDHandler?(true)
+    }
+    
 }
