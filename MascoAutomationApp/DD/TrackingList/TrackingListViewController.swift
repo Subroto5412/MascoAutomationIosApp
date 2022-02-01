@@ -13,6 +13,7 @@ class TrackingListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var footerView: CommonFooter!
     var dataSource = [TrackingList]()
+    var vSpinner : UIView?
     
     class func initWithStoryboard() -> TrackingListViewController
     {
@@ -30,6 +31,8 @@ class TrackingListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        self.getTrackingList()
+        
         self.headerView.backBtnHandler = {
             [weak self] (isShow) in
             guard let weakSelf = self else {
@@ -46,6 +49,9 @@ class TrackingListViewController: UIViewController {
     
     func getTrackingList(){
         
+        let utils = Utils()
+        let accessToken = utils.readStringData(key: "token")
+        
         let url = URL(string: TRACKING_LIST_URL)
         guard let requestUrl = url else { fatalError() }
         
@@ -55,13 +61,13 @@ class TrackingListViewController: UIViewController {
         // Set HTTP Request Header
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
-        self.showLoading(finished: {
+         self.showSpinner(onView: self.view)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 
+                self.removeSpinner()
                 DispatchQueue.main.async {
-                    
-                    self.hideLoading(finished: {
                         
                     if let error = error {
                         print("Error took place \(error)")
@@ -77,11 +83,9 @@ class TrackingListViewController: UIViewController {
                     }catch let jsonErr{
                         print(jsonErr)
                    }
-                    })
                 }
         }
         task.resume()
-        })
     }
     
 }
@@ -89,7 +93,8 @@ class TrackingListViewController: UIViewController {
 extension TrackingListViewController : UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        TrackingNo = dataSource[indexPath.row].trackingNo
+        print("-------\(TrackingNo)")
         let controller = TrackingListDetailsViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
@@ -98,14 +103,14 @@ extension TrackingListViewController : UITableViewDelegate{
 extension TrackingListViewController : UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return dataSource.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TrackingListViewCell
-        cell.trackingNoLbl.text = "101407"
-        cell.addressLbl.text = "Paradise Tower. Level #03, Plot #11, Road #02, Sector #03. Uttara, Dhaka 1230."
+        cell.trackingNoLbl.text = dataSource[indexPath.row].trackingNo
+        cell.addressLbl.text = dataSource[indexPath.row].sendToAddress
         
         return cell
        
@@ -171,23 +176,27 @@ extension TrackingListViewController {
     }
 }
 
-extension TrackingListViewController {
-    func showLoading(finished: @escaping () -> Void) {
-        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
 
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.gray
-        loadingIndicator.startAnimating();
-
-        alert.view.addSubview(loadingIndicator)
-
-        present(alert, animated: false, completion: finished)
-    }
-
-    func hideLoading(finished: @escaping () -> Void) {
-        if ( presentedViewController != nil && !presentedViewController!.isBeingPresented ) {
-            dismiss(animated: false, completion: finished)
-        }
-    }
- }
+    extension TrackingListViewController {
+        func showSpinner(onView : UIView) {
+               let spinnerView = UIView.init(frame: onView.bounds)
+               spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+               let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+               ai.startAnimating()
+               ai.center = spinnerView.center
+               
+               DispatchQueue.main.async {
+                   spinnerView.addSubview(ai)
+                   onView.addSubview(spinnerView)
+               }
+               
+               vSpinner = spinnerView
+           }
+           
+           func removeSpinner() {
+               DispatchQueue.main.async {
+                self.vSpinner?.removeFromSuperview()
+                self.vSpinner = nil
+               }
+           }
+     }

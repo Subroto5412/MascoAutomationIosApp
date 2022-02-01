@@ -12,7 +12,6 @@ class TrackingDetailsBodyView: XibView {
     @IBOutlet weak var trackingDetailsBgView: UIView!
     
     @IBOutlet weak var trackingNoLbl: UILabel!
-    @IBOutlet weak var buyerLbl: UILabel!
     @IBOutlet weak var attentionPersonLbl: UILabel!
     @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var dispatchTypeLbl: UILabel!

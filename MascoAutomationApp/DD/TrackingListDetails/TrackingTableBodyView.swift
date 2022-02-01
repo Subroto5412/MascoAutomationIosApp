@@ -11,6 +11,7 @@ class TrackingTableBodyView: XibView {
 
     @IBOutlet weak var slBgView: UIView!
     @IBOutlet weak var itemNameBgView: UIView!
+    @IBOutlet weak var buyerBgView: UIView!
     @IBOutlet weak var uomBgView: UIView!
     @IBOutlet weak var quantityBgView: UIView!
     

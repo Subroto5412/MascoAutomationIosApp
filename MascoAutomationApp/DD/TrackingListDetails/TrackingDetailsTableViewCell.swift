@@ -11,6 +11,7 @@ class TrackingDetailsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var slLbl: UILabel!
     @IBOutlet weak var itemNameLbl: UILabel!
+    @IBOutlet weak var  buyerLbl: UILabel!
     @IBOutlet weak var  uomLbl: UILabel!
     @IBOutlet weak var quantityLbl: UILabel!
     
