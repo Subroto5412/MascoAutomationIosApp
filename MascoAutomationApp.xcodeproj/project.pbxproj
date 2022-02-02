@@ -38,6 +38,7 @@
 		4D7FB4D32744D45200B318DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D7FB4D22744D45200B318DA /* Assets.xcassets */; };
 		4D7FB4D62744D45200B318DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D7FB4D42744D45200B318DA /* LaunchScreen.storyboard */; };
 		4D8C5B4B27994E3D00FB8D3F /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8C5B4A27994E3D00FB8D3F /* PopUpViewController.swift */; };
+		4D98C34727AA797000A29539 /* AlertDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D98C34627AA797000A29539 /* AlertDialogViewController.swift */; };
 		4D99D96D2765C8B3004E6259 /* TaxDetailsViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D99D96B2765C8B3004E6259 /* TaxDetailsViewControllerCell.swift */; };
 		4D99D96E2765C8B3004E6259 /* TaxDetailsViewControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D99D96C2765C8B3004E6259 /* TaxDetailsViewControllerCell.xib */; };
 		4D9A2B3227A4F4E700F86700 /* DDBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A2B3127A4F4E700F86700 /* DDBodyView.swift */; };
@@ -180,6 +181,7 @@
 		4D7FB4D52744D45200B318DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D7FB4D72744D45200B318DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D8C5B4A27994E3D00FB8D3F /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		4D98C34627AA797000A29539 /* AlertDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDialogViewController.swift; sourceTree = "<group>"; };
 		4D99D96B2765C8B3004E6259 /* TaxDetailsViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxDetailsViewControllerCell.swift; sourceTree = "<group>"; };
 		4D99D96C2765C8B3004E6259 /* TaxDetailsViewControllerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaxDetailsViewControllerCell.xib; sourceTree = "<group>"; };
 		4D9A2B3127A4F4E700F86700 /* DDBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDBodyView.swift; sourceTree = "<group>"; };
@@ -646,6 +648,7 @@
 				4D9E269627859B7700EA93C2 /* HeaderBarTableView.swift */,
 				4D9E269827859BFD00EA93C2 /* LeaveApprovalItemViewCell.swift */,
 				4D9E269927859BFD00EA93C2 /* LeaveApprovalItemViewCell.xib */,
+				4D98C34627AA797000A29539 /* AlertDialogViewController.swift */,
 			);
 			path = LeaveApproval;
 			sourceTree = "<group>";
@@ -886,6 +889,7 @@
 				4D27A68E276DD9D000F0E4BA /* BWPDTitleView.swift in Sources */,
 				4DA6512F274CC85E00488332 /* HomeScreenBody.swift in Sources */,
 				4DD772BD274DF2EA003261F6 /* HomeHeader.swift in Sources */,
+				4D98C34727AA797000A29539 /* AlertDialogViewController.swift in Sources */,
 				4DA4052B27A2B8A800E0B7F4 /* TrackingListDetailsViewController.swift in Sources */,
 				4DA4052927A2B89300E0B7F4 /* DDViewController.swift in Sources */,
 				4D27A691276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.swift in Sources */,

@@ -22,6 +22,7 @@ class LeaveApprovalItemViewCell: UITableViewCell {
     
     @IBOutlet weak var checkingBtn: UIButton!
     var checkBtnPressed : (() -> ()) = {}
+    var dateUpdateBtnPressed : (() -> ()) = {}
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,4 +40,8 @@ class LeaveApprovalItemViewCell: UITableViewCell {
     @IBAction func checkBtn(_ sender: Any) {
         checkBtnPressed()
     }
+    @IBAction func dateUpdateBtn(_ sender: Any) {
+        dateUpdateBtnPressed()
+    }
+    
 }

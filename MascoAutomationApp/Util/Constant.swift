@@ -11,3 +11,5 @@ import Foundation
 var dataSourceScreen = [String]()
 var QRCODE = ""
 var TrackingNo = ""
+var _fromDate = ""
+var _toDate = ""

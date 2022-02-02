@@ -136,6 +136,12 @@
                                     <constraint firstAttribute="trailing" secondItem="q74-kS-8aD" secondAttribute="trailing" constant="10" id="z14-hq-1M0"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lqG-Cw-Gf0">
+                                <rect key="frame" x="155" y="5" width="115" height="50"/>
+                                <connections>
+                                    <action selector="dateUpdateBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Pd1-U8-Pk3"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chp-6v-Zoi">
                                 <rect key="frame" x="270" y="5" width="115" height="50"/>
                                 <subviews>
@@ -207,8 +213,10 @@
                             <constraint firstAttribute="bottom" secondItem="q3y-FF-qco" secondAttribute="bottom" constant="5" id="3e8-YK-SVA"/>
                             <constraint firstItem="q3y-FF-qco" firstAttribute="leading" secondItem="8MO-eM-s4G" secondAttribute="leading" constant="5" id="7dZ-M6-jje"/>
                             <constraint firstItem="q3y-FF-qco" firstAttribute="top" secondItem="8MO-eM-s4G" secondAttribute="top" constant="5" id="9wL-l7-pMl"/>
+                            <constraint firstItem="lqG-Cw-Gf0" firstAttribute="width" secondItem="5zm-mW-BED" secondAttribute="width" id="A4Z-dc-lOb"/>
                             <constraint firstItem="5zm-mW-BED" firstAttribute="top" secondItem="8MO-eM-s4G" secondAttribute="top" constant="5" id="GUR-16-4DS"/>
                             <constraint firstAttribute="bottom" secondItem="ZGJ-Qo-8ku" secondAttribute="bottom" constant="5" id="J3s-4e-M6g"/>
+                            <constraint firstItem="lqG-Cw-Gf0" firstAttribute="centerX" secondItem="5zm-mW-BED" secondAttribute="centerX" id="LSa-Lt-gKe"/>
                             <constraint firstItem="chp-6v-Zoi" firstAttribute="top" secondItem="8MO-eM-s4G" secondAttribute="top" constant="5" id="NDM-ia-wos"/>
                             <constraint firstItem="chp-6v-Zoi" firstAttribute="leading" secondItem="5zm-mW-BED" secondAttribute="trailing" id="PA7-Gy-9xQ"/>
                             <constraint firstItem="5zm-mW-BED" firstAttribute="leading" secondItem="ZGJ-Qo-8ku" secondAttribute="trailing" id="UIU-C6-wGl"/>
@@ -216,9 +224,11 @@
                             <constraint firstItem="chp-6v-Zoi" firstAttribute="width" secondItem="5zm-mW-BED" secondAttribute="width" id="XhC-dZ-Q1K"/>
                             <constraint firstItem="uwj-GZ-6lT" firstAttribute="leading" secondItem="8MO-eM-s4G" secondAttribute="leading" constant="10" id="Xuy-ke-rSd"/>
                             <constraint firstAttribute="bottom" secondItem="uwj-GZ-6lT" secondAttribute="bottom" id="Zqe-eY-p9S"/>
+                            <constraint firstItem="lqG-Cw-Gf0" firstAttribute="centerY" secondItem="5zm-mW-BED" secondAttribute="centerY" id="iWK-zG-M9u"/>
                             <constraint firstItem="ZGJ-Qo-8ku" firstAttribute="top" secondItem="8MO-eM-s4G" secondAttribute="top" constant="5" id="mdB-Jh-poh"/>
                             <constraint firstAttribute="bottom" secondItem="chp-6v-Zoi" secondAttribute="bottom" constant="5" id="qOx-DX-buo"/>
                             <constraint firstAttribute="bottom" secondItem="5zm-mW-BED" secondAttribute="bottom" constant="5" id="wFW-3W-S9h"/>
+                            <constraint firstItem="lqG-Cw-Gf0" firstAttribute="height" secondItem="5zm-mW-BED" secondAttribute="height" id="x0B-vP-ILf"/>
                             <constraint firstItem="ZGJ-Qo-8ku" firstAttribute="width" secondItem="8MO-eM-s4G" secondAttribute="width" multiplier="115:390" id="zRg-L4-KTH"/>
                         </constraints>
                     </view>

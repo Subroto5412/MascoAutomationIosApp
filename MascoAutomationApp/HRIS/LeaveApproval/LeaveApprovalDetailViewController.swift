@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LeaveApprovalDetailViewController: UIViewController {
+class LeaveApprovalDetailViewController: UIViewController, AlertDialogDelegate {
 
     @IBOutlet weak var leaveApprovalDetailsTableView: UITableView!
     @IBOutlet weak var approvalView: ApprovalBgView!
@@ -18,6 +18,8 @@ class LeaveApprovalDetailViewController: UIViewController {
     
     var dataSource = [ListLeaveApproval]()
     var AllCheck:Bool = false
+    var empCode: String = ""
+    var index: Int = 0
     
     class func initWithStoryboard() -> LeaveApprovalDetailViewController
     {
@@ -97,6 +99,30 @@ class LeaveApprovalDetailViewController: UIViewController {
         self.present(controller, animated: true, completion: nil);
     }
     
+    
+    func getApplyDays(fromDate:String, toDate: String)->String{
+        
+        let calendar = Calendar.current
+
+//        let start = self!.fromDate
+//        let end = self!.toDate
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+
+        let firstDate = dateFormatter.date(from: fromDate)!
+        let secondDate = dateFormatter.date(from: toDate)!
+
+        // Replace the hour (time) of both dates with 00:00
+        let date1 = calendar.startOfDay(for: firstDate)
+        let date2 = calendar.startOfDay(for: secondDate)
+
+        let components = calendar.dateComponents([Calendar.Component.day], from: date1, to: date2)
+        
+        let totalApplyDay = components.day!+1
+        
+        return "\(totalApplyDay)"
+    }
     func showAllCheckingController(){
       
         let dataSourceLength:Int = Int(dataSource.count)
@@ -305,9 +331,35 @@ class LeaveApprovalDetailViewController: UIViewController {
         task.resume()
         })
     }
+    
+    func updateBtnTapped(from: String, to: String) {
+
+        for item in self.dataSource {
+          
+            if item.emP_CODE == self.dataSource[index].emP_CODE {
+                
+                self.dataSource[index].applyFromDate = from
+                self.dataSource[index].applyToDate = to
+            }
+        }
+
+        self.leaveApprovalDetailsTableView.reloadData()
+    }
+    
+    func fromDate(from :String){
+     
+    }
 }
 
-extension LeaveApprovalDetailViewController :  UITableViewDelegate, UITableViewDataSource {
+extension LeaveApprovalDetailViewController : UITableViewDelegate{
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        empCode = dataSource[indexPath.row].emP_CODE
+    }
+}
+
+
+extension LeaveApprovalDetailViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
@@ -323,8 +375,9 @@ extension LeaveApprovalDetailViewController :  UITableViewDelegate, UITableViewD
         cell.fromDateLbl.text = dataSource[indexPath.row].applyFromDate
         cell.toDateLbl.text = dataSource[indexPath.row].applyToDate
         cell.leaveLbl.text = dataSource[indexPath.row].leaveType
-        cell.balanceLbl.text = "Bl-\(String(describing: dataSource[indexPath.row].leaveMax!))"
-        cell.totalDaysLbl.text = "AP-\(String(describing: dataSource[indexPath.row].leaveNo!))"
+        cell.balanceLbl.text = "Bl-\(String(describing: dataSource[indexPath.row].leaveMax!)) day"
+//        cell.totalDaysLbl.text = "AP-\(String(describing: dataSource[indexPath.row].leaveNo!))"
+        cell.totalDaysLbl.text = "AP-\(getApplyDays(fromDate:dataSource[indexPath.row].applyFromDate, toDate: dataSource[indexPath.row].applyToDate)) day"
         
         if dataSource[indexPath.row].check == true{
             cell.checkingBtn.setImage(UIImage(named: "checking"), for: UIControl.State.normal)
@@ -340,6 +393,23 @@ extension LeaveApprovalDetailViewController :  UITableViewDelegate, UITableViewD
                 cell.checkingBtn.setImage(UIImage(named: "checking"), for: UIControl.State.normal)
                 self.dataSource[indexPath.row].check = true
             }
+        }
+        
+        cell.dateUpdateBtnPressed = {
+            
+            self.index = indexPath.row
+            _fromDate = self.dataSource[indexPath.row].applyFromDate
+            _toDate = self.dataSource[indexPath.row].applyToDate
+            
+            let alertDialog = self.storyboard?.instantiateViewController(identifier: "AlertDialogViewController") as! AlertDialogViewController
+            alertDialog.delegate = self
+            alertDialog.modalPresentationStyle = .overCurrentContext
+            alertDialog.providesPresentationContextTransitionStyle = true
+            alertDialog.definesPresentationContext = true
+            alertDialog.modalTransitionStyle = .crossDissolve
+            
+           
+            self.present(alertDialog, animated: true, completion: nil);
         }
         return cell
     }
