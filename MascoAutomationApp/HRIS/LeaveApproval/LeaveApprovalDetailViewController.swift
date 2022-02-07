@@ -255,10 +255,18 @@ class LeaveApprovalDetailViewController: UIViewController, AlertDialogDelegate {
                         let itemModel = try JSONDecoder().decode(LeaveApproveResponse.self, from: data)
                         
                         if itemModel.response!{
-                            self.toastMessage("Successfully Leave Approve!!")
-                            let controller = LeaveApprovalViewController.initWithStoryboard()
-                            self.present(controller, animated: true, completion: nil);
-                            print("Successfully Leave Approve!!")
+                            
+                            let alert = UIAlertController(title: "", message: "Successfully Leave Approve!!", preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+                                let controller = LeaveApprovalDetailViewController.initWithStoryboard()
+                                self.present(controller, animated: true, completion: nil);
+                            }))
+                            self.present(alert, animated: true, completion: nil)
+                            
+//                            self.toastMessage("Successfully Leave Approve!!")
+//                            let controller = LeaveApprovalViewController.initWithStoryboard()
+//                            self.present(controller, animated: true, completion: nil);
+//                            print("Successfully Leave Approve!!")
                         }
                         self.leaveApprovalDetailsTableView.reloadData()
                     }catch let jsonErr{
@@ -319,10 +327,18 @@ class LeaveApprovalDetailViewController: UIViewController, AlertDialogDelegate {
                         let itemModel = try JSONDecoder().decode(LeaveRejectResponse.self, from: data)
                         
                         if itemModel.response!{
-                            self.toastMessage("Successfully Reject Approve!!")
-                            let controller = LeaveApprovalViewController.initWithStoryboard()
-                            self.present(controller, animated: true, completion: nil);
-                            print("Successfully Reject Approve!!")
+                            
+                            let alert = UIAlertController(title: "", message: "Successfully Reject Approve!!", preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+                                let controller = LeaveApprovalDetailViewController.initWithStoryboard()
+                                self.present(controller, animated: true, completion: nil);
+                            }))
+                            self.present(alert, animated: true, completion: nil)
+                            
+//                            self.toastMessage("Successfully Reject Approve!!")
+//                            let controller = LeaveApprovalViewController.initWithStoryboard()
+//                            self.present(controller, animated: true, completion: nil);
+//                            print("Successfully Reject Approve!!")
                         }
                         self.leaveApprovalDetailsTableView.reloadData()
                     }catch let jsonErr{

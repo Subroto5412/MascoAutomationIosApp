@@ -138,7 +138,9 @@ class LeaveApplyViewController: UIViewController {
          }
             if let textReason = self?.bodyView.reasonBgView.text, textReason.isEmpty {
                 self?.toastMessage("Enter Reason!!")
-           }else{
+            } else if self!.bodyView.totalApplyDayLbl.text == "0"{
+            self?.toastMessage("Enter Correct Date!!")
+            } else{
             if InternetConnectionManager.isConnectedToNetwork(){
                 weakSelf.leaveSubmit()
             }else{
@@ -353,9 +355,14 @@ class LeaveApplyViewController: UIViewController {
                         let itemModel = try JSONDecoder().decode(LeaveSubmitResponse.self, from: data)
                         
                         if itemModel.response == true{
-                            self.toastMessage("Leave Successfully Submitted!")
-                            let controller = LeaveViewController.initWithStoryboard()
-                            self.present(controller, animated: true, completion: nil);
+                            
+                            let alert = UIAlertController(title: "", message: "Leave Successfully Submitted!", preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+                                let controller = LeaveViewController.initWithStoryboard()
+                                self.present(controller, animated: true, completion: nil);
+                            }))
+                            self.present(alert, animated: true, completion: nil)
+                            
                         }
                         
                     }catch let jsonErr{
