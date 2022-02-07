@@ -102,22 +102,36 @@ class GPMSViewController: UIViewController {
     }
 
     func showHPDsController(){
-        let controller = HPDsViewController.initWithStoryboard()
-        self.present(controller, animated: true, completion: nil);
+        let utils = Utils()
+        if  utils.readStringData(key: "HPD") == "HPD"{
+            let controller = HPDsViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
     }
     
     func showBWPDController(){
-        let controller = BWPDViewController.initWithStoryboard()
-        self.present(controller, animated: true, completion: nil);
+        let utils = Utils()
+        if  utils.readStringData(key: "HPD") == "HPD"{
+            let controller = BWPDViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
     }
     
     func showHPDController(){
-        let controller = HPDViewController.initWithStoryboard()
-        self.present(controller, animated: true, completion: nil);
+        let utils = Utils()
+        if  utils.readStringData(key: "HPD") == "HPD"{
+         
+            let controller = HPDViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
     }
     
     func showLWPController(){
-        let controller = LWPViewController.initWithStoryboard()
-        self.present(controller, animated: true, completion: nil);
+        let utils = Utils()
+        if  utils.readStringData(key: "HPD") == "HPD"{
+            
+            let controller = LWPViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
     }
 }

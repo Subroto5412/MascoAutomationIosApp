@@ -80,8 +80,22 @@ class SideMenuViewController: UIViewController {
     @IBAction func outputBtn(_ sender: Any) {
         let utils = Utils()
         utils.writeAnyData(key: "empCode", value: "")
+        utils.writeAnyData(key: "photo", value: "")
+        utils.writeAnyData(key: "empName", value: "")
+        utils.writeAnyData(key: "unitName", value: "")
+        utils.writeAnyData(key: "token", value: "")
+        utils.writeAnyData(key: "GPMSModule", value: "")
+        utils.writeAnyData(key: "HRModule", value: "")
+        utils.writeAnyData(key: "SCMModule", value: "")
+        utils.writeAnyData(key: "BWPD", value: "")
+        utils.writeAnyData(key: "HPD", value: "")
+        utils.writeAnyData(key: "HPDs", value: "")
+        utils.writeAnyData(key: "LWP", value: "")
+        utils.writeAnyData(key: "DA", value: "")
+        utils.writeAnyData(key: "LH", value: "")
+        utils.writeAnyData(key: "TH", value: "")
         
-        self.dismiss(animated: true, completion: nil)
+//        self.dismiss(animated: true, completion: nil)
         let controller = ViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
