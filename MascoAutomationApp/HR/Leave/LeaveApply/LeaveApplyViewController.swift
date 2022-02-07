@@ -297,6 +297,10 @@ class LeaveApplyViewController: UIViewController {
                         let itemModel = try JSONDecoder().decode(ListLeaveFormDataResponse.self, from: data)
                         self.dataSource = itemModel._leaveAvailList
                         
+                        print("---emP_CODE----\(itemModel.emp_details.emP_CODE)")
+                        print("---emP_ENAME----\(itemModel.emp_details.emP_ENAME)")
+                        print("---desigEName----\(itemModel.emp_details.desigEName)")
+                        
                         self.bodyView.IdBgView.text = itemModel.emp_details.emP_CODE
                         self.bodyView.nameBgView.text = itemModel.emp_details.emP_ENAME
                         self.bodyView.designationBgView.text = itemModel.emp_details.desigEName
@@ -408,8 +412,8 @@ extension LeaveApplyViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedButton.setTitle(dataSource[indexPath.row].abbreviation, for: .normal)
-        let maxBalance:Int = Int(dataSource[indexPath.row].maxBalance!)
-        let avail:Int = Int(dataSource[indexPath.row].avail!)
+        let maxBalance:Double = Double(dataSource[indexPath.row].maxBalance)
+        let avail:Double = Double(dataSource[indexPath.row].avail!)
         self.bodyView.leaveTypeValueLbl.text = "\(maxBalance - avail)"
         self.leaveTypeId = Int(dataSource[indexPath.row].leaveTypeNo!)
         removeTransparentView()
@@ -468,7 +472,7 @@ extension LeaveApplyViewController {
     struct ListLeaveAvail: Codable {
         var leaveTypeNo: Int?
         var abbreviation: String = ""
-        var maxBalance: Int?
+        var maxBalance: Double = 0.0
         var avail: Int?
         
         enum CodingKeys: String, CodingKey {
@@ -483,7 +487,7 @@ extension LeaveApplyViewController {
                 let container = try decoder.container(keyedBy: CodingKeys.self)
                 self.leaveTypeNo = try container.decodeIfPresent(Int.self, forKey: .leaveTypeNo) ?? 0
                 self.abbreviation = try container.decodeIfPresent(String.self, forKey: .abbreviation) ?? ""
-                self.maxBalance = try container.decodeIfPresent(Int.self, forKey: .maxBalance) ?? 0
+            self.maxBalance = try container.decodeIfPresent(Double.self, forKey: .maxBalance) ?? 0.0
                 self.avail = try container.decodeIfPresent(Int.self, forKey: .avail) ?? 0
            }
 
