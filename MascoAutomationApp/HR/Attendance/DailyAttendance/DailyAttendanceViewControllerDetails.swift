@@ -83,6 +83,9 @@ class DailyAttendanceViewControllerDetails: UIViewController {
        myMonth = calendar.component(.month, from: date)
        myDay = calendar.component(.day, from: date)
         
+        print("---myMonth---\(myMonth-1)")
+        print("---myMonth---\(monthList[myMonth].prefix(3))")
+        
        let utils = Utils()
         formattedDate = utils.currentFormattedDate()
         
@@ -91,7 +94,7 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         }else{
             
             self.backMonthIm.isHidden = false
-            let nextMonth = monthList[myMonth].prefix(3)
+            let nextMonth = monthList[myMonth-2].prefix(3)
             self.backMonthLbl.text = String(nextMonth)
         }
         
@@ -204,9 +207,9 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         let jsonData = try? JSONEncoder().encode(newItem)
         request.httpBody = jsonData
         
-        self.showSpinner(onView: self.view)
+//        self.showSpinner(onView: self.view)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                self.removeSpinner()
+//                self.removeSpinner()
                 DispatchQueue.main.async {
                         
                     if let error = error {
@@ -227,7 +230,7 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         }
         task.resume()
         
-        self.removeSpinner()
+//        self.removeSpinner()
         
         if InternetConnectionManager.isConnectedToNetwork(){
             self.getLeaveCountList(FromDate: FromDate, ToDate: ToDate)
@@ -259,10 +262,10 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         let jsonData = try? JSONEncoder().encode(newItem)
         
         request.httpBody = jsonData
-//        self.showSpinner(onView: self.view)
+        self.showSpinner(onView: self.view)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
 
-//                self.removeSpinner()
+                self.removeSpinner()
                 DispatchQueue.main.async {
                 
                     if let error = error {
@@ -296,6 +299,10 @@ class DailyAttendanceViewControllerDetails: UIViewController {
     }
     
     @IBAction func backMonthBtn(_ sender: Any) {
+        
+        let date = Date()
+        let calendar = Calendar.current
+        myDay = calendar.component(.day, from: date)
         
         if financialYearSelect.titleLabel?.text == "Select Financial Year" {
             toastMessage("Please Select Financial Year")
@@ -365,15 +372,32 @@ class DailyAttendanceViewControllerDetails: UIViewController {
             }
             
             if yearName ==  "\(myYear)"{
-                let day = myDay
-                let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
-                let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(day)"
-            
-                if InternetConnectionManager.isConnectedToNetwork(){
-                    self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
-                }else{
-                    self.toastMessage("No Internet Connected!!")
+                
+                if month == "\(myMonth)" {
+                    
+                    let day = myDay
+                    let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
+                    let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(day)"
+                
+                    if InternetConnectionManager.isConnectedToNetwork(){
+                        self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+                    }else{
+                        self.toastMessage("No Internet Connected!!")
+                    }
+                    
+                }else
+                {
+                    
+                    let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
+                    let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(howManyDayMonth(monthName: monthList[monthList.firstIndex(where: {$0 == selectedMonthLbl.text})!]))"
+                
+                    if InternetConnectionManager.isConnectedToNetwork(){
+                        self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+                    }else{
+                        self.toastMessage("No Internet Connected!!")
+                    }
                 }
+               
             }else{
                 let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
                 let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(howManyDayMonth(monthName: monthList[monthList.firstIndex(where: {$0 == selectedMonthLbl.text})!]))"
@@ -429,15 +453,30 @@ class DailyAttendanceViewControllerDetails: UIViewController {
             }
             
             if yearName ==  "\(myYear)"{
-//                let month = monthList.firstIndex(where: {$0 == selectedMonthLbl.text})! + 1
-                let day = myDay
-                let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
-                let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(day)"
-            
-                if InternetConnectionManager.isConnectedToNetwork(){
-                    self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
-                }else{
-                    self.toastMessage("No Internet Connected!!")
+
+                if month == "\(myMonth)" {
+                    
+                    let day = myDay
+                    let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
+                    let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(day)"
+                
+                    if InternetConnectionManager.isConnectedToNetwork(){
+                        self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+                    }else{
+                        self.toastMessage("No Internet Connected!!")
+                    }
+                    
+                }else
+                {
+                    
+                    let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
+                    let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(howManyDayMonth(monthName: monthList[monthList.firstIndex(where: {$0 == selectedMonthLbl.text})!]))"
+                
+                    if InternetConnectionManager.isConnectedToNetwork(){
+                        self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+                    }else{
+                        self.toastMessage("No Internet Connected!!")
+                    }
                 }
             
             }else{
@@ -518,16 +557,26 @@ extension DailyAttendanceViewControllerDetails : UITableViewDelegate{
             
             if yearName ==  "\(myYear)"{
 //                let month = monthList.firstIndex(where: {$0 == selectedMonthLbl.text})! + 1
-                let day = myDay
-                let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
-                let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(day)"
-            
-                if InternetConnectionManager.isConnectedToNetwork(){
-                    self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
-                }else{
-                    self.toastMessage("No Internet Connected!!")
-                }
+                if "\(myMonth-1)" == "\(month)"{
+                    let day = myDay
+                    let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
+                    let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(day)"
                 
+                    if InternetConnectionManager.isConnectedToNetwork(){
+                        self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+                    }else{
+                        self.toastMessage("No Internet Connected!!")
+                    }
+                }else{
+                    let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
+                    let toDate = "\(yearName)"+"-"+"\(month)"+"-"+"\(howManyDayMonth(monthName: monthList[monthList.firstIndex(where: {$0 == selectedMonthLbl.text})!]))"
+                
+                    if InternetConnectionManager.isConnectedToNetwork(){
+                        self.getAttendanceDetailsList(FromDate: fromDate, ToDate: toDate)
+                    }else{
+                        self.toastMessage("No Internet Connected!!")
+                    }
+                }
             }else{
 //                let month = monthList.firstIndex(where: {$0 == selectedMonthLbl.text})! + 1
                 let fromDate = "\(yearName)"+"-"+"\(month)"+"-"+"\("01")"
