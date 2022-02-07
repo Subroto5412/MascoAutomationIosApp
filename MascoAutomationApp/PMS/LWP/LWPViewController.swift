@@ -45,6 +45,8 @@ class LWPViewController: UIViewController {
         
         self.headerView.titleNameLbl.text = "Line Wise Production"
         
+        self.hideKeyboardWhenTappedAround()
+        
         if InternetConnectionManager.isConnectedToNetwork(){
             self.getUnitNameList()
         }else{

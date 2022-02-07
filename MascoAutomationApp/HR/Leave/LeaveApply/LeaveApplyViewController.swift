@@ -36,6 +36,8 @@ class LeaveApplyViewController: UIViewController {
         
         self.headerView.titleNameLbl.text = "Leave Application Form"
         
+        self.hideKeyboardWhenTappedAround()
+        
         self.getLeaveFormData()
         
         let utils = Utils()

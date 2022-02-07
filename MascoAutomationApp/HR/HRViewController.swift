@@ -31,6 +31,7 @@ class HRViewController: UIViewController {
         super.viewDidLoad()
 
 //        self.hrBodyView.attendanceUnderBgView.layer.
+        self.hideKeyboardWhenTappedAround()
         
         tableViewDropDown.delegate = self
         tableViewDropDown.dataSource = self

@@ -31,6 +31,8 @@ class HRISViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hideKeyboardWhenTappedAround()
+        
         tableViewDropDown.delegate = self
         tableViewDropDown.dataSource = self
         tableViewDropDown.register(CellClass.self, forCellReuseIdentifier: "Cell")

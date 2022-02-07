@@ -32,6 +32,9 @@ class LeaveApprovalDetailViewController: UIViewController, AlertDialogDelegate {
         super.viewDidLoad()
 
         self.headerView.titleNameLbl.text = "Leave Approval Details"
+        
+        self.hideKeyboardWhenTappedAround()
+        
         self.leaveApprovalDetailsTableView.register(UINib(nibName: "LeaveApprovalItemViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         leaveApprovalDetailsTableView.delegate = self
         leaveApprovalDetailsTableView.dataSource = self

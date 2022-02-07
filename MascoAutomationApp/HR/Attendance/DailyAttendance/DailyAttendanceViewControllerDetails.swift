@@ -56,6 +56,7 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         super.viewDidLoad()
         
         self.headerView.titleNameLbl.text = "Daily Attendance"
+        self.hideKeyboardWhenTappedAround()
         
         self.tableViewDailyAttendance.register(UINib(nibName: "DailyAttendanceTableViewCell", bundle: nil), forCellReuseIdentifier: "cell_daily_attendance")
 

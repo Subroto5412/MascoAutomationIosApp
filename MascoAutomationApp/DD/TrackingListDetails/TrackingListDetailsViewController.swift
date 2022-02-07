@@ -30,6 +30,8 @@ class TrackingListDetailsViewController: UIViewController {
 
         self.headerView.titleNameLbl.text = "Tracking List Details"
         
+        self.hideKeyboardWhenTappedAround()
+        
         self.doneBtnView.layer.cornerRadius = 20
         
         self.trackingTableView.slBgView.layer.borderColor = UIColor(red: 172/255, green: 227/255, blue: 255/255, alpha: 1.0).cgColor

@@ -30,6 +30,7 @@ class PMSViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        self.hideKeyboardWhenTappedAround()
         
         tableViewDropDown.delegate = self
         tableViewDropDown.dataSource = self

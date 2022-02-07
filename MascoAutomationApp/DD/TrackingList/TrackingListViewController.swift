@@ -27,6 +27,8 @@ class TrackingListViewController: UIViewController {
 
         self.headerView.titleNameLbl.text = "Tracking List"
         
+        self.hideKeyboardWhenTappedAround()
+        
         self.tableView.register(UINib(nibName: "TrackingListViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self

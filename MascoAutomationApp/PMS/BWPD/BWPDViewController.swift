@@ -44,6 +44,8 @@ class BWPDViewController: UIViewController {
         
         self.headerView.titleNameLbl.text = "Buyer Wise Production \nData"
         
+        self.hideKeyboardWhenTappedAround()
+        
         if InternetConnectionManager.isConnectedToNetwork(){
             self.getUnitNameList()
         }else{

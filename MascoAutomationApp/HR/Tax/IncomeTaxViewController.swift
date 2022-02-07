@@ -23,6 +23,8 @@ class IncomeTaxViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.hideKeyboardWhenTappedAround()
+        
         self.headerView.titleNameLbl.text = "Income Tax History"
         self.bodyView.taxUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.taxUnderBgView.layer.borderWidth = 0.5

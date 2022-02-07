@@ -25,6 +25,8 @@ class DDViewController: UIViewController {
 
         self.headerView.titleNameLbl.text = "Dispatch Delivery"
         
+        self.hideKeyboardWhenTappedAround()
+        
         self.bodyView.trackingBgViewUnder.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.trackingBgViewUnder.layer.borderWidth = 0.5
         self.bodyView.trackingBgViewUnder.layer.cornerRadius = 20

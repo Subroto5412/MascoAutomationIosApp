@@ -22,6 +22,8 @@ class OTPViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.hideKeyboardWhenTappedAround()
+        
         empIdTxtfield.layer.borderColor = UIColor(red: 104, green: 156, blue: 255, alpha: 1.0).cgColor
         empIdTxtfield.layer.borderWidth = 0.5
         empIdTxtfield.layer.cornerRadius = 5.0;

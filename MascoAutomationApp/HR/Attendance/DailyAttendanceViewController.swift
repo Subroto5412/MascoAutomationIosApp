@@ -23,6 +23,8 @@ class DailyAttendanceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.headerView.titleNameLbl.text = "Attendance History"
+        self.hideKeyboardWhenTappedAround()
+        
         self.bodyView.dailyAttendanceUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.dailyAttendanceUnderBgView.layer.borderWidth = 0.5
         self.bodyView.dailyAttendanceUnderBgView.layer.cornerRadius = 20

@@ -53,6 +53,7 @@ class HPDsViewController: UIViewController {
         super.viewDidLoad()
 
         self.headerView.titleNameLbl.text = "Hourly Production \nDetails"
+        self.hideKeyboardWhenTappedAround()
         
         if InternetConnectionManager.isConnectedToNetwork(){
             self.getUnitNameList()

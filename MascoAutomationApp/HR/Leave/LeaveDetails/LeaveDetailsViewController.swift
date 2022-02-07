@@ -51,6 +51,8 @@ class LeaveDetailsViewController: UIViewController {
 
         self.headerView.titleNameLbl.text = "Personal Leave Details"
         
+        self.hideKeyboardWhenTappedAround()
+        
         tableViewAvail.delegate = self
         tableViewAvail.dataSource = self
         self.tableViewAvail.register(UINib(nibName: "LeaveDetailsControllerCell", bundle: nil), forCellReuseIdentifier: "cell_avail")

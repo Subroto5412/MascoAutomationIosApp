@@ -44,6 +44,7 @@ class TaxDetailsViewController: UIViewController {
         super.viewDidLoad()
 
         self.headerView.titleNameLbl.text = "Income Tax Deduction \nHistory"
+        self.hideKeyboardWhenTappedAround()
         
         self.taxTableView.register(UINib(nibName: "TaxDetailsViewControllerCell", bundle: nil), forCellReuseIdentifier: "cellTax")
         taxTableView.delegate = self

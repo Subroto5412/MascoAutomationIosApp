@@ -28,6 +28,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hideKeyboardWhenTappedAround()
         
         let utils = Utils()
          if utils.readStringData(key: "REMEMBER_ME") == "true"{
@@ -65,10 +66,8 @@ class ViewController: UIViewController {
             
             if let text = empId.text, text.isEmpty {
                 self.toastMessage("Enter EmpId")
-                print("--Enter EmpId--")
             } else if let text1 = password.text, text1.isEmpty {
                 self.toastMessage("Enter password")
-                print("--Enter password--")
             }else{
                 let _empId: String = empId.text!
                 let _password: String = password.text!
@@ -108,7 +107,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func getProfileImageTF(_ sender: Any) {
-        print("-----Subroto-----")
         getProfilePhot(photoId: empId.text!)
     }
     

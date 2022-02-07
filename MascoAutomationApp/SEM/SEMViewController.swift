@@ -26,6 +26,8 @@ class SEMViewController: UIViewController {
         super.viewDidLoad()
         self.headerView.titleNameLbl.text = "Search Engine Management"
         
+        self.hideKeyboardWhenTappedAround()
+        
         self.bodyView.communicationPortalUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.communicationPortalUnderBgView.layer.borderWidth = 0.5
         self.bodyView.communicationPortalUnderBgView.layer.cornerRadius = 20

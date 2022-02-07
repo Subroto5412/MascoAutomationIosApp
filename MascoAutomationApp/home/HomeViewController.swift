@@ -41,10 +41,7 @@ class HomeViewController: UIViewController {
         
         self.menuBackgroundView.isHidden = true
         
-        
-        print("--------\(utils.readStringData(key: "empCode"))----")
-        
-       // dataSource = dataSourceScreen
+        self.hideKeyboardWhenTappedAround()
         
         tableViewDropDown.delegate = self
         tableViewDropDown.dataSource = self

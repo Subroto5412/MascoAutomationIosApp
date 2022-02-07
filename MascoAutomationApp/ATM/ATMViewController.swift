@@ -24,6 +24,8 @@ class ATMViewController: UIViewController {
 
         self.headerView.titleNameLbl.text = "Asset Basic Data"
         
+        self.hideKeyboardWhenTappedAround()
+        
         self.bodyView.assetBasicUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.assetBasicUnderBgView.layer.borderWidth = 0.5
         self.bodyView.assetBasicUnderBgView.layer.cornerRadius = 20

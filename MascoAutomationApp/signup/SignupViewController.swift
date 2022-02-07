@@ -41,6 +41,8 @@ class SignupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.hideKeyboardWhenTappedAround()
 
         passwordTxtField.layer.borderColor = UIColor(red: 104, green: 156, blue: 255, alpha: 1.0).cgColor
         passwordTxtField.layer.borderWidth = 0.5

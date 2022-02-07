@@ -57,6 +57,8 @@ class CommunicationPortalViewController: UIViewController {
 
         self.headerView.titleNameLbl.text = "Communication Portal"
         
+        self.hideKeyboardWhenTappedAround()
+        
         self.nameTextField.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.nameTextField.layer.borderWidth = 0.5
         self.nameTextField.layer.cornerRadius = 5
