@@ -214,10 +214,8 @@ class ViewController: UIViewController {
                             
                             let controller = HomeViewController.initWithStoryboard()
                             self.present(controller, animated: true, completion: nil);
-                           
-                            print("----error: \("Success")----")
                         }else{
-                                print("----error: \(todoItemModel.error)----")
+                            self.popupMsg(error: "UserId and Password isn't matched")
                         }
                       
                     }catch let jsonErr{
@@ -441,6 +439,16 @@ extension ViewController {
         if ( presentedViewController != nil && !presentedViewController!.isBeingPresented ) {
             dismiss(animated: false, completion: finished)
         }
+    }
+    
+    func popupMsg(error:String){
+        let alert = UIAlertController(title: "Error Message", message: error, preferredStyle: UIAlertController.Style.alert)
+
+                // add an action (button)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+                // show the alert
+                self.present(alert, animated: true, completion: nil)
     }
  }
 

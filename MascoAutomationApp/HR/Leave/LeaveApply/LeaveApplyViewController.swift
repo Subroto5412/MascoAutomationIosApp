@@ -301,10 +301,6 @@ class LeaveApplyViewController: UIViewController {
                         let itemModel = try JSONDecoder().decode(ListLeaveFormDataResponse.self, from: data)
                         self.dataSource = itemModel._leaveAvailList
                         
-                        print("---emP_CODE----\(itemModel.emp_details.emP_CODE)")
-                        print("---emP_ENAME----\(itemModel.emp_details.emP_ENAME)")
-                        print("---desigEName----\(itemModel.emp_details.desigEName)")
-                        
                         self.bodyView.IdBgView.text = itemModel.emp_details.emP_CODE
                         self.bodyView.nameBgView.text = itemModel.emp_details.emP_ENAME
                         self.bodyView.designationBgView.text = itemModel.emp_details.desigEName
@@ -379,7 +375,7 @@ class LeaveApplyViewController: UIViewController {
         transparentView.frame = window?.frame ?? self.view.frame
         self.view.addSubview(transparentView)
         
-        tableViewLeaveTypeDropDown.frame = CGRect(x: frames.origin.x+120, y: frames.origin.y + frames.height+CGFloat(totalHeight), width: frames.width+40, height: 0)
+        tableViewLeaveTypeDropDown.frame = CGRect(x: frames.origin.x+10, y: frames.origin.y + frames.height+CGFloat(totalHeight), width: frames.width+40, height: 0)
         self.view.addSubview(tableViewLeaveTypeDropDown)
         tableViewLeaveTypeDropDown.layer.cornerRadius = 5
         
@@ -390,7 +386,7 @@ class LeaveApplyViewController: UIViewController {
         transparentView.alpha = 0
         UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
             self.transparentView.alpha = 0.5
-            self.tableViewLeaveTypeDropDown.frame = CGRect(x: frames.origin.x+120, y: frames.origin.y + frames.height + 5+CGFloat(self.totalHeight), width: frames.width+40, height: CGFloat(self.dataSource.count * 50))
+            self.tableViewLeaveTypeDropDown.frame = CGRect(x: frames.origin.x+10, y: frames.origin.y + frames.height + 5+CGFloat(self.totalHeight), width: frames.width+40, height: CGFloat(self.dataSource.count * 50))
         }, completion: nil)
     }
     
@@ -398,7 +394,7 @@ class LeaveApplyViewController: UIViewController {
         let frames = selectedButton.frame
         UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
             self.transparentView.alpha = 0
-            self.tableViewLeaveTypeDropDown.frame = CGRect(x: frames.origin.x+120, y: frames.origin.y + frames.height+CGFloat(self.totalHeight), width: frames.width+40, height: 0)
+            self.tableViewLeaveTypeDropDown.frame = CGRect(x: frames.origin.x+10, y: frames.origin.y + frames.height+CGFloat(self.totalHeight), width: frames.width+40, height: 0)
         }, completion: nil)
     }
 
