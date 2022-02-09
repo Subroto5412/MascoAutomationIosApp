@@ -16,6 +16,4 @@ class BWPDTitleView: XibView {
     @IBOutlet weak var orderQtsBgView: UIView!
     @IBOutlet weak var sewQtsBgView: UIView!
     @IBOutlet weak var balanceBgView: UIView!
-    
-
 }

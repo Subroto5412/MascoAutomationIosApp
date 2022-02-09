@@ -26,6 +26,48 @@ class GPMSViewController: UIViewController {
         self.headerView.titleNameLbl.text = "Garments Production \nManagement"
         
         self.hideKeyboardWhenTappedAround()
+        self.uiViewDesign()
+        self.navigationLink()
+    }
+}
+
+extension GPMSViewController{
+    
+    func uiViewDesign(){
+        self.bodyView.lwpUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
+        self.bodyView.lwpUnderBgView.layer.borderWidth = 0.5
+        self.bodyView.lwpUnderBgView.layer.cornerRadius = 20
+        
+        self.bodyView.lwpBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
+        self.bodyView.lwpBgView.layer.borderWidth = 0.5
+        self.bodyView.lwpBgView.layer.cornerRadius = 20
+        
+        self.bodyView.hpdUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
+        self.bodyView.hpdUnderBgView.layer.borderWidth = 0.5
+        self.bodyView.hpdUnderBgView.layer.cornerRadius = 20
+        
+        self.bodyView.hpdBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
+        self.bodyView.hpdBgView.layer.borderWidth = 0.5
+        self.bodyView.hpdBgView.layer.cornerRadius = 20
+        
+        self.bodyView.bwpdUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
+        self.bodyView.bwpdUnderBgView.layer.borderWidth = 0.5
+        self.bodyView.bwpdUnderBgView.layer.cornerRadius = 20
+        
+        self.bodyView.bwpdBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
+        self.bodyView.bwpdBgView.layer.borderWidth = 0.5
+        self.bodyView.bwpdBgView.layer.cornerRadius = 20
+        
+        self.bodyView.hpdsUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
+        self.bodyView.hpdsUnderBgView.layer.borderWidth = 0.5
+        self.bodyView.hpdsUnderBgView.layer.cornerRadius = 20
+        
+        self.bodyView.hpdsBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
+        self.bodyView.hpdsBgView.layer.borderWidth = 0.5
+        self.bodyView.hpdsBgView.layer.cornerRadius = 20
+    }
+    
+    func navigationLink(){
         
         self.headerView.backBtnHandler = {
             [weak self] (isShow) in
@@ -66,37 +108,6 @@ class GPMSViewController: UIViewController {
          }
          weakSelf.showHPDController()
         }
-        self.bodyView.lwpUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
-        self.bodyView.lwpUnderBgView.layer.borderWidth = 0.5
-        self.bodyView.lwpUnderBgView.layer.cornerRadius = 20
-        
-        self.bodyView.lwpBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
-        self.bodyView.lwpBgView.layer.borderWidth = 0.5
-        self.bodyView.lwpBgView.layer.cornerRadius = 20
-        
-        self.bodyView.hpdUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
-        self.bodyView.hpdUnderBgView.layer.borderWidth = 0.5
-        self.bodyView.hpdUnderBgView.layer.cornerRadius = 20
-        
-        self.bodyView.hpdBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
-        self.bodyView.hpdBgView.layer.borderWidth = 0.5
-        self.bodyView.hpdBgView.layer.cornerRadius = 20
-        
-        self.bodyView.bwpdUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
-        self.bodyView.bwpdUnderBgView.layer.borderWidth = 0.5
-        self.bodyView.bwpdUnderBgView.layer.cornerRadius = 20
-        
-        self.bodyView.bwpdBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
-        self.bodyView.bwpdBgView.layer.borderWidth = 0.5
-        self.bodyView.bwpdBgView.layer.cornerRadius = 20
-        
-        self.bodyView.hpdsUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
-        self.bodyView.hpdsUnderBgView.layer.borderWidth = 0.5
-        self.bodyView.hpdsUnderBgView.layer.cornerRadius = 20
-        
-        self.bodyView.hpdsBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
-        self.bodyView.hpdsBgView.layer.borderWidth = 0.5
-        self.bodyView.hpdsBgView.layer.cornerRadius = 20
     }
     
     func showBackController(){

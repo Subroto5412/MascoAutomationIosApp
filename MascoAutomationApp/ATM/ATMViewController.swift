@@ -25,7 +25,14 @@ class ATMViewController: UIViewController {
         self.headerView.titleNameLbl.text = "Asset Basic Data"
         
         self.hideKeyboardWhenTappedAround()
-        
+        self.uiViewDesign()
+        self.navigationLink()
+    }
+}
+
+extension ATMViewController{
+    
+    func uiViewDesign(){
         self.bodyView.assetBasicUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.assetBasicUnderBgView.layer.borderWidth = 0.5
         self.bodyView.assetBasicUnderBgView.layer.cornerRadius = 20
@@ -33,7 +40,9 @@ class ATMViewController: UIViewController {
         self.bodyView.assetBasicBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.assetBasicBgView.layer.borderWidth = 0.5
         self.bodyView.assetBasicBgView.layer.cornerRadius = 20
-        
+    }
+    
+    func navigationLink(){
         self.headerView.backBtnHandler = {
             [weak self] (isShow) in
             guard let weakSelf = self else {
@@ -50,7 +59,7 @@ class ATMViewController: UIViewController {
          weakSelf.scanATMProduct()
         }
     }
-
+    
     func showHomeController(){
         let controller = HomeViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);

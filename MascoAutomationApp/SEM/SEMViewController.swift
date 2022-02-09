@@ -27,7 +27,14 @@ class SEMViewController: UIViewController {
         self.headerView.titleNameLbl.text = "Search Engine Management"
         
         self.hideKeyboardWhenTappedAround()
-        
+        self.uiViewDesign()
+        self.navigationLink()
+    }
+}
+
+extension SEMViewController{
+    
+    func uiViewDesign(){
         self.bodyView.communicationPortalUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.communicationPortalUnderBgView.layer.borderWidth = 0.5
         self.bodyView.communicationPortalUnderBgView.layer.cornerRadius = 20
@@ -35,7 +42,9 @@ class SEMViewController: UIViewController {
         self.bodyView.communicationPortalBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.communicationPortalBgView.layer.borderWidth = 0.5
         self.bodyView.communicationPortalBgView.layer.cornerRadius = 20
-        
+    }
+    
+    func navigationLink(){
         self.headerView.backBtnHandler = {
             [weak self] (isShow) in
             guard let weakSelf = self else {
@@ -53,7 +62,6 @@ class SEMViewController: UIViewController {
         }
     }
     
-
     func showHomeController(){
         let controller = HomeViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);

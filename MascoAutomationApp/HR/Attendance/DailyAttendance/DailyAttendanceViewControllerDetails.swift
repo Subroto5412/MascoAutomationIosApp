@@ -32,8 +32,8 @@ class DailyAttendanceViewControllerDetails: UIViewController {
     var dataSource = [ListFinalYear]()
     var monthList = [String]()
     
-    var dataSourceAttendanceDetails = [ListAttendanceDetails]()
-    var dataSourceLeaveCount = [ListLeaveCount]()
+    var dataSourceAttendanceDetails = [AttendanceDetails]()
+    var dataSourceLeaveCount = [LeaveCount]()
     
     var totalHeight: Int = 0
     
@@ -219,7 +219,7 @@ class DailyAttendanceViewControllerDetails: UIViewController {
                     guard let data = data else {return}
 
                     do{
-                        let ItemModel = try JSONDecoder().decode(ListAttendanceDetailsResponse.self, from: data)
+                        let ItemModel = try JSONDecoder().decode(AttendanceDetailsResponse.self, from: data)
                         self.dataSourceAttendanceDetails = ItemModel._attHistoryListStr
                         self.tableViewDailyAttendance.reloadData()
                         
@@ -275,7 +275,7 @@ class DailyAttendanceViewControllerDetails: UIViewController {
                     guard let data = data else {return}
 
                     do{
-                        let ItemModel = try JSONDecoder().decode(ListLeaveCountResponse.self, from: data)
+                        let ItemModel = try JSONDecoder().decode(LeaveCountResponse.self, from: data)
                         self.dataSourceLeaveCount = ItemModel._listLeaveCount
                         self.leaveCountCollectionView.reloadData()
                         
@@ -611,7 +611,7 @@ extension DailyAttendanceViewControllerDetails : UITableViewDataSource{
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell_daily_attendance", for: indexPath) as! DailyAttendanceTableViewCell
             
-            cell.setInformation(withItem: dataSourceAttendanceDetails[indexPath.row] as ListAttendanceDetails, formattedDate: formattedDate)
+            cell.setInformation(withItem: dataSourceAttendanceDetails[indexPath.row] as AttendanceDetails, formattedDate: formattedDate)
             cell.layoutIfNeeded()
             cell.setNeedsDisplay()
             return cell
@@ -658,58 +658,7 @@ extension DailyAttendanceViewControllerDetails : UICollectionViewDelegateFlowLay
 
 extension DailyAttendanceViewControllerDetails {
   
-    struct ListFinalYear: Codable {
-        var finalYearNo: Int?
-        var finalYearName: String = ""
-        var yearName: String = ""
-        
-        enum CodingKeys: String, CodingKey {
-            case finalYearNo = "finalYearNo"
-            case finalYearName = "finalYearName"
-            case yearName = "yearName"
-        }
-        
-        init(from decoder: Decoder) throws {
-
-               let container = try decoder.container(keyedBy: CodingKeys.self)
-               self.finalYearNo = try container.decodeIfPresent(Int.self, forKey: .finalYearNo) ?? 0
-               self.finalYearName = try container.decodeIfPresent(String.self, forKey: .finalYearName) ?? ""
-               self.yearName = try container.decodeIfPresent(String.self, forKey: .yearName) ?? ""
-           }
-
-           func encode(to encoder: Encoder) throws {
-
-               var container = encoder.container(keyedBy: CodingKeys.self)
-               try container.encode(finalYearNo, forKey: .finalYearNo)
-               try container.encode(finalYearName, forKey: .finalYearName)
-               try container.encode(yearName, forKey: .yearName)
-           }
-    }
-    
-    struct ListFinalYearResponse: Codable {
-        var error: String = ""
-        var _listFinalYear : [ListFinalYear]
-
-        enum CodingKeys: String, CodingKey {
-            case error = "error"
-            case _listFinalYear
-        }
-        
-         init(from decoder: Decoder) throws {
-
-                let container = try decoder.container(keyedBy: CodingKeys.self)
-                self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
-                self._listFinalYear = try container.decodeIfPresent([ListFinalYear].self, forKey: ._listFinalYear) ?? []
-            }
-
-            func encode(to encoder: Encoder) throws {
-
-                var container = encoder.container(keyedBy: CodingKeys.self)
-                try container.encode(error, forKey: .error)
-                try container.encode(_listFinalYear, forKey: ._listFinalYear)
-            }
-    }
-   
+ 
 }
 
 extension DailyAttendanceViewControllerDetails {
@@ -741,145 +690,5 @@ extension DailyAttendanceViewControllerDetails {
     
     //-------Daily Attendance Data--------
     
-    struct AttendanceDetailsRequest: Codable {
-        var fromDate: String
-        var toDate: String
-        
-        enum CodingKeys: String, CodingKey {
-            case fromDate = "fromDate"
-            case toDate = "toDate"
-        }
-    }
-    
-    struct ListAttendanceDetails: Codable {
-        var datePunch: String = ""
-        var shiftInTime: String = ""
-        var shiftOutTime: String = ""
-        var shiftLateTime: String = ""
-        var punchInTime: String = ""
-        var punchOutTime: String = ""
-        var shiftName: String = ""
-        var lateTime: String = ""
-        var additionalTime: String = ""
-        var fSts: String = ""
-        
-        enum CodingKeys: String, CodingKey {
-            case datePunch = "datePunch"
-            case shiftInTime = "shiftInTime"
-            case shiftOutTime = "shiftOutTime"
-            case shiftLateTime = "shiftLateTime"
-            case punchInTime = "punchInTime"
-            case punchOutTime = "punchOutTime"
-            case shiftName = "shiftName"
-            case lateTime = "lateTime"
-            case additionalTime = "additionalTime"
-            case fSts = "fSts"
-        }
-        
-        init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            self.datePunch = try container.decodeIfPresent(String.self, forKey: .datePunch) ?? ""
-            self.shiftInTime = try container.decodeIfPresent(String.self, forKey: .shiftInTime) ?? ""
-            self.shiftOutTime = try container.decodeIfPresent(String.self, forKey: .shiftOutTime) ?? ""
-            self.shiftLateTime = try container.decodeIfPresent(String.self, forKey: .shiftLateTime) ?? ""
-            self.punchInTime = try container.decodeIfPresent(String.self, forKey: .punchInTime) ?? ""
-            self.punchOutTime = try container.decodeIfPresent(String.self, forKey: .punchOutTime) ?? ""
-            self.shiftName = try container.decodeIfPresent(String.self, forKey: .shiftName) ?? ""
-            self.lateTime = try container.decodeIfPresent(String.self, forKey: .lateTime) ?? ""
-            self.additionalTime = try container.decodeIfPresent(String.self, forKey: .additionalTime) ?? ""
-            self.fSts = try container.decodeIfPresent(String.self, forKey: .fSts) ?? ""
-            
-        }
 
-           func encode(to encoder: Encoder) throws {
-            var container = encoder.container(keyedBy: CodingKeys.self)
-            try container.encode(datePunch, forKey: .datePunch)
-            try container.encode(shiftInTime, forKey: .shiftInTime)
-            try container.encode(shiftOutTime, forKey: .shiftOutTime)
-            try container.encode(shiftLateTime, forKey: .shiftLateTime)
-            try container.encode(punchInTime, forKey: .punchInTime)
-            try container.encode(punchOutTime, forKey: .punchOutTime)
-            try container.encode(shiftName, forKey: .shiftName)
-            try container.encode(lateTime, forKey: .lateTime)
-            try container.encode(additionalTime, forKey: .additionalTime)
-            try container.encode(fSts, forKey: .fSts)
-        }
-    }
-    
-    struct ListAttendanceDetailsResponse: Codable {
-        var error: String = ""
-        var _attHistoryListStr : [ListAttendanceDetails]
-
-        enum CodingKeys: String, CodingKey {
-            case error = "error"
-            case _attHistoryListStr
-        }
-        
-         init(from decoder: Decoder) throws {
-                let container = try decoder.container(keyedBy: CodingKeys.self)
-                self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
-                self._attHistoryListStr = try container.decodeIfPresent([ListAttendanceDetails].self, forKey: ._attHistoryListStr) ?? []
-            }
-
-            func encode(to encoder: Encoder) throws {
-                var container = encoder.container(keyedBy: CodingKeys.self)
-                try container.encode(error, forKey: .error)
-                try container.encode(_attHistoryListStr, forKey: ._attHistoryListStr)
-            }
-    }
-    
-    
-    struct LeaveCountRequest: Codable {
-        var fromDate: String
-        var toDate: String
-        
-        enum CodingKeys: String, CodingKey {
-            case fromDate = "fromDate"
-            case toDate = "toDate"
-        }
-        
-    }
-    struct ListLeaveCount: Codable {
-        var status: String = ""
-        var statusValue: String = ""
-        
-        enum CodingKeys: String, CodingKey {
-            case status = "status"
-            case statusValue = "statusValue"
-        }
-        
-        init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            self.status = try container.decodeIfPresent(String.self, forKey: .status) ?? ""
-            self.statusValue = try container.decodeIfPresent(String.self, forKey: .statusValue) ?? ""
-           }
-
-           func encode(to encoder: Encoder) throws {
-               var container = encoder.container(keyedBy: CodingKeys.self)
-               try container.encode(status, forKey: .status)
-               try container.encode(statusValue, forKey: .statusValue)
-           }
-    }
-    
-    struct ListLeaveCountResponse: Codable {
-        var error: String = ""
-        var _listLeaveCount : [ListLeaveCount]
-
-        enum CodingKeys: String, CodingKey {
-            case error = "error"
-            case _listLeaveCount
-        }
-        
-         init(from decoder: Decoder) throws {
-                let container = try decoder.container(keyedBy: CodingKeys.self)
-                self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
-                self._listLeaveCount = try container.decodeIfPresent([ListLeaveCount].self, forKey: ._listLeaveCount) ?? []
-            }
-
-            func encode(to encoder: Encoder) throws {
-                var container = encoder.container(keyedBy: CodingKeys.self)
-                try container.encode(error, forKey: .error)
-                try container.encode(_listLeaveCount, forKey: ._listLeaveCount)
-            }
-    }
 }

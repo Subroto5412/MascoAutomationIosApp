@@ -24,7 +24,13 @@ class IncomeTaxViewController: UIViewController {
         super.viewDidLoad()
 
         self.hideKeyboardWhenTappedAround()
-        
+        self.uiViewDesign()
+        self.navigationLink()
+    }
+}
+
+extension IncomeTaxViewController{
+    func uiViewDesign(){
         self.headerView.titleNameLbl.text = "Income Tax History"
         self.bodyView.taxUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.taxUnderBgView.layer.borderWidth = 0.5
@@ -33,6 +39,9 @@ class IncomeTaxViewController: UIViewController {
         self.bodyView.taxBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.taxBgView.layer.borderWidth = 0.5
         self.bodyView.taxBgView.layer.cornerRadius = 20
+    }
+    
+    func navigationLink(){
         
         self.headerView.backBtnHandler = {
             [weak self] (isShow) in
@@ -49,9 +58,7 @@ class IncomeTaxViewController: UIViewController {
          }
          weakSelf.showTaxDetailsController()
         }
-        
     }
-    
     
     func showBackController(){
         

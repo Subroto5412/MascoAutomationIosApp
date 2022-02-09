@@ -32,12 +32,9 @@ class LeaveApprovalDetailViewController: UIViewController, AlertDialogDelegate {
         super.viewDidLoad()
 
         self.headerView.titleNameLbl.text = "Leave Approval Details"
-        
+        self.nidRegister()
         self.hideKeyboardWhenTappedAround()
-        
-        self.leaveApprovalDetailsTableView.register(UINib(nibName: "LeaveApprovalItemViewCell", bundle: nil), forCellReuseIdentifier: "cell")
-        leaveApprovalDetailsTableView.delegate = self
-        leaveApprovalDetailsTableView.dataSource = self
+        self.uiViewDesign()
         
         if InternetConnectionManager.isConnectedToNetwork(){
             self.getLeaveApprovalDetails()
@@ -45,9 +42,137 @@ class LeaveApprovalDetailViewController: UIViewController, AlertDialogDelegate {
             self.toastMessage("No Internet Connected!!")
         }
         
+        self.navigationLink()
+        self.ApprovalAndRejectMethodCalling()
+    }
+    func fromDate(from :String){}
+}
+
+extension LeaveApprovalDetailViewController : UITableViewDelegate{
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        empCode = dataSource[indexPath.row].emP_CODE
+    }
+}
+
+extension LeaveApprovalDetailViewController : UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeaveApprovalItemViewCell
+        cell.idLbl.text = dataSource[indexPath.row].emP_CODE
+        cell.nameLbl.text = dataSource[indexPath.row].emP_ENAME
+        cell.designationLbl.text = dataSource[indexPath.row].desigEName
+    
+        cell.fromDateLbl.text = dataSource[indexPath.row].applyFromDate
+        cell.toDateLbl.text = dataSource[indexPath.row].applyToDate
+        cell.leaveLbl.text = dataSource[indexPath.row].leaveType
+        cell.balanceLbl.text = "Bl-\(String(describing: dataSource[indexPath.row].leaveMax!)) day"
+        cell.totalDaysLbl.text = "AP-\(getApplyDays(fromDate:dataSource[indexPath.row].applyFromDate, toDate: dataSource[indexPath.row].applyToDate)) day"
+        
+        if dataSource[indexPath.row].check == true{
+            cell.checkingBtn.setImage(UIImage(named: "checking"), for: UIControl.State.normal)
+        }else{
+            cell.checkingBtn.setImage(UIImage(named: "not_checking"), for: UIControl.State.normal)
+        }
+        
+        cell.checkBtnPressed = {
+            if self.dataSource[indexPath.row].check == !false {
+                cell.checkingBtn.setImage(UIImage(named: "not_checking"), for: UIControl.State.normal)
+                self.dataSource[indexPath.row].check = false
+            }else{
+                cell.checkingBtn.setImage(UIImage(named: "checking"), for: UIControl.State.normal)
+                self.dataSource[indexPath.row].check = true
+            }
+        }
+        
+        cell.dateUpdateBtnPressed = {
+            
+            self.index = indexPath.row
+            _fromDate = self.dataSource[indexPath.row].applyFromDate
+            _toDate = self.dataSource[indexPath.row].applyToDate
+            
+            let alertDialog = self.storyboard?.instantiateViewController(identifier: "AlertDialogViewController") as! AlertDialogViewController
+            alertDialog.delegate = self
+            alertDialog.modalPresentationStyle = .overCurrentContext
+            alertDialog.providesPresentationContextTransitionStyle = true
+            alertDialog.definesPresentationContext = true
+            alertDialog.modalTransitionStyle = .crossDissolve
+            
+           
+            self.present(alertDialog, animated: true, completion: nil);
+        }
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+}
+
+extension LeaveApprovalDetailViewController {
+    func showSpinner(onView : UIView) {
+           let spinnerView = UIView.init(frame: onView.bounds)
+           spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+           let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+           ai.startAnimating()
+           ai.center = spinnerView.center
+           
+           DispatchQueue.main.async {
+               spinnerView.addSubview(ai)
+               onView.addSubview(spinnerView)
+           }
+           
+           vSpinner = spinnerView
+       }
+       
+       func removeSpinner() {
+           DispatchQueue.main.async {
+            self.vSpinner?.removeFromSuperview()
+            self.vSpinner = nil
+           }
+       }
+ }
+
+extension LeaveApprovalDetailViewController {
+    func showLoading(finished: @escaping () -> Void) {
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+
+        alert.view.addSubview(loadingIndicator)
+
+        present(alert, animated: false, completion: finished)
+    }
+
+    func hideLoading(finished: @escaping () -> Void) {
+        if ( presentedViewController != nil && !presentedViewController!.isBeingPresented ) {
+            dismiss(animated: false, completion: finished)
+        }
+    }
+ }
+
+
+extension LeaveApprovalDetailViewController{
+    
+    func nidRegister(){
+        self.leaveApprovalDetailsTableView.register(UINib(nibName: "LeaveApprovalItemViewCell", bundle: nil), forCellReuseIdentifier: "cell")
+        leaveApprovalDetailsTableView.delegate = self
+        leaveApprovalDetailsTableView.dataSource = self
+    }
+    
+    func uiViewDesign(){
         self.approvalView.approvedBtnView.layer.cornerRadius = 20.0;
         self.approvalView.rejectBtnView.layer.cornerRadius = 20.0;
-        
+    }
+    
+    func navigationLink(){
         self.headerView.backBtnHandler = {
             [weak self] (isShow) in
             guard let weakSelf = self else {
@@ -55,14 +180,9 @@ class LeaveApprovalDetailViewController: UIViewController, AlertDialogDelegate {
          }
          weakSelf.showBackController()
         }
-        
-        self.headerView.backBtnHandler = {
-            [weak self] (isShow) in
-            guard let weakSelf = self else {
-            return
-         }
-         weakSelf.showBackController()
-        }
+    }
+    
+    func ApprovalAndRejectMethodCalling(){
         
         self.tableViewHeaderView.allCheckingBtnHandler = {
             [weak self] (isShow) in
@@ -102,14 +222,9 @@ class LeaveApprovalDetailViewController: UIViewController, AlertDialogDelegate {
         self.present(controller, animated: true, completion: nil);
     }
     
-    
     func getApplyDays(fromDate:String, toDate: String)->String{
         
         let calendar = Calendar.current
-
-//        let start = self!.fromDate
-//        let end = self!.toDate
-        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM yyyy"
 
@@ -126,6 +241,7 @@ class LeaveApprovalDetailViewController: UIViewController, AlertDialogDelegate {
         
         return "\(totalApplyDay)"
     }
+    
     func showAllCheckingController(){
       
         let dataSourceLength:Int = Int(dataSource.count)
@@ -142,17 +258,6 @@ class LeaveApprovalDetailViewController: UIViewController, AlertDialogDelegate {
                 AllCheck = false
             }
         }
-       
-//        for index in 0...dataSourceLength-1 {
-//
-//            if dataSource[index].check == !false {
-//                self.dataSource[index].check = false
-//                self.tableViewHeaderView.allCheckingBtn.setImage(UIImage(named: "not_checking"), for: UIControl.State.normal)
-//            }else {
-//                 self.dataSource[index].check = true
-//                 self.tableViewHeaderView.allCheckingBtn.setImage(UIImage(named: "checking"), for: UIControl.State.normal)
-//            }
-//        }
         self.leaveApprovalDetailsTableView.reloadData()
     }
     
@@ -177,15 +282,11 @@ class LeaveApprovalDetailViewController: UIViewController, AlertDialogDelegate {
         let jsonData = try? JSONEncoder().encode(newTodoItem)
         
         request.httpBody = jsonData
-
-        print("jsonData jsonData  data:\n \(jsonData!)")
-      //  self.showLoading(finished: {
+     
         self.showSpinner(onView: self.view)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 self.removeSpinner()
                 DispatchQueue.main.async {
-                    
-             //       self.hideLoading(finished: {
                         
                     if let error = error {
                         print("Error took place \(error)")
@@ -201,11 +302,9 @@ class LeaveApprovalDetailViewController: UIViewController, AlertDialogDelegate {
                     }catch let jsonErr{
                         print(jsonErr)
                    }
-                 //   })
                 }
         }
         task.resume()
-     //   })
     }
     
     func submitLeaveApproval(){
@@ -262,11 +361,6 @@ class LeaveApprovalDetailViewController: UIViewController, AlertDialogDelegate {
                                 self.present(controller, animated: true, completion: nil);
                             }))
                             self.present(alert, animated: true, completion: nil)
-                            
-//                            self.toastMessage("Successfully Leave Approve!!")
-//                            let controller = LeaveApprovalViewController.initWithStoryboard()
-//                            self.present(controller, animated: true, completion: nil);
-//                            print("Successfully Leave Approve!!")
                         }
                         self.leaveApprovalDetailsTableView.reloadData()
                     }catch let jsonErr{
@@ -334,11 +428,6 @@ class LeaveApprovalDetailViewController: UIViewController, AlertDialogDelegate {
                                 self.present(controller, animated: true, completion: nil);
                             }))
                             self.present(alert, animated: true, completion: nil)
-                            
-//                            self.toastMessage("Successfully Reject Approve!!")
-//                            let controller = LeaveApprovalViewController.initWithStoryboard()
-//                            self.present(controller, animated: true, completion: nil);
-//                            print("Successfully Reject Approve!!")
                         }
                         self.leaveApprovalDetailsTableView.reloadData()
                     }catch let jsonErr{
@@ -361,334 +450,7 @@ class LeaveApprovalDetailViewController: UIViewController, AlertDialogDelegate {
                 self.dataSource[index].applyToDate = to
             }
         }
-
         self.leaveApprovalDetailsTableView.reloadData()
     }
-    
-    func fromDate(from :String){
-     
-    }
 }
 
-extension LeaveApprovalDetailViewController : UITableViewDelegate{
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        empCode = dataSource[indexPath.row].emP_CODE
-    }
-}
-
-
-extension LeaveApprovalDetailViewController : UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeaveApprovalItemViewCell
-        cell.idLbl.text = dataSource[indexPath.row].emP_CODE
-        cell.nameLbl.text = dataSource[indexPath.row].emP_ENAME
-        cell.designationLbl.text = dataSource[indexPath.row].desigEName
-    
-        cell.fromDateLbl.text = dataSource[indexPath.row].applyFromDate
-        cell.toDateLbl.text = dataSource[indexPath.row].applyToDate
-        cell.leaveLbl.text = dataSource[indexPath.row].leaveType
-        cell.balanceLbl.text = "Bl-\(String(describing: dataSource[indexPath.row].leaveMax!)) day"
-//        cell.totalDaysLbl.text = "AP-\(String(describing: dataSource[indexPath.row].leaveNo!))"
-        cell.totalDaysLbl.text = "AP-\(getApplyDays(fromDate:dataSource[indexPath.row].applyFromDate, toDate: dataSource[indexPath.row].applyToDate)) day"
-        
-        if dataSource[indexPath.row].check == true{
-            cell.checkingBtn.setImage(UIImage(named: "checking"), for: UIControl.State.normal)
-        }else{
-            cell.checkingBtn.setImage(UIImage(named: "not_checking"), for: UIControl.State.normal)
-        }
-        
-        cell.checkBtnPressed = {
-            if self.dataSource[indexPath.row].check == !false {
-                cell.checkingBtn.setImage(UIImage(named: "not_checking"), for: UIControl.State.normal)
-                self.dataSource[indexPath.row].check = false
-            }else{
-                cell.checkingBtn.setImage(UIImage(named: "checking"), for: UIControl.State.normal)
-                self.dataSource[indexPath.row].check = true
-            }
-        }
-        
-        cell.dateUpdateBtnPressed = {
-            
-            self.index = indexPath.row
-            _fromDate = self.dataSource[indexPath.row].applyFromDate
-            _toDate = self.dataSource[indexPath.row].applyToDate
-            
-            let alertDialog = self.storyboard?.instantiateViewController(identifier: "AlertDialogViewController") as! AlertDialogViewController
-            alertDialog.delegate = self
-            alertDialog.modalPresentationStyle = .overCurrentContext
-            alertDialog.providesPresentationContextTransitionStyle = true
-            alertDialog.definesPresentationContext = true
-            alertDialog.modalTransitionStyle = .crossDissolve
-            
-           
-            self.present(alertDialog, animated: true, completion: nil);
-        }
-        return cell
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
-    }
-}
-
-
-extension LeaveApprovalDetailViewController {
-    
-    struct LeaveApprovalPendingRequest: Codable {
-        var recommPersNo: Int?
-        var responsiblePersNo: Int?
-        
-        enum CodingKeys: String, CodingKey {
-            case recommPersNo = "recommPersNo"
-            case responsiblePersNo = "responsiblePersNo"
-        }
-    }
-    struct ListLeaveApproval: Codable {
-        var applyNo: Int?
-        var emP_CODE: String = ""
-        var emP_ENAME: String = ""
-        var desigEName: String = ""
-        var applyFromDate: String = ""
-        var applyToDate: String = ""
-        var applyDays: String = ""
-        var leaveNo: Int?
-        var leaveType: String = ""
-        var leaveMax: Int?
-        var leaveAvail: Int?
-        var check: Bool
-        
-        enum CodingKeys: String, CodingKey {
-            case applyNo = "applyNo"
-            case emP_CODE = "emP_CODE"
-            case emP_ENAME = "emP_ENAME"
-            case desigEName = "desigEName"
-            case applyFromDate = "applyFromDate"
-            case applyToDate = "applyToDate"
-            case applyDays = "applyDays"
-            case leaveNo = "leaveNo"
-            case leaveType = "leaveType"
-            case leaveMax = "leaveMax"
-            case leaveAvail = "leaveAvail"
-            case check = "check"
-        }
-        
-        init(from decoder: Decoder) throws {
-
-               let container = try decoder.container(keyedBy: CodingKeys.self)
-               self.applyNo = try container.decodeIfPresent(Int.self, forKey: .applyNo) ?? 0
-               self.emP_CODE = try container.decodeIfPresent(String.self, forKey: .emP_CODE) ?? ""
-               self.emP_ENAME = try container.decodeIfPresent(String.self, forKey: .emP_ENAME) ?? ""
-               self.desigEName = try container.decodeIfPresent(String.self, forKey: .desigEName) ?? ""
-               self.applyFromDate = try container.decodeIfPresent(String.self, forKey: .applyFromDate) ?? ""
-               self.applyToDate = try container.decodeIfPresent(String.self, forKey: .applyToDate) ?? ""
-               self.applyDays = try container.decodeIfPresent(String.self, forKey: .applyDays) ?? ""
-               self.leaveNo = try container.decodeIfPresent(Int.self, forKey: .leaveNo) ?? 0
-               self.leaveType = try container.decodeIfPresent(String.self, forKey: .leaveType) ?? ""
-               self.leaveMax = try container.decodeIfPresent(Int.self, forKey: .leaveMax) ?? 0
-               self.leaveAvail = try container.decodeIfPresent(Int.self, forKey: .leaveAvail) ?? 0
-               self.check = false
-           }
-
-           func encode(to encoder: Encoder) throws {
-
-               var container = encoder.container(keyedBy: CodingKeys.self)
-               try container.encode(applyNo, forKey: .applyNo)
-               try container.encode(emP_CODE, forKey: .emP_CODE)
-               try container.encode(emP_ENAME, forKey: .emP_ENAME)
-               try container.encode(desigEName, forKey: .desigEName)
-               try container.encode(applyFromDate, forKey: .applyFromDate)
-               try container.encode(applyToDate, forKey: .applyToDate)
-               try container.encode(applyDays, forKey: .applyDays)
-               try container.encode(leaveNo, forKey: .leaveNo)
-               try container.encode(leaveType, forKey: .leaveType)
-               try container.encode(leaveAvail, forKey: .leaveAvail)
-               try container.encode(check, forKey: .check)
-           }
-    }
-    
-    struct ListLeaveApprovalPendingResponse: Codable {
-        var error: String = ""
-        var _leavePendingList : [ListLeaveApproval]
-
-        enum CodingKeys: String, CodingKey {
-            case error = "error"
-            case _leavePendingList
-        }
-        
-         init(from decoder: Decoder) throws {
-
-                let container = try decoder.container(keyedBy: CodingKeys.self)
-                self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
-                self._leavePendingList = try container.decodeIfPresent([ListLeaveApproval].self, forKey: ._leavePendingList) ?? []
-            }
-
-            func encode(to encoder: Encoder) throws {
-
-                var container = encoder.container(keyedBy: CodingKeys.self)
-                try container.encode(error, forKey: .error)
-                try container.encode(_leavePendingList, forKey: ._leavePendingList)
-            }
-    }
-}
-
-extension LeaveApprovalDetailViewController {
-
-    struct LeaveApproveList: Codable {
-        var ApplyDays: String = ""
-        var ApplyNo: Int?
-        var ApproveFromDate: String = ""
-        var ApproveToDate: String = ""
-        var EMP_CODE: String = ""
-        var LeaveNo: Int?
-        
-        enum CodingKeys: String, CodingKey {
-            case ApplyDays = "ApplyDays"
-            case ApplyNo = "ApplyNo"
-            case ApproveFromDate = "ApproveFromDate"
-            case ApproveToDate = "ApproveToDate"
-            case EMP_CODE = "EMP_CODE"
-            case LeaveNo = "LeaveNo"
-    
-        }
-    }
-    
-    struct LeaveApproveListRequest: Codable {
-        var approveList : [LeaveApproveList]
-        
-        enum CodingKeys: String, CodingKey {
-            case approveList
-        }
-        
-    }
-        
-    struct LeaveApproveResponse: Codable {
-        var response: Bool?
-        var error: String = ""
-       
-
-        enum CodingKeys: String, CodingKey {
-            case response = "response"
-            case error = "error"
-           
-        }
-        
-         init(from decoder: Decoder) throws {
-
-                let container = try decoder.container(keyedBy: CodingKeys.self)
-                self.response = try container.decodeIfPresent(Bool.self, forKey: .response)
-                self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
-               
-            }
-
-            func encode(to encoder: Encoder) throws {
-
-                var container = encoder.container(keyedBy: CodingKeys.self)
-                try container.encode(response, forKey: .response)
-                try container.encode(error, forKey: .error)
-             
-            }
-    }
-}
-
-
-extension LeaveApprovalDetailViewController {
-
-    struct LeaveRejectList: Codable {
-        var ApplyNo: Int?
-        
-        enum CodingKeys: String, CodingKey {
-            case ApplyNo = "ApplyNo"
-        }
-    }
-    
-    struct LeaveRejectListRequest: Codable {
-        var leaveRejectList : [LeaveRejectList]
-        var ActionBy:String = ""
-        
-        
-        enum CodingKeys: String, CodingKey {
-            case leaveRejectList
-            case ActionBy = "ActionBy"
-        }
-        
-    }
-        
-    struct LeaveRejectResponse: Codable {
-        var response: Bool?
-        var error: String = ""
-       
-
-        enum CodingKeys: String, CodingKey {
-            case response = "response"
-            case error = "error"
-           
-        }
-        
-         init(from decoder: Decoder) throws {
-
-                let container = try decoder.container(keyedBy: CodingKeys.self)
-                self.response = try container.decodeIfPresent(Bool.self, forKey: .response)
-                self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
-               
-            }
-
-            func encode(to encoder: Encoder) throws {
-
-                var container = encoder.container(keyedBy: CodingKeys.self)
-                try container.encode(response, forKey: .response)
-                try container.encode(error, forKey: .error)
-             
-            }
-    }
-}
-
-extension LeaveApprovalDetailViewController {
-    func showSpinner(onView : UIView) {
-           let spinnerView = UIView.init(frame: onView.bounds)
-           spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-           let ai = UIActivityIndicatorView.init(style: .whiteLarge)
-           ai.startAnimating()
-           ai.center = spinnerView.center
-           
-           DispatchQueue.main.async {
-               spinnerView.addSubview(ai)
-               onView.addSubview(spinnerView)
-           }
-           
-           vSpinner = spinnerView
-       }
-       
-       func removeSpinner() {
-           DispatchQueue.main.async {
-            self.vSpinner?.removeFromSuperview()
-            self.vSpinner = nil
-           }
-       }
- }
-
-extension LeaveApprovalDetailViewController {
-    func showLoading(finished: @escaping () -> Void) {
-        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
-
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.gray
-        loadingIndicator.startAnimating();
-
-        alert.view.addSubview(loadingIndicator)
-
-        present(alert, animated: false, completion: finished)
-    }
-
-    func hideLoading(finished: @escaping () -> Void) {
-        if ( presentedViewController != nil && !presentedViewController!.isBeingPresented ) {
-            dismiss(animated: false, completion: finished)
-        }
-    }
- }

@@ -25,8 +25,8 @@ class BWPDViewController: UIViewController {
     
     var selectedButton = UIButton()
     
-    var dataSource = [ListUnitName]()
-    var dataSourceBWPD = [ListBuyerWiseData]()
+    var dataSource = [UnitName]()
+    var dataSourceBWPD = [BuyerWiseData]()
     var extraHeight: Int = 0
     var unitNoId: Int = 0
     var vSpinner : UIView?
@@ -38,12 +38,10 @@ class BWPDViewController: UIViewController {
         return controller
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.headerView.titleNameLbl.text = "Buyer Wise Production \nData"
-        
         self.hideKeyboardWhenTappedAround()
         
         if InternetConnectionManager.isConnectedToNetwork(){
@@ -51,7 +49,124 @@ class BWPDViewController: UIViewController {
         }else{
             self.toastMessage("No Internet Connected!!")
         }
+        self.nibRegister()
+        self.currentDate()
+        self.uiViewDesign()
+        self.navigationLink()
+        extraHeight = Int(self.unitNameBgView.frame.size.height) + Int(self.btnSelectUnitName.frame.size.height)
+    }
+    @IBAction func unitNameBtn(_ sender: Any) {
+        selectedButton = btnSelectUnitName
+        addTransparentView(frames: btnSelectUnitName.frame)
+    }
+    
+    @IBAction func datePickerBtn(_ sender: Any) {
         
+        let currentDate = Date()
+         let dateFormatter = DateFormatter()
+         dateFormatter.dateFormat = "yyyy-MM-dd"
+         
+         let calendar = YYCalendar(normalCalendarLangType: .ENG3,
+                                   date: dateFormatter.string(from: currentDate),
+                                           format: "yyyy-MM-dd") { [weak self] date in
+             self?.dateSelect.text = date
+             print(date)
+                 }
+         
+         calendar.sundayColor = UIColor.gray
+         calendar.defaultDayColor = UIColor.gray
+         calendar.saturdayColor = UIColor.gray
+         
+         calendar.show()
+    }
+}
+
+extension BWPDViewController : UITableViewDelegate{
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == tableViewBWPD {
+            print("---you tapped me!----")
+        }else{
+            unitNoId = dataSource[indexPath.row].unitNo!
+            selectedButton.setTitle(dataSource[indexPath.row].unitName, for: .normal)
+            
+            if InternetConnectionManager.isConnectedToNetwork(){
+                self.getBWPDList(unitNo: unitNoId, createDate: dateSelect.text!)
+            }else{
+                self.toastMessage("No Internet Connected!!")
+            }
+            removeTransparentView()
+        }
+    }
+}
+
+extension BWPDViewController : UITableViewDataSource{
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == tableViewBWPD {
+            return dataSourceBWPD.count
+        }else{
+            return dataSource.count
+        }
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if tableView == tableViewBWPD {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BWPDTitleViewControllerCell
+            cell.slLbl.text = "\(indexPath.row + 1)"
+            cell.buyerLbl.text = dataSourceBWPD[indexPath.row].buyerName
+            cell.styleLbl.text = dataSourceBWPD[indexPath.row].styleNo
+            cell.orderLbl.text = dataSourceBWPD[indexPath.row].orderNo
+            cell.orderQtsLbl.text = "\(String(describing: dataSourceBWPD[indexPath.row].orderQty!))"
+            cell.sewQtsLbl.text = "\(String(describing: dataSourceBWPD[indexPath.row].sewingQty!))"
+            cell.balanceLbl.text = "\(String(describing: dataSourceBWPD[indexPath.row].balance!))"
+            return cell
+        }else{
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+            cell.textLabel?.text = dataSource[indexPath.row].unitName
+            return cell
+        }
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if tableView == tableViewBWPD {
+            return 40
+        }else{
+            return 50
+        }
+    }
+}
+
+extension BWPDViewController {
+    
+    func showSpinner(onView : UIView) {
+           let spinnerView = UIView.init(frame: onView.bounds)
+           spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+           let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+           ai.startAnimating()
+           ai.center = spinnerView.center
+           
+           DispatchQueue.main.async {
+               spinnerView.addSubview(ai)
+               onView.addSubview(spinnerView)
+           }
+           vSpinner = spinnerView
+       }
+       
+       func removeSpinner() {
+           DispatchQueue.main.async {
+            self.vSpinner?.removeFromSuperview()
+            self.vSpinner = nil
+           }
+       }
+    
+}
+
+extension BWPDViewController {
+    
+    func nibRegister(){
         self.tableViewBWPD.register(UINib(nibName: "BWPDTitleViewControllerCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableViewBWPD.delegate = self
         tableViewBWPD.dataSource = self
@@ -59,12 +174,16 @@ class BWPDViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(CellClass.self, forCellReuseIdentifier: "Cell")
-        
+    }
+    
+    func currentDate(){
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         self.dateSelect.text = dateFormatter.string(from: date)
-        
+    }
+    
+    func uiViewDesign(){
         self.unitNameDropDown.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.unitNameDropDown.layer.borderWidth = 0.5
         self.unitNameDropDown.layer.cornerRadius = 5
@@ -100,7 +219,9 @@ class BWPDViewController: UIViewController {
         self.titleBgView.balanceBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.titleBgView.balanceBgView.layer.borderWidth = 0.5
         self.titleBgView.balanceBgView.layer.cornerRadius = 10
-        
+    }
+    
+    func navigationLink(){
         self.headerView.backBtnHandler = {
             [weak self] (isShow) in
             guard let weakSelf = self else {
@@ -108,33 +229,6 @@ class BWPDViewController: UIViewController {
          }
          weakSelf.showBackController()
         }
-        
-        extraHeight = Int(self.unitNameBgView.frame.size.height) + Int(self.btnSelectUnitName.frame.size.height)
-    }
-    @IBAction func unitNameBtn(_ sender: Any) {
-        selectedButton = btnSelectUnitName
-        addTransparentView(frames: btnSelectUnitName.frame)
-        
-    }
-    
-    @IBAction func datePickerBtn(_ sender: Any) {
-        
-        let currentDate = Date()
-         let dateFormatter = DateFormatter()
-         dateFormatter.dateFormat = "yyyy-MM-dd"
-         
-         let calendar = YYCalendar(normalCalendarLangType: .ENG3,
-                                   date: dateFormatter.string(from: currentDate),
-                                           format: "yyyy-MM-dd") { [weak self] date in
-             self?.dateSelect.text = date
-             print(date)
-                 }
-         
-         calendar.sundayColor = UIColor.gray
-         calendar.defaultDayColor = UIColor.gray
-         calendar.saturdayColor = UIColor.gray
-         
-         calendar.show()
     }
     
     func showBackController(){
@@ -193,7 +287,7 @@ class BWPDViewController: UIViewController {
                     guard let data = data else {return}
 
                     do{
-                        let unitNameItemModel = try JSONDecoder().decode(ListUnitNameResponse.self, from: data)
+                        let unitNameItemModel = try JSONDecoder().decode(UnitNameResponse.self, from: data)
                         self.dataSource = unitNameItemModel._listUnitName
                     
                     }catch let jsonErr{
@@ -216,25 +310,16 @@ class BWPDViewController: UIViewController {
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        print("unitNo  : \(unitNo) ----createDate  : \(createDate)")
-//        print("createDate  : \(createDate)")
-        
         let newTodoItem = BWPDRequest(unit_no: unitNo, created_date: createDate)
         let jsonData = try? JSONEncoder().encode(newTodoItem)
         
-       
-
         request.httpBody = jsonData
-
-        print("jsonData jsonData  data:\n \(jsonData!)")
-//        self.showLoading(finished: {
+        
         self.showSpinner(onView: self.view)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 
                 self.removeSpinner()
                 DispatchQueue.main.async {
-                    
-                  //  self.hideLoading(finished: {
                         
                     if let error = error {
                         print("Error took place \(error)")
@@ -262,243 +347,8 @@ class BWPDViewController: UIViewController {
                     }catch let jsonErr{
                         print(jsonErr)
                    }
-                   // })
                 }
         }
         task.resume()
-      //  })
     }
-}
-
-
-extension BWPDViewController : UITableViewDelegate{
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == tableViewBWPD {
-            print("---you tapped me!----")
-        }else{
-            unitNoId = dataSource[indexPath.row].unitNo!
-            selectedButton.setTitle(dataSource[indexPath.row].unitName, for: .normal)
-            
-            if InternetConnectionManager.isConnectedToNetwork(){
-                self.getBWPDList(unitNo: unitNoId, createDate: dateSelect.text!)
-            }else{
-                self.toastMessage("No Internet Connected!!")
-            }
-            removeTransparentView()
-        }
-       
-    }
-}
-
-extension BWPDViewController : UITableViewDataSource{
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == tableViewBWPD {
-            return dataSourceBWPD.count
-        }else{
-            return dataSource.count
-        }
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if tableView == tableViewBWPD {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BWPDTitleViewControllerCell
-            cell.slLbl.text = "\(indexPath.row + 1)"
-            cell.buyerLbl.text = dataSourceBWPD[indexPath.row].buyerName
-            cell.styleLbl.text = dataSourceBWPD[indexPath.row].styleNo
-            cell.orderLbl.text = dataSourceBWPD[indexPath.row].orderNo
-            cell.orderQtsLbl.text = "\(String(describing: dataSourceBWPD[indexPath.row].orderQty!))"
-            cell.sewQtsLbl.text = "\(String(describing: dataSourceBWPD[indexPath.row].sewingQty!))"
-            cell.balanceLbl.text = "\(String(describing: dataSourceBWPD[indexPath.row].balance!))"
-            return cell
-        }else{
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            cell.textLabel?.text = dataSource[indexPath.row].unitName
-            return cell
-        }
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        if tableView == tableViewBWPD {
-            return 40
-        }else{
-            return 50
-        }
-    }
-
-}
-
-extension BWPDViewController {
-  
-    struct ListUnitName: Codable {
-        var unitNo: Int?
-        var unitName: String = ""
-        
-        enum CodingKeys: String, CodingKey {
-            case unitNo = "unitNo"
-            case unitName = "unitEName"
-        }
-        
-        init(from decoder: Decoder) throws {
-
-               let container = try decoder.container(keyedBy: CodingKeys.self)
-               self.unitNo = try container.decodeIfPresent(Int.self, forKey: .unitNo) ?? 0
-               self.unitName = try container.decodeIfPresent(String.self, forKey: .unitName) ?? ""
-           }
-
-           func encode(to encoder: Encoder) throws {
-
-               var container = encoder.container(keyedBy: CodingKeys.self)
-               try container.encode(unitNo, forKey: .unitNo)
-               try container.encode(unitName, forKey: .unitName)
-           }
-    }
-    
-    struct ListUnitNameResponse: Codable {
-        var error: String = ""
-        var _listUnitName : [ListUnitName]
-
-        enum CodingKeys: String, CodingKey {
-            case error = "error"
-            case _listUnitName
-        }
-        
-         init(from decoder: Decoder) throws {
-
-                let container = try decoder.container(keyedBy: CodingKeys.self)
-                self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
-                self._listUnitName = try container.decodeIfPresent([ListUnitName].self, forKey: ._listUnitName) ?? []
-            }
-
-            func encode(to encoder: Encoder) throws {
-
-                var container = encoder.container(keyedBy: CodingKeys.self)
-                try container.encode(error, forKey: .error)
-                try container.encode(_listUnitName, forKey: ._listUnitName)
-            }
-    }
-    
-}
-
-extension BWPDViewController {
-
-    //hour-wise-data
-    
-    struct BWPDRequest: Codable {
-        var unit_no: Int?
-        var created_date: String = ""
-        
-        enum CodingKeys: String, CodingKey {
-            case unit_no = "unit_no"
-            case created_date = "created_date"
-        }
-    }
-    
-    struct ListBuyerWiseData: Codable {
-        
-        var buyerName: String = ""
-        var orderNo: String = ""
-        var styleNo: String = ""
-        var buyerId: Int?
-        var styleId: Int?
-        var buyerReferenceId: Int?
-        var orderQty: Int?
-        var sewingQty: Int?
-        var balance: Int?
-        
-        enum CodingKeys: String, CodingKey {
-            case buyerName = "buyerName"
-            case orderNo = "orderNo"
-            case styleNo = "styleNo"
-            case buyerId = "buyerId"
-            case styleId = "styleId"
-            case buyerReferenceId = "buyerReferenceId"
-            case orderQty = "orderQty"
-            case sewingQty = "sewingQty"
-            case balance = "balance"
-        }
-        
-        init(from decoder: Decoder) throws {
-
-               let container = try decoder.container(keyedBy: CodingKeys.self)
-               self.buyerName = try container.decodeIfPresent(String.self, forKey: .buyerName) ?? ""
-               self.orderNo = try container.decodeIfPresent(String.self, forKey: .orderNo) ?? ""
-               self.styleNo = try container.decodeIfPresent(String.self, forKey: .styleNo) ?? ""
-               self.buyerId = try container.decodeIfPresent(Int.self, forKey: .buyerId) ?? 0
-               self.styleId = try container.decodeIfPresent(Int.self, forKey: .styleId) ?? 0
-               self.buyerReferenceId = try container.decodeIfPresent(Int.self, forKey: .buyerReferenceId) ?? 0
-               self.orderQty = try container.decodeIfPresent(Int.self, forKey: .orderQty) ?? 0
-               self.sewingQty = try container.decodeIfPresent(Int.self, forKey: .sewingQty) ?? 0
-               self.balance = try container.decodeIfPresent(Int.self, forKey: .balance) ?? 0
-            
-            
-           }
-
-           func encode(to encoder: Encoder) throws {
-
-               var container = encoder.container(keyedBy: CodingKeys.self)
-               try container.encode(buyerName, forKey: .buyerName)
-               try container.encode(orderNo, forKey: .orderNo)
-               try container.encode(styleNo, forKey: .styleNo)
-               try container.encode(buyerId, forKey: .buyerId)
-               try container.encode(styleId, forKey: .styleId)
-               try container.encode(buyerReferenceId, forKey: .buyerReferenceId)
-               try container.encode(orderQty, forKey: .orderQty)
-               try container.encode(sewingQty, forKey: .sewingQty)
-               try container.encode(balance, forKey: .balance)
-           }
-    }
-    
-    struct ListBWPDResponse: Codable {
-        var error: String = ""
-        var _listBuyerWiseData : [ListBuyerWiseData]
-
-        enum CodingKeys: String, CodingKey {
-            case error = "error"
-            case _listBuyerWiseData
-        }
-        
-         init(from decoder: Decoder) throws {
-
-                let container = try decoder.container(keyedBy: CodingKeys.self)
-                self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
-                self._listBuyerWiseData = try container.decodeIfPresent([ListBuyerWiseData].self, forKey: ._listBuyerWiseData) ?? []
-            }
-
-            func encode(to encoder: Encoder) throws {
-
-                var container = encoder.container(keyedBy: CodingKeys.self)
-                try container.encode(error, forKey: .error)
-                try container.encode(_listBuyerWiseData, forKey: ._listBuyerWiseData)
-            }
-    }
-}
-
-extension BWPDViewController {
-    
-    func showSpinner(onView : UIView) {
-           let spinnerView = UIView.init(frame: onView.bounds)
-           spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-           let ai = UIActivityIndicatorView.init(style: .whiteLarge)
-           ai.startAnimating()
-           ai.center = spinnerView.center
-           
-           DispatchQueue.main.async {
-               spinnerView.addSubview(ai)
-               onView.addSubview(spinnerView)
-           }
-           
-           vSpinner = spinnerView
-       }
-       
-       func removeSpinner() {
-           DispatchQueue.main.async {
-            self.vSpinner?.removeFromSuperview()
-            self.vSpinner = nil
-           }
-       }
-    
 }

@@ -16,7 +16,6 @@ class TrackingListViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
        
-        
         self.trackingViewCell.layer.borderColor = UIColor(red: 172/255, green: 227/255, blue: 255/255, alpha: 1.0).cgColor
         self.trackingViewCell.layer.borderWidth = 0.5
         self.trackingViewCell.layer.cornerRadius = 15

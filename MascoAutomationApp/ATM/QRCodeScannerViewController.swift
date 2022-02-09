@@ -124,9 +124,7 @@ extension QRCodeScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     }
     
     func found(code: String) {
-        print("----\(code)")
         QRCODE = code
-
         let controller = PopUpViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }

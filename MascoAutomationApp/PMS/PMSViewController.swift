@@ -31,13 +31,79 @@ class PMSViewController: UIViewController {
         super.viewDidLoad()
        
         self.hideKeyboardWhenTappedAround()
-        
-        tableViewDropDown.delegate = self
-        tableViewDropDown.dataSource = self
-        tableViewDropDown.register(CellClass.self, forCellReuseIdentifier: "Cell")
-        
+        self.nibRegister()
+        self.uiViewDesign()
+        self.navigationLink()
         self.headerView.commonSearchTxtField.addTarget(self, action: #selector(searchRecord), for: .editingChanged)
+    }
+}
+
+extension PMSViewController : UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        if searching {
+            return dataSourceScreenFiltered.count
+        }else{
+            return dataSourceScreen.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableViewDropDown.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        if searching {
+            cell.textLabel?.text = dataSourceScreenFiltered[indexPath.row]
+        }else{
+            cell.textLabel?.text = dataSourceScreen[indexPath.row]
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedButton.text = dataSourceScreenFiltered[indexPath.row]
+        
+        if String(utils.readStringData(key: "BWPD")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = BWPDViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "HPD")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = HPDViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "HPDs")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = HPDsViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "LWP")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = LWPViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "DA")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = DailyAttendanceViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "LH")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = LeaveViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+            
+        }
+        else if String(utils.readStringData(key: "TH")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = IncomeTaxViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        
+        removeTransparentView()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        headerView.commonSearchTxtField.resignFirstResponder()
+        return true
+    }
+    
+}
+
+extension PMSViewController {
+    
+    func uiViewDesign(){
         
         self.headerView.searchBgView.layer.cornerRadius = 10
         let arcCenterKPMS = CGPoint(x: self.bodyView.iconKPMSBgView.bounds.size.width / 2, y: self.bodyView.iconKPMSBgView.bounds.size.height)
@@ -85,8 +151,16 @@ class PMSViewController: UIViewController {
         circleShapeEPMS.path = circlePathKEPMS.cgPath
         self.bodyView.iconEPMSBgView.layer.mask = circleShapeEPMS
         self.bodyView.nameEPMSBgView.layer.cornerRadius = 20
+    }
+    
+    func nibRegister(){
         
-        
+        tableViewDropDown.delegate = self
+        tableViewDropDown.dataSource = self
+        tableViewDropDown.register(CellClass.self, forCellReuseIdentifier: "Cell")
+    }
+    
+    func navigationLink(){
         self.headerView.backBtnHandler = {
             [weak self] (isShow) in
             guard let weakSelf = self else {
@@ -94,7 +168,6 @@ class PMSViewController: UIViewController {
          }
          weakSelf.showHomeController()
         }
-        
         
         self.bodyView.GPMSHandler = {
             [weak self] (isShow) in
@@ -104,7 +177,6 @@ class PMSViewController: UIViewController {
          weakSelf.showGPMSController()
         }
     }
-    
     
     func showHomeController(){
         
@@ -171,68 +243,4 @@ class PMSViewController: UIViewController {
         }, completion: nil)
     }
 
-}
-
-
-extension PMSViewController : UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if searching {
-            return dataSourceScreenFiltered.count
-        }else{
-            return dataSourceScreen.count
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableViewDropDown.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        if searching {
-            cell.textLabel?.text = dataSourceScreenFiltered[indexPath.row]
-        }else{
-            cell.textLabel?.text = dataSourceScreen[indexPath.row]
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedButton.text = dataSourceScreenFiltered[indexPath.row]
-        
-        if String(utils.readStringData(key: "BWPD")) == dataSourceScreenFiltered[indexPath.row] {
-            let controller = BWPDViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-        }
-        else if String(utils.readStringData(key: "HPD")) == dataSourceScreenFiltered[indexPath.row] {
-            let controller = HPDViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-        }
-        else if String(utils.readStringData(key: "HPDs")) == dataSourceScreenFiltered[indexPath.row] {
-            let controller = HPDsViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-        }
-        else if String(utils.readStringData(key: "LWP")) == dataSourceScreenFiltered[indexPath.row] {
-            let controller = LWPViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-        }
-        else if String(utils.readStringData(key: "DA")) == dataSourceScreenFiltered[indexPath.row] {
-            let controller = DailyAttendanceViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-        }
-        else if String(utils.readStringData(key: "LH")) == dataSourceScreenFiltered[indexPath.row] {
-            let controller = LeaveViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-            
-        }
-        else if String(utils.readStringData(key: "TH")) == dataSourceScreenFiltered[indexPath.row] {
-            let controller = IncomeTaxViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-        }
-        
-        removeTransparentView()
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        headerView.commonSearchTxtField.resignFirstResponder()
-        return true
-    }
-    
 }

@@ -25,10 +25,28 @@
 		4D27A68E276DD9D000F0E4BA /* BWPDTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D27A68D276DD9D000F0E4BA /* BWPDTitleView.swift */; };
 		4D27A691276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D27A68F276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.swift */; };
 		4D27A692276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D27A690276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.xib */; };
+		4D2EDBEE27B3786500E22CB3 /* TrackingListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2EDBED27B3786500E22CB3 /* TrackingListModel.swift */; };
 		4D466E40275DD51C005F0E3C /* LeaveApply.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D466E3F275DD51C005F0E3C /* LeaveApply.storyboard */; };
 		4D466E44275DD57C005F0E3C /* Tax.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D466E43275DD57C005F0E3C /* Tax.storyboard */; };
 		4D466E47275DDE45005F0E3C /* TaxDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D466E46275DDE45005F0E3C /* TaxDetailsViewController.swift */; };
 		4D466E49275DDE70005F0E3C /* LeaveDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D466E48275DDE70005F0E3C /* LeaveDetailsViewController.swift */; };
+		4D72DEFB27B37B780099F2CC /* TrackingListDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D72DEFA27B37B780099F2CC /* TrackingListDetailsModel.swift */; };
+		4D72DEFD27B37BE10099F2CC /* LeaveApprovalDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D72DEFC27B37BE10099F2CC /* LeaveApprovalDetailModel.swift */; };
+		4D72DEFF27B37CBB0099F2CC /* QrPopUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D72DEFE27B37CBB0099F2CC /* QrPopUpModel.swift */; };
+		4D72DF0127B37D200099F2CC /* CommunicationPortalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D72DF0027B37D200099F2CC /* CommunicationPortalModel.swift */; };
+		4D72DF0727B37FC80099F2CC /* TaxDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D72DF0627B37FC80099F2CC /* TaxDetailsModel.swift */; };
+		4D72DF0927B380F40099F2CC /* LeaveApplyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D72DF0827B380F40099F2CC /* LeaveApplyModel.swift */; };
+		4D72DF0B27B381550099F2CC /* LeaveDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D72DF0A27B381550099F2CC /* LeaveDetailsModel.swift */; };
+		4D72DF0E27B3823B0099F2CC /* DailyAttendanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D72DF0D27B3823B0099F2CC /* DailyAttendanceModel.swift */; };
+		4D72DF1027B382ED0099F2CC /* FinalYearModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D72DF0F27B382ED0099F2CC /* FinalYearModel.swift */; };
+		4D72DF1227B384FF0099F2CC /* OTPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D72DF1127B384FF0099F2CC /* OTPModel.swift */; };
+		4D72DF1427B385420099F2CC /* SignupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D72DF1327B385420099F2CC /* SignupModel.swift */; };
+		4D72DF1627B385DB0099F2CC /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D72DF1527B385DB0099F2CC /* LoginModel.swift */; };
+		4D72DF1827B386AA0099F2CC /* UnitNameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D72DF1727B386AA0099F2CC /* UnitNameModel.swift */; };
+		4D72DF1A27B386FE0099F2CC /* HPDsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D72DF1927B386FE0099F2CC /* HPDsModel.swift */; };
+		4D72DF1C27B387D20099F2CC /* BWPDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D72DF1B27B387D20099F2CC /* BWPDModel.swift */; };
+		4D72DF2027B389CF0099F2CC /* HPDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D72DF1F27B389CF0099F2CC /* HPDModel.swift */; };
+		4D72DF2227B38A860099F2CC /* LWPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D72DF2127B38A860099F2CC /* LWPModel.swift */; };
 		4D7665BB275F5A5900358097 /* DailyAttendanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7665B9275F5A5900358097 /* DailyAttendanceTableViewCell.swift */; };
 		4D7665BC275F5A5900358097 /* DailyAttendanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D7665BA275F5A5900358097 /* DailyAttendanceTableViewCell.xib */; };
 		4D7FB4CA2744D45100B318DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7FB4C92744D45100B318DA /* AppDelegate.swift */; };
@@ -162,6 +180,7 @@
 		4D27A68D276DD9D000F0E4BA /* BWPDTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWPDTitleView.swift; sourceTree = "<group>"; };
 		4D27A68F276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWPDTitleViewControllerCell.swift; sourceTree = "<group>"; };
 		4D27A690276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWPDTitleViewControllerCell.xib; sourceTree = "<group>"; };
+		4D2EDBED27B3786500E22CB3 /* TrackingListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingListModel.swift; sourceTree = "<group>"; };
 		4D466E3F275DD51C005F0E3C /* LeaveApply.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeaveApply.storyboard; sourceTree = "<group>"; };
 		4D466E43275DD57C005F0E3C /* Tax.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tax.storyboard; sourceTree = "<group>"; };
 		4D466E46275DDE45005F0E3C /* TaxDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxDetailsViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +189,23 @@
 		4D72D94427464EDF005708F6 /* montserrat_bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = montserrat_bold.otf; sourceTree = "<group>"; };
 		4D72D94527464EDF005708F6 /* montserrat_medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = montserrat_medium.otf; sourceTree = "<group>"; };
 		4D72D94627464EDF005708F6 /* montserrat_regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = montserrat_regular.otf; sourceTree = "<group>"; };
+		4D72DEFA27B37B780099F2CC /* TrackingListDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingListDetailsModel.swift; sourceTree = "<group>"; };
+		4D72DEFC27B37BE10099F2CC /* LeaveApprovalDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveApprovalDetailModel.swift; sourceTree = "<group>"; };
+		4D72DEFE27B37CBB0099F2CC /* QrPopUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrPopUpModel.swift; sourceTree = "<group>"; };
+		4D72DF0027B37D200099F2CC /* CommunicationPortalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationPortalModel.swift; sourceTree = "<group>"; };
+		4D72DF0627B37FC80099F2CC /* TaxDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxDetailsModel.swift; sourceTree = "<group>"; };
+		4D72DF0827B380F40099F2CC /* LeaveApplyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveApplyModel.swift; sourceTree = "<group>"; };
+		4D72DF0A27B381550099F2CC /* LeaveDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveDetailsModel.swift; sourceTree = "<group>"; };
+		4D72DF0D27B3823B0099F2CC /* DailyAttendanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAttendanceModel.swift; sourceTree = "<group>"; };
+		4D72DF0F27B382ED0099F2CC /* FinalYearModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalYearModel.swift; sourceTree = "<group>"; };
+		4D72DF1127B384FF0099F2CC /* OTPModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPModel.swift; sourceTree = "<group>"; };
+		4D72DF1327B385420099F2CC /* SignupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupModel.swift; sourceTree = "<group>"; };
+		4D72DF1527B385DB0099F2CC /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		4D72DF1727B386AA0099F2CC /* UnitNameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitNameModel.swift; sourceTree = "<group>"; };
+		4D72DF1927B386FE0099F2CC /* HPDsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPDsModel.swift; sourceTree = "<group>"; };
+		4D72DF1B27B387D20099F2CC /* BWPDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWPDModel.swift; sourceTree = "<group>"; };
+		4D72DF1F27B389CF0099F2CC /* HPDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPDModel.swift; sourceTree = "<group>"; };
+		4D72DF2127B38A860099F2CC /* LWPModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LWPModel.swift; sourceTree = "<group>"; };
 		4D7665B9275F5A5900358097 /* DailyAttendanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAttendanceTableViewCell.swift; sourceTree = "<group>"; };
 		4D7665BA275F5A5900358097 /* DailyAttendanceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyAttendanceTableViewCell.xib; sourceTree = "<group>"; };
 		4D7FB4C62744D45100B318DA /* MascoAutomationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MascoAutomationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -315,6 +351,7 @@
 				4D116BF42764791A0065C07D /* LeaveDetailsControllerCell.xib */,
 				4D116BF9276491070065C07D /* LeaveSummaryCollectionCell.swift */,
 				4D116BFA276491070065C07D /* LeaveSummaryCollectionCell.xib */,
+				4D72DF0A27B381550099F2CC /* LeaveDetailsModel.swift */,
 			);
 			path = LeaveDetails;
 			sourceTree = "<group>";
@@ -326,6 +363,7 @@
 				4DB0E0DC2766FB0800B188E6 /* LeaveApplyViewController.swift */,
 				4DB0E0DE2766FFD900B188E6 /* ApplyFormView.swift */,
 				4DB0E0E02766FFE700B188E6 /* ApplyFormView.xib */,
+				4D72DF0827B380F40099F2CC /* LeaveApplyModel.swift */,
 			);
 			path = LeaveApply;
 			sourceTree = "<group>";
@@ -337,6 +375,7 @@
 				4D466E46275DDE45005F0E3C /* TaxDetailsViewController.swift */,
 				4D99D96B2765C8B3004E6259 /* TaxDetailsViewControllerCell.swift */,
 				4D99D96C2765C8B3004E6259 /* TaxDetailsViewControllerCell.xib */,
+				4D72DF0627B37FC80099F2CC /* TaxDetailsModel.swift */,
 			);
 			path = TaxDetails;
 			sourceTree = "<group>";
@@ -357,6 +396,8 @@
 			children = (
 				4DC4DF142748B48F00EF43ED /* OTPViewController.swift */,
 				4DC4DF162748FD7200EF43ED /* SignupViewController.swift */,
+				4D72DF1127B384FF0099F2CC /* OTPModel.swift */,
+				4D72DF1327B385420099F2CC /* SignupModel.swift */,
 			);
 			path = signup;
 			sourceTree = "<group>";
@@ -415,6 +456,7 @@
 				4D7FB4D22744D45200B318DA /* Assets.xcassets */,
 				4D7FB4D42744D45200B318DA /* LaunchScreen.storyboard */,
 				4D7FB4D72744D45200B318DA /* Info.plist */,
+				4D72DF1527B385DB0099F2CC /* LoginModel.swift */,
 			);
 			path = MascoAutomationApp;
 			sourceTree = "<group>";
@@ -438,6 +480,7 @@
 				4DA4052C27A2B8B900E0B7F4 /* TrackingListViewController.swift */,
 				4D9A2B3527A500AE00F86700 /* TrackingListViewCell.swift */,
 				4D9A2B3627A500AE00F86700 /* TrackingListViewCell.xib */,
+				4D2EDBED27B3786500E22CB3 /* TrackingListModel.swift */,
 			);
 			path = TrackingList;
 			sourceTree = "<group>";
@@ -452,6 +495,7 @@
 				4D9A2B3F27A526FB00F86700 /* TrackingTableBodyView.swift */,
 				4D9A2B4127A54A3700F86700 /* TrackingDetailsTableViewCell.swift */,
 				4D9A2B4227A54A3700F86700 /* TrackingDetailsTableViewCell.xib */,
+				4D72DEFA27B37B780099F2CC /* TrackingListDetailsModel.swift */,
 			);
 			path = TrackingListDetails;
 			sourceTree = "<group>";
@@ -483,6 +527,7 @@
 				4D27A67D276D8F8300F0E4BA /* LWPTitleView.swift */,
 				4D27A67F276D970B00F0E4BA /* LWPViewControllerCell.swift */,
 				4D27A680276D970B00F0E4BA /* LWPViewControllerCell.xib */,
+				4D72DF2127B38A860099F2CC /* LWPModel.swift */,
 			);
 			path = LWP;
 			sourceTree = "<group>";
@@ -495,6 +540,7 @@
 				4D27A685276DB30E00F0E4BA /* HPDTitleView.swift */,
 				4D27A687276DB4CE00F0E4BA /* HPDViewControllerCell.swift */,
 				4D27A688276DB4CE00F0E4BA /* HPDViewControllerCell.xib */,
+				4D72DF1F27B389CF0099F2CC /* HPDModel.swift */,
 			);
 			path = HPD;
 			sourceTree = "<group>";
@@ -509,6 +555,7 @@
 				4D27A690276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.xib */,
 				4DECB9DC278D7314000AC92F /* TotalAmountShowView.xib */,
 				4DECB9DE278D732A000AC92F /* TotalAmountShowView.swift */,
+				4D72DF1B27B387D20099F2CC /* BWPDModel.swift */,
 			);
 			path = BWPD;
 			sourceTree = "<group>";
@@ -523,6 +570,8 @@
 				4DC3F4BD276EF262005F2958 /* HPDsViewControllerCell.xib */,
 				4DECB9E0278D780E000AC92F /* TotalAmountHPDsView.xib */,
 				4DECB9E2278D7CB4000AC92F /* TotalAmountHPDsView.swift */,
+				4D72DF1727B386AA0099F2CC /* UnitNameModel.swift */,
+				4D72DF1927B386FE0099F2CC /* HPDsModel.swift */,
 			);
 			path = HPDs;
 			sourceTree = "<group>";
@@ -564,6 +613,7 @@
 				4DC3F4CC276F2C83005F2958 /* ATMBodyView.swift */,
 				4D00610A2799344200E13D26 /* QRCodeScannerViewController.swift */,
 				4D8C5B4A27994E3D00FB8D3F /* PopUpViewController.swift */,
+				4D72DEFE27B37CBB0099F2CC /* QrPopUpModel.swift */,
 			);
 			path = ATM;
 			sourceTree = "<group>";
@@ -619,6 +669,7 @@
 			isa = PBXGroup;
 			children = (
 				4DCDC12027703DD800D3896E /* CommunicationPortalViewController.swift */,
+				4D72DF0027B37D200099F2CC /* CommunicationPortalModel.swift */,
 			);
 			path = CP;
 			sourceTree = "<group>";
@@ -649,6 +700,7 @@
 				4D9E269827859BFD00EA93C2 /* LeaveApprovalItemViewCell.swift */,
 				4D9E269927859BFD00EA93C2 /* LeaveApprovalItemViewCell.xib */,
 				4D98C34627AA797000A29539 /* AlertDialogViewController.swift */,
+				4D72DEFC27B37BE10099F2CC /* LeaveApprovalDetailModel.swift */,
 			);
 			path = LeaveApproval;
 			sourceTree = "<group>";
@@ -663,6 +715,8 @@
 				4D7665B9275F5A5900358097 /* DailyAttendanceTableViewCell.swift */,
 				4D7665BA275F5A5900358097 /* DailyAttendanceTableViewCell.xib */,
 				4DBDEAE62760A65A002AD6FF /* LeaveStatusCollectionViewCell.swift */,
+				4D72DF0D27B3823B0099F2CC /* DailyAttendanceModel.swift */,
+				4D72DF0F27B382ED0099F2CC /* FinalYearModel.swift */,
 			);
 			path = DailyAttendance;
 			sourceTree = "<group>";
@@ -856,17 +910,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D72DF1627B385DB0099F2CC /* LoginModel.swift in Sources */,
 				4DC4DF152748B48F00EF43ED /* OTPViewController.swift in Sources */,
 				4DE3854D274F537300707916 /* HrBodyView.swift in Sources */,
 				4D7FB4CE2744D45100B318DA /* ViewController.swift in Sources */,
+				4D72DF1427B385420099F2CC /* SignupModel.swift in Sources */,
 				4DB0E0DD2766FB0800B188E6 /* LeaveApplyViewController.swift in Sources */,
 				4DC3F4BE276EF262005F2958 /* HPDsViewControllerCell.swift in Sources */,
 				4DC8044A27523DFA0006A3E1 /* NSObject+Extension.swift in Sources */,
+				4D2EDBEE27B3786500E22CB3 /* TrackingListModel.swift in Sources */,
 				4DC3F4CF276F2C9D005F2958 /* SEMBodyView.swift in Sources */,
 				4DC4DF172748FD7200EF43ED /* SignupViewController.swift in Sources */,
+				4D72DF2027B389CF0099F2CC /* HPDModel.swift in Sources */,
 				4D8C5B4B27994E3D00FB8D3F /* PopUpViewController.swift in Sources */,
 				4DD0DD5E275C6DE5005EE588 /* Utils.swift in Sources */,
 				4DB0E0DF2766FFD900B188E6 /* ApplyFormView.swift in Sources */,
+				4D72DF0727B37FC80099F2CC /* TaxDetailsModel.swift in Sources */,
 				4DECB9E3278D7CB4000AC92F /* TotalAmountHPDsView.swift in Sources */,
 				4DC3F4C5276F1898005F2958 /* SEMViewController.swift in Sources */,
 				4DBDEAE72760A65A002AD6FF /* LeaveStatusCollectionViewCell.swift in Sources */,
@@ -880,17 +939,23 @@
 				4DECB9DF278D732A000AC92F /* TotalAmountShowView.swift in Sources */,
 				4DD772C7274E4AAC003261F6 /* SideMenuViewController.swift in Sources */,
 				4D466E47275DDE45005F0E3C /* TaxDetailsViewController.swift in Sources */,
+				4D72DF2227B38A860099F2CC /* LWPModel.swift in Sources */,
 				4DA4052D27A2B8B900E0B7F4 /* TrackingListViewController.swift in Sources */,
 				4DD0DD6F275CB7C7005EE588 /* DailyAttendanceViewControllerDetails.swift in Sources */,
 				4DB0E0EA27675AC500B188E6 /* PMSBodyView.swift in Sources */,
 				4DE38555274F866C00707916 /* CommonFooter.swift in Sources */,
+				4D72DF1827B386AA0099F2CC /* UnitNameModel.swift in Sources */,
 				4DCDC124277067E700D3896E /* HRISViewController.swift in Sources */,
 				4DC8043A275201930006A3E1 /* CommonHeaderView.swift in Sources */,
 				4D27A68E276DD9D000F0E4BA /* BWPDTitleView.swift in Sources */,
 				4DA6512F274CC85E00488332 /* HomeScreenBody.swift in Sources */,
+				4D72DF0927B380F40099F2CC /* LeaveApplyModel.swift in Sources */,
 				4DD772BD274DF2EA003261F6 /* HomeHeader.swift in Sources */,
 				4D98C34727AA797000A29539 /* AlertDialogViewController.swift in Sources */,
+				4D72DF1C27B387D20099F2CC /* BWPDModel.swift in Sources */,
+				4D72DF0E27B3823B0099F2CC /* DailyAttendanceModel.swift in Sources */,
 				4DA4052B27A2B8A800E0B7F4 /* TrackingListDetailsViewController.swift in Sources */,
+				4D72DF1A27B386FE0099F2CC /* HPDsModel.swift in Sources */,
 				4DA4052927A2B89300E0B7F4 /* DDViewController.swift in Sources */,
 				4D27A691276DD9ED00F0E4BA /* BWPDTitleViewControllerCell.swift in Sources */,
 				4DC3F4C3276F1886005F2958 /* ATMViewController.swift in Sources */,
@@ -903,14 +968,19 @@
 				4DCDC1332770A14D00D3896E /* LeaveApprovalDetailViewController.swift in Sources */,
 				4D9A2B3727A500AE00F86700 /* TrackingListViewCell.swift in Sources */,
 				4DC8044227520DA70006A3E1 /* LeaveView.swift in Sources */,
+				4D72DF0B27B381550099F2CC /* LeaveDetailsModel.swift in Sources */,
 				4DC3F4CD276F2C83005F2958 /* ATMBodyView.swift in Sources */,
+				4D72DEFB27B37B780099F2CC /* TrackingListDetailsModel.swift in Sources */,
 				4D27A689276DB4CE00F0E4BA /* HPDViewControllerCell.swift in Sources */,
 				4DC80444275226550006A3E1 /* IncomeTaxViewController.swift in Sources */,
 				4D7FB4CC2744D45100B318DA /* SceneDelegate.swift in Sources */,
 				4DC804352751F3960006A3E1 /* DailyAttendanceView.swift in Sources */,
 				4D27A681276D970B00F0E4BA /* LWPViewControllerCell.swift in Sources */,
+				4D72DF1227B384FF0099F2CC /* OTPModel.swift in Sources */,
 				4DC8043E27520BA80006A3E1 /* LeaveViewController.swift in Sources */,
+				4D72DEFD27B37BE10099F2CC /* LeaveApprovalDetailModel.swift in Sources */,
 				4DC804462752266A0006A3E1 /* IncomeTaxView.swift in Sources */,
+				4D72DF0127B37D200099F2CC /* CommunicationPortalModel.swift in Sources */,
 				4DE38553274F7B8D00707916 /* InnerHeader.swift in Sources */,
 				4D7665BB275F5A5900358097 /* DailyAttendanceTableViewCell.swift in Sources */,
 				4D27A67E276D8F8300F0E4BA /* LWPTitleView.swift in Sources */,
@@ -929,11 +999,13 @@
 				4D9E269327858F7000EA93C2 /* ApprovalBgView.swift in Sources */,
 				4DAA634D276878100073DBB0 /* GPMSBodyView.swift in Sources */,
 				4DC804372752000D0006A3E1 /* DailyAttendanceViewController.swift in Sources */,
+				4D72DF1027B382ED0099F2CC /* FinalYearModel.swift in Sources */,
 				4DCDC1302770933B00D3896E /* LeaveApprovalBodyView.swift in Sources */,
 				4DAA6345276866420073DBB0 /* LWPViewController.swift in Sources */,
 				4D9A2B3C27A5179200F86700 /* TrackingDetailsBodyView.swift in Sources */,
 				4DB0E0E627674ABC00B188E6 /* PMSViewController.swift in Sources */,
 				4DBB3B64274B91C90009339B /* HomeViewController.swift in Sources */,
+				4D72DEFF27B37CBB0099F2CC /* QrPopUpModel.swift in Sources */,
 				4D9A2B3227A4F4E700F86700 /* DDBodyView.swift in Sources */,
 				4DD0DD73275CD880005EE588 /* DailyAttendanceBodyView.swift in Sources */,
 			);

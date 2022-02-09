@@ -45,17 +45,9 @@ class TaxDetailsViewController: UIViewController {
 
         self.headerView.titleNameLbl.text = "Income Tax Deduction \nHistory"
         self.hideKeyboardWhenTappedAround()
-        
-        self.taxTableView.register(UINib(nibName: "TaxDetailsViewControllerCell", bundle: nil), forCellReuseIdentifier: "cellTax")
-        taxTableView.delegate = self
-        taxTableView.dataSource = self
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(CellClass.self, forCellReuseIdentifier: "Cell")
-        
-        evenHandler()
-        viewDesign()
+        self.nibRegister()
+        self.uiViewDesign()
+        self.navigationLink()
         
         let headerViewSize = self.headerView.frame.size.height
         let taxYearViewSize = self.taxYearBgView.frame.size.height/1.5
@@ -66,7 +58,6 @@ class TaxDetailsViewController: UIViewController {
         }else{
             self.toastMessage("No Internet Connected!!")
         }
-        
     }
     
     @IBAction func taxYearBtn(_ sender: Any) {
@@ -74,7 +65,152 @@ class TaxDetailsViewController: UIViewController {
         selectedButton = taxYearSelect
         addTransparentView(frames: taxYearSelect.frame)
     }
+}
+
+extension TaxDetailsViewController : UITableViewDelegate{
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == taxTableView {
+        }else{
+            selectedButton.setTitle(dataSource[indexPath.row].yearName, for: .normal)
+            
+            if InternetConnectionManager.isConnectedToNetwork(){
+                self.getTaxDeductionList(taxYearNo: dataSource[indexPath.row].taxYearNo!)
+            }else{
+                self.toastMessage("No Internet Connected!!")
+            }
+            
+            removeTransparentView()
+        }
+    }
+}
+
+extension TaxDetailsViewController : UITableViewDataSource{
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == taxTableView {
+            return dataSourceTD.count
+        }else{
+            return dataSource.count
+        }
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        if tableView == taxTableView {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cellTax", for: indexPath) as! TaxDetailsViewControllerCell
+            cell.slLbl.text = "\(String(describing: dataSourceTD[indexPath.row].taxMonthNo!))"
+            cell.monthLbl.text = dataSourceTD[indexPath.row].monthYear
+            cell.deductionAmountLbl.text = "\(String(describing: dataSourceTD[indexPath.row].taxDeductionAmount!))"
+            
+            if dataSourceTD[indexPath.row].taxMonthNo! < monthForTax() {
+                cell.slLbl.textColor = UIColor(red: 1.00, green: 0.33, blue: 0.33, alpha: 1.00)
+                cell.monthLbl.textColor = UIColor(red: 1.00, green: 0.33, blue: 0.33, alpha: 1.00)
+                cell.deductionAmountLbl.textColor = UIColor.white
+                cell.deductionAmoutBgView.backgroundColor = UIColor(red: 1.00, green: 0.33, blue: 0.33, alpha: 1.00)
+            }
+            return cell
+            
+        }else{
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+            cell.textLabel?.text = dataSource[indexPath.row].yearName
+            return cell
+        }
+       
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if tableView == taxTableView {
+            return 35
+        }else{
+            return 50
+        }
+        
+    }
+}
+
+
+extension TaxDetailsViewController {
+    func showSpinner(onView : UIView) {
+           let spinnerView = UIView.init(frame: onView.bounds)
+           spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+           let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+           ai.startAnimating()
+           ai.center = spinnerView.center
+           
+           DispatchQueue.main.async {
+               spinnerView.addSubview(ai)
+               onView.addSubview(spinnerView)
+           }
+           
+           vSpinner = spinnerView
+       }
+       
+       func removeSpinner() {
+           DispatchQueue.main.async {
+            self.vSpinner?.removeFromSuperview()
+            self.vSpinner = nil
+           }
+       }
+ }
+extension Date {
+    var month: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM"
+        return dateFormatter.string(from: self)
+    }
+}
+
+extension TaxDetailsViewController{
     
+    func nibRegister(){
+        
+        self.taxTableView.register(UINib(nibName: "TaxDetailsViewControllerCell", bundle: nil), forCellReuseIdentifier: "cellTax")
+        taxTableView.delegate = self
+        taxTableView.dataSource = self
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(CellClass.self, forCellReuseIdentifier: "Cell")
+    }
+    
+    func navigationLink() {
+        
+        self.headerView.backBtnHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showBackController()
+        }
+    }
+    
+    func uiViewDesign()
+    {
+        self.taxYearBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
+        self.taxYearBgView.layer.borderWidth = 0.5
+        self.taxYearBgView.layer.cornerRadius = 15
+        
+        self.detailsBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
+        self.detailsBgView.layer.borderWidth = 0.5
+        self.detailsBgView.layer.cornerRadius = 12
+        
+        self.slBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
+        self.slBgView.layer.borderWidth = 0.5
+        self.slBgView.layer.cornerRadius = 15
+        
+        self.DeductionAmountBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
+        self.DeductionAmountBgView.layer.borderWidth = 0.5
+        self.DeductionAmountBgView.layer.cornerRadius = 15
+        
+        
+        self.monthBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
+        self.monthBgView.layer.borderWidth = 0.5
+        self.monthBgView.layer.cornerRadius = 15
+    }
+ 
     func showBackController(){
         let controller = IncomeTaxViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
@@ -162,8 +298,6 @@ class TaxDetailsViewController: UIViewController {
         let newTodoItem = TaxDeductRequest(taxYearNo: taxYearNo)
         let jsonData = try? JSONEncoder().encode(newTodoItem)
         
-       
-
         request.httpBody = jsonData
 
         print("jsonData jsonData  data:\n \(jsonData!)")
@@ -197,41 +331,7 @@ class TaxDetailsViewController: UIViewController {
 //        })
     }
     
-    func evenHandler() {
-        
-        self.headerView.backBtnHandler = {
-            [weak self] (isShow) in
-            guard let weakSelf = self else {
-            return
-         }
-         weakSelf.showBackController()
-        }
-    }
-    
-    func viewDesign()
-    {
-        self.taxYearBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
-        self.taxYearBgView.layer.borderWidth = 0.5
-        self.taxYearBgView.layer.cornerRadius = 15
-        
-        self.detailsBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
-        self.detailsBgView.layer.borderWidth = 0.5
-        self.detailsBgView.layer.cornerRadius = 12
-        
-        self.slBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
-        self.slBgView.layer.borderWidth = 0.5
-        self.slBgView.layer.cornerRadius = 15
-        
-        self.DeductionAmountBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
-        self.DeductionAmountBgView.layer.borderWidth = 0.5
-        self.DeductionAmountBgView.layer.cornerRadius = 15
-        
-        
-        self.monthBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
-        self.monthBgView.layer.borderWidth = 0.5
-        self.monthBgView.layer.cornerRadius = 15
-    }
-    
+  
     func monthForTax() -> Int{
         
         let date = Date()
@@ -264,212 +364,5 @@ class TaxDetailsViewController: UIViewController {
             month = 6
         }
         return month
-    }
-}
-
-extension TaxDetailsViewController : UITableViewDelegate{
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == taxTableView {
-        }else{
-            selectedButton.setTitle(dataSource[indexPath.row].yearName, for: .normal)
-            
-            if InternetConnectionManager.isConnectedToNetwork(){
-                self.getTaxDeductionList(taxYearNo: dataSource[indexPath.row].taxYearNo!)
-            }else{
-                self.toastMessage("No Internet Connected!!")
-            }
-            
-            removeTransparentView()
-        }
-    }
-}
-
-extension TaxDetailsViewController : UITableViewDataSource{
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == taxTableView {
-            return dataSourceTD.count
-        }else{
-            return dataSource.count
-        }
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        if tableView == taxTableView {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cellTax", for: indexPath) as! TaxDetailsViewControllerCell
-            cell.slLbl.text = "\(String(describing: dataSourceTD[indexPath.row].taxMonthNo!))"
-            cell.monthLbl.text = dataSourceTD[indexPath.row].monthYear
-            cell.deductionAmountLbl.text = "\(String(describing: dataSourceTD[indexPath.row].taxDeductionAmount!))"
-            
-            if dataSourceTD[indexPath.row].taxMonthNo! < monthForTax() {
-                cell.slLbl.textColor = UIColor(red: 1.00, green: 0.33, blue: 0.33, alpha: 1.00)
-                cell.monthLbl.textColor = UIColor(red: 1.00, green: 0.33, blue: 0.33, alpha: 1.00)
-                cell.deductionAmountLbl.textColor = UIColor.white
-                cell.deductionAmoutBgView.backgroundColor = UIColor(red: 1.00, green: 0.33, blue: 0.33, alpha: 1.00)
-            }
-            return cell
-            
-        }else{
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            cell.textLabel?.text = dataSource[indexPath.row].yearName
-            return cell
-        }
-       
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        if tableView == taxTableView {
-            return 35
-        }else{
-            return 50
-        }
-        
-    }
-}
-
-
-extension TaxDetailsViewController {
-  
-    struct ListTaxYear: Codable {
-        var taxYearNo: Int?
-        var yearName: String = ""
-        
-        enum CodingKeys: String, CodingKey {
-            case taxYearNo = "taxYearNo"
-            case yearName = "yearName"
-        }
-        
-        init(from decoder: Decoder) throws {
-
-               let container = try decoder.container(keyedBy: CodingKeys.self)
-               self.taxYearNo = try container.decodeIfPresent(Int.self, forKey: .taxYearNo) ?? 0
-               self.yearName = try container.decodeIfPresent(String.self, forKey: .yearName) ?? ""
-           }
-
-           func encode(to encoder: Encoder) throws {
-
-               var container = encoder.container(keyedBy: CodingKeys.self)
-               try container.encode(taxYearNo, forKey: .taxYearNo)
-               try container.encode(yearName, forKey: .yearName)
-           }
-    }
-    
-    struct ListTaxYearResponse: Codable {
-        var error: String = ""
-        var _taxYearList : [ListTaxYear]
-
-        enum CodingKeys: String, CodingKey {
-            case error = "error"
-            case _taxYearList
-        }
-        
-         init(from decoder: Decoder) throws {
-
-                let container = try decoder.container(keyedBy: CodingKeys.self)
-                self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
-                self._taxYearList = try container.decodeIfPresent([ListTaxYear].self, forKey: ._taxYearList) ?? []
-            }
-
-            func encode(to encoder: Encoder) throws {
-
-                var container = encoder.container(keyedBy: CodingKeys.self)
-                try container.encode(error, forKey: .error)
-                try container.encode(_taxYearList, forKey: ._taxYearList)
-            }
-    }
-    
-    struct TaxDeductRequest: Codable {
-        var taxYearNo: Int?
-        
-        enum CodingKeys: String, CodingKey {
-            case taxYearNo = "taxYearNo"
-        }
-    }
-    
-    struct ListTaxDeduct: Codable {
-        var taxMonthNo: Int?
-        var monthYear: String = ""
-        var taxDeductionAmount: Double?
-        
-        enum CodingKeys: String, CodingKey {
-            case taxMonthNo = "taxMonthNo"
-            case monthYear = "monthYear"
-            case taxDeductionAmount = "taxDeductionAmount"
-        }
-        
-        init(from decoder: Decoder) throws {
-
-               let container = try decoder.container(keyedBy: CodingKeys.self)
-               self.taxMonthNo = try container.decodeIfPresent(Int.self, forKey: .taxMonthNo) ?? 0
-               self.monthYear = try container.decodeIfPresent(String.self, forKey: .monthYear) ?? ""
-               self.taxDeductionAmount = try container.decodeIfPresent(Double.self, forKey: .taxDeductionAmount) ?? 0.0
-           }
-
-           func encode(to encoder: Encoder) throws {
-
-               var container = encoder.container(keyedBy: CodingKeys.self)
-               try container.encode(taxMonthNo, forKey: .taxMonthNo)
-               try container.encode(monthYear, forKey: .monthYear)
-               try container.encode(taxDeductionAmount, forKey: .taxDeductionAmount)
-           }
-    }
-    
-    struct ListTaxDeductResponse: Codable {
-        var error: String = ""
-        var _taxDeductionsList : [ListTaxDeduct]
-
-        enum CodingKeys: String, CodingKey {
-            case error = "error"
-            case _taxDeductionsList
-        }
-        
-         init(from decoder: Decoder) throws {
-
-                let container = try decoder.container(keyedBy: CodingKeys.self)
-                self.error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
-                self._taxDeductionsList = try container.decodeIfPresent([ListTaxDeduct].self, forKey: ._taxDeductionsList) ?? []
-            }
-
-            func encode(to encoder: Encoder) throws {
-
-                var container = encoder.container(keyedBy: CodingKeys.self)
-                try container.encode(error, forKey: .error)
-                try container.encode(_taxDeductionsList, forKey: ._taxDeductionsList)
-            }
-    }
-}
-
-extension TaxDetailsViewController {
-    func showSpinner(onView : UIView) {
-           let spinnerView = UIView.init(frame: onView.bounds)
-           spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-           let ai = UIActivityIndicatorView.init(style: .whiteLarge)
-           ai.startAnimating()
-           ai.center = spinnerView.center
-           
-           DispatchQueue.main.async {
-               spinnerView.addSubview(ai)
-               onView.addSubview(spinnerView)
-           }
-           
-           vSpinner = spinnerView
-       }
-       
-       func removeSpinner() {
-           DispatchQueue.main.async {
-            self.vSpinner?.removeFromSuperview()
-            self.vSpinner = nil
-           }
-       }
- }
-extension Date {
-    var month: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM"
-        return dateFormatter.string(from: self)
     }
 }

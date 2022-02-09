@@ -24,9 +24,15 @@ class DDViewController: UIViewController {
         super.viewDidLoad()
 
         self.headerView.titleNameLbl.text = "Dispatch Delivery"
-        
         self.hideKeyboardWhenTappedAround()
-        
+        self.uiViewDesign()
+        self.navigationLink()
+    }
+}
+
+extension DDViewController{
+    
+    func uiViewDesign(){
         self.bodyView.trackingBgViewUnder.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.trackingBgViewUnder.layer.borderWidth = 0.5
         self.bodyView.trackingBgViewUnder.layer.cornerRadius = 20
@@ -34,7 +40,12 @@ class DDViewController: UIViewController {
         self.bodyView.trackingBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.trackingBgView.layer.borderWidth = 0.5
         self.bodyView.trackingBgView.layer.cornerRadius = 20
-        
+    }
+}
+
+extension DDViewController{
+    
+    func navigationLink(){
         self.headerView.backBtnHandler = {
             [weak self] (isShow) in
             guard let weakSelf = self else {

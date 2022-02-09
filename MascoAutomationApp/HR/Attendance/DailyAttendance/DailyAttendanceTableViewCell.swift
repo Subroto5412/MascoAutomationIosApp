@@ -18,7 +18,7 @@ class DailyAttendanceTableViewCell: UITableViewCell {
     @IBOutlet weak var dayLbl: UILabel!
     @IBOutlet weak var monthLbl: UILabel!
     
-    var dataSource: DailyAttendanceViewControllerDetails.ListAttendanceDetails?
+    var dataSource: AttendanceDetails?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,7 +33,7 @@ class DailyAttendanceTableViewCell: UITableViewCell {
     }
     
     
-    func setInformation(withItem item: DailyAttendanceViewControllerDetails.ListAttendanceDetails?, formattedDate: String){
+    func setInformation(withItem item: AttendanceDetails?, formattedDate: String){
         self.dataSource = item
         
         statusLbl.text = dataSource!.fSts

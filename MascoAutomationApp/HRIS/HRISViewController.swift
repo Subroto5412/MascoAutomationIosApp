@@ -12,7 +12,6 @@ class HRISViewController: UIViewController {
     @IBOutlet weak var headerView: InnerHeader!
     @IBOutlet weak var bodyView: HRISBodyView!
     
-    
     var searching = false
     let transparentView = UIView()
     let tableViewDropDown = UITableView()
@@ -32,11 +31,84 @@ class HRISViewController: UIViewController {
         super.viewDidLoad()
         
         self.hideKeyboardWhenTappedAround()
+        self.nibRegister()
+        self.uiViewDesign()
+        self.navigationLink()
+    }
+}
+
+extension HRISViewController : UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        if searching {
+            return dataSourceScreenFiltered.count
+        }else{
+            return dataSourceScreen.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableViewDropDown.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        if searching {
+            cell.textLabel?.text = dataSourceScreenFiltered[indexPath.row]
+        }else{
+            cell.textLabel?.text = dataSourceScreen[indexPath.row]
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedButton.text = dataSourceScreenFiltered[indexPath.row]
+        
+        if String(utils.readStringData(key: "BWPD")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = BWPDViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "HPD")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = HPDViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "HPDs")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = HPDsViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "LWP")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = LWPViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "DA")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = DailyAttendanceViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "LH")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = LeaveViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+            
+        }
+        else if String(utils.readStringData(key: "TH")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = IncomeTaxViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        
+        removeTransparentView()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        headerView.commonSearchTxtField.resignFirstResponder()
+        return true
+    }
+    
+}
+
+extension HRISViewController{
+    
+    func nibRegister(){
         tableViewDropDown.delegate = self
         tableViewDropDown.dataSource = self
         tableViewDropDown.register(CellClass.self, forCellReuseIdentifier: "Cell")
-        
+    }
+    
+    func uiViewDesign(){
         self.headerView.commonSearchTxtField.addTarget(self, action: #selector(searchRecord), for: .editingChanged)
 
         self.bodyView.HRISUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
@@ -48,7 +120,9 @@ class HRISViewController: UIViewController {
         self.bodyView.HRISBgView.layer.cornerRadius = 20
         
         self.headerView.searchBgView.layer.cornerRadius = 10
-        
+    }
+    
+    func navigationLink(){
         self.headerView.backBtnHandler = {
             [weak self] (isShow) in
             guard let weakSelf = self else {
@@ -128,70 +202,4 @@ class HRISViewController: UIViewController {
             self.tableViewDropDown.frame = CGRect(x: frames.origin.x+100, y: frames.origin.y + frames.height+80, width: frames.width, height: 0)
         }, completion: nil)
     }
-
-}
-
-
-extension HRISViewController : UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if searching {
-            return dataSourceScreenFiltered.count
-        }else{
-            return dataSourceScreen.count
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableViewDropDown.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        if searching {
-            cell.textLabel?.text = dataSourceScreenFiltered[indexPath.row]
-        }else{
-            cell.textLabel?.text = dataSourceScreen[indexPath.row]
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedButton.text = dataSourceScreenFiltered[indexPath.row]
-        
-        if String(utils.readStringData(key: "BWPD")) == dataSourceScreenFiltered[indexPath.row] {
-            let controller = BWPDViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-        }
-        else if String(utils.readStringData(key: "HPD")) == dataSourceScreenFiltered[indexPath.row] {
-            let controller = HPDViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-        }
-        else if String(utils.readStringData(key: "HPDs")) == dataSourceScreenFiltered[indexPath.row] {
-            let controller = HPDsViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-        }
-        else if String(utils.readStringData(key: "LWP")) == dataSourceScreenFiltered[indexPath.row] {
-            let controller = LWPViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-        }
-        else if String(utils.readStringData(key: "DA")) == dataSourceScreenFiltered[indexPath.row] {
-            let controller = DailyAttendanceViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-        }
-        else if String(utils.readStringData(key: "LH")) == dataSourceScreenFiltered[indexPath.row] {
-            let controller = LeaveViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-            
-        }
-        else if String(utils.readStringData(key: "TH")) == dataSourceScreenFiltered[indexPath.row] {
-            let controller = IncomeTaxViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-        }
-        
-        removeTransparentView()
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        headerView.commonSearchTxtField.resignFirstResponder()
-        
-        return true
-    }
-    
 }

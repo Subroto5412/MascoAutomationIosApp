@@ -10,7 +10,6 @@ import UIKit
 class TrackingDetailsBodyView: XibView {
     
     @IBOutlet weak var trackingDetailsBgView: UIView!
-    
     @IBOutlet weak var trackingNoLbl: UILabel!
     @IBOutlet weak var attentionPersonLbl: UILabel!
     @IBOutlet weak var addressLbl: UILabel!
@@ -18,5 +17,4 @@ class TrackingDetailsBodyView: XibView {
     @IBOutlet weak var departmentLbl: UILabel!
     @IBOutlet weak var merchandiseLbl: UILabel!
     @IBOutlet weak var mobileLbl: UILabel!
-    
 }

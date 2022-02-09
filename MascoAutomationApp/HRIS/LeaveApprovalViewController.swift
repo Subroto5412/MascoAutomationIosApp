@@ -20,14 +20,19 @@ class LeaveApprovalViewController: UIViewController {
         return controller
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.headerView.titleNameLbl.text = "HR Information Systems"
-        
         self.hideKeyboardWhenTappedAround()
-        
+        self.uiViewDesign()
+        self.navigationLink()
+    }
+}
+
+extension LeaveApprovalViewController {
+    
+    func uiViewDesign() {
         self.headerView.titleNameLbl.text = "Leave Approval"
         self.bodyView.leaveApprovalBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.leaveApprovalBgView.layer.borderWidth = 0.5
@@ -36,9 +41,9 @@ class LeaveApprovalViewController: UIViewController {
         self.bodyView.leaveApprovalUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.leaveApprovalUnderBgView.layer.borderWidth = 0.5
         self.bodyView.leaveApprovalUnderBgView.layer.cornerRadius = 20
-        
-
-        
+    }
+    
+    func navigationLink(){
         self.headerView.backBtnHandler = {
             [weak self] (isShow) in
             guard let weakSelf = self else {
@@ -54,8 +59,8 @@ class LeaveApprovalViewController: UIViewController {
          }
          weakSelf.showLeaveApprovalController()
         }
-        
     }
+    
     func showBackController(){
         let controller = HRISViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
@@ -65,5 +70,4 @@ class LeaveApprovalViewController: UIViewController {
         let controller = LeaveApprovalDetailViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
     }
-
 }
