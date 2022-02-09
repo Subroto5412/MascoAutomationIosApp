@@ -42,116 +42,91 @@ class HomeViewController: UIViewController {
         self.menuBackgroundView.isHidden = true
         
         self.hideKeyboardWhenTappedAround()
+        self.nibRegister()
+        self.homeHeader.commonSearchTxtField.addTarget(self, action: #selector(searchRecord), for: .editingChanged)
+        self.uiViewDesgin()
+        self.navigationLink()
+    }
+    
+    @IBAction func Tap(_ sender: Any) {
+        self.hideMenuView()
+    }
+}
+
+
+extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        if searching {
+            return dataSourceScreenFiltered.count
+        }else{
+            return dataSourceScreen.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableViewDropDown.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        if searching {
+            cell.textLabel?.text = dataSourceScreenFiltered[indexPath.row]
+        }else{
+            cell.textLabel?.text = dataSourceScreen[indexPath.row]
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedButton.text = dataSourceScreenFiltered[indexPath.row]
+        
+        if String(utils.readStringData(key: "BWPD")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = BWPDViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "HPD")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = HPDViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "HPDs")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = HPDsViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "LWP")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = LWPViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "DA")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = DailyAttendanceViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        else if String(utils.readStringData(key: "LH")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = LeaveViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+            
+        }
+        else if String(utils.readStringData(key: "TH")) == dataSourceScreenFiltered[indexPath.row] {
+            let controller = IncomeTaxViewController.initWithStoryboard()
+            self.present(controller, animated: true, completion: nil);
+        }
+        
+        removeTransparentView()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        homeHeader.commonSearchTxtField.resignFirstResponder()
+        return true
+    }
+    
+}
+
+extension HomeViewController{
+    
+    func nibRegister(){
         tableViewDropDown.delegate = self
         tableViewDropDown.dataSource = self
         tableViewDropDown.register(CellClass.self, forCellReuseIdentifier: "Cell")
+    }
+    
+    func uiViewDesgin(){
         
-        self.homeHeader.commonSearchTxtField.addTarget(self, action: #selector(searchRecord), for: .editingChanged)
-        
-        self.homeHeader.menuHandler = {
-              [weak self] (isShow) in
-              guard let weakSelf = self else {
-              return
-           }
-           weakSelf.showSideMenuController()
-       }
-        
-        self.homeBody.HRISHandler = {
-            [weak self] (isShow) in
-            guard let weakSelf = self else {
-            return
-         }
-         weakSelf.showHrController()
-        }
-        
-        self.homeBody.PMSHandler = {
-            [weak self] (isShow) in
-            guard let weakSelf = self else {
-            return
-         }
-         weakSelf.showPMSController()
-        }
-        
-        self.homeBody.SEMHandler = {
-            [weak self] (isShow) in
-            guard let weakSelf = self else {
-            return
-         }
-         weakSelf.showSEMController()
-        }
-        
-        self.homeBody.ATMHandler = {
-            [weak self] (isShow) in
-            guard let weakSelf = self else {
-            return
-         }
-         weakSelf.showATMController()
-        }
-        
-        self.homeBody.ILMHandler = {
-            [weak self] (isShow) in
-            guard let weakSelf = self else {
-            return
-         }
-         weakSelf.showILMController()
-        }
-        
-        self.homeBody.DSMHandler = {
-            [weak self] (isShow) in
-            guard let weakSelf = self else {
-            return
-         }
-         weakSelf.showDSMController()
-        }
-        
-        self.homeBody.DMSHandler = {
-            [weak self] (isShow) in
-            guard let weakSelf = self else {
-            return
-         }
-         weakSelf.showDMSController()
-        }
-        
-        self.homeBody.AMSHandler = {
-            [weak self] (isShow) in
-            guard let weakSelf = self else {
-            return
-         }
-         weakSelf.showAMSController()
-        }
-        
-        self.homeBody.AMHandler = {
-            [weak self] (isShow) in
-            guard let weakSelf = self else {
-            return
-         }
-         weakSelf.showAMController()
-        }
-        
-        self.homeBody.MMHandler = {
-            [weak self] (isShow) in
-            guard let weakSelf = self else {
-            return
-         }
-         weakSelf.showMMController()
-        }
-        self.homeBody.SCMHandler = {
-            [weak self] (isShow) in
-            guard let weakSelf = self else {
-            return
-         }
-         weakSelf.showSCMController()
-        }
-        
-        self.homeBody.DDHandler = {
-            [weak self] (isShow) in
-            guard let weakSelf = self else {
-            return
-         }
-         weakSelf.showDDController()
-        }
-          
         let arcCenter = CGPoint(x: self.homeBody.iconView.bounds.size.width / 2, y: self.homeBody.iconView.bounds.size.height)
         let circleRadius = self.homeBody.iconView.bounds.size.width / 2
         let circlePath = UIBezierPath(arcCenter: arcCenter, radius: circleRadius, startAngle: CGFloat.pi, endAngle: CGFloat.pi * 2, clockwise: true)
@@ -264,11 +239,109 @@ class HomeViewController: UIViewController {
         
         self.homeHeader.homeHeaderBg.layer.cornerRadius = 10
     }
-    
-    @IBAction func Tap(_ sender: Any) {
+    func navigationLink(){
+        self.homeHeader.menuHandler = {
+              [weak self] (isShow) in
+              guard let weakSelf = self else {
+              return
+           }
+           weakSelf.showSideMenuController()
+       }
         
-        self.hideMenuView()
+        self.homeBody.HRISHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showHrController()
+        }
         
+        self.homeBody.PMSHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showPMSController()
+        }
+        
+        self.homeBody.SEMHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showSEMController()
+        }
+        
+        self.homeBody.ATMHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showATMController()
+        }
+        
+        self.homeBody.ILMHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showILMController()
+        }
+        
+        self.homeBody.DSMHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showDSMController()
+        }
+        
+        self.homeBody.DMSHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showDMSController()
+        }
+        
+        self.homeBody.AMSHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showAMSController()
+        }
+        
+        self.homeBody.AMHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showAMController()
+        }
+        
+        self.homeBody.MMHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showMMController()
+        }
+        self.homeBody.SCMHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showSCMController()
+        }
+        
+        self.homeBody.DDHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showDDController()
+        }
     }
     
     func showSideMenuController() {
@@ -418,68 +491,4 @@ class HomeViewController: UIViewController {
             self.tableViewDropDown.frame = CGRect(x: frames.origin.x+100, y: frames.origin.y + frames.height+80, width: frames.width, height: 0)
         }, completion: nil)
     }
-}
-
-
-extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if searching {
-            return dataSourceScreenFiltered.count
-        }else{
-            return dataSourceScreen.count
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableViewDropDown.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        if searching {
-            cell.textLabel?.text = dataSourceScreenFiltered[indexPath.row]
-        }else{
-            cell.textLabel?.text = dataSourceScreen[indexPath.row]
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedButton.text = dataSourceScreenFiltered[indexPath.row]
-        
-        if String(utils.readStringData(key: "BWPD")) == dataSourceScreenFiltered[indexPath.row] {
-            let controller = BWPDViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-        }
-        else if String(utils.readStringData(key: "HPD")) == dataSourceScreenFiltered[indexPath.row] {
-            let controller = HPDViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-        }
-        else if String(utils.readStringData(key: "HPDs")) == dataSourceScreenFiltered[indexPath.row] {
-            let controller = HPDsViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-        }
-        else if String(utils.readStringData(key: "LWP")) == dataSourceScreenFiltered[indexPath.row] {
-            let controller = LWPViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-        }
-        else if String(utils.readStringData(key: "DA")) == dataSourceScreenFiltered[indexPath.row] {
-            let controller = DailyAttendanceViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-        }
-        else if String(utils.readStringData(key: "LH")) == dataSourceScreenFiltered[indexPath.row] {
-            let controller = LeaveViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-            
-        }
-        else if String(utils.readStringData(key: "TH")) == dataSourceScreenFiltered[indexPath.row] {
-            let controller = IncomeTaxViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-        }
-        
-        removeTransparentView()
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        homeHeader.commonSearchTxtField.resignFirstResponder()
-        return true
-    }
-    
 }

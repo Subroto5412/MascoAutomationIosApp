@@ -57,23 +57,10 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         
         self.headerView.titleNameLbl.text = "Daily Attendance"
         self.hideKeyboardWhenTappedAround()
-        
-        self.tableViewDailyAttendance.register(UINib(nibName: "DailyAttendanceTableViewCell", bundle: nil), forCellReuseIdentifier: "cell_daily_attendance")
-
-        tableViewDailyAttendance.delegate = self
-        tableViewDailyAttendance.dataSource = self
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(CellClass.self, forCellReuseIdentifier: "Cell")
-        
-        self.monthBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
-        self.monthBgView.layer.borderWidth = 0.5
-        self.monthBgView.layer.cornerRadius = 15
-        
-        self.yearBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
-        self.yearBgView.layer.borderWidth = 0.5
-        self.yearBgView.layer.cornerRadius = 15
+    
+        self.nibRegister()
+        self.uiViewDesign()
+        self.navigationLink()
         
         monthList = ["January","February","March","April","May","June","July","August","September","October","November","December"]
         
@@ -82,9 +69,6 @@ class DailyAttendanceViewControllerDetails: UIViewController {
        myYear =  calendar.component(.year, from: date)
        myMonth = calendar.component(.month, from: date)
        myDay = calendar.component(.day, from: date)
-        
-        print("---myMonth---\(myMonth-1)")
-        print("---myMonth---\(monthList[myMonth].prefix(3))")
         
        let utils = Utils()
         formattedDate = utils.currentFormattedDate()
@@ -103,15 +87,6 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         let nextMonth = monthList[myMonth].prefix(3)
         self.nextMonthLbl.text = String(nextMonth)
         
-        
-        self.headerView.backBtnHandler = {
-            [weak self] (isShow) in
-            guard let weakSelf = self else {
-            return
-         }
-         weakSelf.showBackController()
-        }
-        
         let headerViewSize = self.headerView.frame.size.height
         let taxYearViewSize = self.yearBgView.frame.size.height/1.5
         totalHeight = Int(headerViewSize+taxYearViewSize)
@@ -123,169 +98,7 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         }
     }
     
-    func addTransparentView(frames: CGRect) {
-        let window = UIApplication.shared.keyWindow
-        transparentView.frame = window?.frame ?? self.view.frame
-        self.view.addSubview(transparentView)
-        
-        tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height+CGFloat(totalHeight), width: frames.width+100, height: 0)
-        self.view.addSubview(tableView)
-        tableView.layer.cornerRadius = 5
-        
-        transparentView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
-        tableView.reloadData()
-        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeTransparentView))
-        transparentView.addGestureRecognizer(tapgesture)
-        transparentView.alpha = 0
-        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
-            self.transparentView.alpha = 0.5
-            self.tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height + 5+CGFloat(self.totalHeight), width: frames.width+100, height: CGFloat(self.dataSource.count * 50))
-        }, completion: nil)
-    }
     
-    @objc func removeTransparentView() {
-        let frames = selectedButton.frame
-        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
-            self.transparentView.alpha = 0
-            self.tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height+CGFloat(self.totalHeight), width: frames.width+100, height: 0)
-        }, completion: nil)
-    }
-    
-    func getFinancialYearList(){
-        
-        let url = URL(string: YEAR_URL)
-        guard let requestUrl = url else { fatalError() }
-        
-        var request = URLRequest(url: requestUrl)
-        request.httpMethod = "GET"
-        
-        // Set HTTP Request Header
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    
-            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                
-                DispatchQueue.main.async {
-                    
-                    if let error = error {
-                        print("Error took place \(error)")
-                        return
-                    }
-                    guard let data = data else {return}
-
-                    do{
-                        let finalYearItemModel = try JSONDecoder().decode(ListFinalYearResponse.self, from: data)
-                        self.dataSource = finalYearItemModel._listFinalYear
-                        
-                    }catch let jsonErr{
-                        print(jsonErr)
-                   }
-                }
-        }
-        task.resume()
-    }
-    
-    
-    func getAttendanceDetailsList(FromDate: String, ToDate: String){
-        
-        let utils = Utils()
-        let accessToken = utils.readStringData(key: "token")
-
-        let url = URL(string: ATTENDANCE_DETAILS_URL)
-        guard let requestUrl = url else { fatalError() }
-        
-        var request = URLRequest(url: requestUrl)
-        request.httpMethod = "POST"
-        
-        // Set HTTP Request Header
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        
-        let newItem = AttendanceDetailsRequest(fromDate: FromDate, toDate: ToDate)
-        let jsonData = try? JSONEncoder().encode(newItem)
-        request.httpBody = jsonData
-        
-//        self.showSpinner(onView: self.view)
-            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-//                self.removeSpinner()
-                DispatchQueue.main.async {
-                        
-                    if let error = error {
-                        print("Error took place \(error)")
-                        return
-                    }
-                    guard let data = data else {return}
-
-                    do{
-                        let ItemModel = try JSONDecoder().decode(AttendanceDetailsResponse.self, from: data)
-                        self.dataSourceAttendanceDetails = ItemModel._attHistoryListStr
-                        self.tableViewDailyAttendance.reloadData()
-                        
-                    }catch let jsonErr{
-                        print(jsonErr)
-                   }
-                }
-        }
-        task.resume()
-        
-//        self.removeSpinner()
-        
-        if InternetConnectionManager.isConnectedToNetwork(){
-            self.getLeaveCountList(FromDate: FromDate, ToDate: ToDate)
-        }else{
-            self.toastMessage("No Internet Connected!!")
-        }
-        
-    }
-    
-    
-    func getLeaveCountList(FromDate: String, ToDate: String){
-        
-        let utils = Utils()
-        let accessToken = utils.readStringData(key: "token")
-        
-        let url = URL(string: LEAVE_COUNT_URL)
-        guard let requestUrl = url else { fatalError() }
-        
-        var request = URLRequest(url: requestUrl)
-        request.httpMethod = "POST"
-        
-        // Set HTTP Request Header
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        
-        let newItem = LeaveCountRequest(fromDate: FromDate, toDate: ToDate)
-        let jsonData = try? JSONEncoder().encode(newItem)
-        
-        request.httpBody = jsonData
-        self.showSpinner(onView: self.view)
-            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-
-                self.removeSpinner()
-                DispatchQueue.main.async {
-                
-                    if let error = error {
-                        print("Error took place \(error)")
-                        return
-                    }
-                    guard let data = data else {return}
-
-                    do{
-                        let ItemModel = try JSONDecoder().decode(LeaveCountResponse.self, from: data)
-                        self.dataSourceLeaveCount = ItemModel._listLeaveCount
-                        self.leaveCountCollectionView.reloadData()
-                        
-                    }catch let jsonErr{
-                        print(jsonErr)
-                   }
-                }
-        }
-        task.resume()
-    }
     
     @IBAction func financialYearBtn(_ sender: Any) {
         
@@ -494,45 +307,7 @@ class DailyAttendanceViewControllerDetails: UIViewController {
         }
     }
     
-    func howManyDayMonth(monthName:String)->String{
-        var monthDay: String = ""
-        if monthName == "January"{
-            monthDay = "31"
-        }
-        else if monthName == "February"{
-            monthDay = "28"
-        }
-        else if monthName == "March"{
-            monthDay = "31"
-        }
-        else if monthName == "April"{
-            monthDay = "30"
-        }
-        else if monthName == "May"{
-            monthDay = "31"
-        }else if monthName == "June"{
-            monthDay = "30"
-        }
-        else if monthName == "July"{
-            monthDay = "31"
-        }
-        else if monthName == "August"{
-            monthDay = "31"
-        }
-        else if monthName == "September"{
-            monthDay = "30"
-        }
-        else if monthName == "October"{
-            monthDay = "31"
-        }
-        else if monthName == "November"{
-            monthDay = "30"
-        }
-        else if monthName == "December"{
-            monthDay = "31"
-        }
-        return monthDay
-    }
+
 }
 
 extension DailyAttendanceViewControllerDetails : UITableViewDelegate{
@@ -688,7 +463,242 @@ extension DailyAttendanceViewControllerDetails {
 
 extension DailyAttendanceViewControllerDetails {
     
-    //-------Daily Attendance Data--------
+    func uiViewDesign(){
+        
+        self.monthBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
+        self.monthBgView.layer.borderWidth = 0.5
+        self.monthBgView.layer.cornerRadius = 15
+        
+        self.yearBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
+        self.yearBgView.layer.borderWidth = 0.5
+        self.yearBgView.layer.cornerRadius = 15
+    }
     
+    func navigationLink(){
+        
+        self.headerView.backBtnHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showBackController()
+        }
+    }
+    
+    func nibRegister(){
+        
+        self.tableViewDailyAttendance.register(UINib(nibName: "DailyAttendanceTableViewCell", bundle: nil), forCellReuseIdentifier: "cell_daily_attendance")
 
+        tableViewDailyAttendance.delegate = self
+        tableViewDailyAttendance.dataSource = self
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(CellClass.self, forCellReuseIdentifier: "Cell")
+        
+    }
+    
+    func addTransparentView(frames: CGRect) {
+        let window = UIApplication.shared.keyWindow
+        transparentView.frame = window?.frame ?? self.view.frame
+        self.view.addSubview(transparentView)
+        
+        tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height+CGFloat(totalHeight), width: frames.width+100, height: 0)
+        self.view.addSubview(tableView)
+        tableView.layer.cornerRadius = 5
+        
+        transparentView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
+        tableView.reloadData()
+        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeTransparentView))
+        transparentView.addGestureRecognizer(tapgesture)
+        transparentView.alpha = 0
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            self.transparentView.alpha = 0.5
+            self.tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height + 5+CGFloat(self.totalHeight), width: frames.width+100, height: CGFloat(self.dataSource.count * 50))
+        }, completion: nil)
+    }
+    
+    @objc func removeTransparentView() {
+        let frames = selectedButton.frame
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            self.transparentView.alpha = 0
+            self.tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height+CGFloat(self.totalHeight), width: frames.width+100, height: 0)
+        }, completion: nil)
+    }
+    
+    func getFinancialYearList(){
+        
+        let url = URL(string: YEAR_URL)
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "GET"
+        
+        // Set HTTP Request Header
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+                DispatchQueue.main.async {
+                    
+                    if let error = error {
+                        print("Error took place \(error)")
+                        return
+                    }
+                    guard let data = data else {return}
+
+                    do{
+                        let finalYearItemModel = try JSONDecoder().decode(ListFinalYearResponse.self, from: data)
+                        self.dataSource = finalYearItemModel._listFinalYear
+                        
+                    }catch let jsonErr{
+                        print(jsonErr)
+                   }
+                }
+        }
+        task.resume()
+    }
+    
+    
+    func getAttendanceDetailsList(FromDate: String, ToDate: String){
+        
+        let utils = Utils()
+        let accessToken = utils.readStringData(key: "token")
+
+        let url = URL(string: ATTENDANCE_DETAILS_URL)
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        
+        // Set HTTP Request Header
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        
+        let newItem = AttendanceDetailsRequest(fromDate: FromDate, toDate: ToDate)
+        let jsonData = try? JSONEncoder().encode(newItem)
+        request.httpBody = jsonData
+        
+//        self.showSpinner(onView: self.view)
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+//                self.removeSpinner()
+                DispatchQueue.main.async {
+                        
+                    if let error = error {
+                        print("Error took place \(error)")
+                        return
+                    }
+                    guard let data = data else {return}
+
+                    do{
+                        let ItemModel = try JSONDecoder().decode(AttendanceDetailsResponse.self, from: data)
+                        self.dataSourceAttendanceDetails = ItemModel._attHistoryListStr
+                        self.tableViewDailyAttendance.reloadData()
+                        
+                    }catch let jsonErr{
+                        print(jsonErr)
+                   }
+                }
+        }
+        task.resume()
+        
+//        self.removeSpinner()
+        
+        if InternetConnectionManager.isConnectedToNetwork(){
+            self.getLeaveCountList(FromDate: FromDate, ToDate: ToDate)
+        }else{
+            self.toastMessage("No Internet Connected!!")
+        }
+        
+    }
+    
+    
+    func getLeaveCountList(FromDate: String, ToDate: String){
+        
+        let utils = Utils()
+        let accessToken = utils.readStringData(key: "token")
+        
+        let url = URL(string: LEAVE_COUNT_URL)
+        guard let requestUrl = url else { fatalError() }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        
+        // Set HTTP Request Header
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        
+        let newItem = LeaveCountRequest(fromDate: FromDate, toDate: ToDate)
+        let jsonData = try? JSONEncoder().encode(newItem)
+        
+        request.httpBody = jsonData
+        self.showSpinner(onView: self.view)
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+                self.removeSpinner()
+                DispatchQueue.main.async {
+                
+                    if let error = error {
+                        print("Error took place \(error)")
+                        return
+                    }
+                    guard let data = data else {return}
+
+                    do{
+                        let ItemModel = try JSONDecoder().decode(LeaveCountResponse.self, from: data)
+                        self.dataSourceLeaveCount = ItemModel._listLeaveCount
+                        self.leaveCountCollectionView.reloadData()
+                        
+                    }catch let jsonErr{
+                        print(jsonErr)
+                   }
+                }
+        }
+        task.resume()
+    }
+    
+    func howManyDayMonth(monthName:String)->String{
+        var monthDay: String = ""
+        if monthName == "January"{
+            monthDay = "31"
+        }
+        else if monthName == "February"{
+            monthDay = "28"
+        }
+        else if monthName == "March"{
+            monthDay = "31"
+        }
+        else if monthName == "April"{
+            monthDay = "30"
+        }
+        else if monthName == "May"{
+            monthDay = "31"
+        }else if monthName == "June"{
+            monthDay = "30"
+        }
+        else if monthName == "July"{
+            monthDay = "31"
+        }
+        else if monthName == "August"{
+            monthDay = "31"
+        }
+        else if monthName == "September"{
+            monthDay = "30"
+        }
+        else if monthName == "October"{
+            monthDay = "31"
+        }
+        else if monthName == "November"{
+            monthDay = "30"
+        }
+        else if monthName == "December"{
+            monthDay = "31"
+        }
+        return monthDay
+    }
 }

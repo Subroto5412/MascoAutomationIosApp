@@ -39,9 +39,71 @@ class LeaveApplyViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
         
         self.getLeaveFormData()
+        self.photoView()
+        self.nibRegister()
+        self.uiViewDesign()
+        self.navigationLink()
+       
+        let leaveTypeBgSize = self.bodyView.IdBgView.frame.size.height + self.bodyView.nameBgView.frame.size.height + self.bodyView.designationBgView.frame.size.height + 25 + (self.bodyView.fullLeaveTypeBgView.frame.size.height*4)
+      
+        totalHeight = Int(leaveTypeBgSize)
         
+    }
+}
+
+extension LeaveApplyViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.text = dataSource[indexPath.row].abbreviation
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedButton.setTitle(dataSource[indexPath.row].abbreviation, for: .normal)
+        let maxBalance:Double = Double(dataSource[indexPath.row].maxBalance)
+        let avail:Double = Double(dataSource[indexPath.row].avail!)
+        self.bodyView.leaveTypeValueLbl.text = "\(maxBalance - avail)"
+        self.leaveTypeId = Int(dataSource[indexPath.row].leaveTypeNo!)
+        removeTransparentView()
+    }
+}
+
+extension LeaveApplyViewController {
+    func showSpinner(onView : UIView) {
+           let spinnerView = UIView.init(frame: onView.bounds)
+           spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+           let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+           ai.startAnimating()
+           ai.center = spinnerView.center
+           
+           DispatchQueue.main.async {
+               spinnerView.addSubview(ai)
+               onView.addSubview(spinnerView)
+           }
+           
+           vSpinner = spinnerView
+       }
+       
+       func removeSpinner() {
+           DispatchQueue.main.async {
+            self.vSpinner?.removeFromSuperview()
+            self.vSpinner = nil
+           }
+       }
+ }
+
+extension LeaveApplyViewController {
+    
+    func photoView(){
         let utils = Utils()
-        
         let urlLinkPhoto = (PHOTO_LINK_URL+utils.readStringData(key: "photo"))
         let photoUrl =  URL(string: urlLinkPhoto)!
 
@@ -53,13 +115,15 @@ class LeaveApplyViewController: UIViewController {
             self.self.bodyView.profilePhotoImg.layer.borderWidth = 2.0
             self.self.bodyView.profilePhotoImg.layer.borderColor = skyBlueColor.cgColor
             }
-        
-        
-        
-
+    }
+    
+    func nibRegister(){
         tableViewLeaveTypeDropDown.delegate = self
         tableViewLeaveTypeDropDown.dataSource = self
         tableViewLeaveTypeDropDown.register(CellClass.self, forCellReuseIdentifier: "Cell")
+    }
+    
+    func uiViewDesign(){
         
         self.bodyView.IdBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.IdBgView.layer.borderWidth = 0.5
@@ -98,6 +162,8 @@ class LeaveApplyViewController: UIViewController {
         self.bodyView.reasonBgView.layer.cornerRadius = 4
         
         self.bodyView.saveBgView.layer.cornerRadius = 20
+    }
+    func navigationLink(){
         
         self.headerView.backBtnHandler = {
             [weak self] (isShow) in
@@ -149,15 +215,8 @@ class LeaveApplyViewController: UIViewController {
            }
          
         }
-        
-        
-        let leaveTypeBgSize = self.bodyView.IdBgView.frame.size.height + self.bodyView.nameBgView.frame.size.height + self.bodyView.designationBgView.frame.size.height + 25 + (self.bodyView.fullLeaveTypeBgView.frame.size.height*4)
-      
-        totalHeight = Int(leaveTypeBgSize)
-        
     }
     
-
     func showBackController(){
         let controller = LeaveViewController.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
@@ -399,52 +458,3 @@ class LeaveApplyViewController: UIViewController {
     }
 
 }
-
-extension LeaveApplyViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = dataSource[indexPath.row].abbreviation
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedButton.setTitle(dataSource[indexPath.row].abbreviation, for: .normal)
-        let maxBalance:Double = Double(dataSource[indexPath.row].maxBalance)
-        let avail:Double = Double(dataSource[indexPath.row].avail!)
-        self.bodyView.leaveTypeValueLbl.text = "\(maxBalance - avail)"
-        self.leaveTypeId = Int(dataSource[indexPath.row].leaveTypeNo!)
-        removeTransparentView()
-    }
-}
-
-extension LeaveApplyViewController {
-    func showSpinner(onView : UIView) {
-           let spinnerView = UIView.init(frame: onView.bounds)
-           spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-           let ai = UIActivityIndicatorView.init(style: .whiteLarge)
-           ai.startAnimating()
-           ai.center = spinnerView.center
-           
-           DispatchQueue.main.async {
-               spinnerView.addSubview(ai)
-               onView.addSubview(spinnerView)
-           }
-           
-           vSpinner = spinnerView
-       }
-       
-       func removeSpinner() {
-           DispatchQueue.main.async {
-            self.vSpinner?.removeFromSuperview()
-            self.vSpinner = nil
-           }
-       }
- }

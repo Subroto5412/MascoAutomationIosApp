@@ -52,19 +52,9 @@ class LeaveDetailsViewController: UIViewController {
         self.headerView.titleNameLbl.text = "Personal Leave Details"
         
         self.hideKeyboardWhenTappedAround()
-        
-        tableViewAvail.delegate = self
-        tableViewAvail.dataSource = self
-        self.tableViewAvail.register(UINib(nibName: "LeaveDetailsControllerCell", bundle: nil), forCellReuseIdentifier: "cell_avail")
-        
-        self.leaveSummaryCollectionView.register(UINib(nibName: "LeaveSummaryCollectionCell", bundle: nil), forCellWithReuseIdentifier: "leave_summary_cell")
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(CellClass.self, forCellReuseIdentifier: "Cell")
-        
-        evenHandler()
-        viewDesign()
+        self.nibRegister()
+        self.uiViewDesign()
+        self.navigationLink()
         
         let headerViewSize = self.headerView.frame.size.height
         let taxYearViewSize = self.financialBgView.frame.size.height/1.5
@@ -80,26 +70,153 @@ class LeaveDetailsViewController: UIViewController {
         
         selectedButton = financialYear
         addTransparentView(frames: financialYear.frame)
-    
     }
-    
-    func showBackController(){
-        let controller = LeaveViewController.initWithStoryboard()
-        self.present(controller, animated: true, completion: nil);
-    }
-    
-    func evenHandler() {
+}
+
+extension LeaveDetailsViewController : UITableViewDelegate{
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.headerView.backBtnHandler = {
-            [weak self] (isShow) in
-            guard let weakSelf = self else {
-            return
-         }
-         weakSelf.showBackController()
+        if tableView == tableViewAvail {
+            print("---you tapped me!----")
+        }else{
+            selectedButton.setTitle(dataSource[indexPath.row].finalYearName, for: .normal)
+            
+            if InternetConnectionManager.isConnectedToNetwork(){
+                self.getLeaveHistorySummary(finalYear: dataSource[indexPath.row].finalYearNo!)
+            }else{
+                self.toastMessage("No Internet Connected!!")
+            }
+            removeTransparentView()
+        }
+    }
+}
+
+extension LeaveDetailsViewController : UITableViewDataSource{
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == tableViewAvail {
+            return dataSourceAvail.count
+        }else{
+            return dataSource.count
         }
     }
     
-    func viewDesign(){
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if tableView == tableViewAvail {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell_avail", for: indexPath) as! LeaveDetailsControllerCell
+            cell.slLbl.text = "\(indexPath.row+1)"
+            cell.leaveTypeLbl.text = dataSourceAvail[indexPath.row].leaveType
+            cell.avilDayLbl.text = "\(String(describing: dataSourceAvail[indexPath.row].availDays!))"
+            cell.fromDateLbl.text = dataSourceAvail[indexPath.row].approveFromDate
+            cell.toDateLbl.text = dataSourceAvail[indexPath.row].approveToDate
+            cell.applicationDateLbl.text = dataSourceAvail[indexPath.row].applicationDate
+            return cell
+        }
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+            cell.textLabel?.text = dataSource[indexPath.row].finalYearName
+            return cell
+        }
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if tableView == tableViewAvail {
+            return 40
+        }else{
+            return 50
+        }
+    }
+}
+
+
+extension LeaveDetailsViewController : UICollectionViewDelegate {
+}
+
+extension LeaveDetailsViewController : UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return dataSourceLeaveHistory.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "leave_summary_cell", for: indexPath) as! LeaveSummaryCollectionCell
+        cell.clLbl.text = dataSourceLeaveHistory[indexPath.row].cl
+        cell.slLbl.text = dataSourceLeaveHistory[indexPath.row].sl
+        cell.elLbl.text = dataSourceLeaveHistory[indexPath.row].el
+        
+        if indexPath.row == 0 {
+            cell.leaveTypeLbl.text = "Leave Type"
+        }else if indexPath.row == 1 {
+            cell.leaveTypeLbl.text = "Total Balance"
+        }else if indexPath.row == 2 {
+            cell.leaveTypeLbl.text = "Avail Day"
+        }else if indexPath.row == 3 {
+            cell.leaveTypeLbl.text = "Rest Balance"
+        }
+        
+        return cell
+    }
+}
+
+extension LeaveDetailsViewController : UICollectionViewDelegateFlowLayout{
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 120, height: 139)
+    }
+}
+
+extension UIView{
+    func roundedView(){
+        let maskPath1 = UIBezierPath(roundedRect: bounds,
+            byRoundingCorners: [.topLeft , .topRight],
+            cornerRadii: CGSize(width: 8, height: 8))
+        let maskLayer1 = CAShapeLayer()
+        maskLayer1.frame = bounds
+        maskLayer1.path = maskPath1.cgPath
+        layer.mask = maskLayer1
+    }
+}
+
+
+extension LeaveDetailsViewController {
+    func showSpinner(onView : UIView) {
+           let spinnerView = UIView.init(frame: onView.bounds)
+           spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+           let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+           ai.startAnimating()
+           ai.center = spinnerView.center
+           
+           DispatchQueue.main.async {
+               spinnerView.addSubview(ai)
+               onView.addSubview(spinnerView)
+           }
+           vSpinner = spinnerView
+       }
+       
+       func removeSpinner() {
+           DispatchQueue.main.async {
+            self.vSpinner?.removeFromSuperview()
+            self.vSpinner = nil
+           }
+       }
+ }
+
+extension LeaveDetailsViewController{
+    
+    func nibRegister(){
+        tableViewAvail.delegate = self
+        tableViewAvail.dataSource = self
+        self.tableViewAvail.register(UINib(nibName: "LeaveDetailsControllerCell", bundle: nil), forCellReuseIdentifier: "cell_avail")
+        
+        self.leaveSummaryCollectionView.register(UINib(nibName: "LeaveSummaryCollectionCell", bundle: nil), forCellWithReuseIdentifier: "leave_summary_cell")
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(CellClass.self, forCellReuseIdentifier: "Cell")
+    }
+    
+    func uiViewDesign(){
         
         self.financialBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
         self.financialBgView.layer.borderWidth = 0.5
@@ -138,6 +255,21 @@ class LeaveDetailsViewController: UIViewController {
         self.applicationDateBgView.layer.borderColor = UIColor(red: 90/255, green: 236/255, blue: 129/255, alpha: 1.0).cgColor
         self.applicationDateBgView.layer.borderWidth = 0.5
         self.applicationDateBgView.layer.cornerRadius = 15
+    }
+    
+    func navigationLink(){
+        self.headerView.backBtnHandler = {
+            [weak self] (isShow) in
+            guard let weakSelf = self else {
+            return
+         }
+         weakSelf.showBackController()
+        }
+    }
+    
+    func showBackController(){
+        let controller = LeaveViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
     }
     
     func addTransparentView(frames: CGRect) {
@@ -307,132 +439,3 @@ func getYearList(){
     task.resume()
   }
 }
-
-extension LeaveDetailsViewController : UITableViewDelegate{
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if tableView == tableViewAvail {
-            print("---you tapped me!----")
-        }else{
-            selectedButton.setTitle(dataSource[indexPath.row].finalYearName, for: .normal)
-            
-            if InternetConnectionManager.isConnectedToNetwork(){
-                self.getLeaveHistorySummary(finalYear: dataSource[indexPath.row].finalYearNo!)
-            }else{
-                self.toastMessage("No Internet Connected!!")
-            }
-            removeTransparentView()
-        }
-    }
-}
-
-extension LeaveDetailsViewController : UITableViewDataSource{
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == tableViewAvail {
-            return dataSourceAvail.count
-        }else{
-            return dataSource.count
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == tableViewAvail {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell_avail", for: indexPath) as! LeaveDetailsControllerCell
-            cell.slLbl.text = "\(indexPath.row+1)"
-            cell.leaveTypeLbl.text = dataSourceAvail[indexPath.row].leaveType
-            cell.avilDayLbl.text = "\(String(describing: dataSourceAvail[indexPath.row].availDays!))"
-            cell.fromDateLbl.text = dataSourceAvail[indexPath.row].approveFromDate
-            cell.toDateLbl.text = dataSourceAvail[indexPath.row].approveToDate
-            cell.applicationDateLbl.text = dataSourceAvail[indexPath.row].applicationDate
-            return cell
-        }
-        else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            cell.textLabel?.text = dataSource[indexPath.row].finalYearName
-            return cell
-        }
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tableView == tableViewAvail {
-            return 40
-        }else{
-            return 50
-        }
-    }
-}
-
-
-extension LeaveDetailsViewController : UICollectionViewDelegate {
-}
-
-extension LeaveDetailsViewController : UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSourceLeaveHistory.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "leave_summary_cell", for: indexPath) as! LeaveSummaryCollectionCell
-        cell.clLbl.text = dataSourceLeaveHistory[indexPath.row].cl
-        cell.slLbl.text = dataSourceLeaveHistory[indexPath.row].sl
-        cell.elLbl.text = dataSourceLeaveHistory[indexPath.row].el
-        
-        if indexPath.row == 0 {
-            cell.leaveTypeLbl.text = "Leave Type"
-        }else if indexPath.row == 1 {
-            cell.leaveTypeLbl.text = "Total Balance"
-        }else if indexPath.row == 2 {
-            cell.leaveTypeLbl.text = "Avail Day"
-        }else if indexPath.row == 3 {
-            cell.leaveTypeLbl.text = "Rest Balance"
-        }
-        
-        return cell
-    }
-}
-
-extension LeaveDetailsViewController : UICollectionViewDelegateFlowLayout{
-    
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 120, height: 139)
-    }
-}
-
-extension UIView{
-    func roundedView(){
-        let maskPath1 = UIBezierPath(roundedRect: bounds,
-            byRoundingCorners: [.topLeft , .topRight],
-            cornerRadii: CGSize(width: 8, height: 8))
-        let maskLayer1 = CAShapeLayer()
-        maskLayer1.frame = bounds
-        maskLayer1.path = maskPath1.cgPath
-        layer.mask = maskLayer1
-    }
-}
-
-
-extension LeaveDetailsViewController {
-    func showSpinner(onView : UIView) {
-           let spinnerView = UIView.init(frame: onView.bounds)
-           spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-           let ai = UIActivityIndicatorView.init(style: .whiteLarge)
-           ai.startAnimating()
-           ai.center = spinnerView.center
-           
-           DispatchQueue.main.async {
-               spinnerView.addSubview(ai)
-               onView.addSubview(spinnerView)
-           }
-           vSpinner = spinnerView
-       }
-       
-       func removeSpinner() {
-           DispatchQueue.main.async {
-            self.vSpinner?.removeFromSuperview()
-            self.vSpinner = nil
-           }
-       }
- }

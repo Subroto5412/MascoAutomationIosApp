@@ -43,48 +43,9 @@ class SignupViewController: UIViewController {
         super.viewDidLoad()
         
         self.hideKeyboardWhenTappedAround()
-
-        passwordTxtField.layer.borderColor = UIColor(red: 104, green: 156, blue: 255, alpha: 1.0).cgColor
-        passwordTxtField.layer.borderWidth = 0.5
-        passwordTxtField.layer.cornerRadius = 5.0;
-        
-        repasswordTxtField.layer.borderColor = UIColor(red: 104, green: 156, blue: 255, alpha: 1.0).cgColor
-        repasswordTxtField.layer.borderWidth = 0.5
-        repasswordTxtField.layer.cornerRadius = 5.0;
-        
-        
-        verifiedDigitView.layer.borderColor = UIColor(red: 104, green: 156, blue: 255, alpha: 1.0).cgColor
-        verifiedDigitView.layer.cornerRadius = 5.0;
-        verifiedDigitView.layer.borderWidth = 0.5
-        
-        
-        digitOneView.layer.borderColor = UIColor(red: 104, green: 156, blue: 255, alpha: 1.0).cgColor
-        digitOneView.layer.borderWidth = 0.5
-        digitOneView.layer.cornerRadius = 14.5
-        
-        
-        digitTwoView.layer.borderColor = UIColor(red: 104, green: 156, blue: 255, alpha: 1.0).cgColor
-        digitTwoView.layer.borderWidth = 0.5
-        digitTwoView.layer.cornerRadius = 14.5
-        
-        digitThreeView.layer.borderColor = UIColor(red: 104, green: 156, blue: 255, alpha: 1.0).cgColor
-        digitThreeView.layer.borderWidth = 0.5
-        digitThreeView.layer.cornerRadius = 14.5
-        
-        digitFourView.layer.borderColor = UIColor(red: 104, green: 156, blue: 255, alpha: 1.0).cgColor
-        digitFourView.layer.borderWidth = 0.5
-        digitFourView.layer.cornerRadius = 14.5
-        
-        
-        topUIView.layer.cornerRadius = 50
-        topUIView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-
-        signupBtn.layer.cornerRadius = 20.0;
-        
+        self.uiViewDesign()
         let utils = Utils()
         mobileLbl.text = utils.readStringData(key: "mobile")
-        
-        
     }
     
     @IBAction func firstBtn(_ sender: Any) {
@@ -157,7 +118,70 @@ class SignupViewController: UIViewController {
         }else{
             self.toastMessage("No Internet Connected!!")
         }
+    }
+}
+
+extension SignupViewController {
+    func showLoading(finished: @escaping () -> Void) {
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+
+        alert.view.addSubview(loadingIndicator)
+
+        present(alert, animated: false, completion: finished)
+    }
+
+    func hideLoading(finished: @escaping () -> Void) {
+        if ( presentedViewController != nil && !presentedViewController!.isBeingPresented ) {
+            dismiss(animated: false, completion: finished)
+        }
+    }
+ }
+
+extension SignupViewController{
     
+    func uiViewDesign(){
+        
+        passwordTxtField.layer.borderColor = UIColor(red: 104, green: 156, blue: 255, alpha: 1.0).cgColor
+        passwordTxtField.layer.borderWidth = 0.5
+        passwordTxtField.layer.cornerRadius = 5.0;
+        
+        repasswordTxtField.layer.borderColor = UIColor(red: 104, green: 156, blue: 255, alpha: 1.0).cgColor
+        repasswordTxtField.layer.borderWidth = 0.5
+        repasswordTxtField.layer.cornerRadius = 5.0;
+        
+        
+        verifiedDigitView.layer.borderColor = UIColor(red: 104, green: 156, blue: 255, alpha: 1.0).cgColor
+        verifiedDigitView.layer.cornerRadius = 5.0;
+        verifiedDigitView.layer.borderWidth = 0.5
+        
+        
+        digitOneView.layer.borderColor = UIColor(red: 104, green: 156, blue: 255, alpha: 1.0).cgColor
+        digitOneView.layer.borderWidth = 0.5
+        digitOneView.layer.cornerRadius = 14.5
+        
+        
+        digitTwoView.layer.borderColor = UIColor(red: 104, green: 156, blue: 255, alpha: 1.0).cgColor
+        digitTwoView.layer.borderWidth = 0.5
+        digitTwoView.layer.cornerRadius = 14.5
+        
+        digitThreeView.layer.borderColor = UIColor(red: 104, green: 156, blue: 255, alpha: 1.0).cgColor
+        digitThreeView.layer.borderWidth = 0.5
+        digitThreeView.layer.cornerRadius = 14.5
+        
+        digitFourView.layer.borderColor = UIColor(red: 104, green: 156, blue: 255, alpha: 1.0).cgColor
+        digitFourView.layer.borderWidth = 0.5
+        digitFourView.layer.cornerRadius = 14.5
+        
+        
+        topUIView.layer.cornerRadius = 50
+        topUIView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+
+        signupBtn.layer.cornerRadius = 20.0;
     }
     
     func getOTPVerified(otp:String, empID: String){
@@ -263,25 +287,3 @@ class SignupViewController: UIViewController {
         })
     }
 }
-
-extension SignupViewController {
-    func showLoading(finished: @escaping () -> Void) {
-        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
-
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.gray
-        loadingIndicator.startAnimating();
-
-        alert.view.addSubview(loadingIndicator)
-
-        present(alert, animated: false, completion: finished)
-    }
-
-    func hideLoading(finished: @escaping () -> Void) {
-        if ( presentedViewController != nil && !presentedViewController!.isBeingPresented ) {
-            dismiss(animated: false, completion: finished)
-        }
-    }
- }
-

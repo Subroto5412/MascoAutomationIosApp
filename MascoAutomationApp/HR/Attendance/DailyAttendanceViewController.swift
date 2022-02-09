@@ -24,6 +24,14 @@ class DailyAttendanceViewController: UIViewController {
         super.viewDidLoad()
         self.headerView.titleNameLbl.text = "Attendance History"
         self.hideKeyboardWhenTappedAround()
+        self.uiViewDesgin()
+        self.navigationLink()
+    }
+}
+
+extension DailyAttendanceViewController{
+    
+    func uiViewDesgin(){
         
         self.bodyView.dailyAttendanceUnderBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.dailyAttendanceUnderBgView.layer.borderWidth = 0.5
@@ -32,6 +40,9 @@ class DailyAttendanceViewController: UIViewController {
         self.bodyView.dailyAttendanceBgView.layer.borderColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1.0).cgColor
         self.bodyView.dailyAttendanceBgView.layer.borderWidth = 0.5
         self.bodyView.dailyAttendanceBgView.layer.cornerRadius = 20
+    }
+    
+    func navigationLink(){
         self.headerView.backBtnHandler = {
             [weak self] (isShow) in
             guard let weakSelf = self else {
@@ -49,16 +60,14 @@ class DailyAttendanceViewController: UIViewController {
         }
     }
     
-        func showBackController(){
-            let controller = HRViewController.initWithStoryboard()
-            self.present(controller, animated: true, completion: nil);
-        }
-    
+    func showBackController(){
+        let controller = HRViewController.initWithStoryboard()
+        self.present(controller, animated: true, completion: nil);
+    }
     
     func showDailyAttendanceController(){
         let controller = DailyAttendanceViewControllerDetails.initWithStoryboard()
         self.present(controller, animated: true, completion: nil);
-    }
+   }
 }
-
 
