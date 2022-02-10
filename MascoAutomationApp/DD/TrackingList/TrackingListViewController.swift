@@ -26,7 +26,6 @@ class TrackingListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        self.headerView.titleNameLbl.text = "Tracking List"
         self.headerView.commonSearchTxtField.addTarget(self, action: #selector(searchRecord), for: .editingChanged)
         
         self.hideKeyboardWhenTappedAround()
@@ -38,10 +37,15 @@ class TrackingListViewController: UIViewController {
     @objc func searchRecord(sender:UITextField ){
 
         print(self.headerView.commonSearchTxtField.text as Any)
-        if ((self.headerView.commonSearchTxtField.text!.count) > 1){
+        
+        if ((self.headerView.commonSearchTxtField.text?.isEmpty) != nil) {
+            
             self.getTrackingList(trackingNo: self.headerView.commonSearchTxtField.text!)
+            
         }else{
-            self.getTrackingList(trackingNo: self.headerView.commonSearchTxtField.text!)
+            if ((self.headerView.commonSearchTxtField.text!.count) > 1){
+                self.getTrackingList(trackingNo: self.headerView.commonSearchTxtField.text!)
+            }
         }
     }
 }
@@ -150,6 +154,8 @@ extension TrackingListViewController {
                         
                     if let error = error {
                         print("Error took place \(error)")
+                        let controller = ViewController.initWithStoryboard()
+                        self.present(controller, animated: true, completion: nil);
                         return
                     }
                     guard let data = data else {return}

@@ -111,6 +111,18 @@ struct TrackingListDetailsResponse: Codable {
         }
 }
 
+struct TrackingNoConfirmRequest: Codable {
+    var trackingNo: String = ""
+    var latitude : String = ""
+    var longitude : String = ""
+
+    enum CodingKeys: String, CodingKey {
+        case trackingNo = "trackingNo"
+        case latitude = "latitude"
+        case longitude = "longitude"
+    }
+}
+
 struct TrackingNoConfirmResponse: Codable {
     var error: String = ""
     var success: Bool = false

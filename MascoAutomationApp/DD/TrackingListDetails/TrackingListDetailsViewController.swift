@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class TrackingListDetailsViewController: UIViewController {
     @IBOutlet weak var headerView: CommonHeaderView!
@@ -17,6 +18,7 @@ class TrackingListDetailsViewController: UIViewController {
     @IBOutlet weak var trackingTableView: TrackingTableBodyView!
     var vSpinner : UIView?
     var dataSource = [DispatchDetailsList]()
+    var locationManager = CLLocationManager()
     
     class func initWithStoryboard() -> TrackingListDetailsViewController
     {
@@ -150,9 +152,21 @@ extension TrackingListDetailsViewController {
     }
     
     func showAlertAction(){
+        
+        locationManager.requestWhenInUseAuthorization()
+        var currentLoc: CLLocation!
+        let manager = CLLocationManager()
+        
         let alert = UIAlertController(title: "", message: "Do You Want to Delivery?", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
-            self.getTrackingOnConfirm()
+           
+            if(manager.authorizationStatus == .authorizedWhenInUse ||
+                manager.authorizationStatus == .authorizedAlways) {
+                currentLoc = self.locationManager.location
+                self.getTrackingOnConfirm(_latitude: currentLoc.coordinate.latitude, _longitude: currentLoc.coordinate.longitude)
+               print(currentLoc.coordinate.latitude)
+               print(currentLoc.coordinate.longitude)
+            }
         }))
         alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
@@ -209,22 +223,30 @@ extension TrackingListDetailsViewController{
         task.resume()
     }
     
-    func getTrackingOnConfirm(){
+    func getTrackingOnConfirm(_latitude:Double, _longitude: Double){
+        
+        let late:String = "\(_latitude)"
+        let longe:String = "\(_longitude)"
         
         let utils = Utils()
         let accessToken = utils.readStringData(key: "token")
         
-        let url = URL(string: TRACKING_ON_CONFIRM_URL+TrackingNo)
+        let url = URL(string: TRACKING_ON_CONFIRM_URL)
         
         guard let requestUrl = url else { fatalError() }
         
         var request = URLRequest(url: requestUrl)
-        request.httpMethod = "GET"
+        request.httpMethod = "POST"
         
         // Set HTTP Request Header
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        let newTodoItem = TrackingNoConfirmRequest(trackingNo: TrackingNo, latitude: late, longitude: longe)
+        let jsonData = try? JSONEncoder().encode(newTodoItem)
+    
+        request.httpBody = jsonData
         
          self.showSpinner(onView: self.view)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -240,9 +262,14 @@ extension TrackingListDetailsViewController{
                     do{
                         let itemModel = try JSONDecoder().decode(TrackingNoConfirmResponse.self, from: data)
                         if itemModel.success == true {
-                            self.toastMessage(itemModel.message)
-                            let controller = TrackingListViewController.initWithStoryboard()
-                            self.present(controller, animated: true, completion: nil);
+                            
+                            let alert = UIAlertController(title: "", message: "Delivery Successfully Done!", preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+                                let controller = TrackingListViewController.initWithStoryboard()
+                                self.present(controller, animated: true, completion: nil);
+                            }))
+                            self.present(alert, animated: true, completion: nil)
+                            
                         }else{
                             self.toastMessage(itemModel.message)
                         }
