@@ -9,7 +9,8 @@ import UIKit
 
 class TrackingListViewController: UIViewController {
 
-    @IBOutlet weak var headerView: CommonHeaderView!
+    @IBOutlet weak var headerView: InnerHeader!
+    //   @IBOutlet weak var headerView: CommonHeaderView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var footerView: CommonFooter!
     var dataSource = [TrackingList]()
@@ -25,12 +26,23 @@ class TrackingListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.headerView.titleNameLbl.text = "Tracking List"
+//        self.headerView.titleNameLbl.text = "Tracking List"
+        self.headerView.commonSearchTxtField.addTarget(self, action: #selector(searchRecord), for: .editingChanged)
         
         self.hideKeyboardWhenTappedAround()
         self.nidRegister()
-        self.getTrackingList()
+        self.getTrackingList(trackingNo: self.headerView.commonSearchTxtField.text!)
         navigationLinking()
+    }
+    
+    @objc func searchRecord(sender:UITextField ){
+
+        print(self.headerView.commonSearchTxtField.text as Any)
+        if ((self.headerView.commonSearchTxtField.text!.count) > 1){
+            self.getTrackingList(trackingNo: self.headerView.commonSearchTxtField.text!)
+        }else{
+            self.getTrackingList(trackingNo: self.headerView.commonSearchTxtField.text!)
+        }
     }
 }
 
@@ -114,12 +126,12 @@ extension TrackingListViewController {
 
 extension TrackingListViewController {
     
-    func getTrackingList(){
+    func getTrackingList(trackingNo:String){
         
         let utils = Utils()
         let accessToken = utils.readStringData(key: "token")
         
-        let url = URL(string: TRACKING_LIST_URL)
+        let url = URL(string: TRACKING_LIST_URL+trackingNo)
         guard let requestUrl = url else { fatalError() }
         
         var request = URLRequest(url: requestUrl)
