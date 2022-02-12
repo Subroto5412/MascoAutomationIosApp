@@ -69,11 +69,12 @@ class LWPViewController: UIViewController {
         
         let currentDate = Date()
          let dateFormatter = DateFormatter()
-         dateFormatter.dateFormat = "dd-MM-yyyy"
+         dateFormatter.dateFormat = "yyyy-MM-dd"
          
          let calendar = YYCalendar(normalCalendarLangType: .ENG3,
                                    date: dateFormatter.string(from: currentDate),
-                                           format: "dd-MM-yyyy") { [weak self] date in
+                                           format: "yyyy-MM-dd") { [weak self] date in
+            self!.getLWPList(unitNo: self!.unitNoId, createDate: date)
              self?.dateSelecct.text = date
              print(date)
                  }

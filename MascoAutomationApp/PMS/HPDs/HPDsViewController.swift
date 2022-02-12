@@ -40,6 +40,7 @@ class HPDsViewController: UIViewController {
     var dataSourceHPDs = [ProductionDetails]()
     var extraHeight: Int = 0
     var unitNoId: Int = 0
+    var vSpinner : UIView?
     
     class func initWithStoryboard() -> HPDsViewController
     {
@@ -76,12 +77,16 @@ class HPDsViewController: UIViewController {
     @IBAction func datePickerBtn(_ sender: Any) {
         let currentDate = Date()
          let dateFormatter = DateFormatter()
-         dateFormatter.dateFormat = "dd-MM-yyyy"
+         dateFormatter.dateFormat = "yyyy-MM-dd"
          
          let calendar = YYCalendar(normalCalendarLangType: .ENG3,
                                    date: dateFormatter.string(from: currentDate),
-                                           format: "dd-MM-yyyy") { [weak self] date in
-             self?.dateSelect.text = date
+                                           format: "yyyy-MM-dd") { [weak self] date in
+            
+            print(self!.unitNoId)
+            
+            self!.getHWPDsList(unitNo: self!.unitNoId, createDate: date)
+            self?.dateSelect.text = date
              print(date)
                  }
          
@@ -258,6 +263,27 @@ extension HPDsViewController {
         self.present(controller, animated: true, completion: nil);
     }
 
+    func showSpinner(onView : UIView) {
+           let spinnerView = UIView.init(frame: onView.bounds)
+           spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+           let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+           ai.startAnimating()
+           ai.center = spinnerView.center
+           
+           DispatchQueue.main.async {
+               spinnerView.addSubview(ai)
+               onView.addSubview(spinnerView)
+           }
+           vSpinner = spinnerView
+       }
+       
+       func removeSpinner() {
+           DispatchQueue.main.async {
+            self.vSpinner?.removeFromSuperview()
+            self.vSpinner = nil
+           }
+       }
+    
     func addTransparentView(frames: CGRect) {
             let window = UIApplication.shared.keyWindow
             transparentView.frame = window?.frame ?? self.view.frame
@@ -322,6 +348,9 @@ extension HPDsViewController {
     
     func getHWPDsList(unitNo: Int, createDate: String){
         
+        print("---unitNo----\(unitNo)")
+        print("---createDate----\(createDate)")
+        
         let url = URL(string: HWPDs_URL)
         guard let requestUrl = url else { fatalError() }
         
@@ -339,13 +368,14 @@ extension HPDsViewController {
 
         request.httpBody = jsonData
 
-        print("jsonData jsonData  data:\n \(jsonData!)")
-        self.showLoading(finished: {
+//        print("jsonData jsonData  data:\n \(jsonData!)")
+//        self.showLoading(finished: {
+        self.showSpinner(onView: self.view)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                
+                self.removeSpinner()
                 DispatchQueue.main.async {
                     
-                    self.hideLoading(finished: {
+//                    self.hideLoading(finished: {
                         
                     if let error = error {
                         print("Error took place \(error)")
@@ -385,11 +415,11 @@ extension HPDsViewController {
                     }catch let jsonErr{
                         print(jsonErr)
                    }
-                    })
+//                    })
                 }
         }
         task.resume()
-        })
+//        })
     }
     
 }

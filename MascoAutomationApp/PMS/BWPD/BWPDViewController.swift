@@ -69,6 +69,7 @@ class BWPDViewController: UIViewController {
          let calendar = YYCalendar(normalCalendarLangType: .ENG3,
                                    date: dateFormatter.string(from: currentDate),
                                            format: "yyyy-MM-dd") { [weak self] date in
+            self!.getBWPDList(unitNo: self!.unitNoId, createDate: date)
              self?.dateSelect.text = date
              print(date)
                  }

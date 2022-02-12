@@ -117,7 +117,7 @@ extension GPMSViewController{
 
     func showHPDsController(){
         let utils = Utils()
-        if  utils.readStringData(key: "HPD") == "HPD"{
+        if  utils.readStringData(key: "HPD") == "hourly production data"{
             let controller = HPDsViewController.initWithStoryboard()
             self.present(controller, animated: true, completion: nil);
         }
@@ -125,7 +125,7 @@ extension GPMSViewController{
     
     func showBWPDController(){
         let utils = Utils()
-        if  utils.readStringData(key: "HPD") == "HPD"{
+        if  utils.readStringData(key: "HPD") == "hourly production data"{
             let controller = BWPDViewController.initWithStoryboard()
             self.present(controller, animated: true, completion: nil);
         }
@@ -133,7 +133,7 @@ extension GPMSViewController{
     
     func showHPDController(){
         let utils = Utils()
-        if  utils.readStringData(key: "HPD") == "HPD"{
+        if  utils.readStringData(key: "HPD") == "hourly production data"{
          
             let controller = HPDViewController.initWithStoryboard()
             self.present(controller, animated: true, completion: nil);
@@ -142,7 +142,7 @@ extension GPMSViewController{
     
     func showLWPController(){
         let utils = Utils()
-        if  utils.readStringData(key: "HPD") == "HPD"{
+        if  utils.readStringData(key: "HPD") == "hourly production data"{
             
             let controller = LWPViewController.initWithStoryboard()
             self.present(controller, animated: true, completion: nil);
