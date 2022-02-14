@@ -32,6 +32,7 @@ class TrackingListViewController: UIViewController {
         self.nidRegister()
         self.getTrackingList(trackingNo: self.headerView.commonSearchTxtField.text!)
         navigationLinking()
+        self.headerView.searchBgView.layer.cornerRadius = 10
     }
     
     @objc func searchRecord(sender:UITextField ){
